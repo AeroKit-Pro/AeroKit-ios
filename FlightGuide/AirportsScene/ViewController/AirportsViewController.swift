@@ -23,7 +23,6 @@ final class AirportsViewController: UIViewController {
         super.viewDidLoad()
         bindViewModelInputs()
         bindViewModelOutputs()
-       // DatabaseManager()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +49,7 @@ final class AirportsViewController: UIViewController {
     }
     
     private func bindViewModelOutputs() {
+        /*
         viewModel.outputs.onSearchStart
             .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
                                  self.bannerViewController.collapse() })
@@ -83,6 +83,7 @@ final class AirportsViewController: UIViewController {
         viewModel.outputs.selectedAirport
             .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
             .disposed(by: disposeBag)
+     */
     }
     
 }

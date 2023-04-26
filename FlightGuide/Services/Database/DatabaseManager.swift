@@ -8,20 +8,19 @@
 import SQLite
 import Foundation
 import RxSwift
-// вызовы в бэкграунд, расставить индексы, weak self
+
 final class DatabaseManager {
     
-    static let DIR_DB = "DB"
-    static let STORE_NAME = "sqlite3"
-    private var db: Connection? = nil
     private let apiClient = APIClient()
     private let disposeBag = DisposeBag()
+    
+    private var db: Connection? = nil
     
     private let airports = Table("airports")
     private let runways = Table("runways")
     private let frequencies = Table("frequencies")
-    //MARK: FIELDS
-    //airports
+    // fields:
+    // airports
     private let id = Expression<Int>("id")
     private let ident = Expression<String?>("ident")
     private let type = Expression<String?>("type")
@@ -69,169 +68,48 @@ final class DatabaseManager {
     private let frequencyMhz = Expression<Double?>("frequencyMhz")
     
     init() {
-        if let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let dirPath = docDir.appendingPathComponent(Self.DIR_DB)
-            
-            do {
-                try FileManager.default.createDirectory(atPath: dirPath.path, withIntermediateDirectories: true, attributes: nil)
-                let dbPath = dirPath.appendingPathComponent(Self.STORE_NAME).path
+        connect()
+    }
+    
+    private func connect() {
+        do {
+            if let dbPath = DatabaseConstants.databasePath {
+                assert(FileManager.default.fileExists(atPath: dbPath))
                 db = try Connection(dbPath)
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
-            } catch {
-                db = nil
-                print("SQLiteDataStore init error: \(error)")
-            }
-        } else {
+            } else { print("invalid path") }
+        } catch {
             db = nil
-        }
-        createTables()
-        downloadBase()
-    }
-    
-    private func createTables() {
-        guard let db = self.db else { return }
-                
-        do {
-            try db.run(airports.create(ifNotExists: true) { table in
-                table.column(id, primaryKey: true)
-                table.column(ident)
-                table.column(type)
-                table.column(name)
-                table.column(latitudeDeg)
-                table.column(longitudeDeg)
-                table.column(elevationFt)
-                table.column(regionCode)
-                table.column(municipality)
-                table.column(scheduledService)
-                table.column(gpsCode)
-                table.column(iataCode)
-                table.column(localCode)
-                table.column(homeLink)
-                table.column(wikipediaLink)
-                table.column(surfaces)
-                table.column(keywords)
-            })
-            print("\(airports) created or already existed")
-        } catch {
-            print("error when creating table", error)
-        }
-        
-        do {
-            try db.run(runways.create(ifNotExists: true) { table in
-                table.column(runway_id, primaryKey: true)
-                table.column(airport_id)
-                table.column(lengthFt)
-                table.column(widthFt)
-                table.column(heDisplacedThresholdFt)
-                table.column(leElevationFt)
-                table.column(leDisplacedThresholdFt)
-                table.column(heElevationFt)
-                table.column(surface)
-                table.column(leIdent)
-                table.column(heIdent)
-                table.column(lighted)
-                table.column(closed)
-                table.column(leLatitudeDeg)
-                table.column(leLongitudeDeg)
-                table.column(leHeadingDegT)
-                table.column(heLatitudeDeg)
-                table.column(heLongitudeDeg)
-                table.column(heHeadingDegT)
-                table.foreignKey(airport_id, references: airports, id)
-            })
-            print("\(runways) created or already existed")
-        } catch {
-            print("error when creating table", error)
-        }
-        
-        do {
-            try db.run(frequencies.create(ifNotExists: true) { table in
-                table.column(frequency_id, primaryKey: true)
-                table.column(usedByAirport_id)
-                table.column(frequency_type)
-                table.column(description)
-                table.column(frequencyMhz)
-                table.foreignKey(usedByAirport_id, references: airports, id)
-            })
-            print("\(frequencies) created or already existed")
-        } catch {
-            print("error when creating table", error)
+            print("SQLiteDataStore init error: \(error)")
         }
     }
-    
-    func downloadBase() {
-        apiClient.getAirports() // в бэкграунд
-            .subscribe(onNext: { $0.items.forEach { airport in
-                guard let db = self.db else { return }
-                do {
-                    try db.run(self.airports.insert(or: .replace, self.id <- airport.id,
-                                                         self.ident <- airport.ident,
-                                                         self.type <- airport.type,
-                                                         self.name <- airport.name,
-                                                         self.latitudeDeg <- airport.latitudeDeg,
-                                                         self.longitudeDeg <- airport.longitudeDeg,
-                                                         self.elevationFt <- airport.elevationFt,
-                                                         self.regionCode <- airport.regionCode,
-                                                         self.municipality <- airport.municipality,
-                                                         self.scheduledService <- airport.scheduledService,
-                                                         self.gpsCode <- airport.gpsCode,
-                                                         self.iataCode <- airport.iataCode,
-                                                         self.localCode <- airport.localCode,
-                                                         self.homeLink <- airport.homeLink,
-                                                         self.wikipediaLink <- airport.wikipediaLink,
-                                                         self.surfaces <- airport.surfaces,
-                                                         self.keywords <- airport.keywords))
-                } catch {
-                    print(error)
-                }
-            } })
-            .disposed(by: disposeBag)
-    /*
-        apiClient.getRunways() // в бэкграунд
-            .subscribe(onNext: { $0.items.forEach { runway in
-                guard let db = self.db else { return }
-                do {
-                    try db.run(self.runways.insert(or: .replace, self.runway_id <- runway.id,
-                                                self.airport_id <- runway.airportID,
-                                                self.lengthFt <- runway.lengthFt,
-                                                self.widthFt <- runway.widthFt,
-                                                self.heDisplacedThresholdFt <- runway.heDisplacedThresholdFt,
-                                                self.leElevationFt <- runway.leElevationFt,
-                                                self.leDisplacedThresholdFt <- runway.leDisplacedThresholdFt,
-                                                self.heElevationFt <- runway.heElevationFt,
-                                                self.surface <- runway.surface,
-                                                self.leIdent <- runway.leIdent,
-                                                self.heIdent <- runway.heIdent,
-                                                self.lighted <- runway.lighted,
-                                                self.closed <- runway.closed,
-                                                self.leLatitudeDeg <- runway.leLatitudeDeg,
-                                                self.leLongitudeDeg <- runway.leLongitudeDeg,
-                                                self.leHeadingDegT <- runway.leHeadingDegT,
-                                                self.heLatitudeDeg <- runway.heLatitudeDeg,
-                                                self.heLongitudeDeg <- runway.heLongitudeDeg,
-                                                self.heHeadingDegT <- runway.heHeadingDegT))
-                } catch {
-                    print(error)
-                }
-            } })
-            .disposed(by: disposeBag)
-        
-        apiClient.getFrequencies() // в бэкграунд
-            .subscribe(onNext: { $0.items.forEach { frequency in
-                guard let db = self.db else { return }
-                do {
-                    try db.run(self.frequencies.insert(or: .replace, self.frequency_id <- frequency.id,
-                                                       self.usedByAirport_id <- frequency.airportID,
-                                                       self.frequency_type <- frequency.type,
-                                                       self.description <- frequency.description,
-                                                       self.frequencyMhz <- frequency.frequencyMhz))
-                } catch {
-                    print(error)
-                }
-            } })
-            .disposed(by: disposeBag)
-        */
+    // Creates directory. Should be called outside the class
+    static func initDirectory() {
+        if let dirPath = DatabaseConstants.documentsDirectoryPath {
+            do {
+                try FileManager.default.createDirectory(atPath: dirPath.path,
+                                                        withIntermediateDirectories: true)
+            } catch { print("failed to init directory", error) }
+        }
     }
-     
+    // Copies existing base from bundle. Should be called outside the class. Will fail assertion if previuous method was not called or base was not found in bundle
+    static func copyExistingDatabase() {
+        let fileManager = FileManager.default
+        if let dirPath = DatabaseConstants.documentsDirectoryPath {
+            assert(fileManager.fileExists(atPath: dirPath.path), "directory should be created beforehand")
+        }
+        
+        if let dbPath = DatabaseConstants.databasePath {
+            if !fileManager.fileExists(atPath: dbPath) {
+                if let dbResourcePath = DatabaseConstants.dbResourcePath {
+                    do {
+                        try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
     
 }
