@@ -30,9 +30,8 @@ final class DatabaseFetcher {
         databaseManager.airportFields.id
     }
     // MARK: "filter" to be substituded by a filtered request struct
-    
     func fetchPreviewData<RequestedType: Decodable>(filter: String) -> [RequestedType]? {
-        let query = airportTable.filter(airportNameColumn.like("%\(filter)%")) // search pattern
+        let query = airportTable.filter(airportNameColumn.like(SearchPattern.contains(filter)))
         return try? database?.prepare(query).map { try $0.decode() }
     }
     

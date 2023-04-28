@@ -27,6 +27,7 @@
 		4E3C047329F91ED200CB08EB /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C047229F91ED200CB08EB /* aerokit_database.sqlite */; };
 		4E3C047529F9355F00CB08EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C047429F9355F00CB08EB /* Database.swift */; };
 		4E3FB17229E2060E00CEB93F /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3FB17129E2060E00CEB93F /* AirportDetailView.xib */; };
+		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
 		4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */; };
 		4E87DA1529E1E70F000C5426 /* BannerUnderlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1429E1E70F000C5426 /* BannerUnderlayView.swift */; };
@@ -78,6 +79,7 @@
 		4E3C047229F91ED200CB08EB /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
 		4E3C047429F9355F00CB08EB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4E3FB17129E2060E00CEB93F /* AirportDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
+		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
 		4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipNil.swift; sourceTree = "<group>"; };
 		4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnEmpty.swift; sourceTree = "<group>"; };
 		4E87DA1429E1E70F000C5426 /* BannerUnderlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerUnderlayView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		4E3B3A9D29D43B4800971840 /* FlightGuide */ = {
 			isa = PBXGroup;
 			children = (
+				4E5C2DDB29FC884A00B66A02 /* Helpers */,
 				4E56B23129DB73E400D4BF12 /* ComponentsLibrary */,
 				4E16F3AF29DA32650072DE92 /* AirportsScene */,
 				4E3B3AB629D43F0800971840 /* Application */,
@@ -257,6 +260,14 @@
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
 			);
 			path = ComponentsLibrary;
+			sourceTree = "<group>";
+		};
+		4E5C2DDB29FC884A00B66A02 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4E6B37A929DBA1A5005B97F2 /* ReactiveUtilities */ = {
@@ -483,6 +494,7 @@
 				4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */,
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
 				4E94D68029DFDC90000A470F /* AirportCellViewModel.swift in Sources */,
+				4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */,
 				4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */,
 				4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */,
 				4EE74D9F29E233DB009AF2C4 /* AirportDetailView.swift in Sources */,
