@@ -8,7 +8,7 @@
 import SQLite
 import Foundation
 import RxSwift
-
+/// 'DatabaseManager' is a static class that manages directory initialization, files copying, local database configuring and connection to it. Consider using wrappers to interact with this class.
 final class DatabaseManager {
     
     private(set) var database: Connection? = nil
