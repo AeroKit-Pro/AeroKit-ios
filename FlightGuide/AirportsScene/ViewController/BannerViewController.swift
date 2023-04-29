@@ -22,6 +22,7 @@ final class BannerViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         bindViewModelOutputs()
     }
     

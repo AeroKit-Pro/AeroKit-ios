@@ -26,6 +26,7 @@ final class AirportsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         addChild(bannerViewController)
         airportsMainView.addSubview(bannerViewController.view)
     }
@@ -64,7 +65,7 @@ final class AirportsViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
-        
+        /*
         viewModel.outputs.onItemSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
                 self.bannerViewController.expand() })
@@ -78,7 +79,7 @@ final class AirportsViewController: UIViewController {
             .asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
-         /*
+         
         viewModel.outputs.selectedAirport
             .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
             .disposed(by: disposeBag)

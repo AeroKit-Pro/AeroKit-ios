@@ -11,6 +11,39 @@ import RxSwift
 /// 'DatabaseManager' is a static class that manages directory initialization, files copying, local database configuring and connection to it. Consider using wrappers to interact with this class.
 final class DatabaseManager {
     
+    static func prepare() {
+        initDirectory()
+        copyExistingDatabase()
+    }
+    // Creates directory. Should be called outside the class
+    private static func initDirectory() {
+        if let dirPath = DatabaseConstants.documentsDirectoryPath {
+            do {
+                try FileManager.default.createDirectory(atPath: dirPath.path,
+                                                        withIntermediateDirectories: true)
+            } catch { print("failed to init directory: \(error)") }
+        }
+    }
+    // Copies existing base from bundle. Should be called outside the class. Will fail assertion if previuous method was not called or base was not found in bundle
+    private static func copyExistingDatabase() {
+        let fileManager = FileManager.default
+        if let dirPath = DatabaseConstants.documentsDirectoryPath {
+            assert(fileManager.fileExists(atPath: dirPath.path), "directory should be created beforehand")
+        }
+        
+        if let dbPath = DatabaseConstants.databasePath {
+            if !fileManager.fileExists(atPath: dbPath) {
+                if let dbResourcePath = DatabaseConstants.dbResourcePath {
+                    do {
+                        try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
+                    } catch {
+                        print("error while copying sqlite file: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
     private(set) var database: Connection? = nil
     
     let airports = Table("airports")
@@ -51,35 +84,6 @@ final class DatabaseManager {
             try database.run(queryNameIndex)
         }
         catch { print("error while creating index: \(error)") }
-    }
-    
-    // Creates directory. Should be called outside the class
-    static func initDirectory() {
-        if let dirPath = DatabaseConstants.documentsDirectoryPath {
-            do {
-                try FileManager.default.createDirectory(atPath: dirPath.path,
-                                                        withIntermediateDirectories: true)
-            } catch { print("failed to init directory: \(error)") }
-        }
-    }
-    // Copies existing base from bundle. Should be called outside the class. Will fail assertion if previuous method was not called or base was not found in bundle
-    static func copyExistingDatabase() {
-        let fileManager = FileManager.default
-        if let dirPath = DatabaseConstants.documentsDirectoryPath {
-            assert(fileManager.fileExists(atPath: dirPath.path), "directory should be created beforehand")
-        }
-        
-        if let dbPath = DatabaseConstants.databasePath {
-            if !fileManager.fileExists(atPath: dbPath) {
-                if let dbResourcePath = DatabaseConstants.dbResourcePath {
-                    do {
-                        try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
-                    } catch {
-                        print("error while copying sqlite file: \(error)")
-                    }
-                }
-            }
-        }
     }
     
 }

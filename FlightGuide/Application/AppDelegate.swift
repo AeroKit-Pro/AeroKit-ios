@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DatabaseManager.initDirectory()
-        DatabaseManager.copyExistingDatabase()
+        DatabaseManager.prepare()
         
         return true
     }

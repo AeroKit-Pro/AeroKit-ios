@@ -53,10 +53,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         let filteredAirports = unwrappedSearchInput
             .backgroundCompactMap(qos: .userInteractive) { [unowned self] in
                 self.databaseFetcher.fetchPreviewData(AirportPreview.self, filter: $0) }
+            .share()
         
         self.searchOutput = filteredAirports
             .backgroundMap(qos: .userInteractive) { $0.map { AirportCellViewModel(with: $0) } }
-        
+        /*
         self.onItemSelection = selectedItem.asEmpty()
         
         let selectedAirport = selectedItem.withLatestFrom(filteredAirports) { ($0, $1) }
@@ -65,15 +66,15 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             }
         
         self.airportCoordinate = selectedAirport
-            .map { _ in CLLocationCoordinate2D() } // mock coordinate for now
+            .map { _ in Coordinate() } // mock coordinate for now
             .share()
         
         self.airportAnnotation = airportCoordinate
             .map { PointAnnotation(coordinate: $0) }
             .map { [$0] }
         
-       // self.selectedAirport = selectedAirport
-        
+        self.selectedAirport = selectedAirport
+        */
         self.onSearchStart = searchingBegan.asObservable()
         self.onSearchEnd = searchingEnded.asObservable()
     }
@@ -92,12 +93,12 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
     private let searchInput = PublishRelay<String?>()
     
     func didBeginSearching() {
-        searchingBegan.accept(())
+        searchingBegan.accept(Empty())
     }
     private let searchingBegan = PublishRelay<Empty>()
     
     func didEndSearching() {
-        searchingEnded.accept(())
+        searchingEnded.accept(Empty())
     }
     private let searchingEnded = PublishRelay<Empty>()
     
