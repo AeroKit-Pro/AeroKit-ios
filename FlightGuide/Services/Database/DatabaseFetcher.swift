@@ -31,8 +31,10 @@ final class DatabaseFetcher {
     }
     // TODO: "filter" to be substituded by a filtered request struct
     /// should be used to fetch the most basic 'preview' information as the size of generic parameter hugely affects perfomance
-    func fetchPreviewData<RequestedType: Decodable>(filter: String) -> [RequestedType]? {
-        let query = airportTable.filter(airportNameColumn.like(SearchPattern.contains(filter)))
+    func fetchPreviewData<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
+                                                    filter: String) -> [RequestedType]? {
+        let query = airportTable
+            .filter(airportNameColumn.lowercaseString.like(SearchPattern.contains(filter)))
         return try? database?.prepare(query).map { try $0.decode() }
     }
         

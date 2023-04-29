@@ -28,6 +28,7 @@
 		4E3C047529F9355F00CB08EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C047429F9355F00CB08EB /* Database.swift */; };
 		4E3FB17229E2060E00CEB93F /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3FB17129E2060E00CEB93F /* AirportDetailView.xib */; };
 		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
+		4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
 		4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */; };
 		4E87DA1529E1E70F000C5426 /* BannerUnderlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1429E1E70F000C5426 /* BannerUnderlayView.swift */; };
@@ -80,6 +81,7 @@
 		4E3C047429F9355F00CB08EB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4E3FB17129E2060E00CEB93F /* AirportDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
 		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
+		4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
 		4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipNil.swift; sourceTree = "<group>"; };
 		4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnEmpty.swift; sourceTree = "<group>"; };
 		4E87DA1429E1E70F000C5426 /* BannerUnderlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerUnderlayView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		4E6B37A929DBA1A5005B97F2 /* ReactiveUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */,
 				4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */,
 				4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */,
 			);
@@ -488,6 +491,7 @@
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
 				4E3B3A9F29D43B4800971840 /* AppDelegate.swift in Sources */,
 				4ECEC08029D998D40070195D /* UIButton.swift in Sources */,
+				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */,
 				4E3B3AC629D4570200971840 /* AirportsMainView.swift in Sources */,

@@ -49,7 +49,6 @@ final class AirportsViewController: UIViewController {
     }
     
     private func bindViewModelOutputs() {
-        /*
         viewModel.outputs.onSearchStart
             .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
                                  self.bannerViewController.collapse() })
@@ -79,11 +78,11 @@ final class AirportsViewController: UIViewController {
             .asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
-         
+         /*
         viewModel.outputs.selectedAirport
             .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
             .disposed(by: disposeBag)
-     */
+          */
     }
     
 }

@@ -14,11 +14,11 @@ struct AirportCellViewModel {
     let municipality: String
     let surface: String
     
-    init(with airport: Airport) {
-        self.title = airport.name ?? "?"
-        self.type = airport.type ?? "?"
-        self.municipality = airport.municipality ?? "?"
-        self.surface = "no data" // ИЗМЕНИТЬ
-        self.image = UIImage.airport ?? UIImage()// ИЗМЕНИТЬ
+    init(with previewInfo: AirportPreview) {
+        self.title = previewInfo.name ?? "no data"
+        self.type = previewInfo.type ?? "no data"
+        self.municipality = previewInfo.municipality ?? "no data"
+        self.surface = previewInfo.surfaces ?? "no data"
+        self.image = UIImage.airport ?? UIImage() // there will be different icons for different types later
     }
 }
