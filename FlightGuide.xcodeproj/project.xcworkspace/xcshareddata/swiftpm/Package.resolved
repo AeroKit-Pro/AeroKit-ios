@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "49f0c56ce7a113b4474e08837a1985cf1a8590b5",
-        "version" : "23.4.0"
+        "revision" : "a623ae13560c81085d2c63807143c83f46e69f2f",
+        "version" : "23.5.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
       "state" : {
-        "revision" : "d0826b92cb5094fb26ce6f8f6a09bc4734751baf",
-        "version" : "10.12.0"
+        "revision" : "899ea91aa3f9e1ba0b002a127fe1f84b2faaaed9",
+        "version" : "10.13.0"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
         "branch" : "main",
-        "revision" : "2f528b67ef785b46817b58ccc1511aaaf5b1b5e0"
+        "revision" : "32cf267ecb744a4b4fd2a5045cb211bb2bc12b91"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "04c8d2b491b54e46a3534254bed8807b4a954fad"
+        "revision" : "0e4343b1ca7a52dfb926db58a53570b079c4ae74"
       }
     },
     {
@@ -57,7 +57,7 @@
     {
       "identity" : "sqlite.swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/stephencelis/SQLite.swift.git",
+      "location" : "https://github.com/stephencelis/SQLite.swift",
       "state" : {
         "revision" : "7a2e3cd27de56f6d396e84f63beefd0267b55ccb",
         "version" : "0.14.1"
