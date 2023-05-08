@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class SearchFieldView: UIView, UITextFieldDelegate {
+final class SearchFieldView: UIView {
     
     private let magnifierImage = UIImageView(image: .magnifier,
                                              contentMode: .scaleAspectFit,
@@ -33,6 +33,10 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
     var textFieldDidEndEditing: ControlEvent<()> {
         textField.rx.controlEvent(.editingDidEnd)
     }
+
+    var didTapFilterButton: ControlEvent<()> {
+        showFiltersButton.rx.controlEvent(.touchUpInside)
+    }
     
     var textDidChange: ControlProperty<String?> {
         textField.rx.text
@@ -48,7 +52,11 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
         textField.placeholder = placeholder
         textField.delegate = self
     }
-    
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private func setupAppearance() {
         layer.borderWidth = 1
         layer.borderColor = UIColor.clear.cgColor
@@ -73,7 +81,7 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
             $0.top.bottom.equalToSuperview()
         }
     }
-    
+
     private func setupStackViews() {
         imageStackView.addArrangedSubviews(magnifierImage, spacerImage)
         spacerImage.snp.makeConstraints { $0.width.equalTo(10) }
@@ -87,7 +95,7 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
     private func setupDismissAction() {
         dismissButton.addTarget(self, action: #selector(dismiss), for: .touchUpInside)
     }
-    
+
     private func configureTextField() {
         textField.leftView = imageStackView
         textField.leftViewMode = .always
@@ -97,19 +105,7 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
     @objc private func dismiss(_ sender: UIButton) {
         textField.resignFirstResponder()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.leftView = buttonStackView
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.leftView = imageStackView
-    }
-    
+
     func resignFocus() {
         textField.resignFirstResponder()
     }
@@ -138,4 +134,16 @@ final class SearchFieldView: UIView, UITextFieldDelegate {
         }
     }
     
+}
+
+
+// MARK: - UITextFieldDelegate
+extension SearchFieldView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.leftView = buttonStackView
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.leftView = imageStackView
+    }
 }

@@ -47,6 +47,13 @@ final class AirportsViewController: UIViewController {
         airportsMainView.rxTable.itemSelected
             .subscribe(onNext: { self.viewModel.inputs.didSelectItem(at: $0) })
             .disposed(by: disposeBag)
+
+        airportsMainView.didTapFilterButton
+            .subscribe(onNext: { [weak self] in
+                // TODO: remove
+                self?.navigationController?.pushViewController(AirportFilterViewController(), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {

@@ -18,6 +18,7 @@ protocol AirportsSceneViewType: UIView {
     var tappedAnnotation: ControlEvent<PointAnnotation> { get }
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }
+    var didTapFilterButton: ControlEvent<()> { get }
     var searchTextDidChange: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
     func enterSearchingMode()
@@ -114,6 +115,10 @@ extension AirportsMainView: AirportsSceneViewType {
     
     var rxTable: Reactive<UITableView> {
         airportsTableView.rx
+    }
+
+    var didTapFilterButton: ControlEvent<()> {
+        searchField.didTapFilterButton
     }
     
     func enterSearchingMode() {
