@@ -26,6 +26,7 @@ final class AirportsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         addChild(bannerViewController)
         airportsMainView.addSubview(bannerViewController.view)
     }
@@ -46,10 +47,16 @@ final class AirportsViewController: UIViewController {
         airportsMainView.rxTable.itemSelected
             .subscribe(onNext: { self.viewModel.inputs.didSelectItem(at: $0) })
             .disposed(by: disposeBag)
+
+        airportsMainView.didTapFilterButton
+            .subscribe(onNext: { [weak self] in
+                // TODO: remove
+                self?.navigationController?.pushViewController(AirportFilterViewController(), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
-        /*
         viewModel.outputs.onSearchStart
             .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
                                  self.bannerViewController.collapse() })
@@ -65,7 +72,7 @@ final class AirportsViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
-        
+        /*
         viewModel.outputs.onItemSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
                 self.bannerViewController.expand() })
@@ -83,7 +90,7 @@ final class AirportsViewController: UIViewController {
         viewModel.outputs.selectedAirport
             .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
             .disposed(by: disposeBag)
-     */
+          */
     }
     
 }

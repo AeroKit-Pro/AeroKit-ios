@@ -41,27 +41,23 @@ protocol AirportsViewModelType {
 
 final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, AirportsViewModelOutputs {
     
-    private let apiManager = APIClient()
+    private let databaseFetcher = DatabaseFetcher()
     private let errorRouter = ErrorRouter()
     
     init() {
-        let airports = apiManager.getAirports()
-            .rerouteError(errorRouter)
-            .map { $0.items }
-        
         let unwrappedSearchInput = searchInput
             .skipNil()
+            .filter { !$0.isEmpty }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         
-        let filteredAirports = Observable.combineLatest(airports, unwrappedSearchInput)
-            .map { airports, input in
-                airports.filter { ($0.name?.lowercased() ?? "").contains(input.lowercased()) }
-            }
+        let filteredAirports = unwrappedSearchInput
+            .backgroundCompactMap(qos: .userInteractive) { [unowned self] in
+                self.databaseFetcher.fetchPreviewData(AirportPreview.self, filter: $0) }
             .share()
         
         self.searchOutput = filteredAirports
-            .map { $0.map { AirportCellViewModel(with: $0) } }
-        
+            .backgroundMap(qos: .userInteractive) { $0.map { AirportCellViewModel(with: $0) } }
+        /*
         self.onItemSelection = selectedItem.asEmpty()
         
         let selectedAirport = selectedItem.withLatestFrom(filteredAirports) { ($0, $1) }
@@ -70,8 +66,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             }
         
         self.airportCoordinate = selectedAirport
-            .map { CLLocationCoordinate2D(latitude: $0.latitudeDeg ?? Double(),
-                                          longitude: $0.longitudeDeg ?? Double()) }
+            .map { _ in Coordinate() } // mock coordinate for now
             .share()
         
         self.airportAnnotation = airportCoordinate
@@ -79,7 +74,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             .map { [$0] }
         
         self.selectedAirport = selectedAirport
-        
+        */
         self.onSearchStart = searchingBegan.asObservable()
         self.onSearchEnd = searchingEnded.asObservable()
     }
@@ -98,12 +93,12 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
     private let searchInput = PublishRelay<String?>()
     
     func didBeginSearching() {
-        searchingBegan.accept(())
+        searchingBegan.accept(Empty())
     }
     private let searchingBegan = PublishRelay<Empty>()
     
     func didEndSearching() {
-        searchingEnded.accept(())
+        searchingEnded.accept(Empty())
     }
     private let searchingEnded = PublishRelay<Empty>()
     
