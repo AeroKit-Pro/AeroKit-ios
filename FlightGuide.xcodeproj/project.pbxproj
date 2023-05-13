@@ -177,7 +177,6 @@
 				113795592A0865FC00597299 /* Views */,
 				11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */,
 				11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */,
-				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
 			);
 			path = FilterScene;
 			sourceTree = "<group>";
@@ -374,6 +373,7 @@
 				113795512A07F60000597299 /* RunwaySurface.swift */,
 				113795532A07F67600597299 /* AirportType.swift */,
 				113795552A07F70A00597299 /* AirportFilterItem.swift */,
+				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
