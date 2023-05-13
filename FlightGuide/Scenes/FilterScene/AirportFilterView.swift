@@ -44,9 +44,9 @@ final class AirportFilterView: UIView {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(scrollView, applyButton)
+        addSubviews(scrollView, applyButton)
 
-        scrollView.addSubviewsWithoutAutoresizingMask(stackView)
+        scrollView.addSubviews(stackView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
             make.width.equalToSuperview()

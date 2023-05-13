@@ -18,8 +18,8 @@ final class AirportsFilterRunwaysLengthView: UIView {
         return label
     }()
 
-    let textField: UITextField = {
-        let textField = UITextField()
+    let textField: NoPasteTextField = {
+        let textField = NoPasteTextField()
         textField.textAlignment = .right
         textField.font = .systemFont(ofSize: 16)
         textField.keyboardType = .numberPad
@@ -50,7 +50,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(titleLabel, textField, textFieldUnderlineView, measureLabel)
+        addSubviews(titleLabel, textField, textFieldUnderlineView, measureLabel)
 
         titleLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(24)

@@ -39,7 +39,7 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(titleLabel, scrollView)
+        addSubviews(titleLabel, scrollView)
         titleLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(10)
         }
@@ -48,7 +48,7 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
             make.bottom.leading.trailing.equalToSuperview()
         }
 
-        scrollView.addSubviewsWithoutAutoresizingMask(stackView)
+        scrollView.addSubviews(stackView)
         stackView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()//.inset(16)
             make.leading.trailing.equalToSuperview().inset(16)
@@ -100,7 +100,7 @@ final class AirportsFilterSelectableControl: UIControl {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(imageView, titleLabel)
+        addSubviews(imageView, titleLabel)
 
         snp.makeConstraints { make in
             make.height.equalTo(55)

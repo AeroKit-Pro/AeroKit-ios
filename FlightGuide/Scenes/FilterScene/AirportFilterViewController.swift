@@ -12,7 +12,6 @@ final class AirportFilterViewController: UIViewController {
 
     private let airportFilterView: AirportFilterViewType = AirportFilterView()
     private let viewModel: AirportsViewModelType = AirportsViewModel()
-    private let bannerViewController = BannerViewController()
     private let disposeBag = DisposeBag()
 
     let rightBarButton: UIButton = {
@@ -67,7 +66,7 @@ final class AirportFilterViewController: UIViewController {
         titleLabel.textAlignment = .left
 
         let spacerView = UIView()
-        let constraint = spacerView.widthAnchor.constraint(greaterThanOrEqualToConstant: CGFloat.greatestFiniteMagnitude)
+        let constraint = spacerView.widthAnchor.constraint(greaterThanOrEqualToConstant: CGFloat.greatestFiniteMagnitude) // prints a warning: "This NSLayoutConstraint is being configured with a constant that exceeds internal limits..." 
         constraint.isActive = true
         constraint.priority = .defaultLow
 
@@ -78,39 +77,11 @@ final class AirportFilterViewController: UIViewController {
     }
 
     private func bindViewModelInputs() {
-//        airportsMainView.didBeginSearching
-//            .subscribe(onNext: { self.viewModel.inputs.didBeginSearching() })
-//            .disposed(by: disposeBag)
-//
-//        airportsMainView.didEndSearching
-//            .subscribe(onNext: { self.viewModel.inputs.didEndSearching() })
-//            .disposed(by: disposeBag)
-//
-//        airportsMainView.searchTextDidChange
-//            .subscribe(onNext: { self.viewModel.inputs.searchInputDidChange(text: $0) })
-//            .disposed(by: disposeBag)
-//
-//        airportsMainView.rxTable.itemSelected
-//            .subscribe(onNext: { self.viewModel.inputs.didSelectItem(at: $0) })
-//            .disposed(by: disposeBag)
+
     }
 
     private func bindViewModelOutputs() {
-//        viewModel.outputs.onSearchStart
-//            .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
-//                                 self.bannerViewController.collapse() })
-//            .disposed(by: disposeBag)
-//
-//        viewModel.outputs.onSearchEnd
-//            .subscribe(onNext: { self.airportsMainView.dismissSearchMode() })
-//            .disposed(by: disposeBag)
-//
-//        viewModel.outputs.searchOutput
-//            .bind(to: airportsMainView.rxTable.items(cellIdentifier: AirportCell.identifier,
-//                                                     cellType: AirportCell.self)) { _, model, cell in
-//                cell.viewModel = model
-//            }
-//            .disposed(by: disposeBag)
+
     }
 
 }
