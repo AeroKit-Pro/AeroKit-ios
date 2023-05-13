@@ -32,7 +32,7 @@ final class AirportsFilterRunwayLightView: UIView {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(titleLabel, switchView)
+        addSubviews(titleLabel, switchView)
 
         titleLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(24)

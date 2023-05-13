@@ -50,7 +50,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(titleLabel, textField, textFieldUnderlineView, measureLabel)
+        addSubviews(titleLabel, textField, textFieldUnderlineView, measureLabel)
 
         titleLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(24)

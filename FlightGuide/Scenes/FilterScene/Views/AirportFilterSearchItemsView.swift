@@ -37,7 +37,7 @@ final class AirportFilterSearchItemsView: UIView {
     }
 
     private func setupLayout() {
-        addSubviewsWithoutAutoresizingMask(titleLabel, segmentedControl)
+        addSubviews(titleLabel, segmentedControl)
 
         titleLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(10)
