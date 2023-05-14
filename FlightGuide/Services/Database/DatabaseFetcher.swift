@@ -29,7 +29,6 @@ final class DatabaseFetcher {
     private var airportIdColumn: Expression<Int> {
         databaseManager.airportFields.id
     }
-    // TODO: "filter" to be substituded by a filtered request struct
     /// should be used to fetch the most basic 'preview' information as the size of generic parameter hugely affects perfomance
     func fetchPreviewData<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
                                                     input: String,
@@ -60,10 +59,16 @@ final class DatabaseFetcher {
             .select(databaseManager.airportFields.name,
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality,
-                    databaseManager.airportFields.surfaces)
+                    databaseManager.airportFields.surfaces,
+                    databaseManager.airportFields.id)
             .group(airportIdColumn)
                 
         return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    
+    func fetchItem<RequestedType: Decodable>(_ requestedType: RequestedType.Type, by id: Int) -> RequestedType? {
+        
+        return nil
     }
         
 }

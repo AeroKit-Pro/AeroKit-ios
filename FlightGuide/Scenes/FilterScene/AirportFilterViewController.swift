@@ -86,29 +86,33 @@ final class AirportFilterViewController: UIViewController {
     }
 
     private func bindViewModelInputs() {
-        airportFilterView.applyFiltersButtonTapped.subscribe(onNext: {
-            self.viewModel.inputs.didTapApplyFiltersButton()
+        airportFilterView.applyFiltersButtonTapped.subscribe(onNext: { [unowned self] in
+            viewModel.inputs.didTapApplyFiltersButton()
         })
         .disposed(by: disposeBag)
         
-        airportFilterView.filterInput.subscribe(onNext: {
-            self.viewModel.inputs.didCollectFilterInput(filterInput: $0)
+        airportFilterView.filterInput.subscribe(onNext: { [unowned self] in
+            viewModel.inputs.didCollectFilterInput(filterInput: $0)
         })
         .disposed(by: disposeBag)
     }
 
     private func bindViewModelOutputs() {
         viewModel.outputs.collectFilters
-            .subscribe(onNext: {
-                self.airportFilterView.collectValues()
+            .subscribe(onNext: { [unowned self] in
+                airportFilterView.collectValues()
             })
             .disposed(by: disposeBag)
         
         viewModel.outputs.dismissFilterScene
-            .subscribe(onNext: {
-                self.navigationController?.popViewController(animated: true)
+            .subscribe(onNext: { [unowned self] in
+                navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        print("FFFF")
     }
 
 }

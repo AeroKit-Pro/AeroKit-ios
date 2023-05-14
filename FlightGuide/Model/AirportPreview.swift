@@ -6,6 +6,7 @@
 //
 /// Airport preview info
 struct AirportPreview: Decodable {
+    let id: Int
     let name: String?
     let type: String?
     let municipality: String?
