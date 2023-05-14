@@ -20,6 +20,10 @@ final class AirportsFilterRunwayLightView: UIView {
         switchView.onTintColor = .black
         return switchView
     }()
+    
+    var selectedState: Bool {
+        switchView.isOn
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

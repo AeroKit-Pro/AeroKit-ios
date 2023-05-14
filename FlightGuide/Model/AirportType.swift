@@ -35,3 +35,24 @@ extension AirportType: ModelTitlable {
         }
     }
 }
+
+extension AirportType: DatabaseRowRepresentable {
+    var row: String {
+        switch self {
+        case .small:
+            return "small_airport"
+        case .large:
+            return "large_airport"
+        case .medium:
+            return "medium_airport"
+        case .closed:
+            return "closed"
+        case .heliport:
+            return "heliport"
+        case .seaPlane:
+            return "seaplane_base"
+        case .baloonPlane:
+            return "balloonport"
+        }
+    }
+}

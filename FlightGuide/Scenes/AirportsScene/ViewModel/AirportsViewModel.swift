@@ -15,6 +15,8 @@ protocol AirportsViewModelInputs {
     func didBeginSearching()
     func didEndSearching()
     func didSelectItem(at indexPath: IndexPath)
+    func didTapApplyFiltersButton()
+    func didCollectFilterInput(filterInput input: FilterInput)
 }
 
 protocol AirportsViewModelOutputs {
@@ -32,6 +34,8 @@ protocol AirportsViewModelOutputs {
     var selectedAirport: RxObservable<Airport>! { get }
     var airportAnnotation: RxObservable<PointAnnotations>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
+    var dismissFilterScene: RxObservable<Empty>! { get }
+    var collectFilters: RxObservable<Empty>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -50,13 +54,25 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             .filter { !$0.isEmpty }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         
-        let filteredAirports = unwrappedSearchInput
-            .backgroundCompactMap(qos: .userInteractive) { [unowned self] in
-                self.databaseFetcher.fetchPreviewData(AirportPreview.self, filter: $0) }
+        let filterSettings = filterInput
+            .map { AirportFilterSettings(withFilterInput: $0) }
+            .startWith(nil)
+                                
+        let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
+                                                          filterSettings) { ($0, $1) }
+            .backgroundMap(qos: .userInitiated) { [unowned self] in
+                databaseFetcher.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
+            }
             .share()
-        
+                
         self.searchOutput = filteredAirports
-            .backgroundMap(qos: .userInteractive) { $0.map { AirportCellViewModel(with: $0) } }
+            .backgroundCompactMap(qos: .userInitiated) { $0 }
+            .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
+                
+        self.dismissFilterScene = applyFiltersButtonTapped.asObservable()
+        
+        self.collectFilters = applyFiltersButtonTapped.asObservable()
+        
         /*
         self.onItemSelection = selectedItem.asEmpty()
         
@@ -75,8 +91,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         
         self.selectedAirport = selectedAirport
         */
-        self.onSearchStart = searchingBegan.asObservable()
-        self.onSearchEnd = searchingEnded.asObservable()
+        self.onSearchStart = searchingBegan.asObservable() // to separate & rename
+        self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
     }
 
     var onSearchStart: RxObservable<Empty>!
@@ -86,6 +102,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
     var selectedAirport: RxObservable<Airport>!
     var airportAnnotation: RxObservable<PointAnnotations>!
     var airportCoordinate: RxObservable<Coordinate>!
+    var dismissFilterScene: RxObservable<Empty>!
+    var collectFilters: RxObservable<Empty>!
     
     func searchInputDidChange(text: String?) {
         searchInput.accept(text)
@@ -106,6 +124,16 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         selectedItem.accept(indexPath)
     }
     private let selectedItem = PublishRelay<IndexPath>()
+    
+    func didTapApplyFiltersButton() {
+        applyFiltersButtonTapped.accept(Empty())
+    }
+    private let applyFiltersButtonTapped = PublishRelay<Empty>()
+    
+    func didCollectFilterInput(filterInput input: FilterInput) {
+        filterInput.accept(input)
+    }
+    private let filterInput = PublishRelay<FilterInput>()
     
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }

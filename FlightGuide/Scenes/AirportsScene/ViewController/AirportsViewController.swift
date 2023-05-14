@@ -50,8 +50,10 @@ final class AirportsViewController: UIViewController {
 
         airportsMainView.didTapFilterButton
             .subscribe(onNext: { [weak self] in
-                // TODO: remove
-                self?.navigationController?.pushViewController(AirportFilterViewController(), animated: true)
+                guard let self = self else { return }
+                // TODO: remove. This is a temporary soulution and it should go with DI and coordinators
+                let filterVC = AirportFilterViewController(viewModel: self.viewModel)
+                self.navigationController?.pushViewController(filterVC, animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -72,6 +74,7 @@ final class AirportsViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
+        
         /*
         viewModel.outputs.onItemSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();

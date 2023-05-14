@@ -12,3 +12,9 @@ extension String {
         NSLocalizedString(self, comment: "")
     }
 }
+
+extension String {
+    var numericValue: Int? {
+        Int(self)
+    }
+}

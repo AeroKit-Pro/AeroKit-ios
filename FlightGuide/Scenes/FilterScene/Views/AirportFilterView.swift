@@ -6,15 +6,29 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+// TODO: this should probably be moved to a dedicated folder along with all the other protocols
+protocol DatabaseRowRepresentable {
+    var row: String { get }
+}
 
 protocol AirportFilterViewType: UIView {
-
+    var applyFiltersButtonTapped: ControlEvent<Void> { get }
+    var filterInput: Observable<FilterInput> { get }
+    func collectValues()
 }
+
+typealias FilterInput = (searchItem: AirportFilterItem,
+                          runwayLength: String?,
+                          runwaySurfaces: [RunwaySurface],
+                          airportTypes: [AirportType],
+                          lightAvailability: Bool)
 
 final class AirportFilterView: UIView {
     let scrollView = UIScrollView()
     let stackView = UIStackView(axis: .vertical, spacing: 20)
-    let airportFilterSearchItemsView = AirportFilterSearchItemsView()
+    let airportFilterSearchItemsView = AirportFilterSearchItemsView<AirportFilterItem>()
 
     let airportsFilterRunwaysLengthView = AirportsFilterRunwaysLengthView()
     let airportsFilterRunwaysSurfacesSelectionView = AirportsFilterSelectionView<RunwaySurface>(title: "Runways surfaces")
@@ -22,6 +36,8 @@ final class AirportFilterView: UIView {
 
     let airportsFilterRunwayLightView = AirportsFilterRunwayLightView()
 
+    private let filterInputRelay = PublishRelay<FilterInput>()
+    
     let applyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Apply changes", for: .normal)
@@ -41,6 +57,15 @@ final class AirportFilterView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func collectValues() {
+        let input: FilterInput = (searchItem: airportFilterSearchItemsView.selectedItem,
+                     runwayLength: airportsFilterRunwaysLengthView.enteredLength,
+                     runwaySurfaces: airportsFilterRunwaysSurfacesSelectionView.selectedItems,
+                     airportTypes: airportsFilterAirportTypeSelectionView.selectedItems,
+                     lightAvailability: airportsFilterRunwayLightView.selectedState)
+        filterInputRelay.accept(input)
     }
 
     private func setupLayout() {
@@ -76,7 +101,13 @@ final class AirportFilterView: UIView {
 
 // MARK: - AirportFilterViewType
 extension AirportFilterView: AirportFilterViewType {
-
+    var applyFiltersButtonTapped: ControlEvent<Void> {
+        applyButton.rx.tap
+    }
+    
+    var filterInput: Observable<FilterInput> {
+        filterInputRelay.asObservable()
+    }
 }
 
 

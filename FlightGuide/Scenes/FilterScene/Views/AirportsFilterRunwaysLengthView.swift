@@ -38,6 +38,10 @@ final class AirportsFilterRunwaysLengthView: UIView {
         label.font = .systemFont(ofSize: 16) // TODO: fonts
         return label
     }()
+    
+    var enteredLength: String? {
+        textField.text
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

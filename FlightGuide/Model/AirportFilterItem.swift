@@ -9,7 +9,9 @@ enum AirportFilterItem: CaseIterable {
     case all
     case cities
     case airports
+}
 
+extension AirportFilterItem: ModelTitlable {
     var title: String {
         switch self {
         case .all:

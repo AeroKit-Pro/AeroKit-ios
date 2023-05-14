@@ -11,7 +11,7 @@ import RxSwift
 final class AirportFilterViewController: UIViewController {
 
     private let airportFilterView: AirportFilterViewType = AirportFilterView()
-    private let viewModel: AirportsViewModelType = AirportsViewModel()
+    private let viewModel: AirportsViewModelType
     private let disposeBag = DisposeBag()
 
     let rightBarButton: UIButton = {
@@ -27,7 +27,16 @@ final class AirportFilterViewController: UIViewController {
         button.setAttributedTitle(attributedString, for: .normal)
         return button
     }()
-
+    
+    init(viewModel: AirportsViewModelType) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }   
+    
     override func loadView() {
         view = airportFilterView
     }
@@ -77,11 +86,29 @@ final class AirportFilterViewController: UIViewController {
     }
 
     private func bindViewModelInputs() {
-
+        airportFilterView.applyFiltersButtonTapped.subscribe(onNext: {
+            self.viewModel.inputs.didTapApplyFiltersButton()
+        })
+        .disposed(by: disposeBag)
+        
+        airportFilterView.filterInput.subscribe(onNext: {
+            self.viewModel.inputs.didCollectFilterInput(filterInput: $0)
+        })
+        .disposed(by: disposeBag)
     }
 
     private func bindViewModelOutputs() {
-
+        viewModel.outputs.collectFilters
+            .subscribe(onNext: {
+                self.airportFilterView.collectValues()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.dismissFilterScene
+            .subscribe(onNext: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
 }

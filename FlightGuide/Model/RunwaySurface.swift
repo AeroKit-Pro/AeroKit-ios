@@ -32,3 +32,22 @@ extension RunwaySurface: ModelTitlable {
         }
     }
 }
+
+extension RunwaySurface: DatabaseRowRepresentable {
+    var row: String {
+        switch self {
+        case .asphalt:
+            return "ASP"
+        case .grass:
+            return "GRS"
+        case .concrete:
+            return "CON"
+        case .turf:
+            return "TURF"
+        case .gravel:
+            return "GRE"
+        case .water:
+            return "WATER"
+        }
+    }
+}

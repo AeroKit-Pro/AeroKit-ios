@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AirportFilterSearchItemsView: UIView {
+final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Items of search"
@@ -25,8 +25,15 @@ final class AirportFilterSearchItemsView: UIView {
         segmentedControl.setTitleTextAttributes(selectedAttributes, for:.selected)
         return segmentedControl
     }()
+    
+    let items: [ItemType]
+    
+    var selectedItem: ItemType {
+        items[segmentedControl.selectedSegmentIndex]
+    }
 
     override init(frame: CGRect) {
+        items = Array(ItemType.allCases)
         super.init(frame: frame)
         setupLayout()
         setupUI()
@@ -55,7 +62,7 @@ final class AirportFilterSearchItemsView: UIView {
         backgroundColor = UIColor.hex(0xF8F8F8)
         layer.cornerRadius = 16
 
-        AirportFilterItem.allCases.enumerated().forEach { index, item in
+        items.enumerated().forEach { index, item in
             segmentedControl.insertSegment(withTitle: item.title, at: index, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0

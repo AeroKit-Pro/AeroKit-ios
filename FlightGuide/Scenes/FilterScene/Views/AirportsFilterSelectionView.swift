@@ -26,6 +26,13 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
     private let scrollView = UIScrollView()
     private let stackView = UIStackView(axis: .horizontal, spacing: 24)
     var items = [AirportsFilterSelectionItem<ItemType>]()
+    
+    var selectedItems: [ItemType] {
+        stackView.subviews
+            .compactMap { $0 as? AirportsFilterSelectableControl<ItemType> }
+            .filter { $0.isItemSelected }
+            .map { $0.item }
+    }
 
     init(title: String) {
         super.init(frame: .zero)
@@ -63,12 +70,12 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
         scrollView.showsHorizontalScrollIndicator = false
 
         ItemType.allCases.enumerated().forEach {
-            stackView.addArrangedSubview(AirportsFilterSelectableControl(title: $0.element.title))
+            stackView.addArrangedSubview(AirportsFilterSelectableControl<ItemType>(item: $0.element))
         }
     }
 }
 
-final class AirportsFilterSelectableControl: UIControl {
+final class AirportsFilterSelectableControl<ItemType: CaseIterable & ModelTitlable>: UIControl {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -79,17 +86,20 @@ final class AirportsFilterSelectableControl: UIControl {
         label.font = .systemFont(ofSize: 16, weight: .regular) // TODO: fonts
         return label
     }()
+    
+    let item: ItemType
 
-    private var isItemSelected: Bool = false {
+    private(set) var isItemSelected: Bool = false {
         didSet {
             updateImageState()
             sendActions(for: .valueChanged)
         }
     }
 
-    init(title: String, isSelected: Bool = false) {
+    init(item: ItemType, isSelected: Bool = false) {
+        self.item = item
         super.init(frame: .zero)
-        titleLabel.text = title
+        titleLabel.text = item.title
         isItemSelected = isSelected
         setupLayout()
         updateImageState()

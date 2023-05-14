@@ -79,9 +79,12 @@ final class DatabaseManager {
     
     private func setupIndexes() {
         let queryNameIndex = airports.createIndex(airportFields.name, ifNotExists: true)
+        let queryLengthFtIndex = runways.createIndex(runwayFields.lengthFt, ifNotExists: true)
+        
         guard let database else { return }
         do {
             try database.run(queryNameIndex)
+            try database.run(queryLengthFtIndex)
         }
         catch { print("error while creating index: \(error)") }
     }
