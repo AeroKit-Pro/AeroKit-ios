@@ -66,9 +66,12 @@ final class DatabaseFetcher {
         return try? database?.prepare(query).map { return try $0.decode() }
     }
     
-    func fetchItem<RequestedType: Decodable>(_ requestedType: RequestedType.Type, by id: Int) -> RequestedType? {
+    func fetchItem<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
+                                             by id: Int) -> [RequestedType]? {
+        let query = airportTable
+            .filter(airportIdColumn == id)
         
-        return nil
+        return try? database?.prepare(query).map { return try $0.decode() }
     }
         
 }

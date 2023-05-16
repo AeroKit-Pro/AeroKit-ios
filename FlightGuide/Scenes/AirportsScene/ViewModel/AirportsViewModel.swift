@@ -64,22 +64,29 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
                 databaseFetcher.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
             .share()
+        
+        let unwrappedFilteredAirports = filteredAirports.backgroundCompactMap(qos: .userInitiated) { $0 }
                 
-        self.searchOutput = filteredAirports
-            .backgroundCompactMap(qos: .userInitiated) { $0 }
+        self.searchOutput = unwrappedFilteredAirports
             .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
                 
         self.dismissFilterScene = applyFiltersButtonTapped.asObservable()
         
         self.collectFilters = applyFiltersButtonTapped.asObservable()
         
+        let selectedItemDatabaseId = selectedItemPath.withLatestFrom(unwrappedFilteredAirports) { ($0, $1) }
+            .map { indexPath, airports in
+                airports[indexPath.row].id
+            }
+        
+        let selectedAirport = selectedItemDatabaseId
+            .map { self.databaseFetcher.fetchItem(Airport.self, by: $0) }
+        
+        
+
+
         /*
         self.onItemSelection = selectedItem.asEmpty()
-        
-        let selectedAirport = selectedItem.withLatestFrom(filteredAirports) { ($0, $1) }
-            .map { index, airports in
-                airports[index.row]
-            }
         
         self.airportCoordinate = selectedAirport
             .map { _ in Coordinate() } // mock coordinate for now
@@ -121,9 +128,9 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
     private let searchingEnded = PublishRelay<Empty>()
     
     func didSelectItem(at indexPath: IndexPath) {
-        selectedItem.accept(indexPath)
+        selectedItemPath.accept(indexPath)
     }
-    private let selectedItem = PublishRelay<IndexPath>()
+    private let selectedItemPath = PublishRelay<IndexPath>()
     
     func didTapApplyFiltersButton() {
         applyFiltersButtonTapped.accept(Empty())

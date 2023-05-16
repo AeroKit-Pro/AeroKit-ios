@@ -49,15 +49,17 @@ final class DatabaseManager {
     let airports = Table("airports")
     let runways = Table("runways")
     let frequencies = Table("frequencies")
+    let cities = Table("cities")
     
     lazy var joinedTables: Table = {
-        airports.join(.leftOuter, runways, on: runwayFields.airport_id == airportFields.id)
-            .join(.leftOuter, frequencies, on: frequencyFields.usedByAirport_id == airportFields.id)
+        airports.join(.leftOuter, runways, on: runwayFields.id == airportFields.id)
+            .join(.leftOuter, frequencies, on: frequencyFields.id == airportFields.id)
     }()
     
     let airportFields = AirportFields()
     let runwayFields = RunwayFields()
     let frequencyFields = FrequencyFields()
+    let cityFields = CityFields()
     
     init() {
         connect()
