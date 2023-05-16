@@ -11,7 +11,7 @@ import RxSwift
 final class AirportFilterViewController: UIViewController {
 
     private let airportFilterView: AirportFilterViewType = AirportFilterView()
-    private let viewModel: AirportsViewModelType = AirportsViewModel()
+    var viewModel: AirportsViewModelType!
     private let disposeBag = DisposeBag()
 
     let rightBarButton: UIButton = {
@@ -39,6 +39,16 @@ final class AirportFilterViewController: UIViewController {
 
         bindViewModelInputs()
         bindViewModelOutputs()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
 
     private func configureNavigationBar() {
