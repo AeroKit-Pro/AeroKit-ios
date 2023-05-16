@@ -36,9 +36,9 @@ final class DatabaseFetcher {
         // TODO: Separate filtered query construction
         var query = joinedTables
         if let filters {
-            if let lenght = filters.minRunwayLength {
+            if let length = filters.minRunwayLength {
                 query = query
-                    .filter(databaseManager.runwayFields.lengthFt >= lenght)
+                    .filter(databaseManager.runwayFields.lengthFt >= length)
             }
             if filters.airportTypes.notEmpty {
                 query = query
@@ -55,21 +55,21 @@ final class DatabaseFetcher {
         }
         
         query = query
-            .filter(airportNameColumn.lowercaseString.like(SearchPattern.contains(input)))
+            .filter(databaseManager.airportFields.name.lowercaseString.like(SearchPattern.contains(input)))
             .select(databaseManager.airportFields.name,
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality,
                     databaseManager.airportFields.surfaces,
                     databaseManager.airportFields.id)
-            .group(airportIdColumn)
-                
+            .group(databaseManager.airportFields.id)
+        
         return try? database?.prepare(query).map { return try $0.decode() }
     }
     
     func fetchItem<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
                                              by id: Int) -> [RequestedType]? {
         let query = airportTable
-            .filter(airportIdColumn == id)
+            .filter(databaseManager.airportFields.id == id)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }

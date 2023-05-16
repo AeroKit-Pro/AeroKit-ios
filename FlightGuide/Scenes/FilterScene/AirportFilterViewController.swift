@@ -111,8 +111,4 @@ final class AirportFilterViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    deinit {
-        print("FFFF")
-    }
-
 }

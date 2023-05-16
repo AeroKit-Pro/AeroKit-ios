@@ -8,7 +8,7 @@
 import SQLite
 
 struct RunwayFields {
-    let id = Expression<Int>("id")
+    let id = Expression<Int>("runway_id")
     let airportID = Expression<Int?>("airport_id")
     let lengthFt = Expression<Int?>("length_ft")
     let widthFt = Expression<Int?>("width_ft")

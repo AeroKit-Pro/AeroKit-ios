@@ -52,8 +52,8 @@ final class DatabaseManager {
     let cities = Table("cities")
     
     lazy var joinedTables: Table = {
-        airports.join(.leftOuter, runways, on: runwayFields.id == airportFields.id)
-            .join(.leftOuter, frequencies, on: frequencyFields.id == airportFields.id)
+        airports.join(.leftOuter, runways, on: runwayFields.airportID == airportFields.id)
+            .join(.leftOuter, frequencies, on: frequencyFields.airportID == airportFields.id)
     }()
     
     let airportFields = AirportFields()
