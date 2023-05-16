@@ -33,19 +33,19 @@ final class AirportsViewController: UIViewController {
     
     private func bindViewModelInputs() {
         airportsMainView.didBeginSearching
-            .subscribe(onNext: { self.viewModel.inputs.didBeginSearching() })
+            .subscribe(onNext: viewModel.inputs.didBeginSearching)
             .disposed(by: disposeBag)
         
         airportsMainView.didEndSearching
-            .subscribe(onNext: { self.viewModel.inputs.didEndSearching() })
+            .subscribe(onNext: viewModel.inputs.didEndSearching)
             .disposed(by: disposeBag)
         
         airportsMainView.searchTextDidChange
-            .subscribe(onNext: { self.viewModel.inputs.searchInputDidChange(text: $0) })
+            .subscribe(onNext: viewModel.inputs.searchInputDidChange(text:))
             .disposed(by: disposeBag)
         
         airportsMainView.rxTable.itemSelected
-            .subscribe(onNext: { self.viewModel.inputs.didSelectItem(at: $0) })
+            .subscribe(onNext: viewModel.inputs.didSelectItem(at:))
             .disposed(by: disposeBag)
 
         airportsMainView.didTapFilterButton
@@ -65,7 +65,7 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.onSearchEnd
-            .subscribe(onNext: { self.airportsMainView.dismissSearchMode() })
+            .subscribe(onNext: airportsMainView.dismissSearchMode)
             .disposed(by: disposeBag)
         
         viewModel.outputs.searchOutput
@@ -75,12 +75,16 @@ final class AirportsViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        /*
-        viewModel.outputs.onItemSelection
-            .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
-                self.bannerViewController.expand() })
+        viewModel.outputs.pivotModel
+            .subscribe(onNext: bannerViewController.refreshData(withPivotModel:))
             .disposed(by: disposeBag)
         
+        viewModel.outputs.onItemSelection
+            .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
+                                 self.bannerViewController.expand() })
+            .disposed(by: disposeBag)
+        
+        /*
         viewModel.outputs.airportCoordinate
             .subscribe(onNext: { self.airportsMainView.ease(to: $0) })
             .disposed(by: disposeBag)

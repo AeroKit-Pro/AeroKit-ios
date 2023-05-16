@@ -10,7 +10,7 @@ import RxCocoa
 import UIKit
 
 protocol DetailViewModelInputs {
-    func refresh(with airport: Airport)
+    func refresh(withPivotModel model: PivotModel)
 }
 
 protocol DetailViewModelOutputs {
@@ -34,15 +34,7 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     
     init() {
         
-        self.name = airportInfo.map { $0.name ?? "No data" }
-        self.identifier = airportInfo.map { $0.ident ?? "No data" }
-        self.type = airportInfo.map { $0.type ?? "No data" }
-        self.elevation = airportInfo.map { $0.elevationFt?.description ?? "No data" }
-        self.municipality = airportInfo.map { $0.municipality ?? "No data" }
-        //self.frequency = airportInfo.map { $0 }
-        //self.wikipedia = airportInfo.map { $0.wikipediaLink ?? "No data" }
-        //self.homeLink = airportInfo.map { $0.homeLink ?? "No data" }
-
+        
         
     }
     
@@ -56,10 +48,10 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     var wikipedia: Observable<String>!
     var homeLink: Observable<String>!
     
-    func refresh(with airport: Airport) {
-        airportInfo.accept(airport)
+    func refresh(withPivotModel model: PivotModel) {
+        airportInfo.accept(model)
     }
-    private let airportInfo = PublishRelay<Airport>()
+    private let airportInfo = PublishRelay<PivotModel>()
     
     var inputs: DetailViewModelInputs { self }
     var outputs: DetailViewModelOutputs { self }

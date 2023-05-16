@@ -65,11 +65,24 @@ final class DatabaseFetcher {
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
-    
-    func fetchItem<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
-                                             by id: Int) -> [RequestedType]? {
+    // TODO: Temporary solution. Need to understand how to parse such query results properly
+    func fetchAirport(by id: Int) -> [Airport]? {
         let query = airportTable
             .filter(databaseManager.airportFields.id == id)
+        
+        return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    
+    func fetchRunways(by id: Int) -> [Runway]? {
+        let query = databaseManager.runways
+            .filter(databaseManager.runwayFields.airportID == id)
+        
+        return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    
+    func fetchFrequencies(by id: Int) -> [Frequency]? {
+        let query = databaseManager.frequencies
+            .filter(databaseManager.frequencyFields.airportID == id)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }

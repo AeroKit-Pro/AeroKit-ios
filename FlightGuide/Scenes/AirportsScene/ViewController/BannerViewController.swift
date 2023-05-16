@@ -27,34 +27,11 @@ final class BannerViewController: UIViewController {
     }
     
     private func bindViewModelOutputs() {
-        viewModel.outputs.name
-            .asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.name.rx.text)
-            .disposed(by: disposeBag)
         
-        viewModel.outputs.identifier
-            .asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.identifier.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.type
-            .asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.type.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.elevation
-            .asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.elevation.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.municipality
-            .asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.municipality.rx.text)
-            .disposed(by: disposeBag)
     }
     
-    func refreshData(with airport: Airport) {
-        viewModel.inputs.refresh(with: airport)
+    func refreshData(withPivotModel model: PivotModel) {
+        viewModel.inputs.refresh(withPivotModel: model)
     }
     
     func expand() {

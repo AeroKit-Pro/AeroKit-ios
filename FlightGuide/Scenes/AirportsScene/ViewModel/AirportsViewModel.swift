@@ -31,11 +31,11 @@ protocol AirportsViewModelOutputs {
     var onSearchEnd: RxObservable<Empty>! { get }
     var searchOutput: RxObservable<CellViewModels>! { get }
     var onItemSelection: RxObservable<Empty>! { get }
-    var selectedAirport: RxObservable<Airport>! { get }
     var airportAnnotation: RxObservable<PointAnnotations>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
     var dismissFilterScene: RxObservable<Empty>! { get }
     var collectFilters: RxObservable<Empty>! { get }
+    var pivotModel: RxObservable<PivotModel>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -57,7 +57,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         let filterSettings = filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
             .startWith(nil)
-                                
+        
         let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
                                                           filterSettings) { ($0, $1) }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
@@ -66,10 +66,10 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             .share()
         
         let unwrappedFilteredAirports = filteredAirports.backgroundCompactMap(qos: .userInitiated) { $0 }
-                
+        
         self.searchOutput = unwrappedFilteredAirports
             .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
-                
+        
         self.dismissFilterScene = applyFiltersButtonTapped.asObservable()
         
         self.collectFilters = applyFiltersButtonTapped.asObservable()
@@ -78,16 +78,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             .map { indexPath, airports in
                 airports[indexPath.row].id
             }
+            .share()
         
         let selectedAirport = selectedItemDatabaseId
-            .map { self.databaseFetcher.fetchItem(Airport.self, by: $0) }
+            .compactMap { self.databaseFetcher.fetchAirport(by: $0)?.first }
         
+        let selectedRunways = selectedItemDatabaseId
+            .map { self.databaseFetcher.fetchRunways(by: $0) }
         
-
-
+        let selectedFrequencies = selectedItemDatabaseId
+            .map { self.databaseFetcher.fetchFrequencies(by: $0) }
+        
+        self.pivotModel = RxObservable.zip(selectedAirport, selectedRunways, selectedFrequencies) { ($0, $1, $2) }
+            .map { PivotModel(airport: $0.0, runways: $0.1, frequencies: $0.2) }
+        
+        self.onItemSelection = selectedAirport.asEmpty()
+        
         /*
-        self.onItemSelection = selectedItem.asEmpty()
-        
         self.airportCoordinate = selectedAirport
             .map { _ in Coordinate() } // mock coordinate for now
             .share()
@@ -96,7 +103,6 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
             .map { PointAnnotation(coordinate: $0) }
             .map { [$0] }
         
-        self.selectedAirport = selectedAirport
         */
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
@@ -106,11 +112,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
     var onSearchEnd: RxObservable<Empty>!
     var searchOutput: RxObservable<CellViewModels>!
     var onItemSelection: RxObservable<Empty>!
-    var selectedAirport: RxObservable<Airport>!
     var airportAnnotation: RxObservable<PointAnnotations>!
     var airportCoordinate: RxObservable<Coordinate>!
     var dismissFilterScene: RxObservable<Empty>!
     var collectFilters: RxObservable<Empty>!
+    var pivotModel: RxObservable<PivotModel>!
     
     func searchInputDidChange(text: String?) {
         searchInput.accept(text)
