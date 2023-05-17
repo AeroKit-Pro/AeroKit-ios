@@ -94,16 +94,14 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         
         self.onItemSelection = selectedAirport.asEmpty()
         
-        /*
+        
         self.airportCoordinate = selectedAirport
-            .map { _ in Coordinate() } // mock coordinate for now
-            .share()
+            .compactMap { Coordinate(lat: $0.latitudeDeg, lon: $0.longitudeDeg) }
         
         self.airportAnnotation = airportCoordinate
             .map { PointAnnotation(coordinate: $0) }
             .map { [$0] }
         
-        */
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
     }

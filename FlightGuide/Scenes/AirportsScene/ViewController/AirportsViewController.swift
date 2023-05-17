@@ -84,16 +84,15 @@ final class AirportsViewController: UIViewController {
                                  self.bannerViewController.collapse() }) 
             .disposed(by: disposeBag)
         
-        /*
         viewModel.outputs.airportCoordinate
-            .subscribe(onNext: { self.airportsMainView.ease(to: $0) })
+            .subscribe(onNext: airportsMainView.ease(to:))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.airportAnnotation
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.airportAnnotation.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
-         
+        
+        /*
         viewModel.outputs.selectedAirport
             .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
             .disposed(by: disposeBag)

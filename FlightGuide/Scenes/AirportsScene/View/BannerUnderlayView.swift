@@ -96,8 +96,15 @@ final class BannerUnderlayView: UIView {
                 expansionConstraint.constant = -adjustedYPos
                 return
             }
+            if expansionConstraint.constant >= -collapsedOffset {
+                let dampingFactor: CGFloat = 0.2
+                let absYPos = abs(expansionConstraint.constant - translation.y)
+                let adjustedYPos = collapsedOffset * (1 - (log10(absYPos / collapsedOffset) * dampingFactor))
+                expansionConstraint.constant = -adjustedYPos
+                return
+            }
             // TODO: lower rubber band effect
-            expansionConstraint.constant = min(expansionConstraint.constant + translation.y, -collapsedOffset)
+            expansionConstraint.constant += translation.y
             recognizer.setTranslation(.zero, in: view)
         }
         

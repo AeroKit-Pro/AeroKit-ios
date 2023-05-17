@@ -10,7 +10,7 @@ import MapboxMaps
 extension PointAnnotation {
     init(coordinate: CLLocationCoordinate2D) {
         self.init(point: Point(coordinate))
-        image = Image(image: .pin ?? UIImage(), name: "red_pin")
-        iconImage = "red_pin"
+        image = Image(image: .airport_pin ?? UIImage(), name: "airport_pin")
+        iconImage = "airport_pin"
     }
 }

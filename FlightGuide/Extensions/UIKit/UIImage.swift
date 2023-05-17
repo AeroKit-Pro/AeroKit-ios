@@ -24,8 +24,8 @@ extension UIImage {
         UIImage(systemName: "chevron.left")
     }
     
-    static var pin: UIImage? {
-        UIImage(named: "red_pin")
+    static var airport_pin: UIImage? {
+        UIImage(named: "airport_pin")
     }
     
     static var airport: UIImage? {
