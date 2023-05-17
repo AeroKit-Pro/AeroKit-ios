@@ -10,11 +10,16 @@ import RxCocoa
 import Foundation
 import MapboxMaps
 
+protocol AirportsSceneDelegate: Coordinatable {
+    func openFilters()
+}
+
 protocol AirportsViewModelInputs {
     func searchInputDidChange(text: String?)
     func didBeginSearching()
     func didEndSearching()
     func didSelectItem(at indexPath: IndexPath)
+    func didTapFilter()
 }
 
 protocol AirportsViewModelOutputs {
@@ -39,12 +44,30 @@ protocol AirportsViewModelType {
     var outputs: AirportsViewModelOutputs { get }
 }
 
-final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, AirportsViewModelOutputs {
-    
+final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
+
     private let databaseFetcher = DatabaseFetcher()
     private let errorRouter = ErrorRouter()
-    
-    init() {
+    private let delegate: AirportsSceneDelegate?
+
+    var onSearchStart: RxObservable<Empty>!
+    var onSearchEnd: RxObservable<Empty>!
+    var searchOutput: RxObservable<CellViewModels>!
+    var onItemSelection: RxObservable<Empty>!
+    var selectedAirport: RxObservable<Airport>!
+    var airportAnnotation: RxObservable<PointAnnotations>!
+    var airportCoordinate: RxObservable<Coordinate>!
+
+    private let searchInput = PublishRelay<String?>()
+    private let searchingBegan = PublishRelay<Empty>()
+    private let searchingEnded = PublishRelay<Empty>()
+    private let selectedItem = PublishRelay<IndexPath>()
+
+    var inputs: AirportsViewModelInputs { self }
+    var outputs: AirportsViewModelOutputs { self }
+
+    init(delegate: AirportsSceneDelegate?) {
+        self.delegate = delegate
         let unwrappedSearchInput = searchInput
             .skipNil()
             .filter { !$0.isEmpty }
@@ -78,36 +101,26 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         self.onSearchStart = searchingBegan.asObservable()
         self.onSearchEnd = searchingEnded.asObservable()
     }
+}
 
-    var onSearchStart: RxObservable<Empty>!
-    var onSearchEnd: RxObservable<Empty>!
-    var searchOutput: RxObservable<CellViewModels>!
-    var onItemSelection: RxObservable<Empty>!
-    var selectedAirport: RxObservable<Airport>!
-    var airportAnnotation: RxObservable<PointAnnotations>!
-    var airportCoordinate: RxObservable<Coordinate>!
-    
+// MARK: - AirportsViewModelInputs
+extension AirportsViewModel: AirportsViewModelInputs {
     func searchInputDidChange(text: String?) {
         searchInput.accept(text)
     }
-    private let searchInput = PublishRelay<String?>()
-    
     func didBeginSearching() {
         searchingBegan.accept(Empty())
     }
-    private let searchingBegan = PublishRelay<Empty>()
-    
+
     func didEndSearching() {
         searchingEnded.accept(Empty())
     }
-    private let searchingEnded = PublishRelay<Empty>()
-    
+
     func didSelectItem(at indexPath: IndexPath) {
         selectedItem.accept(indexPath)
     }
-    private let selectedItem = PublishRelay<IndexPath>()
-    
-    var inputs: AirportsViewModelInputs { self }
-    var outputs: AirportsViewModelOutputs { self }
-    
+
+    func didTapFilter() {
+        delegate?.openFilters()
+    }
 }

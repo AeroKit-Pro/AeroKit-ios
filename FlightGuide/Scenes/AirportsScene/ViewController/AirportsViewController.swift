@@ -11,7 +11,7 @@ import RxSwift
 final class AirportsViewController: UIViewController {
     
     private let airportsMainView: AirportsSceneViewType = AirportsMainView()
-    private let viewModel: AirportsViewModelType = AirportsViewModel()
+    var viewModel: AirportsViewModelType!
     private let bannerViewController = BannerViewController()
     private let disposeBag = DisposeBag()
     
@@ -49,10 +49,7 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
 
         airportsMainView.didTapFilterButton
-            .subscribe(onNext: { [weak self] in
-                // TODO: remove
-                self?.navigationController?.pushViewController(AirportFilterViewController(), animated: true)
-            })
+            .subscribe(onNext: { self.viewModel.inputs.didTapFilter() })
             .disposed(by: disposeBag)
     }
     

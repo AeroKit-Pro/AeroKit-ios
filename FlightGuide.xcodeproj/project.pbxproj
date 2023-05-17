@@ -26,6 +26,22 @@
 		11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4772A03E973001DDC46 /* AirportsViewController.swift */; };
 		11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */; };
 		11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */; };
+		11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B332A13F1D3001EB56D /* Coordinatable.swift */; };
+		11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */; };
+		11EC9B382A13F20C001EB56D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B372A13F20C001EB56D /* Router.swift */; };
+		11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B392A13F266001EB56D /* BaseNavigationController.swift */; };
+		11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */; };
+		11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B3E2A13F642001EB56D /* AppCoordinator.swift */; };
+		11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */; };
+		11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B432A13FFAA001EB56D /* SplashContract.swift */; };
+		11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B442A13FFAA001EB56D /* SplashViewController.swift */; };
+		11EC9B492A13FFAA001EB56D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B452A13FFAA001EB56D /* SplashViewModel.swift */; };
+		11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B462A13FFAA001EB56D /* SplashAssembly.swift */; };
+		11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */; };
+		11EC9B4F2A14005E001EB56D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B4E2A14005E001EB56D /* LoadingView.swift */; };
+		11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B502A140200001EB56D /* SignUpCoordinator.swift */; };
+		11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B522A140665001EB56D /* AirportsCoordinator.swift */; };
+		11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B542A142BC9001EB56D /* AirportAssembly.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
@@ -92,6 +108,22 @@
 		11D4F4772A03E973001DDC46 /* AirportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
 		11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportFilterViewController.swift; sourceTree = "<group>"; };
 		11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFilterView.swift; sourceTree = "<group>"; };
+		11EC9B332A13F1D3001EB56D /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
+		11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B372A13F20C001EB56D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		11EC9B392A13F266001EB56D /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeinitiableCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B3E2A13F642001EB56D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B432A13FFAA001EB56D /* SplashContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashContract.swift; sourceTree = "<group>"; };
+		11EC9B442A13FFAA001EB56D /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		11EC9B452A13FFAA001EB56D /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		11EC9B462A13FFAA001EB56D /* SplashAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAssembly.swift; sourceTree = "<group>"; };
+		11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLoaderInterface.swift; sourceTree = "<group>"; };
+		11EC9B4E2A14005E001EB56D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		11EC9B502A140200001EB56D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B522A140665001EB56D /* AirportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsCoordinator.swift; sourceTree = "<group>"; };
+		11EC9B542A142BC9001EB56D /* AirportAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAssembly.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
@@ -165,6 +197,7 @@
 		11D4F4632A03E8FC001DDC46 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				11EC9B422A13FFAA001EB56D /* Splash */,
 				11D4F46A2A03E973001DDC46 /* AirportsScene */,
 				11D4F4642A03E8FC001DDC46 /* FilterScene */,
 			);
@@ -187,6 +220,7 @@
 				11D4F46B2A03E973001DDC46 /* ViewModel */,
 				11D4F46F2A03E973001DDC46 /* View */,
 				11D4F4752A03E973001DDC46 /* ViewController */,
+				11EC9B542A142BC9001EB56D /* AirportAssembly.swift */,
 			);
 			path = AirportsScene;
 			sourceTree = "<group>";
@@ -227,6 +261,48 @@
 				11D4F4772A03E973001DDC46 /* AirportsViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		11EC9B312A13F1C3001EB56D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9B322A13F1C7001EB56D /* Coordinatable */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		11EC9B322A13F1C7001EB56D /* Coordinatable */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9B332A13F1D3001EB56D /* Coordinatable.swift */,
+				11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */,
+				11EC9B372A13F20C001EB56D /* Router.swift */,
+				11EC9B392A13F266001EB56D /* BaseNavigationController.swift */,
+				11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */,
+			);
+			path = Coordinatable;
+			sourceTree = "<group>";
+		};
+		11EC9B3D2A13F4C0001EB56D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9B3E2A13F642001EB56D /* AppCoordinator.swift */,
+				11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */,
+				11EC9B502A140200001EB56D /* SignUpCoordinator.swift */,
+				11EC9B522A140665001EB56D /* AirportsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		11EC9B422A13FFAA001EB56D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9B462A13FFAA001EB56D /* SplashAssembly.swift */,
+				11EC9B432A13FFAA001EB56D /* SplashContract.swift */,
+				11EC9B442A13FFAA001EB56D /* SplashViewController.swift */,
+				11EC9B452A13FFAA001EB56D /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		4E08E50C29E2FAB300B6F8E1 /* Mapbox */ = {
@@ -273,9 +349,11 @@
 		4E3B3A9D29D43B4800971840 /* FlightGuide */ = {
 			isa = PBXGroup;
 			children = (
+				4E3B3AB629D43F0800971840 /* Application */,
+				11EC9B3D2A13F4C0001EB56D /* Coordinators */,
+				11EC9B312A13F1C3001EB56D /* Core */,
 				4E5C2DDB29FC884A00B66A02 /* Helpers */,
 				4E56B23129DB73E400D4BF12 /* ComponentsLibrary */,
-				4E3B3AB629D43F0800971840 /* Application */,
 				4E2C26A629D71428005B6710 /* Reactive */,
 				4EB4CF2229D5893C00830FB7 /* Extensions */,
 				4EA72A2929D6363400836CDF /* Model */,
@@ -322,6 +400,8 @@
 				4EB9007329D85ABE00C64110 /* SearchFieldView.swift */,
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
 				4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */,
+				11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */,
+				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -537,12 +617,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3019BD29EAE38200852427 /* Runway.swift in Sources */,
+				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
 				4EA72A3229D6377400836CDF /* Network.swift in Sources */,
 				4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */,
 				4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */,
+				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
+				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
+				11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
 				4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
@@ -554,8 +638,15 @@
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
+				11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */,
+				11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */,
+				11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */,
+				11EC9B492A13FFAA001EB56D /* SplashViewModel.swift in Sources */,
+				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
+				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
 				4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */,
+				11EC9B382A13F20C001EB56D /* Router.swift in Sources */,
 				113795522A07F60000597299 /* RunwaySurface.swift in Sources */,
 				4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */,
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
@@ -571,6 +662,7 @@
 				4EB9007629D8681900C64110 /* UIView.swift in Sources */,
 				11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */,
 				4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */,
+				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,
 				1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */,
@@ -579,14 +671,18 @@
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
 				4E3C047529F9355F00CB08EB /* Database.swift in Sources */,
+				11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */,
 				11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */,
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
+				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
 				4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */,
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
+				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,
 				4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */,
+				11EC9B4F2A14005E001EB56D /* LoadingView.swift in Sources */,
 				11D4F47D2A03E973001DDC46 /* AirportDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
