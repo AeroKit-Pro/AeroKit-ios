@@ -27,7 +27,41 @@ final class BannerViewController: UIViewController {
     }
     
     private func bindViewModelOutputs() {
+        viewModel.outputs.name.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.name.rx.text)
+            .disposed(by: disposeBag)
         
+        viewModel.outputs.identifier.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.identifier.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.type.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.type.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.elevation.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.elevation.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.municipality.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.municipality.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.frequency.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.frequency.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.wikipedia.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.wikipediaLink.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.homeLink.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.homeLink.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.phoneNumber.asDriver(onErrorDriveWith: .empty())
+            .drive(contentView.phoneNumber.rx.text)
+            .disposed(by: disposeBag)
     }
     
     func refreshData(withPivotModel model: PivotModel) {

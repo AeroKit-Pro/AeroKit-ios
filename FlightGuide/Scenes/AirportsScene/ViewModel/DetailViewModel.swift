@@ -23,6 +23,7 @@ protocol DetailViewModelOutputs {
     var frequency: Observable<String>! { get }
     var wikipedia: Observable<String>! { get }
     var homeLink: Observable<String>! { get }
+    var phoneNumber: Observable<String>! { get }
 }
 
 protocol DetailViewModelType {
@@ -34,7 +35,15 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     
     init() {
         
-        
+        self.name = pivotInfo.map { $0.airport.name ?? "no data" }
+        self.identifier = pivotInfo.map { $0.airport.ident ?? "no data" }
+        self.type = pivotInfo.map { $0.airport.type ?? "no data" }
+        self.elevation = pivotInfo.map { $0.airport.elevationFt?.toString() ?? "no data" }
+        self.municipality = pivotInfo.map { $0.airport.municipality ?? "no data" }
+        self.frequency = pivotInfo.map { $0.frequencies?.first?.frequencyMhz?.toString() ?? "no data" }
+        self.wikipedia = pivotInfo.map { $0.airport.wikipediaLink ?? "no data" }
+        self.homeLink = pivotInfo.map { $0.airport.homeLink ?? "no data" }
+        self.phoneNumber = Observable.just("no data") // dummy string for now
         
     }
     
@@ -47,11 +56,12 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     var frequency: Observable<String>!
     var wikipedia: Observable<String>!
     var homeLink: Observable<String>!
+    var phoneNumber: Observable<String>!
     
     func refresh(withPivotModel model: PivotModel) {
-        airportInfo.accept(model)
+        pivotInfo.accept(model)
     }
-    private let airportInfo = PublishRelay<PivotModel>()
+    private let pivotInfo = PublishRelay<PivotModel>()
     
     var inputs: DetailViewModelInputs { self }
     var outputs: DetailViewModelOutputs { self }

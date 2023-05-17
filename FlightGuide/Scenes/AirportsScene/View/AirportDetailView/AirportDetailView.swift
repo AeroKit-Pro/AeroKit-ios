@@ -18,5 +18,6 @@ class AirportDetailView: UIView {
     @IBOutlet weak var frequency: UILabel!
     @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var homeLink: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
 }
