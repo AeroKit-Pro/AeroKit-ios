@@ -61,7 +61,7 @@ final class AirportsViewController: UIViewController {
     private func bindViewModelOutputs() {
         viewModel.outputs.onSearchStart
             .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
-                                 self.bannerViewController.collapse() })
+                                 self.bannerViewController.hide() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.onSearchEnd
@@ -81,7 +81,7 @@ final class AirportsViewController: UIViewController {
         
         viewModel.outputs.onItemSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
-                                 self.bannerViewController.expand() })
+                                 self.bannerViewController.collapse() }) 
             .disposed(by: disposeBag)
         
         /*
