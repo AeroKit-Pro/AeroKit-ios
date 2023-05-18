@@ -19,6 +19,7 @@ struct AirportsFilterSelectionItem<ItemType: CaseIterable & ModelTitlable> {
 final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
     }()
@@ -83,6 +84,7 @@ final class AirportsFilterSelectableControl<ItemType: CaseIterable & ModelTitlab
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .regular) // TODO: fonts
         return label
     }()

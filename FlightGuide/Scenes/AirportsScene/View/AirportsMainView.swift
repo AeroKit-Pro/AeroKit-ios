@@ -38,7 +38,7 @@ final class AirportsMainView: UIView {
     }()
     
     override init(frame: CGRect = .zero) {
-        //let options = MapInitOptions(styleURI: StyleURI(url: try! "http://45.12.19.184/map_style".asURL()))
+       // let options = MapInitOptions(styleURI: StyleURI(url: try! "http://45.12.19.184/map_style".asURL()))
         mapView = MapView(frame: .zero)
         super.init(frame: frame)
         setupMapView()

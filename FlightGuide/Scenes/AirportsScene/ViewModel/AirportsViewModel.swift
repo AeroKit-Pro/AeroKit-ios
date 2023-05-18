@@ -10,13 +10,16 @@ import RxCocoa
 import Foundation
 import MapboxMaps
 
+protocol AirportsSceneDelegate: Coordinatable {
+    func openFilters()
+}
+
 protocol AirportsViewModelInputs {
     func searchInputDidChange(text: String?)
     func didBeginSearching()
     func didEndSearching()
     func didSelectItem(at indexPath: IndexPath)
-    func didTapApplyFiltersButton()
-    func didCollectFilterInput(filterInput input: FilterInput)
+    func didTapFiltersButton()
 }
 
 protocol AirportsViewModelOutputs {
@@ -33,8 +36,6 @@ protocol AirportsViewModelOutputs {
     var onItemSelection: RxObservable<Empty>! { get }
     var airportAnnotation: RxObservable<PointAnnotations>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
-    var dismissFilterScene: RxObservable<Empty>! { get }
-    var collectFilters: RxObservable<Empty>! { get }
     var pivotModel: RxObservable<PivotModel>! { get }
 }
 
@@ -43,20 +44,44 @@ protocol AirportsViewModelType {
     var outputs: AirportsViewModelOutputs { get }
 }
 
-final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, AirportsViewModelOutputs {
-    
+final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
+
     private let databaseFetcher = DatabaseFetcher()
     private let errorRouter = ErrorRouter()
-    
-    init() {
+    private let delegate: AirportsSceneDelegate?
+    private let filterInputPassing: FilterInputPassing
+
+    var onSearchStart: RxObservable<Empty>!
+    var onSearchEnd: RxObservable<Empty>!
+    var searchOutput: RxObservable<CellViewModels>!
+    var onItemSelection: RxObservable<Empty>!
+    var selectedAirport: RxObservable<Airport>!
+    var airportAnnotation: RxObservable<PointAnnotations>!
+    var airportCoordinate: RxObservable<Coordinate>!
+    var pivotModel: RxObservable<PivotModel>!
+
+    private let searchInput = PublishRelay<String?>()
+    private let searchingBegan = PublishRelay<Empty>()
+    private let searchingEnded = PublishRelay<Empty>()
+    private let selectedItem = PublishRelay<IndexPath>()
+    private let selectedItemPath = PublishRelay<IndexPath>()
+
+
+    var inputs: AirportsViewModelInputs { self }
+    var outputs: AirportsViewModelOutputs { self }
+
+    init(delegate: AirportsSceneDelegate?, filterInputPassing: FilterInputPassing) {
+        self.delegate = delegate
+        self.filterInputPassing = filterInputPassing
+        
         let unwrappedSearchInput = searchInput
             .skipNil()
             .filter { !$0.isEmpty }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         
-        let filterSettings = filterInput
+        let filterSettings = filterInputPassing.filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
-            .startWith(nil)
+            .startWith(nil) // TODO: If filter settings should be retrieved from UD, this is to be changed. This part should be changed or left as is after 21.05
         
         let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
                                                           filterSettings) { ($0, $1) }
@@ -69,11 +94,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         
         self.searchOutput = unwrappedFilteredAirports
             .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
-        
-        self.dismissFilterScene = applyFiltersButtonTapped.asObservable()
-        
-        self.collectFilters = applyFiltersButtonTapped.asObservable()
-        
+                        
         let selectedItemDatabaseId = selectedItemPath.withLatestFrom(unwrappedFilteredAirports) { ($0, $1) }
             .map { indexPath, airports in
                 airports[indexPath.row].id
@@ -94,59 +115,36 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelInputs, A
         
         self.onItemSelection = selectedAirport.asEmpty()
         
-        
         self.airportCoordinate = selectedAirport
             .compactMap { Coordinate(lat: $0.latitudeDeg, lon: $0.longitudeDeg) }
         
         self.airportAnnotation = airportCoordinate
             .map { PointAnnotation(coordinate: $0) }
             .map { [$0] }
-        
+                        
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
     }
-
-    var onSearchStart: RxObservable<Empty>!
-    var onSearchEnd: RxObservable<Empty>!
-    var searchOutput: RxObservable<CellViewModels>!
-    var onItemSelection: RxObservable<Empty>!
-    var airportAnnotation: RxObservable<PointAnnotations>!
-    var airportCoordinate: RxObservable<Coordinate>!
-    var dismissFilterScene: RxObservable<Empty>!
-    var collectFilters: RxObservable<Empty>!
-    var pivotModel: RxObservable<PivotModel>!
+}
     
+// MARK: - AirportsViewModelInputs
+extension AirportsViewModel: AirportsViewModelInputs {
     func searchInputDidChange(text: String?) {
         searchInput.accept(text)
     }
-    private let searchInput = PublishRelay<String?>()
-    
     func didBeginSearching() {
         searchingBegan.accept(Empty())
     }
-    private let searchingBegan = PublishRelay<Empty>()
-    
+
     func didEndSearching() {
         searchingEnded.accept(Empty())
     }
-    private let searchingEnded = PublishRelay<Empty>()
-    
+
     func didSelectItem(at indexPath: IndexPath) {
         selectedItemPath.accept(indexPath)
     }
-    private let selectedItemPath = PublishRelay<IndexPath>()
     
-    func didTapApplyFiltersButton() {
-        applyFiltersButtonTapped.accept(Empty())
+    func didTapFiltersButton() {
+        delegate?.openFilters()
     }
-    private let applyFiltersButtonTapped = PublishRelay<Empty>()
-    
-    func didCollectFilterInput(filterInput input: FilterInput) {
-        filterInput.accept(input)
-    }
-    private let filterInput = PublishRelay<FilterInput>()
-    
-    var inputs: AirportsViewModelInputs { self }
-    var outputs: AirportsViewModelOutputs { self }
-    
 }

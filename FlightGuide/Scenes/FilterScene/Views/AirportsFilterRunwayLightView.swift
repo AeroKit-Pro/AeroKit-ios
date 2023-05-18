@@ -11,6 +11,7 @@ final class AirportsFilterRunwayLightView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Runway light"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()

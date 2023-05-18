@@ -11,9 +11,18 @@ import RxSwift
 final class AirportsViewController: UIViewController {
     
     private let airportsMainView: AirportsSceneViewType = AirportsMainView()
-    private let viewModel: AirportsViewModelType = AirportsViewModel()
+    private let viewModel: AirportsViewModelType
     private let bannerViewController = BannerViewController()
     private let disposeBag = DisposeBag()
+    
+    init(viewModel: AirportsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    } 
     
     override func loadView() {
         view = airportsMainView
@@ -25,11 +34,11 @@ final class AirportsViewController: UIViewController {
         bindViewModelOutputs()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addChild(bannerViewController)
-        airportsMainView.addSubview(bannerViewController.view)
-    }
+    override func viewDidAppear(_ animated: Bool) { // MARK: CALLED MULTIPLE TIMES
+            super.viewDidAppear(animated)
+            addChild(bannerViewController)
+            airportsMainView.addSubview(bannerViewController.view)
+        }
     
     private func bindViewModelInputs() {
         airportsMainView.didBeginSearching
@@ -49,13 +58,8 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
 
         airportsMainView.didTapFilterButton
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                // TODO: remove. This is a temporary soulution and it should go with DI and coordinators
-                let filterVC = AirportFilterViewController(viewModel: self.viewModel)
-                self.navigationController?.pushViewController(filterVC, animated: true)
-            })
-            .disposed(by: disposeBag)
+            .subscribe(onNext: viewModel.inputs.didTapFiltersButton)
+            .disposed(by: disposeBag)    
     }
     
     private func bindViewModelOutputs() {

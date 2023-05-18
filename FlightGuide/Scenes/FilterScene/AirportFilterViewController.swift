@@ -11,7 +11,7 @@ import RxSwift
 final class AirportFilterViewController: UIViewController {
 
     private let airportFilterView: AirportFilterViewType = AirportFilterView()
-    private let viewModel: AirportsViewModelType
+    private let viewModel: FilterViewModelType
     private let disposeBag = DisposeBag()
 
     let rightBarButton: UIButton = {
@@ -28,7 +28,7 @@ final class AirportFilterViewController: UIViewController {
         return button
     }()
     
-    init(viewModel: AirportsViewModelType) {
+    init(viewModel: FilterViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -50,15 +50,21 @@ final class AirportFilterViewController: UIViewController {
         bindViewModelOutputs()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
     private func configureNavigationBar() {
         setupNavigationTitle()
-
-        let backImage = UIImage(named: "navigationBar_backArrow")
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil,
+                                                           action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         setIsEnabledResetButton(false)
     }
@@ -92,21 +98,15 @@ final class AirportFilterViewController: UIViewController {
         .disposed(by: disposeBag)
         
         airportFilterView.filterInput.subscribe(onNext: { [unowned self] in
-            viewModel.inputs.didCollectFilterInput(filterInput: $0)
+            viewModel.inputs.didCollectValues(filterInput: $0)
         })
         .disposed(by: disposeBag)
     }
-
+    
     private func bindViewModelOutputs() {
         viewModel.outputs.collectFilters
             .subscribe(onNext: { [unowned self] in
                 airportFilterView.collectValues()
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.dismissFilterScene
-            .subscribe(onNext: { [unowned self] in
-                navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }

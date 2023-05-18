@@ -14,6 +14,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Min. runway length"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()
@@ -35,6 +36,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
     let measureLabel: UILabel = {
         let label = UILabel()
         label.text = "ft."
+        label.textColor = .black
         label.font = .systemFont(ofSize: 16) // TODO: fonts
         return label
     }()

@@ -49,7 +49,7 @@ final class SearchFieldView: UIView {
         setupStackViews()
         setupDismissAction()
         configureTextField()
-        textField.placeholder = placeholder
+        textField.setAttributedPlaceholder(placeholder, color: .flg_secondary_gray)
         textField.delegate = self
     }
 
@@ -58,6 +58,7 @@ final class SearchFieldView: UIView {
     }
 
     private func setupAppearance() {
+        textField.textColor = .black
         layer.borderWidth = 1
         layer.borderColor = UIColor.clear.cgColor
         backgroundColor = .white

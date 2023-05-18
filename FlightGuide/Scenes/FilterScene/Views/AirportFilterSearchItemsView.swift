@@ -11,6 +11,7 @@ final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable>
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Items of search"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()
