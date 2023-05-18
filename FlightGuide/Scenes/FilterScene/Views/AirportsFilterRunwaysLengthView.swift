@@ -42,7 +42,8 @@ final class AirportsFilterRunwaysLengthView: UIView {
     }()
     
     var enteredLength: String? {
-        textField.text
+        set { textField.text = newValue }
+        get { textField.text }
     }
 
     override init(frame: CGRect) {

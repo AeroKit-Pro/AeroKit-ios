@@ -5,7 +5,7 @@
 //  Created by Eugene Kleban on 5.05.23.
 //
 
-enum AirportType: CaseIterable {
+enum AirportType: Int, CaseIterable {
     case small
     case large
     case medium
@@ -54,5 +54,11 @@ extension AirportType: DatabaseRowRepresentable {
         case .baloonPlane:
             return "balloonport"
         }
+    }
+}
+
+extension AirportType: Indexable {
+    var index: Int {
+        self.rawValue
     }
 }

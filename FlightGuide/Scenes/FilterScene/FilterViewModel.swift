@@ -35,9 +35,8 @@ final class FilterViewModel: FilterViewModelType, FilterViewModelOutputs {
     private let delegate: FilterSceneDelegate?
     private let filterInputPassing: FilterInputPassing
     
-    var collectFilters: Observable<Empty>!
-    
     var filterState: Observable<FilterInput>!
+    var collectFilters: Observable<Empty>!
     
     private let viewLoaded = PublishRelay<Empty>()
     private let applyFiltersButtonTapped = PublishRelay<Empty>()
@@ -48,6 +47,9 @@ final class FilterViewModel: FilterViewModelType, FilterViewModelOutputs {
     init(delegate: FilterSceneDelegate?, filterInputPassing: FilterInputPassing) {
         self.delegate = delegate
         self.filterInputPassing = filterInputPassing
+        
+        self.filterState = viewLoaded.withLatestFrom(filterInputPassing.filterInput)
+            .skipNil()
         
         self.collectFilters = applyFiltersButtonTapped.asObservable()
     }

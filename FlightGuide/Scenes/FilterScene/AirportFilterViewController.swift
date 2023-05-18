@@ -48,6 +48,7 @@ final class AirportFilterViewController: UIViewController {
 
         bindViewModelInputs()
         bindViewModelOutputs()
+        viewModel.inputs.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -104,10 +105,12 @@ final class AirportFilterViewController: UIViewController {
     }
     
     private func bindViewModelOutputs() {
+        viewModel.outputs.filterState
+            .subscribe(onNext: airportFilterView.restoreState(with:))
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.collectFilters
-            .subscribe(onNext: { [unowned self] in
-                airportFilterView.collectValues()
-            })
+            .subscribe(onNext: airportFilterView.collectValues)
             .disposed(by: disposeBag)
     }
     

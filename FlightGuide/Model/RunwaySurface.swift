@@ -5,7 +5,7 @@
 //  Created by Eugene Kleban on 5.05.23.
 //
 
-enum RunwaySurface: CaseIterable {
+enum RunwaySurface: Int, CaseIterable {
     case asphalt
     case grass
     case concrete
@@ -49,5 +49,11 @@ extension RunwaySurface: DatabaseRowRepresentable {
         case .water:
             return "WATER"
         }
+    }
+}
+
+extension RunwaySurface: Indexable {
+    var index: Int {
+        self.rawValue
     }
 }

@@ -95,12 +95,6 @@ final class AirportsViewController: UIViewController {
         viewModel.outputs.airportAnnotation.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
-        
-        /*
-        viewModel.outputs.selectedAirport
-            .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
-            .disposed(by: disposeBag)
-          */
     }
     
 }

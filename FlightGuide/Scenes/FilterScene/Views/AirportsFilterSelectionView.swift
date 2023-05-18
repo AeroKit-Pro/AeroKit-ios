@@ -11,12 +11,12 @@ protocol ModelTitlable {
     var title: String { get }
 }
 
-struct AirportsFilterSelectionItem<ItemType: CaseIterable & ModelTitlable> {
+struct AirportsFilterSelectionItem<ItemType: CaseIterable & ModelTitlable & Indexable> {
     let type: ItemType
     var isSelected: Bool
 }
 
-final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>: UIView {
+final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable & Indexable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -29,10 +29,8 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
     var items = [AirportsFilterSelectionItem<ItemType>]()
     
     var selectedItems: [ItemType] {
-        stackView.subviews
-            .compactMap { $0 as? AirportsFilterSelectableControl<ItemType> }
-            .filter { $0.isItemSelected }
-            .map { $0.item }
+        set { newValue.forEach { setSelectedState(at: $0.index) } }
+        get { getSelectedItems() }
     }
 
     init(title: String) {
@@ -44,6 +42,19 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setSelectedState(at index: Int) {
+        guard let item = stackView.arrangedSubviews[index] as? AirportsFilterSelectableControl<ItemType> else { return }
+        item.isItemSelected = true
+        
+    }
+    
+    private func getSelectedItems() -> [ItemType] {
+        stackView.arrangedSubviews
+            .compactMap { $0 as? AirportsFilterSelectableControl<ItemType> }
+            .filter { $0.isItemSelected }
+            .map { $0.item }
     }
 
     private func setupLayout() {
@@ -70,8 +81,10 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
         layer.cornerRadius = 16
         scrollView.showsHorizontalScrollIndicator = false
 
-        ItemType.allCases.enumerated().forEach {
-            stackView.addArrangedSubview(AirportsFilterSelectableControl<ItemType>(item: $0.element))
+        self.items = ItemType.allCases.map { AirportsFilterSelectionItem(type: $0, isSelected: false) }
+        
+        ItemType.allCases.forEach {
+            stackView.addArrangedSubview(AirportsFilterSelectableControl<ItemType>(item: $0))
         }
     }
 }
@@ -91,7 +104,7 @@ final class AirportsFilterSelectableControl<ItemType: CaseIterable & ModelTitlab
     
     let item: ItemType
 
-    private(set) var isItemSelected: Bool = false {
+    var isItemSelected: Bool = false {
         didSet {
             updateImageState()
             sendActions(for: .valueChanged)

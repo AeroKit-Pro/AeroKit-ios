@@ -14,7 +14,9 @@ struct AirportFilterSettings {
     let airportTypes: [String]
     let isEnabledRunwayLight: Bool
     
-    init(withFilterInput filterInput: FilterInput) {
+    init?(withFilterInput filterInput: FilterInput?) {
+        guard let filterInput else { return nil }
+        
         airportFilterItem = filterInput.searchItem
         minRunwayLength = filterInput.runwayLength?.numericValue
         runwaySurfaces = filterInput.runwaySurfaces.map { $0.row }

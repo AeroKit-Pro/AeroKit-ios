@@ -75,22 +75,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         self.filterInputPassing = filterInputPassing
         
         let unwrappedSearchInput = searchInput
+            .distinctUntilChanged()
             .skipNil()
             .filter { !$0.isEmpty }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         
         let filterSettings = filterInputPassing.filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
-            .startWith(nil) // TODO: If filter settings should be retrieved from UD, this is to be changed. This part should be changed or left as is after 21.05
         
         let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
                                                           filterSettings) { ($0, $1) }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
                 databaseFetcher.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
+                
+        let unwrappedFilteredAirports = filteredAirports
+            .backgroundCompactMap(qos: .userInitiated) { $0 }
             .share()
-        
-        let unwrappedFilteredAirports = filteredAirports.backgroundCompactMap(qos: .userInitiated) { $0 }
         
         self.searchOutput = unwrappedFilteredAirports
             .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
@@ -103,6 +104,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         
         let selectedAirport = selectedItemDatabaseId
             .compactMap { self.databaseFetcher.fetchAirport(by: $0)?.first }
+            .share()
         
         let selectedRunways = selectedItemDatabaseId
             .map { self.databaseFetcher.fetchRunways(by: $0) }
@@ -132,6 +134,7 @@ extension AirportsViewModel: AirportsViewModelInputs {
     func searchInputDidChange(text: String?) {
         searchInput.accept(text)
     }
+    
     func didBeginSearching() {
         searchingBegan.accept(Empty())
     }

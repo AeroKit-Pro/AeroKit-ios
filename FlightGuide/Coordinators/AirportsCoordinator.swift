@@ -10,13 +10,13 @@ import RxSwift
 import RxCocoa
 
 protocol FilterInputPassing {
-    var filterInput: Observable<FilterInput> { get }
+    var filterInput: Observable<FilterInput?> { get }
     func updateFilterInput(_ input: FilterInput)
 }
 
 final class AirportsCoordinator: BaseCoordinator {
     
-    private let filterInputRelay = PublishRelay<FilterInput>()
+    private let filterInputRelay = BehaviorRelay<FilterInput?>(value: nil)
 
     //MARK: - Lifecycle
     override func start() {
@@ -45,7 +45,7 @@ extension AirportsCoordinator: FilterSceneDelegate {
 }
 
 extension AirportsCoordinator: FilterInputPassing {
-    var filterInput: Observable<FilterInput> {
+    var filterInput: Observable<FilterInput?> {
         filterInputRelay.asObservable()
     }
     

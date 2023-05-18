@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable>: UIView {
+final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable & Indexable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Items of search"
@@ -30,7 +30,12 @@ final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable>
     let items: [ItemType]
     
     var selectedItem: ItemType {
-        items[segmentedControl.selectedSegmentIndex]
+        set { segmentedControl.selectedSegmentIndex = newValue.index }
+        get { items[segmentedControl.selectedSegmentIndex] }
+    }
+    
+    var selectedSegmentIndex: Int {
+        segmentedControl.selectedSegmentIndex
     }
 
     override init(frame: CGRect) {

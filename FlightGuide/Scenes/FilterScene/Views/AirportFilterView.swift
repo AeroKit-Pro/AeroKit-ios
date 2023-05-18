@@ -13,10 +13,15 @@ protocol DatabaseRowRepresentable {
     var row: String { get }
 }
 
+protocol Indexable {
+    var index: Int { get }
+}
+
 protocol AirportFilterViewType: UIView {
     var applyFiltersButtonTapped: ControlEvent<Void> { get }
     var filterInput: Observable<FilterInput> { get }
     func collectValues()
+    func restoreState(with filterInput: FilterInput)
 }
 
 typealias FilterInput = (searchItem: AirportFilterItem,
@@ -107,6 +112,14 @@ extension AirportFilterView: AirportFilterViewType {
     
     var filterInput: Observable<FilterInput> {
         filterInputRelay.asObservable()
+    }
+    
+    func restoreState(with filterInput: FilterInput) {
+        airportFilterSearchItemsView.selectedItem = filterInput.searchItem
+        airportsFilterRunwaysLengthView.enteredLength = filterInput.runwayLength
+        airportsFilterRunwaysSurfacesSelectionView.selectedItems = filterInput.runwaySurfaces
+        airportsFilterAirportTypeSelectionView.selectedItems = filterInput.airportTypes
+        airportsFilterRunwayLightView.selectedState = filterInput.lightAvailability
     }
 }
 

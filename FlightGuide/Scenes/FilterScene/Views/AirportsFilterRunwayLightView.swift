@@ -23,7 +23,8 @@ final class AirportsFilterRunwayLightView: UIView {
     }()
     
     var selectedState: Bool {
-        switchView.isOn
+        set { switchView.isOn = newValue }
+        get { switchView.isOn }
     }
 
     override init(frame: CGRect) {
