@@ -10,7 +10,7 @@ import SnapKit
 import MapboxMaps
 import RxCocoa
 import RxSwift
-
+//TODO: Enum with states
 protocol AirportsSceneViewType: UIView {
     typealias PointAnnotations = [PointAnnotation]
     
@@ -19,6 +19,7 @@ protocol AirportsSceneViewType: UIView {
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }
     var didTapFilterButton: ControlEvent<()> { get }
+    var counterBadge: Reactive<CounterBadge> { get }
     var searchTextDidChange: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
     func enterSearchingMode()
@@ -119,6 +120,10 @@ extension AirportsMainView: AirportsSceneViewType {
 
     var didTapFilterButton: ControlEvent<()> {
         searchField.didTapFilterButton
+    }
+    
+    var counterBadge: Reactive<CounterBadge> {
+        searchField.rxCounterBadge
     }
     
     func enterSearchingMode() {

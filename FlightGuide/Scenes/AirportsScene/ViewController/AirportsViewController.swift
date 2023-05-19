@@ -95,6 +95,14 @@ final class AirportsViewController: UIViewController {
         viewModel.outputs.airportAnnotation.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.counterBadgeIsHidden.asDriver(onErrorDriveWith: .empty())
+            .drive(airportsMainView.counterBadge.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.numberOfActiveFilters.asDriver(onErrorDriveWith: .empty())
+            .drive(airportsMainView.counterBadge.text)
+            .disposed(by: disposeBag)
     }
     
 }

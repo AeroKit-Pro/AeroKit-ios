@@ -27,6 +27,10 @@ final class SearchFieldView: UIView {
         textField.rx.text
     }
     
+    var rxCounterBadge: Reactive<CounterBadge> {
+        counterBadge.rx
+    }
+    
     private let magnifierImage = UIImageView(image: .magnifier,
                                              contentMode: .scaleAspectFit,
                                              tintColor: .flg_blue_gray)
@@ -38,12 +42,18 @@ final class SearchFieldView: UIView {
     private let clearTextButton = UIButton(image: .cross,
                                            contentMode: .scaleAspectFit,
                                            tintColor: .flg_primary_dark)
+    private let counterBadge = CounterBadge()
     private let imageStackView = UIStackView(axis: .horizontal)
     private let buttonStackView = UIStackView(axis: .horizontal)
     private let spacerImage = UIView()
     private let spacerButton = UIView()
     private let textField = UITextField()
     private let separatorView = UIView()
+    
+    private let counterBadgeDimensions: CGFloat = 18
+    private var counterBadgeCornerRadius: CGFloat {
+        counterBadgeDimensions / 2
+    }
     
     init(frame: CGRect = .zero, placeholder: String = "") {
         super.init(frame: frame)
@@ -90,7 +100,8 @@ final class SearchFieldView: UIView {
     }
 
     private func setupAppearance() {
-        textField.textColor = .black
+        textField.textColor = .flg_primary_dark
+        textField.tintColor = .flg_primary_dark
         layer.borderWidth = 1
         layer.borderColor = UIColor.clear.cgColor
         backgroundColor = .white
@@ -100,12 +111,15 @@ final class SearchFieldView: UIView {
         layer.shadowRadius = 2
         separatorView.backgroundColor = .flg_blue_gray
         textField.rightView = clearTextButton
+        counterBadge.layer.cornerRadius = counterBadgeCornerRadius
+        counterBadge.layer.masksToBounds = true
     }
     
     private func setupSubviews() {
         addSubview(textField)
         addSubview(separatorView)
         addSubview(showFiltersButton)
+        addSubview(counterBadge)
         textField.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.equalToSuperview().inset(20)
@@ -119,7 +133,12 @@ final class SearchFieldView: UIView {
         showFiltersButton.snp.makeConstraints {
             $0.width.equalTo(30)
             $0.right.equalToSuperview().inset(20)
-            $0.top.bottom.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        counterBadge.snp.makeConstraints {
+            $0.width.height.equalTo(counterBadgeDimensions)
+            $0.centerX.equalTo(showFiltersButton.snp.right)
+            $0.centerY.equalTo(showFiltersButton.snp.top)
         }
     }
 
@@ -128,7 +147,6 @@ final class SearchFieldView: UIView {
         spacerImage.snp.makeConstraints { $0.width.equalTo(10) }
         buttonStackView.addArrangedSubviews(dismissButton, spacerButton)
         spacerButton.snp.makeConstraints { $0.width.equalTo(10) }
-        
         magnifierImage.snp.makeConstraints { $0.width.equalTo(25) }
         dismissButton.snp.makeConstraints { $0.width.equalTo(25) }
     }

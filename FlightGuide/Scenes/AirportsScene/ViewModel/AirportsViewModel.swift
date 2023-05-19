@@ -37,6 +37,8 @@ protocol AirportsViewModelOutputs {
     var airportAnnotation: RxObservable<PointAnnotations>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
     var pivotModel: RxObservable<PivotModel>! { get }
+    var numberOfActiveFilters: RxObservable<String>! { get }
+    var counterBadgeIsHidden: RxObservable<Bool>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -59,6 +61,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var airportAnnotation: RxObservable<PointAnnotations>!
     var airportCoordinate: RxObservable<Coordinate>!
     var pivotModel: RxObservable<PivotModel>!
+    var numberOfActiveFilters: RxObservable<String>!
+    var counterBadgeIsHidden: RxObservable<Bool>!
 
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
@@ -88,6 +92,18 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .backgroundMap(qos: .userInitiated) { [unowned self] in
                 databaseFetcher.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
+        
+        let numberOfActiveCriteria = filterSettings
+            .skipNil()
+            .map { $0.numberOfActiveCriteria }
+            .share()
+        
+        self.numberOfActiveFilters = numberOfActiveCriteria
+            .map { $0.toString() }
+        
+        self.counterBadgeIsHidden = numberOfActiveCriteria
+            .map { $0 <= 0 }
+            .startWith(true)
                 
         let unwrappedFilteredAirports = filteredAirports
             .backgroundCompactMap(qos: .userInitiated) { $0 }
