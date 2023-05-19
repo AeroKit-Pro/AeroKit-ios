@@ -50,7 +50,7 @@ final class AirportFilterView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
             
-        button.backgroundColor = UIColor.hex(0x333333)
+        button.backgroundColor = .flg_primary_dark
         return button
     }()
 

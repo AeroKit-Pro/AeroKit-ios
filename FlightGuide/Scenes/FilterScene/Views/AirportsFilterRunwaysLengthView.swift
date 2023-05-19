@@ -29,7 +29,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
 
     let textFieldUnderlineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.hex(0x333333)
+        view.backgroundColor = .flg_primary_dark
         return view
     }()
 

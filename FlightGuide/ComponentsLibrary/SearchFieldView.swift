@@ -13,18 +13,21 @@ final class SearchFieldView: UIView {
     
     private let magnifierImage = UIImageView(image: .magnifier,
                                              contentMode: .scaleAspectFit,
-                                             tintColor: .flg_secondary_gray)
+                                             tintColor: .flg_blue_gray)
     private let showFiltersButton = UIButton(image: .filters,
-                                             contentMode: .scaleAspectFit,
-                                             tintColor: .flg_secondary_blue)
-    private let dismissButton = UIButton(image: .chevron_left,
+                                             contentMode: .scaleAspectFit)
+    private let dismissButton = UIButton(image: .back_arrow,
                                          contentMode: .scaleAspectFit,
-                                         tintColor: .flg_secondary_gray)
+                                         tintColor: .flg_primary_dark)
+    private let clearTextButton = UIButton(image: .cross,
+                                           contentMode: .scaleAspectFit,
+                                           tintColor: .flg_primary_dark)
     private let imageStackView = UIStackView(axis: .horizontal)
     private let buttonStackView = UIStackView(axis: .horizontal)
     private let spacerImage = UIView()
     private let spacerButton = UIView()
     private let textField = UITextField()
+    private let separatorView = UIView()
     
     var textFieldDidBeginEditing: ControlEvent<()> {
         textField.rx.controlEvent(.editingDidBegin)
@@ -47,9 +50,10 @@ final class SearchFieldView: UIView {
         setupAppearance()
         setupSubviews()
         setupStackViews()
+        setupClearAction()
         setupDismissAction()
         configureTextField()
-        textField.setAttributedPlaceholder(placeholder, color: .flg_secondary_gray)
+        textField.setAttributedPlaceholder(placeholder, color: .flg_blue_gray)
         textField.delegate = self
     }
 
@@ -66,15 +70,23 @@ final class SearchFieldView: UIView {
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 2
+        separatorView.backgroundColor = .flg_blue_gray
+        textField.rightView = clearTextButton
     }
     
     private func setupSubviews() {
         addSubview(textField)
+        addSubview(separatorView)
         addSubview(showFiltersButton)
         textField.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.equalToSuperview().inset(20)
-            $0.right.equalTo(showFiltersButton.snp.left)
+            $0.right.equalTo(separatorView.snp.left).inset(-10)
+        }
+        separatorView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.right.equalTo(showFiltersButton.snp.left).inset(-10)
+            $0.width.equalTo(1)
         }
         showFiltersButton.snp.makeConstraints {
             $0.width.equalTo(30)
@@ -93,6 +105,11 @@ final class SearchFieldView: UIView {
         dismissButton.snp.makeConstraints { $0.width.equalTo(25) }
     }
     
+    private func setupClearAction() {
+        textField.addTarget(self, action: #selector(manageClearButtonState), for: .editingChanged)
+        clearTextButton.addTarget(self, action: #selector(clearText), for: .touchUpInside)
+    }
+    
     private func setupDismissAction() {
         dismissButton.addTarget(self, action: #selector(dismiss), for: .touchUpInside)
     }
@@ -100,11 +117,20 @@ final class SearchFieldView: UIView {
     private func configureTextField() {
         textField.leftView = imageStackView
         textField.leftViewMode = .always
-        textField.clearButtonMode = .whileEditing
     }
     
     @objc private func dismiss(_ sender: UIButton) {
         textField.resignFirstResponder()
+    }
+    
+    @objc private func manageClearButtonState(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        sender.rightViewMode = text.isEmpty ? .never : .always
+    }
+    
+    @objc private func clearText() {
+        textField.text?.removeAll()
+        textField.sendActions(for: .editingChanged)
     }
 
     func resignFocus() {
@@ -113,7 +139,7 @@ final class SearchFieldView: UIView {
     
     func addBorder(withDuration duration: CGFloat) {
         UIView.animate(withDuration: duration) {
-            self.layer.borderColor = UIColor.darkGray.cgColor
+            self.layer.borderColor = UIColor.flg_blue_gray.cgColor
         }
     }
     

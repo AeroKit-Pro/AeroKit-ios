@@ -18,7 +18,7 @@ final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable 
 
     let segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
-        segmentedControl.selectedSegmentTintColor = UIColor.hex(0x333333)
+        segmentedControl.selectedSegmentTintColor = .flg_primary_dark
         let normalAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
                                 NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.setTitleTextAttributes(normalAttributes, for: .normal)

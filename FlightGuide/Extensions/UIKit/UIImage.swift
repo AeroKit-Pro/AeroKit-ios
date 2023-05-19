@@ -20,8 +20,8 @@ extension UIImage {
         UIImage(named: "cross")
     }
     
-    static var chevron_left: UIImage? {
-        UIImage(systemName: "chevron.left")
+    static var back_arrow: UIImage? {
+        UIImage(named: "back_arrow")
     }
     
     static var airport_pin: UIImage? {

@@ -29,7 +29,7 @@ protocol AirportsSceneViewType: UIView {
 final class AirportsMainView: UIView {
     
     private let mapView: MapView
-    private let searchField = SearchFieldView(placeholder: "Search places")
+    private let searchField = SearchFieldView(placeholder: "Search airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
     
@@ -56,10 +56,10 @@ final class AirportsMainView: UIView {
         addSubview(searchField)
         searchField.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(10)
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
-            $0.height.equalTo(40)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(45)
+            $0.height.equalTo(50)
         }
-        searchField.layer.cornerRadius = 20
+        searchField.layer.cornerRadius = 15
     }
     
     private func setupBlankView() {
