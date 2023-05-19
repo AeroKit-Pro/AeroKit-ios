@@ -20,4 +20,15 @@ class AirportDetailView: UIView {
     @IBOutlet weak var homeLink: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let shadowPath = UIBezierPath(rect: bounds)
+        layer.shadowPath = shadowPath.cgPath
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 4
+        layer.shadowOffset = .zero
+        layer.masksToBounds = false
+    }
+    
 }
