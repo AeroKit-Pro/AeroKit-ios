@@ -11,6 +11,22 @@ import RxSwift
 
 final class SearchFieldView: UIView {
     
+    var textFieldDidBeginEditing: ControlEvent<()> {
+        textField.rx.controlEvent(.editingDidBegin)
+    }
+    
+    var textFieldDidEndEditing: ControlEvent<()> {
+        textField.rx.controlEvent(.editingDidEnd)
+    }
+
+    var didTapFilterButton: ControlEvent<()> {
+        showFiltersButton.rx.controlEvent(.touchUpInside)
+    }
+    
+    var textDidChange: ControlProperty<String?> {
+        textField.rx.text
+    }
+    
     private let magnifierImage = UIImageView(image: .magnifier,
                                              contentMode: .scaleAspectFit,
                                              tintColor: .flg_blue_gray)
@@ -29,22 +45,6 @@ final class SearchFieldView: UIView {
     private let textField = UITextField()
     private let separatorView = UIView()
     
-    var textFieldDidBeginEditing: ControlEvent<()> {
-        textField.rx.controlEvent(.editingDidBegin)
-    }
-    
-    var textFieldDidEndEditing: ControlEvent<()> {
-        textField.rx.controlEvent(.editingDidEnd)
-    }
-
-    var didTapFilterButton: ControlEvent<()> {
-        showFiltersButton.rx.controlEvent(.touchUpInside)
-    }
-    
-    var textDidChange: ControlProperty<String?> {
-        textField.rx.text
-    }
-    
     init(frame: CGRect = .zero, placeholder: String = "") {
         super.init(frame: frame)
         setupAppearance()
@@ -59,6 +59,34 @@ final class SearchFieldView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func resignFocus() {
+        textField.resignFirstResponder()
+    }
+    
+    func addBorder(withDuration duration: CGFloat) {
+        UIView.animate(withDuration: duration) {
+            self.layer.borderColor = UIColor.flg_blue_gray.cgColor
+        }
+    }
+    
+    func removeBorder(withDuration duration: CGFloat) {
+        UIView.animate(withDuration: duration) {
+            self.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    
+    func addShadow(withDuration duration: CGFloat) {
+        UIView.animate(withDuration: duration) {
+            self.layer.shadowColor = UIColor.black.cgColor
+        }
+    }
+    
+    func removeShadow(withDuration duration: CGFloat) {
+        UIView.animate(withDuration: duration) {
+            self.layer.shadowColor = UIColor.clear.cgColor
+        }
     }
 
     private func setupAppearance() {
@@ -131,34 +159,6 @@ final class SearchFieldView: UIView {
     @objc private func clearText() {
         textField.text?.removeAll()
         textField.sendActions(for: .editingChanged)
-    }
-
-    func resignFocus() {
-        textField.resignFirstResponder()
-    }
-    
-    func addBorder(withDuration duration: CGFloat) {
-        UIView.animate(withDuration: duration) {
-            self.layer.borderColor = UIColor.flg_blue_gray.cgColor
-        }
-    }
-    
-    func removeBorder(withDuration duration: CGFloat) {
-        UIView.animate(withDuration: duration) {
-            self.layer.borderColor = UIColor.clear.cgColor
-        }
-    }
-    
-    func addShadow(withDuration duration: CGFloat) {
-        UIView.animate(withDuration: duration) {
-            self.layer.shadowColor = UIColor.black.cgColor
-        }
-    }
-    
-    func removeShadow(withDuration duration: CGFloat) {
-        UIView.animate(withDuration: duration) {
-            self.layer.shadowColor = UIColor.clear.cgColor
-        }
     }
     
 }
