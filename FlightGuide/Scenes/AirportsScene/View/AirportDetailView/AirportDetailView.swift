@@ -19,17 +19,30 @@ class AirportDetailView: UIView {
     @IBOutlet weak var homeLink: UILabel!
     @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
-    @IBOutlet weak var tableView: AutoSizingTableView!
-    
+    @IBOutlet weak var runwaysTableView: AutoSizingTableView!
+        
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupAppearance()
+        setupTableView()
+    }
+    
+    private func setupAppearance() {
         let shadowPath = UIBezierPath(rect: bounds)
         layer.shadowPath = shadowPath.cgPath
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 4
         layer.shadowOffset = .zero
-        layer.masksToBounds = false
+        layer.cornerRadius = 20
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    private func setupTableView() {
+        runwaysTableView.register(UINib(nibName: String(describing: RunwayCell.self), bundle: nil),
+                                   forCellReuseIdentifier: RunwayCell.identifier)
+        runwaysTableView.dataSource = nil
+        runwaysTableView.separatorStyle = .none
     }
     
 }

@@ -59,7 +59,7 @@ final class BannerUnderlayView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: superview.leadingAnchor),
             trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            heightAnchor.constraint(equalToConstant: superview.bounds.height - 200)
+            heightAnchor.constraint(equalToConstant: superview.bounds.height)
         ])
     }
     

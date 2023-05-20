@@ -62,6 +62,13 @@ final class BannerViewController: UIViewController {
         viewModel.outputs.phoneNumber.asDriver(onErrorDriveWith: .empty())
             .drive(bannerView.phoneNumber.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.runways
+            .bind(to: bannerView.runwaysTableView.rx.items(cellIdentifier: RunwayCell.identifier,
+                                                           cellType: RunwayCell.self)) { _, model, cell in
+                cell.viewModel = model
+            }
+            .disposed(by: disposeBag)
     }
     
     func refreshData(withPivotModel model: PivotModel) {

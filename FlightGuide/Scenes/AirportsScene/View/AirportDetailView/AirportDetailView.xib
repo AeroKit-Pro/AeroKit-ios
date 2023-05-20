@@ -314,9 +314,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zui-ac-buX" customClass="AutoSizingTableView" customModule="FlightGuide" customModuleProvider="target">
+                                        <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zui-ac-buX" customClass="AutoSizingTableView" customModule="FlightGuide" customModuleProvider="target">
                                             <rect key="frame" x="20" y="39.000000000000014" width="333" height="251.33333333333337"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -377,11 +378,6 @@
                 <constraint firstItem="u7s-4O-CMH" firstAttribute="top" secondItem="N2v-Zv-U7M" secondAttribute="bottom" id="ljD-tO-PwQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                    <integer key="value" value="20"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="elevation" destination="cO2-N0-FGs" id="pBV-Dr-fDj"/>
                 <outlet property="frequency" destination="Tv9-28-nn9" id="SNC-Tv-eST"/>
@@ -390,7 +386,7 @@
                 <outlet property="municipality" destination="P5m-S8-hNB" id="VsO-jy-LIM"/>
                 <outlet property="name" destination="uUH-Z8-wWM" id="3Q1-AG-AfT"/>
                 <outlet property="phoneNumber" destination="yLV-30-Bw2" id="Zyh-GK-16M"/>
-                <outlet property="tableView" destination="zui-ac-buX" id="tya-dz-goC"/>
+                <outlet property="runwaysTableView" destination="zui-ac-buX" id="tya-dz-goC"/>
                 <outlet property="type" destination="NnL-bC-fK2" id="4Iy-Zd-VNV"/>
                 <outlet property="typeImage" destination="Cth-E3-HRY" id="eLJ-LA-tPB"/>
                 <outlet property="wikipediaLink" destination="tD7-5Z-ipv" id="SQ8-fe-J1a"/>

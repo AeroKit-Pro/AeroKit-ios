@@ -77,6 +77,9 @@
 		4EA72A3029D6373000836CDF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A2F29D6373000836CDF /* APIClient.swift */; };
 		4EA72A3229D6377400836CDF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A3129D6377400836CDF /* Network.swift */; };
 		4EAC54C529DF035700EDDA71 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC54C429DF035700EDDA71 /* BlankView.swift */; };
+		4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB392D52A19014E00392C3A /* RunwayCell.swift */; };
+		4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB392D62A19014E00392C3A /* RunwayCell.xib */; };
+		4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */; };
 		4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB522E72A154BF60012BFDF /* UITextField.swift */; };
 		4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007329D85ABE00C64110 /* SearchFieldView.swift */; };
 		4EB9007629D8681900C64110 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007529D8681900C64110 /* UIView.swift */; };
@@ -167,6 +170,9 @@
 		4EA72A2F29D6373000836CDF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4EA72A3129D6377400836CDF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4EAC54C429DF035700EDDA71 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		4EB392D52A19014E00392C3A /* RunwayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCell.swift; sourceTree = "<group>"; };
+		4EB392D62A19014E00392C3A /* RunwayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RunwayCell.xib; sourceTree = "<group>"; };
+		4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCellViewModel.swift; sourceTree = "<group>"; };
 		4EB522E72A154BF60012BFDF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4EB9007329D85ABE00C64110 /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		4EB9007529D8681900C64110 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -253,6 +259,7 @@
 				11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */,
 				11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */,
 				11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */,
+				4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -273,6 +280,8 @@
 				4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */,
 				4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */,
 				4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */,
+				4EB392D62A19014E00392C3A /* RunwayCell.xib */,
+				4EB392D52A19014E00392C3A /* RunwayCell.swift */,
 			);
 			path = AirportDetailView;
 			sourceTree = "<group>";
@@ -636,6 +645,7 @@
 				4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */,
 				4E3B3AA829D43B4800971840 /* Assets.xcassets in Resources */,
 				4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */,
+				4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3019BD29EAE38200852427 /* Runway.swift in Sources */,
+				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
 				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
 				4EA72A3229D6377400836CDF /* Network.swift in Sources */,
@@ -699,6 +710,7 @@
 				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
 				4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */,
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
+				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,
 				1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */,

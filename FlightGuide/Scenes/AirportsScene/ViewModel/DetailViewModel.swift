@@ -14,6 +14,8 @@ protocol DetailViewModelInputs {
 }
 
 protocol DetailViewModelOutputs {
+    typealias RunwayCellViewModels = [RunwayCellViewModel]
+    
     var image: Observable<UIImage>! { get }
     var name: Observable<String>! { get }
     var identifier: Observable<String>! { get }
@@ -24,6 +26,7 @@ protocol DetailViewModelOutputs {
     var wikipedia: Observable<String>! { get }
     var homeLink: Observable<String>! { get }
     var phoneNumber: Observable<String>! { get }
+    var runways: Observable<RunwayCellViewModels>! { get }
 }
 
 protocol DetailViewModelType {
@@ -44,6 +47,9 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         self.wikipedia = pivotInfo.map { $0.airport.wikipediaLink ?? "no data" }
         self.homeLink = pivotInfo.map { $0.airport.homeLink ?? "no data" }
         self.phoneNumber = Observable.just("no data") // dummy string for now
+        self.runways = pivotInfo
+            .map { $0.runways ?? [] }
+            .map { $0.map { RunwayCellViewModel(with: $0) } }
         
     }
     
@@ -57,6 +63,7 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     var wikipedia: Observable<String>!
     var homeLink: Observable<String>!
     var phoneNumber: Observable<String>!
+    var runways: Observable<RunwayCellViewModels>!
     
     func refresh(withPivotModel model: PivotModel) {
         pivotInfo.accept(model)
