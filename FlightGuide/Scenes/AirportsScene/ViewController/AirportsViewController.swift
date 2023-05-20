@@ -34,7 +34,7 @@ final class AirportsViewController: UIViewController {
         bindViewModelOutputs()
     }
     
-    override func viewDidAppear(_ animated: Bool) { // MARK: CALLED MULTIPLE TIMES
+    override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             addChild(bannerViewController)
             airportsMainView.addSubview(bannerViewController.view)

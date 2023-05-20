@@ -59,13 +59,13 @@ final class BannerUnderlayView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: superview.leadingAnchor),
             trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            heightAnchor.constraint(equalToConstant: superview.bounds.height)
+            heightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.heightAnchor)
         ])
     }
     
     private func defineOffsets(_ superview: UIView) {
-        expandedOffset = superview.bounds.height * 0.8
-        collapsedOffset = superview.bounds.height * 0.3
+        expandedOffset = superview.boundsSafeHeight
+        collapsedOffset = superview.boundsSafeHeight * 0.3
         hiddenOffset = superview.bounds.height
     }
     
@@ -75,7 +75,7 @@ final class BannerUnderlayView: UIView {
     }
         
     private func animate() {
-        UIView.animate(withDuration: 0.3,
+        UIView.animate(withDuration: AnimationDuration.microSlow.timeInterval,
                        delay: 0.0,
                        options: [.allowUserInteraction],
                        animations: {
@@ -89,13 +89,6 @@ final class BannerUnderlayView: UIView {
         
         if recognizer.state == .changed {
             // rubber band effect
-            if expansionConstraint.constant < -expandedOffset {
-                let dampingFactor: CGFloat = 0.2
-                let absYPos = abs(expansionConstraint.constant + translation.y)
-                let adjustedYPos = expandedOffset * (1 + (log10(absYPos / expandedOffset) * dampingFactor))
-                expansionConstraint.constant = -adjustedYPos
-                return
-            }
             if expansionConstraint.constant >= -collapsedOffset {
                 let dampingFactor: CGFloat = 0.2
                 let absYPos = abs(expansionConstraint.constant - translation.y)
@@ -103,8 +96,8 @@ final class BannerUnderlayView: UIView {
                 expansionConstraint.constant = -adjustedYPos
                 return
             }
-            // TODO: lower rubber band effect
-            expansionConstraint.constant += translation.y
+            let expansion = max(expansionConstraint.constant + translation.y, -expandedOffset)
+            expansionConstraint.constant = expansion
             recognizer.setTranslation(.zero, in: view)
         }
         
