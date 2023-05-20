@@ -11,14 +11,14 @@ import RxSwift
 final class BannerViewController: UIViewController {
     
     private let underlayView: BannerUnderlayView = .forAutoLayout()
-    private let contentView: AirportDetailView = .fromNib()
+    private let bannerView: AirportDetailView = .fromNib()
     private let viewModel: DetailViewModelType = DetailViewModel()
     private let disposeBag = DisposeBag()
     
     override func loadView() {
         view = underlayView
-        underlayView.addSubview(contentView)
-        contentView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        underlayView.addSubview(bannerView)
+        bannerView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     override func viewDidLoad() {
@@ -28,39 +28,39 @@ final class BannerViewController: UIViewController {
     
     private func bindViewModelOutputs() {
         viewModel.outputs.name.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.name.rx.text)
+            .drive(bannerView.name.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.identifier.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.identifier.rx.text)
+            .drive(bannerView.identifier.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.type.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.type.rx.text)
+            .drive(bannerView.type.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.elevation.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.elevation.rx.text)
+            .drive(bannerView.elevation.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.municipality.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.municipality.rx.text)
+            .drive(bannerView.municipality.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.frequency.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.frequency.rx.text)
+            .drive(bannerView.frequency.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.wikipedia.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.wikipediaLink.rx.text)
+            .drive(bannerView.wikipediaLink.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.homeLink.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.homeLink.rx.text)
+            .drive(bannerView.homeLink.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.phoneNumber.asDriver(onErrorDriveWith: .empty())
-            .drive(contentView.phoneNumber.rx.text)
+            .drive(bannerView.phoneNumber.rx.text)
             .disposed(by: disposeBag)
     }
     

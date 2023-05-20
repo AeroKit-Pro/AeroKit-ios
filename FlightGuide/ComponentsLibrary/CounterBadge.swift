@@ -19,9 +19,9 @@ final class CounterBadge: UILabel {
     }
     
     private func setupAppearance() {
-        backgroundColor = .white
-        textColor = .flg_primary_dark
-        font = .systemFont(ofSize: 10)
+        backgroundColor = .flg_primary_dark
+        textColor = .white
+        font = .boldSystemFont(ofSize: 12)
         textAlignment = .center
         layer.borderColor = UIColor.flg_primary_dark.cgColor
         layer.borderWidth = 1
