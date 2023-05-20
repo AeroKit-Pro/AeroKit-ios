@@ -16,9 +16,10 @@ class AirportDetailView: UIView {
     @IBOutlet weak var elevation: UILabel!
     @IBOutlet weak var municipality: UILabel!
     @IBOutlet weak var frequency: UILabel!
-    @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var homeLink: UILabel!
+    @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var tableView: AutoSizingTableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
