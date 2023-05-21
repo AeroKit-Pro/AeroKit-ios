@@ -45,7 +45,7 @@ final class AirportsViewController: UIViewController {
             .subscribe(onNext: viewModel.inputs.didBeginSearching)
             .disposed(by: disposeBag)
         
-        airportsMainView.didEndSearching
+        airportsMainView.dismissSearchButton.tap
             .subscribe(onNext: viewModel.inputs.didEndSearching)
             .disposed(by: disposeBag)
         
@@ -70,6 +70,11 @@ final class AirportsViewController: UIViewController {
         
         viewModel.outputs.onSearchEnd
             .subscribe(onNext: airportsMainView.dismissSearchMode)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.dismissDetailView
+            .subscribe(onNext: { self.bannerViewController.hide();
+                                 self.airportsMainView.searchFieldCannotDismiss() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.searchOutput

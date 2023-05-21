@@ -39,6 +39,7 @@ protocol AirportsViewModelOutputs {
     var pivotModel: RxObservable<PivotModel>! { get }
     var numberOfActiveFilters: RxObservable<String>! { get }
     var counterBadgeIsHidden: RxObservable<Bool>! { get }
+    var dismissDetailView: RxObservable<Empty>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -63,6 +64,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var pivotModel: RxObservable<PivotModel>!
     var numberOfActiveFilters: RxObservable<String>!
     var counterBadgeIsHidden: RxObservable<Bool>!
+    var dismissDetailView: RxObservable<Empty>!
 
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
@@ -132,6 +134,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .map { PivotModel(airport: $0.0, runways: $0.1, frequencies: $0.2) }
         
         self.onItemSelection = selectedAirport.asEmpty()
+        
+        self.dismissDetailView = searchingEnded.asObservable()
         
         self.airportCoordinate = selectedAirport
             .compactMap { Coordinate(lat: $0.latitudeDeg, lon: $0.longitudeDeg) }

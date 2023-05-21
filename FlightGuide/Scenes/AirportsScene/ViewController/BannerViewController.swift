@@ -34,7 +34,7 @@ final class BannerViewController: UIViewController {
     }
     
     func hide() {
-        UIView.animate(withDuration: 0) {
+        UIView.animate(withDuration: 0.3) {
             self.underlayView.hide()
             self.view.superview?.layoutIfNeeded()
         }

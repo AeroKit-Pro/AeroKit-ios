@@ -31,6 +31,10 @@ final class SearchFieldView: UIView {
         counterBadge.rx
     }
     
+    var rxDismissSearchButton: Reactive<UIButton> {
+        dismissButton.rx
+    }
+        
     private let magnifierImage = UIImageView(image: .magnifier,
                                              contentMode: .scaleAspectFit,
                                              tintColor: .flg_blue_gray)
@@ -61,7 +65,6 @@ final class SearchFieldView: UIView {
         setupSubviews()
         setupStackViews()
         setupClearAction()
-        setupDismissAction()
         configureTextField()
         textField.setAttributedPlaceholder(placeholder, color: .flg_blue_gray)
         textField.delegate = self
@@ -69,6 +72,14 @@ final class SearchFieldView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func showDismissButton() {
+        textField.leftView = buttonStackView
+    }
+    
+    func showMagnifierImage() {
+        textField.leftView = imageStackView
     }
     
     func resignFocus() {
@@ -155,18 +166,11 @@ final class SearchFieldView: UIView {
         textField.addTarget(self, action: #selector(manageClearButtonState), for: .editingChanged)
         clearTextButton.addTarget(self, action: #selector(clearText), for: .touchUpInside)
     }
-    
-    private func setupDismissAction() {
-        dismissButton.addTarget(self, action: #selector(dismiss), for: .touchUpInside)
-    }
 
     private func configureTextField() {
         textField.leftView = imageStackView
         textField.leftViewMode = .always
-    }
-    
-    @objc private func dismiss(_ sender: UIButton) {
-        textField.resignFirstResponder()
+        textField.returnKeyType = .done
     }
     
     @objc private func manageClearButtonState(_ sender: UITextField) {
@@ -184,6 +188,7 @@ final class SearchFieldView: UIView {
 
 // MARK: - UITextFieldDelegate
 extension SearchFieldView: UITextFieldDelegate {
+    /*
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.leftView = buttonStackView
     }
@@ -191,4 +196,5 @@ extension SearchFieldView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.leftView = imageStackView
     }
+     */
 }
