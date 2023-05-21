@@ -305,7 +305,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="363" placeholderIntrinsicHeight="305.33333333333326" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-g9-oxQ">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-g9-oxQ">
                                     <rect key="frame" x="15" y="477" width="363" height="305.33333333333326"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport runways" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-o2-ZFz">

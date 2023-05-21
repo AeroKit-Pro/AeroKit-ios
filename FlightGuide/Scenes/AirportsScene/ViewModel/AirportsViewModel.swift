@@ -83,7 +83,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         let unwrappedSearchInput = searchInput
             .distinctUntilChanged()
             .skipNil()
-            .filter { !$0.isEmpty }
+            .filter { $0.count > 1 }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         
         let filterSettings = filterInputPassing.filterInput
