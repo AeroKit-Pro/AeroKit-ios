@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RunwayCell: UITableViewCell {
+final class RunwayCell: UITableViewCell {
 
     static let identifier = String(describing: RunwayCell.self)
     

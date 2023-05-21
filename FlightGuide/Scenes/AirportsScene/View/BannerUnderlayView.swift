@@ -16,9 +16,7 @@ final class BannerUnderlayView: UIView {
     }
     
     var expandedOffset: CGFloat = 0
-    
     var collapsedOffset: CGFloat = 0
-    
     var hiddenOffset: CGFloat = 0
     
     private(set) var state: State = .collapsed {

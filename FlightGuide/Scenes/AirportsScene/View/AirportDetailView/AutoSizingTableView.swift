@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AutoSizingTableView: UITableView {
+final class AutoSizingTableView: UITableView {
 
     // MARK: - Initialize
     override init(frame: CGRect, style: UITableView.Style) {

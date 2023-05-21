@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AirportDetailView: UIView {
+final class AirportDetailView: UIView {
 
     @IBOutlet weak var typeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -20,11 +20,15 @@ class AirportDetailView: UIView {
     @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var runwaysTableView: AutoSizingTableView!
+    
+    let homeLinkGestureRecognizer = UITapGestureRecognizer()
+    let wikipediaLinkGestureRecognizer = UITapGestureRecognizer()
         
     override func awakeFromNib() {
         super.awakeFromNib()
         setupAppearance()
         setupTableView()
+        setupHyperlinkLabelsBehaviour()
     }
     
     private func setupAppearance() {
@@ -42,7 +46,15 @@ class AirportDetailView: UIView {
         runwaysTableView.register(UINib(nibName: String(describing: RunwayCell.self), bundle: nil),
                                    forCellReuseIdentifier: RunwayCell.identifier)
         runwaysTableView.dataSource = nil
+        runwaysTableView.delegate = nil
         runwaysTableView.separatorStyle = .none
     }
     
+    private func setupHyperlinkLabelsBehaviour() {
+        homeLink.addGestureRecognizer(homeLinkGestureRecognizer)
+        wikipediaLink.addGestureRecognizer(wikipediaLinkGestureRecognizer)
+        homeLink.isUserInteractionEnabled = true
+        wikipediaLink.isUserInteractionEnabled = true
+    }
+        
 }

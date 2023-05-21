@@ -15,6 +15,31 @@ final class BannerViewController: UIViewController {
     private let viewModel: DetailViewModelType = DetailViewModel()
     private let disposeBag = DisposeBag()
     
+    func refreshData(withPivotModel model: PivotModel) {
+        viewModel.inputs.refresh(withPivotModel: model)
+    }
+    
+    func expand() {
+        UIView.animate(withDuration: 0.3) {
+            self.underlayView.expand()
+            self.view.superview?.layoutIfNeeded()
+        }
+    }
+    
+    func collapse() {
+        UIView.animate(withDuration: 0) {
+            self.underlayView.collapse()
+            self.view.superview?.layoutIfNeeded()
+        }
+    }
+    
+    func hide() {
+        UIView.animate(withDuration: 0) {
+            self.underlayView.hide()
+            self.view.superview?.layoutIfNeeded()
+        }
+    }
+    
     override func loadView() {
         view = underlayView
         underlayView.addSubview(bannerView)
@@ -23,6 +48,7 @@ final class BannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModelInputs()
         bindViewModelOutputs()
     }
     
@@ -52,11 +78,11 @@ final class BannerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.wikipedia.asDriver(onErrorDriveWith: .empty())
-            .drive(bannerView.wikipediaLink.rx.text)
+            .drive(bannerView.wikipediaLink.rx.attributedText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.homeLink.asDriver(onErrorDriveWith: .empty())
-            .drive(bannerView.homeLink.rx.text)
+            .drive(bannerView.homeLink.rx.attributedText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.phoneNumber.asDriver(onErrorDriveWith: .empty())
@@ -69,31 +95,20 @@ final class BannerViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.websiteURL
+            .subscribe(onNext: { UIApplication.shared.open($0) })
+            .disposed(by: disposeBag)
     }
     
-    func refreshData(withPivotModel model: PivotModel) {
-        viewModel.inputs.refresh(withPivotModel: model)
-    }
-    
-    func expand() {
-        UIView.animate(withDuration: 0.3) {
-            self.underlayView.expand()
-            self.view.superview?.layoutIfNeeded()
-        }
-    }
-    
-    func collapse() {
-        UIView.animate(withDuration: 0) {
-            self.underlayView.collapse()
-            self.view.superview?.layoutIfNeeded()
-        }
-    }
-    
-    func hide() {
-        UIView.animate(withDuration: 0) {
-            self.underlayView.hide()
-            self.view.superview?.layoutIfNeeded()
-        }
+    private func bindViewModelInputs() {
+        bannerView.homeLinkGestureRecognizer.rx.event.asEmpty()
+            .subscribe(onNext: viewModel.inputs.didTapOnHomeLinkLabel)
+            .disposed(by: disposeBag)
+        
+        bannerView.wikipediaLinkGestureRecognizer.rx.event.asEmpty()
+            .subscribe(onNext: viewModel.inputs.didTapOnWikipediaLinkLabel)
+            .disposed(by: disposeBag)
     }
     
 }

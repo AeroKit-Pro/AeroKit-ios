@@ -26,6 +26,8 @@ final class AirportsFilterRunwaysLengthView: UIView {
         textField.keyboardType = .numberPad
         return textField
     }()
+    
+    private let toolbar = UIToolbar()
 
     let textFieldUnderlineView: UIView = {
         let view = UIView()
@@ -50,6 +52,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
         super.init(frame: frame)
         setupLayout()
         setupUI()
+        setupToolbar()
     }
 
     required init?(coder: NSCoder) {
@@ -84,10 +87,23 @@ final class AirportsFilterRunwaysLengthView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
+        textField.textColor = .black
 
         textField.delegate = self
+    }
+    
+    private func setupToolbar() {
+        toolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc private func doneButtonTapped() {
+        textField.resignFirstResponder()
     }
 }
 

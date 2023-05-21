@@ -26,4 +26,8 @@ extension UIColor {
     static var flg_primary_dark: UIColor {
         UIColor.hex(0x333333)
     }
+    
+    static var flg_light_dark_white: UIColor {
+        UIColor.hex(0xF8F8F8)
+    }
 }

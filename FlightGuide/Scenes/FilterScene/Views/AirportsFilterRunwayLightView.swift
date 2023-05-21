@@ -52,7 +52,7 @@ final class AirportsFilterRunwayLightView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
     }
 }
