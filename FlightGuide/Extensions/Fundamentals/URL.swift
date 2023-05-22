@@ -12,4 +12,8 @@ extension URL {
         guard let optionalString else { return nil }
         self.init(string: optionalString)
     }
+    
+    mutating func appendPathComponents(_ components: [String]) {
+        components.forEach { self.appendPathComponent($0) }
+    }
 }

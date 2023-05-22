@@ -40,6 +40,8 @@ protocol DetailViewModelType {
 
 final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, DetailViewModelType {
     
+    private let apiClient = APIClient()
+    
     var image: Observable<UIImage>!
     var name: Observable<String>!
     var identifier: Observable<String>!
@@ -58,7 +60,6 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     private let wikipediaLinkLabelTapped = PublishRelay<Empty>()
     
     init() {
-        
         self.name = pivotInfo.map { $0.airport.name ?? "no data" }
         self.identifier = pivotInfo.map { $0.airport.ident ?? "no data" }
         self.type = pivotInfo.map { $0.airport.type ?? "no data" }

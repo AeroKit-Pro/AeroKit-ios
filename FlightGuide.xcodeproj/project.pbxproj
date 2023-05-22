@@ -45,6 +45,7 @@
 		4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */; };
 		4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */; };
 		4E0A8F602A1867260087B2D4 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */; };
+		4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17314A2A1BD7600094A5E2 /* Weather.swift */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
 		4E3019BD29EAE38200852427 /* Runway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BC29EAE38200852427 /* Runway.swift */; };
 		4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BE29EAE38B00852427 /* Frequency.swift */; };
@@ -141,6 +142,7 @@
 		4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
 		4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
 		4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		4E17314A2A1BD7600094A5E2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E3019BC29EAE38200852427 /* Runway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runway.swift; sourceTree = "<group>"; };
 		4E3019BE29EAE38B00852427 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				113795552A07F70A00597299 /* AirportFilterItem.swift */,
 				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
 				4E54DBC62A13DC5900CE8635 /* PivotModel.swift */,
+				4E17314A2A1BD7600094A5E2 /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */,
 				4E3019BD29EAE38200852427 /* Runway.swift in Sources */,
 				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
