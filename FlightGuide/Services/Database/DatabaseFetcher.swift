@@ -55,7 +55,9 @@ final class DatabaseFetcher {
         }
         
         query = query
-            .filter(databaseManager.airportFields.name.lowercaseString.like(SearchPattern.contains(input)))
+            .filter(databaseManager.airportFields.name.lowercaseString.like(SearchPattern.contains(input))
+                    || databaseManager.airportFields.municipality.like(SearchPattern.contains(input))
+                    || databaseManager.airportFields.iataCode.like(SearchPattern.contains(input)))
             .select(databaseManager.airportFields.name,
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality,
