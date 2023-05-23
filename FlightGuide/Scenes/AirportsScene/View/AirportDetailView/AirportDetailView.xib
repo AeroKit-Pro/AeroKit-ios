@@ -67,7 +67,7 @@
                         <constraint firstAttribute="bottom" secondItem="uNc-31-cMT" secondAttribute="bottom" id="yf5-GE-JSc"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-4O-CMH">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-4O-CMH">
                     <rect key="frame" x="0.0" y="54.666666666666686" width="393" height="797.33333333333326"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0H1-As-DOg">
@@ -87,6 +87,7 @@
                                             <subviews>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tQx-sS-bGp">
                                                     <rect key="frame" x="0.0" y="4.3333333333333286" width="20" height="20"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q6e-Ra-6Ue">
                                                     <rect key="frame" x="20" y="0.0" width="313.33333333333331" height="28.333333333333332"/>
@@ -129,6 +130,7 @@
                                             <subviews>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="qQP-TC-xpt">
                                                     <rect key="frame" x="0.0" y="7.6666666666666572" width="20" height="20"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JR0-fK-QsW">
                                                     <rect key="frame" x="20" y="0.0" width="313" height="35"/>

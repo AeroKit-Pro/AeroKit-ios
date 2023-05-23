@@ -10,11 +10,15 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    //MARK: Metrics
+    private var startDate: Date?
+    private var endDate: Date?
+    private let calendar = Calendar(identifier: .gregorian)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DatabaseManager.prepare()
+        startDate = Date()
         
         return true
     }
@@ -31,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    //MARK: Metrics
+    func applicationWillTerminate(_ application: UIApplication) {
+        endDate = Date()
+        guard let startDate, let endDate else { return }
+        let components = calendar.dateComponents([.minute, .second], from: startDate, to: endDate)
+        
     }
 
 
