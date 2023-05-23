@@ -11,6 +11,7 @@ final class RunwayCell: UITableViewCell {
 
     static let identifier = String(describing: RunwayCell.self)
     
+    @IBOutlet weak var leHeHeading: UILabel!
     @IBOutlet weak var surface: UILabel!
     @IBOutlet weak var length: UILabel!
     @IBOutlet weak var width: UILabel!
@@ -18,6 +19,7 @@ final class RunwayCell: UITableViewCell {
     
     var viewModel: RunwayCellViewModel? {
         didSet {
+            self.leHeHeading.text = viewModel?.leHeHeading
             self.surface.text = viewModel?.surface
             self.length.text = viewModel?.length
             self.width.text = viewModel?.width

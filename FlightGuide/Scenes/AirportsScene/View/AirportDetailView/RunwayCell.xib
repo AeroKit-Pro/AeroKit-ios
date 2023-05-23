@@ -131,6 +131,7 @@
                 <accessibilityTraits key="traits" notEnabled="YES"/>
             </accessibility>
             <connections>
+                <outlet property="leHeHeading" destination="a8w-AD-Rew" id="vYx-G8-ES9"/>
                 <outlet property="length" destination="FF4-G8-kui" id="ILM-Za-n2W"/>
                 <outlet property="lighted" destination="1ny-4s-IBc" id="hwq-s8-Nsq"/>
                 <outlet property="surface" destination="zQN-Xk-Ugb" id="GRD-0g-DOW"/>
