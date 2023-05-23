@@ -20,6 +20,11 @@ final class AirportDetailView: UIView {
     @IBOutlet weak var wikipediaLink: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var runwaysTableView: AutoSizingTableView!
+    @IBOutlet weak var metar: UILabel!
+    @IBOutlet weak var taf: UILabel!
+    @IBOutlet weak var metarActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tafActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var runwaysBlock: UIView!
     
     let homeLinkGestureRecognizer = UITapGestureRecognizer()
     let wikipediaLinkGestureRecognizer = UITapGestureRecognizer()

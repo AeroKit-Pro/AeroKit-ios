@@ -74,7 +74,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="797.33333333333337"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-Vx-WyA">
-                                    <rect key="frame" x="15" y="15.000000000000007" width="363" height="77.666666666666686"/>
+                                    <rect key="frame" x="15" y="15.000000000000007" width="363" height="77.333333333333343"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fql-ge-F2c">
                                             <rect key="frame" x="10" y="10" width="338" height="24"/>
@@ -82,21 +82,31 @@
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUEE 250500Z 18004MPS CAVOK 07/04 Q0999 R24L/190057 R24C/190057 NOSIG&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6e-Ra-6Ue">
-                                            <rect key="frame" x="15" y="39" width="333" height="28.666666666666671"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1ic-7s-N0b">
+                                            <rect key="frame" x="15" y="39" width="333.33333333333331" height="28.333333333333329"/>
+                                            <subviews>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tQx-sS-bGp">
+                                                    <rect key="frame" x="0.0" y="4.3333333333333286" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q6e-Ra-6Ue">
+                                                    <rect key="frame" x="20" y="0.0" width="313.33333333333331" height="28.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">TAF UUEE 250159Z 2503/2603 22005MPS 6000 BKN016 TX10/2512Z TN05/2503Z TEMPO 2504/2517 22008G13MPS 2900 -SHRA BKN005 BKN010CB BECMG 2520/2523 05003MPS</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="q6e-Ra-6Ue" secondAttribute="trailing" constant="15" id="9Zc-KF-KTC"/>
-                                        <constraint firstItem="q6e-Ra-6Ue" firstAttribute="top" secondItem="fql-ge-F2c" secondAttribute="bottom" constant="5" id="FRy-Gr-sFQ"/>
-                                        <constraint firstAttribute="bottom" secondItem="q6e-Ra-6Ue" secondAttribute="bottom" constant="10" id="ILx-2B-Vhd"/>
+                                        <constraint firstAttribute="trailing" secondItem="1ic-7s-N0b" secondAttribute="trailing" constant="15" id="2HB-2c-lyI"/>
+                                        <constraint firstItem="1ic-7s-N0b" firstAttribute="leading" secondItem="2eP-Vx-WyA" secondAttribute="leading" constant="15" id="DZU-LZ-GRR"/>
                                         <constraint firstItem="fql-ge-F2c" firstAttribute="top" secondItem="2eP-Vx-WyA" secondAttribute="top" constant="10" id="LYJ-2V-uDd"/>
+                                        <constraint firstAttribute="bottom" secondItem="1ic-7s-N0b" secondAttribute="bottom" constant="10" id="Xai-wn-hFe"/>
+                                        <constraint firstItem="1ic-7s-N0b" firstAttribute="top" secondItem="fql-ge-F2c" secondAttribute="bottom" constant="5" id="a3L-xW-aio"/>
                                         <constraint firstItem="fql-ge-F2c" firstAttribute="leading" secondItem="2eP-Vx-WyA" secondAttribute="leading" constant="10" id="ahK-BL-C0c"/>
-                                        <constraint firstItem="q6e-Ra-6Ue" firstAttribute="leading" secondItem="2eP-Vx-WyA" secondAttribute="leading" constant="15" id="rYJ-QR-EdC"/>
                                         <constraint firstAttribute="trailing" secondItem="fql-ge-F2c" secondAttribute="trailing" constant="15" id="y21-ej-gMF"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -106,7 +116,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnz-tf-yHB">
-                                    <rect key="frame" x="15" y="107.66666666666669" width="363" height="106.33333333333331"/>
+                                    <rect key="frame" x="15" y="107.33333333333334" width="363" height="84"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kst-1l-Dm2">
                                             <rect key="frame" x="10" y="10" width="338" height="24"/>
@@ -114,23 +124,32 @@
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JR0-fK-QsW">
-                                            <rect key="frame" x="15" y="39" width="333" height="57.333333333333343"/>
-                                            <string key="text">TAF UUEE 250159Z 2503/2603 22005MPS 6000 BKN016 TX10/2512Z TN05/2503Z TEMPO 2504/2517 22008G13MPS 2900 -SHRA BKN005 BKN010CB BECMG 2520/2523 05003MPS</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJn-HS-FH3">
+                                            <rect key="frame" x="15" y="39" width="333" height="35"/>
+                                            <subviews>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="qQP-TC-xpt">
+                                                    <rect key="frame" x="0.0" y="7.6666666666666572" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JR0-fK-QsW">
+                                                    <rect key="frame" x="20" y="0.0" width="313" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">TAF UUEE 250159Z 2503/2603 22005MPS 6000 BKN016 TX10/2512Z TN05/2503Z TEMPO 2504/2517 22008G13MPS 2900 -SHRA BKN005 BKN010CB BECMG 2520/2523 05003MPS</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="OJn-HS-FH3" secondAttribute="bottom" constant="10" id="0RU-f7-SRr"/>
                                         <constraint firstItem="kst-1l-Dm2" firstAttribute="leading" secondItem="lnz-tf-yHB" secondAttribute="leading" constant="10" id="5V8-tI-5tW"/>
                                         <constraint firstAttribute="trailing" secondItem="kst-1l-Dm2" secondAttribute="trailing" constant="15" id="9hN-C2-88t"/>
                                         <constraint firstItem="kst-1l-Dm2" firstAttribute="top" secondItem="lnz-tf-yHB" secondAttribute="top" constant="10" id="GPN-9Z-oc1"/>
-                                        <constraint firstItem="JR0-fK-QsW" firstAttribute="leading" secondItem="lnz-tf-yHB" secondAttribute="leading" constant="15" id="MKp-pr-opZ"/>
-                                        <constraint firstItem="JR0-fK-QsW" firstAttribute="top" secondItem="kst-1l-Dm2" secondAttribute="bottom" constant="5" id="bAE-NI-9a8"/>
-                                        <constraint firstAttribute="bottom" secondItem="JR0-fK-QsW" secondAttribute="bottom" constant="10" id="rI0-8E-A7z"/>
-                                        <constraint firstAttribute="trailing" secondItem="JR0-fK-QsW" secondAttribute="trailing" constant="15" id="y03-dU-xjI"/>
+                                        <constraint firstItem="OJn-HS-FH3" firstAttribute="leading" secondItem="lnz-tf-yHB" secondAttribute="leading" constant="15" id="Yg7-N7-XEh"/>
+                                        <constraint firstAttribute="trailing" secondItem="OJn-HS-FH3" secondAttribute="trailing" constant="15" id="j0C-mi-QAn"/>
+                                        <constraint firstItem="OJn-HS-FH3" firstAttribute="top" secondItem="kst-1l-Dm2" secondAttribute="bottom" constant="5" id="y47-ai-t0Z"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -139,7 +158,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylV-xm-xf5">
-                                    <rect key="frame" x="15" y="229" width="363" height="233"/>
+                                    <rect key="frame" x="15" y="206.33333333333337" width="363" height="233"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30m-4L-tiM">
                                             <rect key="frame" x="10" y="10" width="338" height="24"/>
@@ -306,7 +325,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-g9-oxQ">
-                                    <rect key="frame" x="15" y="477" width="363" height="305.33333333333326"/>
+                                    <rect key="frame" x="15" y="454.33333333333337" width="363" height="305.33333333333337"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport runways" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-o2-ZFz">
                                             <rect key="frame" x="10" y="10" width="142.66666666666666" height="24"/>
@@ -383,10 +402,15 @@
                 <outlet property="frequency" destination="Tv9-28-nn9" id="SNC-Tv-eST"/>
                 <outlet property="homeLink" destination="YKk-Sv-aed" id="v1l-Iy-R8O"/>
                 <outlet property="identifier" destination="Hig-JH-ATl" id="xA1-Wk-eC1"/>
+                <outlet property="metar" destination="q6e-Ra-6Ue" id="byL-0O-A8I"/>
+                <outlet property="metarActivityIndicator" destination="tQx-sS-bGp" id="b2c-2s-2Ya"/>
                 <outlet property="municipality" destination="P5m-S8-hNB" id="VsO-jy-LIM"/>
                 <outlet property="name" destination="uUH-Z8-wWM" id="3Q1-AG-AfT"/>
                 <outlet property="phoneNumber" destination="yLV-30-Bw2" id="Zyh-GK-16M"/>
+                <outlet property="runwaysBlock" destination="2gr-g9-oxQ" id="ZaP-40-ca1"/>
                 <outlet property="runwaysTableView" destination="zui-ac-buX" id="tya-dz-goC"/>
+                <outlet property="taf" destination="JR0-fK-QsW" id="ZRJ-az-lRl"/>
+                <outlet property="tafActivityIndicator" destination="qQP-TC-xpt" id="Emb-al-gr0"/>
                 <outlet property="type" destination="NnL-bC-fK2" id="4Iy-Zd-VNV"/>
                 <outlet property="typeImage" destination="Cth-E3-HRY" id="eLJ-LA-tPB"/>
                 <outlet property="wikipediaLink" destination="tD7-5Z-ipv" id="SQ8-fe-J1a"/>

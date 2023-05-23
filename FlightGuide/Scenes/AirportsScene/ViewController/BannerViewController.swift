@@ -89,7 +89,7 @@ final class BannerViewController: UIViewController {
             .drive(bannerView.phoneNumber.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.outputs.runways
+        viewModel.outputs.runwayModels
             .bind(to: bannerView.runwaysTableView.rx.items(cellIdentifier: RunwayCell.identifier,
                                                            cellType: RunwayCell.self)) { _, model, cell in
                 cell.viewModel = model
@@ -98,6 +98,30 @@ final class BannerViewController: UIViewController {
         
         viewModel.outputs.websiteURL
             .subscribe(onNext: { UIApplication.shared.open($0) })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.runwaysBlockHidden.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.runwaysBlock.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.invalidateWeatherTexts.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.metar.rx.text, bannerView.taf.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.metarShouldShowActivity.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.metarActivityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.tafShouldShowActivity.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.tafActivityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.metar.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.metar.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.taf.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.taf.rx.text)
             .disposed(by: disposeBag)
     }
     

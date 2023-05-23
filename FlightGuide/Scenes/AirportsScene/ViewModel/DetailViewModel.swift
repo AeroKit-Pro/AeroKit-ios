@@ -29,8 +29,14 @@ protocol DetailViewModelOutputs {
     var wikipedia: Observable<NSAttributedString>! { get }
     var homeLink: Observable<NSAttributedString>! { get }
     var phoneNumber: Observable<String>! { get }
-    var runways: Observable<RunwayCellViewModels>! { get }
+    var runwayModels: Observable<RunwayCellViewModels>! { get }
     var websiteURL: Observable<URL>! { get }
+    var metar: Observable<String>! { get }
+    var taf: Observable<String>! { get }
+    var invalidateWeatherTexts: Observable<String>! { get }
+    var runwaysBlockHidden: Observable<Bool>! { get }
+    var metarShouldShowActivity: Observable<Bool>! { get }
+    var tafShouldShowActivity: Observable<Bool>! { get }
 }
 
 protocol DetailViewModelType {
@@ -52,8 +58,14 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     var wikipedia: Observable<NSAttributedString>!
     var homeLink: Observable<NSAttributedString>!
     var phoneNumber: Observable<String>!
-    var runways: Observable<RunwayCellViewModels>!
+    var runwayModels: Observable<RunwayCellViewModels>!
     var websiteURL: Observable<URL>!
+    var metar: Observable<String>!
+    var taf: Observable<String>!
+    var invalidateWeatherTexts: Observable<String>!
+    var runwaysBlockHidden: Observable<Bool>!
+    var metarShouldShowActivity: Observable<Bool>!
+    var tafShouldShowActivity: Observable<Bool>!
     
     private let pivotInfo = PublishRelay<PivotModel>()
     private let homeLinkLabelTapped = PublishRelay<Empty>()
@@ -68,9 +80,14 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         self.frequency = pivotInfo.map { $0.frequencies?.first?.frequencyMhz?.toString() ?? "no data" }
         self.phoneNumber = Observable.just("no data") // dummy string for now
         
-        self.runways = pivotInfo
+        let runways = pivotInfo
             .map { $0.runways ?? [] }
+            .share()
+        
+        self.runwayModels = runways
             .map { $0.map { RunwayCellViewModel(with: $0) } }
+        self.runwaysBlockHidden = runways
+            .map { $0.isEmpty }
         
         let homeLinkURL = pivotInfo.map { URL(optionalString: $0.airport.homeLink) }.share()
         let wikipediaLinkURL = pivotInfo.map { URL(optionalString: $0.airport.wikipediaLink) }.share()
@@ -87,6 +104,33 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
             .merge(homeLinkLabelTapped.withLatestFrom(homeLinkURL.skipNil()),
                    wikipediaLinkLabelTapped.withLatestFrom(wikipediaLinkURL.skipNil()))
         self.websiteURL = linkTapEvent
+        
+        let icao = pivotInfo.map { $0.airport.ident ?? ""}.share() // TODO: there is almost no nils, but making api call with empty values is not good
+        self.invalidateWeatherTexts = icao.map { _ in "" }
+        
+        let metarReponse = icao
+            .flatMap { [unowned self] in
+                apiClient.getWeather(type: .metar, icao: $0)
+                    .map { $0.data.first }
+                    .catchAndReturn("Could not load the data")
+            }
+            .share()
+        let tafReponse = icao
+            .flatMap { [unowned self] in
+                apiClient.getWeather(type: .taf, icao: $0)
+                    .map { $0.data.first }
+                    .catchAndReturn("Could not load the data")
+            }
+            .share()
+        let metarIsLoading = Observable
+            .merge(icao.map { _ in true }, metarReponse.map { _ in false })
+        let tafIsLoading = Observable
+            .merge(icao.map { _ in true }, tafReponse.map { _ in false })
+            
+        self.metarShouldShowActivity = metarIsLoading
+        self.tafShouldShowActivity = tafIsLoading
+        self.metar = metarReponse.map { $0 ?? "no data" }
+        self.taf = tafReponse.map { $0 ?? "no data" }
     }
     
     func refresh(withPivotModel model: PivotModel) {
