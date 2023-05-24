@@ -7,8 +7,8 @@
 
 import SQLite
 /// 'DatabaseFetcher' is a wrapper for 'DatabaseManager' that fetches data from local database. An instance of this class provides the needed API to retrieve records from database with filter parameters.
-final class DatabaseFetcher {
-    
+final class DatabaseInteractor {
+        
     private let databaseManager = DatabaseManager()
     private var database: Connection? {
         databaseManager.database
@@ -62,8 +62,10 @@ final class DatabaseFetcher {
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality,
                     databaseManager.airportFields.surfaces,
-                    databaseManager.airportFields.id)
+                    databaseManager.airportFields.id,
+                    databaseManager.airportFields.isFavorite)
             .group(databaseManager.airportFields.id)
+            .order(databaseManager.airportFields.isFavorite.desc)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
@@ -87,6 +89,18 @@ final class DatabaseFetcher {
             .filter(databaseManager.frequencyFields.airportID == id)
         
         return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    // MARK: in case if there are more updatable rows, a more generic function will be implemented
+    /// Updates "isFavorite" column in "Airports table".
+    /// - Parameters: value: Bool - new value, id: Int - row id
+    /// - Returns: true if succes, false if updating failed
+    func markAirportAsFavorite(_ value: Bool, id rowId: Int) -> Bool {
+        let query = databaseManager.airports
+            .filter(databaseManager.airportFields.id == rowId)
+            .update(databaseManager.airportFields.isFavorite <- value)
+        do { try database?.run(query) }
+        catch { print("row by id \(rowId) value update failed"); return false }
+        return true
     }
         
 }

@@ -7,7 +7,7 @@
 
 import SQLite
 
-struct CityFields {
+struct CityColumns {
     let municipality = Expression<String?>("municipality")
     let closedAmount = Expression<Int?>("closed_amount")
     let heliportAmount = Expression<Int?>("heliport_amount")

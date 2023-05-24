@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         endDate = Date()
         guard let startDate, let endDate else { return }
         let components = calendar.dateComponents([.minute, .second], from: startDate, to: endDate)
-        
+        print(components)
     }
 
 

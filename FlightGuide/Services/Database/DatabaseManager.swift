@@ -56,10 +56,10 @@ final class DatabaseManager {
             .join(.leftOuter, frequencies, on: frequencyFields.airportID == airportFields.id)
     }()
     
-    let airportFields = AirportFields()
-    let runwayFields = RunwayFields()
-    let frequencyFields = FrequencyFields()
-    let cityFields = CityFields()
+    let airportFields = AirportColumns()
+    let runwayFields = RunwayColumns()
+    let frequencyFields = FrequencyColumns()
+    let cityFields = CityColumns()
     
     init() {
         connect()
@@ -81,12 +81,14 @@ final class DatabaseManager {
     
     private func setupIndexes() {
         let queryNameIndex = airports.createIndex(airportFields.name, ifNotExists: true)
+        let queryIsFavoriteIndex = airports.createIndex(airportFields.isFavorite, ifNotExists: true)
         let queryLengthFtIndex = runways.createIndex(runwayFields.lengthFt, ifNotExists: true)
         
         guard let database else { return }
         do {
             try database.run(queryNameIndex)
             try database.run(queryLengthFtIndex)
+            try database.run(queryIsFavoriteIndex)
         }
         catch { print("error while creating index: \(error)") }
     }

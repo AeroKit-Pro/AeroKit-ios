@@ -52,6 +52,20 @@ final class BannerViewController: UIViewController {
         bindViewModelOutputs()
     }
     
+    private func bindViewModelInputs() {
+        bannerView.homeLinkGestureRecognizer.rx.event.asEmpty()
+            .subscribe(onNext: viewModel.inputs.didTapOnHomeLinkLabel)
+            .disposed(by: disposeBag)
+        
+        bannerView.wikipediaLinkGestureRecognizer.rx.event.asEmpty()
+            .subscribe(onNext: viewModel.inputs.didTapOnWikipediaLinkLabel)
+            .disposed(by: disposeBag)
+        
+        bannerView.isFavoriteButton.rx.isInSelectedState
+            .subscribe(onNext: viewModel.inputs.didTapAddToFavoritesButton)
+            .disposed(by: disposeBag)
+    }
+    
     private func bindViewModelOutputs() {
         viewModel.outputs.name.asDriver(onErrorDriveWith: .empty())
             .drive(bannerView.name.rx.text)
@@ -123,15 +137,9 @@ final class BannerViewController: UIViewController {
         viewModel.outputs.taf.asDriver(onErrorDriveWith: .empty())
             .drive(bannerView.taf.rx.text)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindViewModelInputs() {
-        bannerView.homeLinkGestureRecognizer.rx.event.asEmpty()
-            .subscribe(onNext: viewModel.inputs.didTapOnHomeLinkLabel)
-            .disposed(by: disposeBag)
         
-        bannerView.wikipediaLinkGestureRecognizer.rx.event.asEmpty()
-            .subscribe(onNext: viewModel.inputs.didTapOnWikipediaLinkLabel)
+        viewModel.outputs.isFavorite.asDriver(onErrorDriveWith: .empty())
+            .drive(bannerView.isFavoriteButton.rx.isInSelectedState)
             .disposed(by: disposeBag)
     }
     

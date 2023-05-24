@@ -7,7 +7,7 @@
 
 import SQLite
 
-struct AirportFields {
+struct AirportColumns {
     let id = Expression<Int>("id")
     let ident = Expression<String?>("ident")
     let type = Expression<String?>("type")
@@ -25,4 +25,5 @@ struct AirportFields {
     let wikipediaLink = Expression<String?>("wikipedia_link")
     let surfaces = Expression<String?>("surfaces")
     let keywords = Expression<String?>("keywords")
+    let isFavorite = Expression<Bool>("is_favorite")
 }

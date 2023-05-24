@@ -13,6 +13,7 @@ protocol DetailViewModelInputs {
     func refresh(withPivotModel model: PivotModel)
     func didTapOnHomeLinkLabel()
     func didTapOnWikipediaLinkLabel()
+    func didTapAddToFavoritesButton(_ newValue: Bool)
 }
 
 protocol DetailViewModelOutputs {
@@ -37,6 +38,7 @@ protocol DetailViewModelOutputs {
     var runwaysBlockHidden: Observable<Bool>! { get }
     var metarShouldShowActivity: Observable<Bool>! { get }
     var tafShouldShowActivity: Observable<Bool>! { get }
+    var isFavorite: Observable<Bool>! { get }
 }
 
 protocol DetailViewModelType {
@@ -46,6 +48,7 @@ protocol DetailViewModelType {
 
 final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, DetailViewModelType {
     
+    private let databaseInteractor = DatabaseInteractor()
     private let apiClient = APIClient()
     
     var image: Observable<UIImage>!
@@ -66,10 +69,12 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     var runwaysBlockHidden: Observable<Bool>!
     var metarShouldShowActivity: Observable<Bool>!
     var tafShouldShowActivity: Observable<Bool>!
+    var isFavorite: Observable<Bool>!
     
     private let pivotInfo = PublishRelay<PivotModel>()
     private let homeLinkLabelTapped = PublishRelay<Empty>()
     private let wikipediaLinkLabelTapped = PublishRelay<Empty>()
+    private let markAsFavorite = PublishRelay<Bool>()
     
     init() {
         self.name = pivotInfo.map { $0.airport.name ?? "no data" }
@@ -79,6 +84,17 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         self.municipality = pivotInfo.map { $0.airport.municipality ?? "no data" }
         self.frequency = pivotInfo.map { $0.frequencies?.first?.frequencyMhz?.toString() ?? "no data" }
         self.phoneNumber = Observable.just("no data") // dummy string for now
+        
+        let databaseResponse = markAsFavorite
+            .withLatestFrom(pivotInfo) { ($0, $1.airport.id) }
+            .map { [unowned self] in databaseInteractor.markAirportAsFavorite($0.0, id: $0.1) }
+        let rowUpdateFailed = databaseResponse.filter { !$0 }
+        let fallbackValue = rowUpdateFailed
+            .withLatestFrom(pivotInfo.map { $0.airport.isFavorite }) { ($1) }
+            .compactMap { $0 }
+        
+        self.isFavorite = Observable.merge(fallbackValue,
+                                           pivotInfo.compactMap { $0.airport.isFavorite })
         
         let runways = pivotInfo
             .map { $0.runways ?? [] }
@@ -144,6 +160,11 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     func didTapOnWikipediaLinkLabel() {
         wikipediaLinkLabelTapped.accept(Empty())
     }
+    
+    func didTapAddToFavoritesButton(_ newValue: Bool) {
+        markAsFavorite.accept(newValue)
+    }
+
     
     var inputs: DetailViewModelInputs { self }
     var outputs: DetailViewModelOutputs { self }

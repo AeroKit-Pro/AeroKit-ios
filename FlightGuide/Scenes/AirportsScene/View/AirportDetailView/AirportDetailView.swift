@@ -25,15 +25,17 @@ final class AirportDetailView: UIView {
     @IBOutlet weak var metarActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tafActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var runwaysBlock: UIView!
+    @IBOutlet weak var isFavoriteButton: StateSelectableButton!
     
     let homeLinkGestureRecognizer = UITapGestureRecognizer()
     let wikipediaLinkGestureRecognizer = UITapGestureRecognizer()
-        
+            
     override func awakeFromNib() {
         super.awakeFromNib()
         setupAppearance()
         setupTableView()
         setupHyperlinkLabelsBehaviour()
+        setupFavoritesButton()
     }
     
     private func setupAppearance() {
@@ -60,6 +62,11 @@ final class AirportDetailView: UIView {
         wikipediaLink.addGestureRecognizer(wikipediaLinkGestureRecognizer)
         homeLink.isUserInteractionEnabled = true
         wikipediaLink.isUserInteractionEnabled = true
+    }
+    
+    private func setupFavoritesButton() {
+        isFavoriteButton.setSelectionStateImage(.bookmark_selected, for: .selected)
+        isFavoriteButton.setSelectionStateImage(.bookmark_deselected, for: .deselected)
     }
         
 }

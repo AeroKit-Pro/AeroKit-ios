@@ -7,7 +7,7 @@
 
 import SQLite
 
-struct FrequencyFields {
+struct FrequencyColumns {
     let id = Expression<Int>("frequency_id")
     let airportID = Expression<Int?>("id_airport")
     let type = Expression<String?>("frequency_type")

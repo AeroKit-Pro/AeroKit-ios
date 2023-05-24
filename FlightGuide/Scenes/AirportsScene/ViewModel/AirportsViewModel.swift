@@ -49,7 +49,7 @@ protocol AirportsViewModelType {
 
 final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
 
-    private let databaseFetcher = DatabaseFetcher()
+    private let databaseFetcher = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
     private let delegate: AirportsSceneDelegate?
     private let filterInputPassing: FilterInputPassing
@@ -130,7 +130,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         let selectedFrequencies = selectedItemDatabaseId
             .map { self.databaseFetcher.fetchFrequencies(by: $0) }
         
-        self.pivotModel = RxObservable.zip(selectedAirport, selectedRunways, selectedFrequencies) { ($0, $1, $2) }
+        self.pivotModel = RxObservable
+            .zip(selectedAirport, selectedRunways, selectedFrequencies) { ($0, $1, $2) }
             .map { PivotModel(airport: $0.0, runways: $0.1, frequencies: $0.2) }
         
         self.onItemSelection = selectedAirport.asEmpty()

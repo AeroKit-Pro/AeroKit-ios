@@ -60,6 +60,7 @@
 		4E3B3AC429D4553000971840 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3B3AC329D4553000971840 /* MapboxMaps */; };
 		4E3C047529F9355F00CB08EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C047429F9355F00CB08EB /* Database.swift */; };
 		4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E40A1722A14F48B00101D06 /* Coordinate.swift */; };
+		4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */; };
 		4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54DBC62A13DC5900CE8635 /* PivotModel.swift */; };
 		4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78D2A162C12009A681A /* FilterViewModel.swift */; };
 		4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78F2A162FD3009A681A /* FilterAssembly.swift */; };
@@ -90,7 +91,7 @@
 		4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111529FBEFAC009FA56C /* Airports.swift */; };
 		4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111729FBEFDB009FA56C /* Runways.swift */; };
 		4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111929FBF012009FA56C /* Frequencies.swift */; };
-		4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */; };
+		4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */; };
 		4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07B29D996EE0070195D /* UIColor.swift */; };
 		4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07D29D9979C0070195D /* UIImageView.swift */; };
 		4ECEC08029D998D40070195D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07F29D998D40070195D /* UIButton.swift */; };
@@ -155,6 +156,7 @@
 		4E3B3AAC29D43B4800971840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3C047429F9355F00CB08EB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4E40A1722A14F48B00101D06 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSelectableButton.swift; sourceTree = "<group>"; };
 		4E54DBC62A13DC5900CE8635 /* PivotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivotModel.swift; sourceTree = "<group>"; };
 		4E57C78D2A162C12009A681A /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4E57C78F2A162FD3009A681A /* FilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAssembly.swift; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		4ECD111529FBEFAC009FA56C /* Airports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		4ECD111729FBEFDB009FA56C /* Runways.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runways.swift; sourceTree = "<group>"; };
 		4ECD111929FBF012009FA56C /* Frequencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequencies.swift; sourceTree = "<group>"; };
-		4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFetcher.swift; sourceTree = "<group>"; };
+		4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInteractor.swift; sourceTree = "<group>"; };
 		4ECEC07B29D996EE0070195D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4ECEC07D29D9979C0070195D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		4ECEC07F29D998D40070195D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */,
 				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
+				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -537,7 +540,7 @@
 			children = (
 				4ECD111429FBEF99009FA56C /* Fields */,
 				4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */,
-				4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */,
+				4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -672,13 +675,14 @@
 				4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */,
 				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
+				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
 				11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */,
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
-				4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */,
+				4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
 				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,

@@ -31,4 +31,12 @@ extension UIImage {
     static var airport: UIImage? {
         UIImage(named: "airport")
     }
+    
+    static var bookmark_deselected: UIImage? {
+        UIImage(named: "bookmark_deselected")
+    }
+    
+    static var bookmark_selected: UIImage? {
+        UIImage(named: "bookmark_selected")
+    }
 }

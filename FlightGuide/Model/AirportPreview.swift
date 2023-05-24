@@ -11,4 +11,14 @@ struct AirportPreview: Decodable {
     let type: String?
     let municipality: String?
     let surfaces: String?
+    let isFavorite: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case type
+        case municipality
+        case surfaces
+        case isFavorite = "is_favorite"
+    }
 }
