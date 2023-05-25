@@ -65,7 +65,6 @@ final class DatabaseInteractor {
                     databaseManager.airportFields.id,
                     databaseManager.airportFields.isFavorite)
             .group(databaseManager.airportFields.id)
-            .order(databaseManager.airportFields.isFavorite.desc)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
@@ -87,6 +86,13 @@ final class DatabaseInteractor {
     func fetchFrequencies(by id: Int) -> [Frequency]? {
         let query = databaseManager.frequencies
             .filter(databaseManager.frequencyFields.airportID == id)
+        
+        return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    
+    func fetchFavorites() -> [AirportPreview]? {
+        let query = databaseManager.airports
+            .filter(databaseManager.airportFields.isFavorite)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }

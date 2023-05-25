@@ -48,8 +48,8 @@ protocol AirportsViewModelType {
 }
 
 final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
-
-    private let databaseFetcher = DatabaseInteractor()
+    
+    private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
     private let delegate: AirportsSceneDelegate?
     private let filterInputPassing: FilterInputPassing
@@ -79,7 +79,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     init(delegate: AirportsSceneDelegate?, filterInputPassing: FilterInputPassing) {
         self.delegate = delegate
         self.filterInputPassing = filterInputPassing
-        
+                
         let unwrappedSearchInput = searchInput
             .distinctUntilChanged()
             .skipNil()
@@ -88,11 +88,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         
         let filterSettings = filterInputPassing.filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
-        
+                
         let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
                                                           filterSettings) { ($0, $1) }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
-                databaseFetcher.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
+                databaseInteractor.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
         
         let numberOfActiveCriteria = filterSettings
@@ -121,14 +121,14 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .share()
         
         let selectedAirport = selectedItemDatabaseId
-            .compactMap { self.databaseFetcher.fetchAirport(by: $0)?.first }
+            .compactMap { self.databaseInteractor.fetchAirport(by: $0)?.first }
             .share()
         
         let selectedRunways = selectedItemDatabaseId
-            .map { self.databaseFetcher.fetchRunways(by: $0) }
+            .map { self.databaseInteractor.fetchRunways(by: $0) }
         
         let selectedFrequencies = selectedItemDatabaseId
-            .map { self.databaseFetcher.fetchFrequencies(by: $0) }
+            .map { self.databaseInteractor.fetchFrequencies(by: $0) }
         
         self.pivotModel = RxObservable
             .zip(selectedAirport, selectedRunways, selectedFrequencies) { ($0, $1, $2) }

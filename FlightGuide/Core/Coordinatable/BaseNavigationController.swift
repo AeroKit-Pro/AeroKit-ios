@@ -56,6 +56,13 @@ final class BaseNavigationController: UINavigationController {
     func removeNavigationBarShadow() {
         navigationBar.scrollEdgeAppearance?.shadowColor = .clear
     }
+    
+    func addNavigationBarPermanentShadow() {
+        navigationBar.layer.shadowColor = UIColor.black.cgColor
+        navigationBar.layer.shadowOpacity = 0.2
+        navigationBar.layer.shadowOffset = .zero
+        navigationBar.layer.shadowRadius = 2
+    }
 
     private func updateNavigationBarAppearance() {
         let backImage = UIImage(named: "navigationBar_backArrow")

@@ -78,7 +78,6 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         tabBarAppearance.configureWithOpaqueBackground()
         tabBarAppearance.backgroundColor = .white
         tabBarController.tabBar.standardAppearance = tabBarAppearance
-//        tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
     }
 
     func start() {
@@ -102,7 +101,7 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navigationController = BaseNavigationController()
         navigationController.tabBarItem = page.tabBarItem
-
+        
         let router = Router(rootController: navigationController)
 
         switch page {
@@ -112,7 +111,10 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             children.append(airportsCoordinator)
             airportsCoordinator.start()
         case .favourites:
-            break
+            let favoritesCoordinator = FavoritesCoordinator(router: router)
+            favoritesCoordinator.parent = self
+            children.append(favoritesCoordinator)
+            favoritesCoordinator.start()
         case .tools:
             break
         case .settings:

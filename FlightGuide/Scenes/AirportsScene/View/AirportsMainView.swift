@@ -50,6 +50,10 @@ final class AirportsMainView: UIView {
         setupTableView()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupMapView() {
         addSubview(mapView)
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
@@ -87,10 +91,6 @@ final class AirportsMainView: UIView {
                                    forCellReuseIdentifier: AirportCell.identifier)
         airportsTableView.dataSource = nil
         airportsTableView.separatorStyle = .none
-    }
-        
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }
