@@ -15,7 +15,8 @@ struct FavoritesAssembly: SceneAssembly {
     }
 
     func makeScene() -> UIViewController {
-        let viewModel = FavoritesViewModel(delegate: sceneOutput)
+        let viewModel = FavoritesViewModel(delegate: sceneOutput,
+                                           notificationsCenter: DIContainer.default.notificationService)
         let viewController = FavoritesViewController(viewModel: viewModel)
         return viewController
     }

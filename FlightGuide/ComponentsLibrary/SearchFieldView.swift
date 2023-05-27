@@ -23,7 +23,7 @@ final class SearchFieldView: UIView {
         showFiltersButton.rx.controlEvent(.touchUpInside)
     }
     
-    var textDidChange: ControlProperty<String?> {
+    var rxTextFieldText: ControlProperty<String?> {
         textField.rx.text
     }
     

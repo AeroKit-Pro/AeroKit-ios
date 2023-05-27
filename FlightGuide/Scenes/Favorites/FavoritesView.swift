@@ -31,6 +31,7 @@ final class FavoritesView: UIView {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview().inset(21)
         }
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: String(describing: AirportCell.self), bundle: nil),
                                    forCellReuseIdentifier: AirportCell.identifier)

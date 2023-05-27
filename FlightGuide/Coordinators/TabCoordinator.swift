@@ -54,6 +54,8 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         }
     }
 
+    private let notificationCenter = DIContainer.default.notificationService
+    private var notificationTokens: [NotificationToken] = []
     private let navigationController: UINavigationController
     let tabBarController: UITabBarController
     private(set) var children: [Coordinatable]
@@ -78,6 +80,8 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         tabBarAppearance.configureWithOpaqueBackground()
         tabBarAppearance.backgroundColor = .white
         tabBarController.tabBar.standardAppearance = tabBarAppearance
+        super.init()
+        subscribeOnNotifications()
     }
 
     func start() {
@@ -121,6 +125,16 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             break
         }
         return navigationController
+    }
+    
+    private func subscribeOnNotifications() {
+        notificationTokens.append(
+            notificationCenter.observe(
+                name: .didSelectFavouriteAirport
+            ) { [weak self] notification in
+                self?.selectPage(.airports)
+            }
+        )
     }
 
     func currentPage() -> TabBarPage? {

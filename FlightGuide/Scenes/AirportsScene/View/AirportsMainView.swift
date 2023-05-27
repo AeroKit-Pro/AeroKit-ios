@@ -21,11 +21,12 @@ protocol AirportsSceneViewType: UIView {
     var didTapFilterButton: ControlEvent<()> { get }
     var counterBadge: Reactive<CounterBadge> { get }
     var dismissSearchButton: Reactive<UIButton> { get }
-    var searchTextDidChange: ControlProperty<String?> { get }
+    var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
     func enterSearchingMode()
     func dismissSearchMode()
     func searchFieldCannotDismiss()
+    func searchFieldCanDismiss() 
     func ease(to coordinate: CLLocationCoordinate2D)
 }
 
@@ -112,8 +113,8 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.textFieldDidEndEditing
     }
     
-    var searchTextDidChange: ControlProperty<String?> {
-        searchField.textDidChange
+    var rxTextFieldText: ControlProperty<String?> {
+        searchField.rxTextFieldText
     }
     
     var rxTable: Reactive<UITableView> {
@@ -140,13 +141,16 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.showDismissButton()
     }
     
+    func searchFieldCanDismiss() {
+        searchField.showDismissButton()
+    }
+    
     func dismissSearchMode() {
         blankView.hide(withDuration: 0.2)
         airportsTableView.isHidden = true
         searchField.resignFocus()
         searchField.removeBorder(withDuration: 0.2)
         searchField.addShadow(withDuration: 0.2)
-        //searchField.showMagnifierImage()
     }
     
     func searchFieldCannotDismiss() {

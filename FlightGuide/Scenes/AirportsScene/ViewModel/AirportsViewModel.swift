@@ -40,6 +40,7 @@ protocol AirportsViewModelOutputs {
     var numberOfActiveFilters: RxObservable<String>! { get }
     var counterBadgeIsHidden: RxObservable<Bool>! { get }
     var dismissDetailView: RxObservable<Empty>! { get }
+    var searchFieldCanDismiss: RxObservable<Empty>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -53,6 +54,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let errorRouter = ErrorRouter()
     private let delegate: AirportsSceneDelegate?
     private let filterInputPassing: FilterInputPassing
+    private let notificationCenter: NotificationCenterModuleInterface
+    private var notificationTokens: [NotificationToken] = []
 
     var onSearchStart: RxObservable<Empty>!
     var onSearchEnd: RxObservable<Empty>!
@@ -65,20 +68,24 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var numberOfActiveFilters: RxObservable<String>!
     var counterBadgeIsHidden: RxObservable<Bool>!
     var dismissDetailView: RxObservable<Empty>!
+    var searchFieldCanDismiss: RxObservable<Empty>!
 
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
     private let searchingEnded = PublishRelay<Empty>()
     private let selectedItem = PublishRelay<IndexPath>()
     private let selectedItemPath = PublishRelay<IndexPath>()
-
+    private let favoriteAirportId = PublishRelay<Int>()
 
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }
 
-    init(delegate: AirportsSceneDelegate?, filterInputPassing: FilterInputPassing) {
+    init(delegate: AirportsSceneDelegate?,
+         filterInputPassing: FilterInputPassing,
+         notificationCenter: NotificationCenterModuleInterface) {
         self.delegate = delegate
         self.filterInputPassing = filterInputPassing
+        self.notificationCenter = notificationCenter
                 
         let unwrappedSearchInput = searchInput
             .distinctUntilChanged()
@@ -120,14 +127,17 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             }
             .share()
         
-        let selectedAirport = selectedItemDatabaseId
+        let selectedAirport = RxObservable
+            .merge(selectedItemDatabaseId, favoriteAirportId.asObservable())
             .compactMap { self.databaseInteractor.fetchAirport(by: $0)?.first }
             .share()
         
-        let selectedRunways = selectedItemDatabaseId
+        let selectedRunways = RxObservable
+            .merge(selectedItemDatabaseId, favoriteAirportId.asObservable())
             .map { self.databaseInteractor.fetchRunways(by: $0) }
         
-        let selectedFrequencies = selectedItemDatabaseId
+        let selectedFrequencies = RxObservable
+            .merge(selectedItemDatabaseId, favoriteAirportId.asObservable())
             .map { self.databaseInteractor.fetchFrequencies(by: $0) }
         
         self.pivotModel = RxObservable
@@ -147,6 +157,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                         
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
+        self.searchFieldCanDismiss = favoriteAirportId.asEmpty()
+        
+        subscribeOnNotifications()
+    }
+    
+    private func subscribeOnNotifications() {
+        notificationTokens.append(
+            notificationCenter.observe(
+                name: .didSelectFavouriteAirport
+            ) { [weak self] notification in
+                guard let self = self,
+                      let id = notification.object as? Int else {
+                    return
+                }
+                self.favoriteAirportId.accept(id)
+            }
+        )
     }
 }
     

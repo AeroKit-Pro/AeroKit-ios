@@ -30,14 +30,18 @@ final class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModelOutputs()
         bindViewModelInputs()
-        viewModel.inputs.viewDidLoad()
+        bindViewModelOutputs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.inputs.viewWillAppear()
     }
     
     private func bindViewModelInputs() {
-        favoritesView.rxTableView.modelSelected(AirportCellViewModel.self)
-            .subscribe(onNext: { print($0) })
+        favoritesView.rxTableView.itemSelected
+            .subscribe(onNext: viewModel.inputs.didSelectItem(at:))
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
@@ -47,13 +51,13 @@ final class FavoritesViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
-        
     }
     
     private func setupNavigationTitle() {
         let titleLabel = UILabel()
         titleLabel.text = "Favourites"
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        titleLabel.textColor = .black
         titleLabel.textAlignment = .left
 
         let spacerView = UIView()
@@ -65,8 +69,6 @@ final class FavoritesViewController: UIViewController {
         stackView.axis = .horizontal
 
         navigationItem.titleView = stackView
-        
-        
     }
     
     

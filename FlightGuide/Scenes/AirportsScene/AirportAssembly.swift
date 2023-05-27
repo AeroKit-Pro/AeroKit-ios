@@ -17,7 +17,9 @@ struct AirportAssembly: SceneAssembly {
     }
 
     func makeScene() -> UIViewController {
-        let viewModel = AirportsViewModel(delegate: sceneOutput, filterInputPassing: filterInputPassing)
+        let viewModel = AirportsViewModel(delegate: sceneOutput,
+                                          filterInputPassing: filterInputPassing,
+                                          notificationCenter: DIContainer.default.notificationService)
         let viewController = AirportsViewController(viewModel: viewModel)
         return viewController
     }

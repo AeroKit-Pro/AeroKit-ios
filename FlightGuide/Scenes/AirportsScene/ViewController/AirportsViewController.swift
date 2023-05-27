@@ -49,7 +49,7 @@ final class AirportsViewController: UIViewController {
             .subscribe(onNext: viewModel.inputs.didEndSearching)
             .disposed(by: disposeBag)
         
-        airportsMainView.searchTextDidChange
+        airportsMainView.rxTextFieldText
             .subscribe(onNext: viewModel.inputs.searchInputDidChange(text:))
             .disposed(by: disposeBag)
         
@@ -70,6 +70,10 @@ final class AirportsViewController: UIViewController {
         
         viewModel.outputs.onSearchEnd
             .subscribe(onNext: airportsMainView.dismissSearchMode)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.searchFieldCanDismiss
+            .subscribe(onNext: airportsMainView.searchFieldCanDismiss)
             .disposed(by: disposeBag)
         
         viewModel.outputs.dismissDetailView
