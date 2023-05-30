@@ -36,22 +36,7 @@ final class DatabaseInteractor {
         // TODO: Separate filtered query construction
         var query = joinedTables
         if let filters {
-            if let length = filters.minRunwayLength {
-                query = query
-                    .filter(databaseManager.runwayFields.lengthFt >= length)
-            }
-            if filters.airportTypes.notEmpty {
-                query = query
-                    .filter(filters.airportTypes.contains(databaseManager.airportFields.type))
-            }
-            if filters.runwaySurfaces.notEmpty {
-                query = query
-                    .filter(filters.runwaySurfaces.contains(databaseManager.runwayFields.surface))
-            }
-            if filters.isEnabledRunwayLight {
-                query = query
-                    .filter(databaseManager.runwayFields.lighted == filters.isEnabledRunwayLight)
-            }
+            applyFilterSettingsToQuery(query: &query, filters: filters)
         }
         
         query = query
@@ -66,6 +51,23 @@ final class DatabaseInteractor {
                     databaseManager.airportFields.id,
                     databaseManager.airportFields.isFavorite)
             .group(databaseManager.airportFields.id)
+        
+        return try? database?.prepare(query).map { return try $0.decode() }
+    }
+    
+    func fetchAirportsByCity<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
+                                               input: String,
+                                               filters: AirportFilterSettings?) -> [RequestedType]? {
+        var query = joinedTables
+        if let filters {
+            applyFilterSettingsToQuery(query: &query, filters: filters)
+        }
+        
+        query = query
+            .filter(databaseManager.airportFields.municipality.like(SearchPattern.startsWith(input)))
+            .select(databaseManager.airportFields.id,
+                    databaseManager.airportFields.type,
+                    databaseManager.airportFields.municipality)
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
@@ -109,5 +111,24 @@ final class DatabaseInteractor {
         catch { print("row by id \(rowId) value update failed"); return false }
         return true
     }
-        
+    
+    private func applyFilterSettingsToQuery(query: inout Table, filters: AirportFilterSettings) {
+        if let length = filters.minRunwayLength {
+            query = query
+                .filter(databaseManager.runwayFields.lengthFt >= length)
+        }
+        if filters.airportTypes.notEmpty {
+            query = query
+                .filter(filters.airportTypes.contains(databaseManager.airportFields.type))
+        }
+        if filters.runwaySurfaces.notEmpty {
+            query = query
+                .filter(filters.runwaySurfaces.contains(databaseManager.runwayFields.surface))
+        }
+        if filters.isEnabledRunwayLight {
+            query = query
+                .filter(databaseManager.runwayFields.lighted == filters.isEnabledRunwayLight)
+        }
+    }
+    
 }

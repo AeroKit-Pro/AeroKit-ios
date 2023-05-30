@@ -46,6 +46,8 @@
 		4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */; };
 		4E0A8F602A1867260087B2D4 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */; };
 		4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17314A2A1BD7600094A5E2 /* Weather.swift */; };
+		4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E257A7B2A25CED900AC5FF3 /* CityCell.swift */; };
+		4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E257A7C2A25CED900AC5FF3 /* CityCell.xib */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
 		4E3019BD29EAE38200852427 /* Runway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BC29EAE38200852427 /* Runway.swift */; };
 		4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BE29EAE38B00852427 /* Frequency.swift */; };
@@ -64,6 +66,7 @@
 		4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54DBC62A13DC5900CE8635 /* PivotModel.swift */; };
 		4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78D2A162C12009A681A /* FilterViewModel.swift */; };
 		4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78F2A162FD3009A681A /* FilterAssembly.swift */; };
+		4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */; };
 		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
 		4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */; };
 		4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6157282A1471AF008BAD4B /* Numeric.swift */; };
@@ -153,6 +156,8 @@
 		4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
 		4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
 		4E17314A2A1BD7600094A5E2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		4E257A7B2A25CED900AC5FF3 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		4E257A7C2A25CED900AC5FF3 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E3019BC29EAE38200852427 /* Runway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runway.swift; sourceTree = "<group>"; };
 		4E3019BE29EAE38B00852427 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -169,6 +174,7 @@
 		4E54DBC62A13DC5900CE8635 /* PivotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivotModel.swift; sourceTree = "<group>"; };
 		4E57C78D2A162C12009A681A /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4E57C78F2A162FD3009A681A /* FilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAssembly.swift; sourceTree = "<group>"; };
+		4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportByCity.swift; sourceTree = "<group>"; };
 		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
 		4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
 		4E6157282A1471AF008BAD4B /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -493,6 +499,8 @@
 			children = (
 				4EEEECF229DE22AC00769E48 /* AirportCell.swift */,
 				4EEEECF329DE22AC00769E48 /* AirportCell.xib */,
+				4E257A7B2A25CED900AC5FF3 /* CityCell.swift */,
+				4E257A7C2A25CED900AC5FF3 /* CityCell.xib */,
 			);
 			path = ResultCell;
 			sourceTree = "<group>";
@@ -520,6 +528,7 @@
 				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
 				4E54DBC62A13DC5900CE8635 /* PivotModel.swift */,
 				4E17314A2A1BD7600094A5E2 /* Weather.swift */,
+				4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -685,6 +694,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */,
+				4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */,
 				4E3B3AAB29D43B4800971840 /* LaunchScreen.storyboard in Resources */,
 				4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */,
 				4E3B3AA829D43B4800971840 /* Assets.xcassets in Resources */,
@@ -739,8 +749,10 @@
 				11EC9B492A13FFAA001EB56D /* SplashViewModel.swift in Sources */,
 				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
 				4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */,
+				4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */,
 				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
+				4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */,
 				4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */,
 				11EC9B382A13F20C001EB56D /* Router.swift in Sources */,
 				4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */,

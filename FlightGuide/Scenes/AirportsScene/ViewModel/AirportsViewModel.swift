@@ -49,14 +49,14 @@ protocol AirportsViewModelType {
 }
 
 final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
-    
+    //MARK: - Services
     private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
     private let delegate: AirportsSceneDelegate?
     private let filterInputPassing: FilterInputPassing
     private let notificationCenter: NotificationCenterModuleInterface
     private var notificationTokens: [NotificationToken] = []
-
+    // MARK: - AirportsViewModelOutputs
     var onSearchStart: RxObservable<Empty>!
     var onSearchEnd: RxObservable<Empty>!
     var searchOutput: RxObservable<CellViewModels>!
@@ -69,24 +69,24 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var counterBadgeIsHidden: RxObservable<Bool>!
     var dismissDetailView: RxObservable<Empty>!
     var searchFieldCanDismiss: RxObservable<Empty>!
-
+    //MARK: - Values
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
     private let searchingEnded = PublishRelay<Empty>()
     private let selectedItem = PublishRelay<IndexPath>()
     private let selectedItemPath = PublishRelay<IndexPath>()
     private let favoriteAirportId = PublishRelay<Int>()
-
+    
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }
-
+    
     init(delegate: AirportsSceneDelegate?,
          filterInputPassing: FilterInputPassing,
          notificationCenter: NotificationCenterModuleInterface) {
         self.delegate = delegate
         self.filterInputPassing = filterInputPassing
         self.notificationCenter = notificationCenter
-                
+        
         let unwrappedSearchInput = searchInput
             .distinctUntilChanged()
             .skipNil()
@@ -113,14 +113,14 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         self.counterBadgeIsHidden = numberOfActiveCriteria
             .map { $0 <= 0 }
             .startWith(true)
-                
+        
         let unwrappedFilteredAirports = filteredAirports
             .backgroundCompactMap(qos: .userInitiated) { $0 }
             .share()
         
         self.searchOutput = unwrappedFilteredAirports
             .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
-                        
+        
         let selectedItemDatabaseId = selectedItemPath.withLatestFrom(unwrappedFilteredAirports) { ($0, $1) }
             .map { indexPath, airports in
                 airports[indexPath.row].id
@@ -154,7 +154,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         self.airportAnnotation = airportCoordinate
             .map { PointAnnotation(coordinate: $0) }
             .map { [$0] }
-                        
+        
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
         self.searchFieldCanDismiss = favoriteAirportId.asEmpty()
@@ -176,7 +176,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         )
     }
 }
-    
+
 // MARK: - AirportsViewModelInputs
 extension AirportsViewModel: AirportsViewModelInputs {
     func searchInputDidChange(text: String?) {
@@ -186,11 +186,11 @@ extension AirportsViewModel: AirportsViewModelInputs {
     func didBeginSearching() {
         searchingBegan.accept(Empty())
     }
-
+    
     func didEndSearching() {
         searchingEnded.accept(Empty())
     }
-
+    
     func didSelectItem(at indexPath: IndexPath) {
         selectedItemPath.accept(indexPath)
     }
