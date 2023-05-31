@@ -7,17 +7,42 @@
 
 import UIKit
 
-class CityCell: UITableViewCell {
+final class CityCell: UITableViewCell {
+    
+    static let identifier = String(describing: CityCell.self)
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var airportTypesStackView: UIStackView!
+    @IBOutlet weak var containerView: UIView!
+    
+    var viewModel: CityCellViewModel? {
+        didSet {
+            name.text = viewModel?.name
+            viewModel?.typeCountStrings
+                .forEach { airportTypesStackView
+                .addArrangedSubview(UILabel(text: $0, font: .systemFont(ofSize: 12), textColor: .black)) }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        selected ? onSelection() : onDeselection()
+    }
+    
+    private func onSelection() {
+        containerView.alpha = 0.8
+    }
+    
+    private func onDeselection() {
+        containerView.alpha = 1
+    }
+    
+    override func prepareForReuse() {
+        airportTypesStackView.removeArrangedSubviews()
     }
     
 }

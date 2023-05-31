@@ -65,6 +65,7 @@ final class DatabaseInteractor {
         
         query = query
             .filter(databaseManager.airportFields.municipality.like(SearchPattern.startsWith(input)))
+            .group(databaseManager.airportFields.id)
             .select(databaseManager.airportFields.id,
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality)

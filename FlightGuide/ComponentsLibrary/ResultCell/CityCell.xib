@@ -49,6 +49,11 @@
                             <constraint firstItem="gjf-ei-ixX" firstAttribute="leading" secondItem="ya9-py-Pxe" secondAttribute="leading" constant="12" id="hx2-ey-blF"/>
                             <constraint firstItem="STr-we-Xvg" firstAttribute="leading" secondItem="gjf-ei-ixX" secondAttribute="trailing" constant="10" id="u8c-nN-KgO"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,13 +66,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="airportTypesStackView" destination="5jJ-JF-k2j" id="lKr-9i-KTe"/>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="BBB-dE-DW4"/>
+                <outlet property="name" destination="STr-we-Xvg" id="zpJ-UY-KkH"/>
+            </connections>
             <point key="canvasLocation" x="100.76335877862596" y="53.87323943661972"/>
         </tableViewCell>
-        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="CKD-Wz-xo5">
-            <rect key="frame" x="0.0" y="0.0" width="99" height="85"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <point key="canvasLocation" x="306" y="-92"/>
-        </imageView>
     </objects>
     <resources>
         <image name="city" width="30.333333969116211" height="30.333333969116211"/>

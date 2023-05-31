@@ -90,6 +90,8 @@ final class AirportsMainView: UIView {
         airportsTableView.isHidden = true
         airportsTableView.register(UINib(nibName: String(describing: AirportCell.self), bundle: nil),
                                    forCellReuseIdentifier: AirportCell.identifier)
+        airportsTableView.register(UINib(nibName: String(describing: CityCell.self), bundle: nil),
+                                   forCellReuseIdentifier: CityCell.identifier)
         airportsTableView.dataSource = nil
         airportsTableView.separatorStyle = .none
     }

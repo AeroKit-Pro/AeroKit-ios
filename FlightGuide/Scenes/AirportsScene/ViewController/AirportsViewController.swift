@@ -7,12 +7,14 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class AirportsViewController: UIViewController {
     
     private let airportsMainView: AirportsSceneViewType = AirportsMainView()
     private let viewModel: AirportsViewModelType
     private let bannerViewController = BannerViewController()
+    private let dataSource = SearchTableViewDataSource()
     private let disposeBag = DisposeBag()
     
     init(viewModel: AirportsViewModel) {
@@ -82,10 +84,7 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.searchOutput
-            .bind(to: airportsMainView.rxTable.items(cellIdentifier: AirportCell.identifier,
-                                                     cellType: AirportCell.self)) { _, model, cell in
-                cell.viewModel = model
-            }
+            .bind(to: airportsMainView.rxTable.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         viewModel.outputs.pivotModel
