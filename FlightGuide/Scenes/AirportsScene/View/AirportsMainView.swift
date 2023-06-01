@@ -33,7 +33,7 @@ protocol AirportsSceneViewType: UIView {
 final class AirportsMainView: UIView {
     
     private let mapView: MapView
-    private let searchField = SearchFieldView(placeholder: "Search airport or city")
+    private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
     

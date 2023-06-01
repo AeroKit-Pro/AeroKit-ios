@@ -34,6 +34,7 @@ final class AirportsViewController: UIViewController {
         super.viewDidLoad()
         bindViewModelInputs()
         bindViewModelOutputs()
+        airportsMainView.rxTable.setDelegate(self).disposed(by: disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,4 +114,16 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+}
+// traditional delegate methods are mainly used to manage table view appearance
+extension AirportsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        // MARK: textLabel of UITableViewHeaderFooterView will be deprecated in next iOS versions
+        headerView.textLabel?.textColor = .flg_primary_dark
+        headerView.contentView.backgroundColor = .white
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
 }

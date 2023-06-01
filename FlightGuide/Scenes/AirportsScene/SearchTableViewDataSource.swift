@@ -61,7 +61,6 @@ final class SearchTableViewDataSource: RxTableViewSectionedReloadDataSource<Sect
             let section = dataSource[index]
             return section.title
         }
-        
     }
     
     private static var cellConfig: TableViewSectionedDataSource<SectionedTableModel>.ConfigureCell {
