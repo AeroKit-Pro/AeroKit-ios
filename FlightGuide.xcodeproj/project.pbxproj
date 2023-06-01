@@ -15,6 +15,8 @@
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
 		113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */; };
+		118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */; };
+		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
 		11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */; };
 		11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */; };
 		11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */; };
@@ -26,6 +28,12 @@
 		11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4772A03E973001DDC46 /* AirportsViewController.swift */; };
 		11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */; };
 		11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */; };
+		11D8D8432A29485D001EE665 /* ToolsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */; };
+		11D8D8462A2948A4001EE665 /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8452A2948A4001EE665 /* ToolsViewController.swift */; };
+		11D8D8482A2948B0001EE665 /* ToolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */; };
+		11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */; };
+		11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84B2A294934001EE665 /* ToolsContract.swift */; };
+		11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84D2A294E79001EE665 /* ToolsView.swift */; };
 		11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B332A13F1D3001EB56D /* Coordinatable.swift */; };
 		11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */; };
 		11EC9B382A13F20C001EB56D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B372A13F20C001EB56D /* Router.swift */; };
@@ -97,6 +105,8 @@
 		1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwaysLengthView.swift; sourceTree = "<group>"; };
 		1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwayLightView.swift; sourceTree = "<group>"; };
 		113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterSelectionView.swift; sourceTree = "<group>"; };
+		118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
+		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 		11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportCellViewModel.swift; sourceTree = "<group>"; };
 		11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +118,12 @@
 		11D4F4772A03E973001DDC46 /* AirportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
 		11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportFilterViewController.swift; sourceTree = "<group>"; };
 		11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFilterView.swift; sourceTree = "<group>"; };
+		11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsCoordinator.swift; sourceTree = "<group>"; };
+		11D8D8452A2948A4001EE665 /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
+		11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewModel.swift; sourceTree = "<group>"; };
+		11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsAssembly.swift; sourceTree = "<group>"; };
+		11D8D84B2A294934001EE665 /* ToolsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsContract.swift; sourceTree = "<group>"; };
+		11D8D84D2A294E79001EE665 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		11EC9B332A13F1D3001EB56D /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B372A13F20C001EB56D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -194,9 +210,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		118BEA342A2C9CC500B056C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11A366992A2F8EEE00D482EB /* PDFReader */ = {
+			isa = PBXGroup;
+			children = (
+				11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */,
+			);
+			path = PDFReader;
+			sourceTree = "<group>";
+		};
 		11D4F4632A03E8FC001DDC46 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				11A366992A2F8EEE00D482EB /* PDFReader */,
+				11D8D8442A294894001EE665 /* Tools */,
 				11EC9B422A13FFAA001EB56D /* Splash */,
 				11D4F46A2A03E973001DDC46 /* AirportsScene */,
 				11D4F4642A03E8FC001DDC46 /* FilterScene */,
@@ -263,6 +297,19 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		11D8D8442A294894001EE665 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				118BEA342A2C9CC500B056C6 /* Views */,
+				11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */,
+				11D8D8452A2948A4001EE665 /* ToolsViewController.swift */,
+				11D8D84B2A294934001EE665 /* ToolsContract.swift */,
+				11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */,
+				11D8D84D2A294E79001EE665 /* ToolsView.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		11EC9B312A13F1C3001EB56D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +337,7 @@
 				11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */,
 				11EC9B502A140200001EB56D /* SignUpCoordinator.swift */,
 				11EC9B522A140665001EB56D /* AirportsCoordinator.swift */,
+				11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -622,6 +670,7 @@
 				4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */,
 				4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */,
 				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
+				11D8D8462A2948A4001EE665 /* ToolsViewController.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
@@ -637,6 +686,7 @@
 				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
+				11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */,
 				11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */,
@@ -670,14 +720,20 @@
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
+				11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */,
+				11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */,
+				11D8D8432A29485D001EE665 /* ToolsCoordinator.swift in Sources */,
 				4E3C047529F9355F00CB08EB /* Database.swift in Sources */,
+				11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */,
 				11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */,
 				11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */,
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
 				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
+				11D8D8482A2948B0001EE665 /* ToolsViewModel.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
 				4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */,
+				118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */,
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
 				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,
