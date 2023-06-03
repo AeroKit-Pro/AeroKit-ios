@@ -93,32 +93,31 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         let unwrappedSearchInput = searchInput
             .distinctUntilChanged()
             .skipNil()
-            .filter { $0.count > 1 }
+            .filter { $0.count > 1 || $0.isEmpty }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .startWith("")
         // TODO: replayed multiple times
         let filterSettings = filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
-                
+            .startWith(AirportFilterSettings.empty)
+
         let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
                                                           filterSettings) { ($0, $1) }
-            .filter { $0.1?.airportFilterItem == .all || $0.1?.airportFilterItem == .airports }
+            .filter { $0.1.airportFilterItem != .cities  }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
                 databaseInteractor.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
-            .startWith([])
         
         let airportsByCity = RxObservable
             .combineLatest(unwrappedSearchInput, filterSettings) { ($0, $1) }
-            .filter { $0.1?.airportFilterItem == .all || $0.1?.airportFilterItem == .cities }
+            .filter { $0.1.airportFilterItem != .airports  }
             .backgroundCompactMap(qos: .userInitiated) { [unowned self] in
                 databaseInteractor.fetchAirportsByCity(AirportByCity.self, input: $0.0, filters: $0.1)
             }
             .map { Dictionary(grouping: $0, by: { $0.municipality }) }
             .map { $0.sorted { $0.value.count > $1.value.count } }
-            .startWith([])
 
         let numberOfActiveCriteria = filterSettings
-            .skipNil()
             .map { $0.numberOfActiveCriteria }
             .share()
         
@@ -153,15 +152,13 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         // TODO: emits extra values. The search flow should be reviewed
         self.searchOutput = RxObservable.combineLatest(citiesSection, airportsSection, filterSettings)
             .map { cityCells, airportCells, filterSettings in
-                switch filterSettings?.airportFilterItem {
+                switch filterSettings.airportFilterItem {
                 case .airports:
                     return [airportCells]
                 case .cities:
                     return [cityCells]
                 case .all:
                     return [cityCells, airportCells]
-                default:
-                    return []
                 }
             }
         

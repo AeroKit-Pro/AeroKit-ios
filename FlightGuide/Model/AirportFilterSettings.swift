@@ -21,18 +21,16 @@ struct AirportFilterSettings {
     static var empty: AirportFilterSettings {
         AirportFilterSettings()
     }
-    
-    init() {}
-    
-    init?(withFilterInput filterInput: FilterInput?) {
-        guard let filterInput else { return nil }
         
+    init(withFilterInput filterInput: FilterInput) {
         airportFilterItem = filterInput.searchItem
         minRunwayLength = filterInput.runwayLength?.numericValue
         runwaySurfaces = filterInput.runwaySurfaces.map { $0.row }
         airportTypes = filterInput.airportTypes.map { $0.row }
         isEnabledRunwayLight = filterInput.lightAvailability
     }
+    // used to construct empty settings
+    private init() {}
         
     private func countActiveCriteria() -> Int {
         var criteria = 0

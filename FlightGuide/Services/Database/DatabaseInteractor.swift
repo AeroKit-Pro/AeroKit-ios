@@ -32,12 +32,11 @@ final class DatabaseInteractor {
     /// should be used to fetch the most basic 'preview' information as the size of generic parameter hugely affects perfomance
     func fetchPreviewData<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
                                                     input: String,
-                                                    filters: AirportFilterSettings?) -> [RequestedType]? {
+                                                    filters: AirportFilterSettings) -> [RequestedType]? {
         // TODO: Separate filtered query construction
         var query = joinedTables
-        if let filters {
-            applyFilterSettingsToQuery(query: &query, filters: filters)
-        }
+        
+        applyFilterSettingsToQuery(query: &query, filters: filters)
         
         query = query
             .filter(databaseManager.airportFields.name.lowercaseString.like(SearchPattern.contains(input))

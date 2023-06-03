@@ -49,7 +49,6 @@ final class FilterViewModel: FilterViewModelType, FilterViewModelOutputs {
         self.filterInputPassing = filterInputPassing
         
         self.filterState = viewLoaded.withLatestFrom(filterInputPassing.filterInput)
-            .skipNil()
         
         self.collectFilters = applyFiltersButtonTapped.asObservable()
     }
