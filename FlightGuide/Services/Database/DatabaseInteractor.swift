@@ -9,7 +9,7 @@ import SQLite
 /// 'DatabaseFetcher' is a wrapper for 'DatabaseManager' that fetches data from local database. An instance of this class provides the needed API to retrieve records from database with filter parameters.
 final class DatabaseInteractor {
         
-    private let databaseManager = DatabaseManager()
+    private let databaseManager = DatabaseManager.shared
     private var database: Connection? {
         databaseManager.database
     }

@@ -33,20 +33,20 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5jJ-JF-k2j">
-                                <rect key="frame" x="47" y="35.333333333333336" width="263" height="75.666666666666657"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5jJ-JF-k2j">
+                                <rect key="frame" x="47" y="35.333333333333336" width="263" height="80.666666666666657"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gjf-ei-ixX" firstAttribute="centerY" secondItem="ya9-py-Pxe" secondAttribute="centerY" id="51W-Hy-Eaj"/>
-                            <constraint firstItem="5jJ-JF-k2j" firstAttribute="top" secondItem="STr-we-Xvg" secondAttribute="bottom" constant="5" id="Fa1-jV-3jh"/>
-                            <constraint firstAttribute="bottom" secondItem="5jJ-JF-k2j" secondAttribute="bottom" constant="10" id="Hwy-4x-8yQ"/>
                             <constraint firstItem="5jJ-JF-k2j" firstAttribute="leading" secondItem="gjf-ei-ixX" secondAttribute="trailing" constant="10" id="Mt0-7l-sef"/>
                             <constraint firstAttribute="trailing" secondItem="5jJ-JF-k2j" secondAttribute="trailing" constant="10" id="O8t-c3-gv2"/>
                             <constraint firstAttribute="trailing" secondItem="STr-we-Xvg" secondAttribute="trailing" constant="12.5" id="YwV-5v-YHR"/>
+                            <constraint firstItem="5jJ-JF-k2j" firstAttribute="top" secondItem="STr-we-Xvg" secondAttribute="bottom" constant="5" id="b1V-UX-qxr"/>
                             <constraint firstItem="STr-we-Xvg" firstAttribute="top" secondItem="ya9-py-Pxe" secondAttribute="top" constant="10" id="fp3-J7-71d"/>
                             <constraint firstItem="gjf-ei-ixX" firstAttribute="leading" secondItem="ya9-py-Pxe" secondAttribute="leading" constant="12" id="hx2-ey-blF"/>
+                            <constraint firstAttribute="bottom" secondItem="5jJ-JF-k2j" secondAttribute="bottom" constant="5" id="sDZ-JX-w4D"/>
                             <constraint firstItem="STr-we-Xvg" firstAttribute="leading" secondItem="gjf-ei-ixX" secondAttribute="trailing" constant="10" id="u8c-nN-KgO"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

@@ -11,6 +11,8 @@ import RxSwift
 /// 'DatabaseManager' is a static class that manages directory initialization, files copying, local database configuring and connection to it. Consider using wrappers to interact with this class.
 final class DatabaseManager {
     
+    static let shared = DatabaseManager()
+    
     static func prepare() {
         initDirectory()
         copyExistingDatabase()
@@ -61,7 +63,7 @@ final class DatabaseManager {
     let frequencyFields = FrequencyColumns()
     let cityFields = CityColumns()
     
-    init() {
+    private init() {
         connect()
         setupIndexes()
     }

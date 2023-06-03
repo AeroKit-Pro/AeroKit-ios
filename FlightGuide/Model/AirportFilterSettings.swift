@@ -8,15 +8,21 @@
 import Foundation
 
 struct AirportFilterSettings {
-    let airportFilterItem: AirportFilterItem
-    let minRunwayLength: Int?
-    let runwaySurfaces: [String]
-    let airportTypes: [String]
-    let isEnabledRunwayLight: Bool
+    var airportFilterItem: AirportFilterItem = .all
+    var minRunwayLength: Int? = nil
+    var runwaySurfaces: [String] = []
+    var airportTypes: [String] = []
+    var isEnabledRunwayLight: Bool = false
     
     var numberOfActiveCriteria: Int {
         countActiveCriteria()
     }
+    
+    static var empty: AirportFilterSettings {
+        AirportFilterSettings()
+    }
+    
+    init() {}
     
     init?(withFilterInput filterInput: FilterInput?) {
         guard let filterInput else { return nil }
@@ -27,7 +33,7 @@ struct AirportFilterSettings {
         airportTypes = filterInput.airportTypes.map { $0.row }
         isEnabledRunwayLight = filterInput.lightAvailability
     }
-    
+        
     private func countActiveCriteria() -> Int {
         var criteria = 0
         criteria += minRunwayLength == nil ? 0 : 1

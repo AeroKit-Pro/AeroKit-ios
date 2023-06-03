@@ -21,6 +21,7 @@ final class CityCell: UITableViewCell {
             viewModel?.typeCountStrings
                 .forEach { airportTypesStackView
                 .addArrangedSubview(UILabel(text: $0, font: .systemFont(ofSize: 12), textColor: .black)) }
+            airportTypesStackView.arrangedSubviews.forEach { $0.setContentHuggingPriority(.init(250), for: .vertical) }
         }
     }
     
