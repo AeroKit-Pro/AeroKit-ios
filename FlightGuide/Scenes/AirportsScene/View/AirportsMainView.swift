@@ -14,7 +14,7 @@ import RxSwift
 protocol AirportsSceneViewType: UIView {
     typealias PointAnnotations = [PointAnnotation]
     
-    var bindablePointAnnotations: RxSwift.Binder<PointAnnotations> { get }
+    var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var tappedAnnotation: ControlEvent<PointAnnotation> { get }
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }

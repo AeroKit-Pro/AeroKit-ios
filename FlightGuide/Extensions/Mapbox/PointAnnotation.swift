@@ -8,9 +8,17 @@
 import MapboxMaps
 
 extension PointAnnotation {
-    init(coordinate: CLLocationCoordinate2D) {
-        self.init(point: Point(coordinate))
+    init?(location: CLLocationCoordinate2D?, airportId id: String = UUID().uuidString) {
+        guard let location else { return nil }  
+        
+        self.init(id: id, point: Point(location))
         image = Image(image: .airport_pin ?? UIImage(), name: "airport_pin")
         iconImage = "airport_pin"
+    }
+}
+
+extension PointAnnotation {
+    var airportId: Int? {
+        id.numericValue
     }
 }

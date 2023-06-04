@@ -56,11 +56,10 @@ final class DatabaseInteractor {
     
     func fetchAirportsByCity<RequestedType: Decodable>(_ requestedType: RequestedType.Type,
                                                input: String,
-                                               filters: AirportFilterSettings?) -> [RequestedType]? {
+                                               filters: AirportFilterSettings) -> [RequestedType]? {
         var query = joinedTables
-        if let filters {
-            applyFilterSettingsToQuery(query: &query, filters: filters)
-        }
+        
+        applyFilterSettingsToQuery(query: &query, filters: filters)
         
         query = query
             .filter(databaseManager.airportFields.municipality.like(SearchPattern.startsWith(input)))
@@ -71,6 +70,16 @@ final class DatabaseInteractor {
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
+    
+    func fetchAirportCoordinate<RequestedType: Decodable>(_ requestedType: RequestedType.Type, by id: Int) -> RequestedType? {
+        let query = databaseManager.airports
+            .filter(databaseManager.airportFields.id == id)
+            .select(databaseManager.airportFields.latitudeDeg,
+                    databaseManager.airportFields.longitudeDeg)
+        
+        return try? database?.prepare(query).map { return try $0.decode() }.first
+    }
+    
     // TODO: Temporary solution. Need to understand how to parse such query results properly
     func fetchAirport(by id: Int) -> [Airport]? {
         let query = airportTable

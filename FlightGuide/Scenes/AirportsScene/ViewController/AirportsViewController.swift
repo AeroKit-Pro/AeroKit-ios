@@ -62,7 +62,11 @@ final class AirportsViewController: UIViewController {
 
         airportsMainView.didTapFilterButton
             .subscribe(onNext: viewModel.inputs.didTapFiltersButton)
-            .disposed(by: disposeBag)    
+            .disposed(by: disposeBag)
+        
+        airportsMainView.tappedAnnotation
+            .subscribe(onNext: viewModel.inputs.didSelectPointAnnotation)
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
@@ -92,16 +96,24 @@ final class AirportsViewController: UIViewController {
             .subscribe(onNext: bannerViewController.refreshData(withPivotModel:))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.onItemSelection
+        viewModel.outputs.onAirportSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
                                  self.bannerViewController.collapse() }) 
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onCitySelection
+            .subscribe(onNext: airportsMainView.dismissSearchMode)
             .disposed(by: disposeBag)
         
         viewModel.outputs.airportCoordinate
             .subscribe(onNext: airportsMainView.ease(to:))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.airportAnnotation.asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.centroid
+            .subscribe(onNext: airportsMainView.ease(to:))
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.pointAnnotations.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
         
