@@ -18,4 +18,5 @@ protocol ToolsViewModelInterface: AnyObject {
 
 protocol ToolsSceneOutput: AnyObject {
     func showPDFReader()
+    func showChecklists()
 }

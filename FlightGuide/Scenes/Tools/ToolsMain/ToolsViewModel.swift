@@ -25,7 +25,7 @@ extension ToolsViewModel: ToolsViewModelInterface {
 
     }
     func onTapChecklists() {
-
+        output?.showChecklists()
     }
 
     func onTapPdfReader() {

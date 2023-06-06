@@ -9,7 +9,6 @@ import UIKit
 import CoreServices
 import PDFKit
 
-
 final class ToolsCoordinator: BaseCoordinator {
 
     //MARK: - Lifecycle
@@ -24,7 +23,7 @@ final class ToolsCoordinator: BaseCoordinator {
     }
 }
 
-// MARK: - ChannelListSceneDelegate
+// MARK: - ToolsSceneOutput
 extension ToolsCoordinator: ToolsSceneOutput, UIDocumentPickerDelegate {
     func showPDFReader() {
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.pdf])
@@ -38,4 +37,65 @@ extension ToolsCoordinator: ToolsSceneOutput, UIDocumentPickerDelegate {
         let reader = PDFReaderViewController(fileURL: fileURL)
         router.push(reader, animated: true)
     }
+
+    func showChecklists() {
+        let scene = ChecklistsAssembly(sceneOutput: self).makeScene()
+        router.push(scene, animated: true)
+    }
+}
+
+// MARK: - ChecklistsSceneDelegate
+extension ToolsCoordinator: ChecklistsSceneDelegate {
+    func showSelectPlaneCompany() {
+        let scene = SelectCompanyViewController(nibName: nil, bundle: nil)
+        scene.delegate = self
+        router.push(scene, animated: true)
+    }
+
+    func showMyGroupChecklist(items: [ChecklistWithItemsModel]) {
+        let scene = ChecklistGroupViewController(nibName: nil, bundle: nil)
+        scene.items = items
+        scene.delegate = self
+        router.push(scene, animated: true)
+    }
+}
+
+// MARK: - SelectCompanySceneDelegate
+extension ToolsCoordinator: SelectCompanySceneDelegate {
+    func showPlaneSelection(model: CompanyWithPlanesModel) {
+        let scene = SelectPlaneViewController(nibName: nil, bundle: nil)
+        scene.items = model.planes
+        scene.companyName = model.name
+        scene.delegate = self
+        router.push(scene, animated: true)
+    }
+}
+
+// MARK: - SelectPlaneSceneDelegate
+extension ToolsCoordinator: SelectPlaneSceneDelegate {
+    func showChecklistSelection(model: PlaneWithChecklistsModel, companyNameWithModel: String) {
+        let scene = ChecklistsSelectionViewController(nibName: nil, bundle: nil)
+        scene.companyNameWithModel = companyNameWithModel
+        scene.items = model.checklists
+        scene.delegate = self
+        router.push(scene, animated: true)
+    }
+}
+
+// MARK: - ChecklistsSelectionSceneDelegate
+extension ToolsCoordinator: ChecklistsSelectionSceneDelegate {
+    func showChecklistsInspection(items: [ChecklistWithItemsModel]) {
+        let scene = ChecklistInspectionViewController(nibName: nil, bundle: nil)
+        scene.items = items
+        scene.onFinish = { [weak self] in
+            self?.router.pop(to: ChecklistsViewController.self, animated: true)
+        }
+        router.push(scene, animated: true)
+
+    }
+}
+
+// MARK: - ChecklistGroupSceneDelegate
+extension ToolsCoordinator: ChecklistGroupSceneDelegate {
+
 }

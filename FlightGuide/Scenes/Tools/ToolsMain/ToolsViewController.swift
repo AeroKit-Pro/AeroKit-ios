@@ -29,9 +29,6 @@ final class ToolsViewController: UIViewController {
         title = "Tools"
         navigationController?.setNavigationBarHidden(false, animated: false)
         viewModel?.viewDidLoad()
-
-        toolsView.onTapChecklist = {
-        }
     }
 }
 

@@ -13,6 +13,7 @@ enum APIRequest: URLRequestConvertible {
     case getRunways
     case getFrequencies
     case getCities
+    case getChecklists
 }
 
 extension APIRequest {
@@ -27,7 +28,7 @@ extension APIRequest {
 
     private var method: HTTPMethod {
         switch self {
-        case .getAirports, .getRunways, .getFrequencies, .getCities:
+        case .getAirports, .getRunways, .getFrequencies, .getCities, .getChecklists:
             return .get
         }
     }
@@ -38,6 +39,7 @@ extension APIRequest {
         case .getRunways: return NetworkingConstants.airportRunwaysUrl
         case .getFrequencies: return NetworkingConstants.airportFrequencyUrl
         case .getCities: return NetworkingConstants.citiesInfoUrl
+        case .getChecklists: return NetworkingConstants.checklistsUrl
         }
     }
 

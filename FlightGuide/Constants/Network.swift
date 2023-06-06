@@ -13,4 +13,6 @@ enum NetworkingConstants {
     static let airportFrequencyUrl = "http://45.12.19.184/airport_frequency?page=1&page_size=5000"
     
     static let citiesInfoUrl = "http://45.12.19.184/cities_info?page=1&page_size=50"
+
+    static let checklistsUrl = "http://45.12.19.184/checklists"
 }
