@@ -109,8 +109,8 @@ final class AirportsViewController: UIViewController {
             .subscribe(onNext: airportsMainView.ease(to:))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.centroid
-            .subscribe(onNext: airportsMainView.ease(to:))
+        viewModel.outputs.boundingBox
+            .subscribe(onNext: airportsMainView.fitCameraInto)
             .disposed(by: disposeBag)
         
         viewModel.outputs.pointAnnotations.asDriver(onErrorDriveWith: .empty())

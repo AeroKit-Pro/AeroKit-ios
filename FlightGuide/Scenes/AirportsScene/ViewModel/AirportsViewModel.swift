@@ -37,7 +37,7 @@ protocol AirportsViewModelOutputs {
     var onCitySelection: RxObservable<Empty>! { get }
     var onAirportSelection: RxObservable<Empty>! { get }
     var pointAnnotations: RxObservable<PointAnnotations>! { get }
-    var centroid: RxObservable<Coordinate>! { get }
+    var boundingBox: RxObservable<CoordinateBounds>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
     var pivotModel: RxObservable<PivotModel>! { get }
     var numberOfActiveFilters: RxObservable<String>! { get }
@@ -67,7 +67,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var onAirportSelection: RxObservable<Empty>!
     var selectedAirport: RxObservable<Airport>!
     var pointAnnotations: RxObservable<PointAnnotations>!
-    var centroid: RxObservable<Coordinate>!
+    var boundingBox: RxObservable<CoordinateBounds>!
     var airportCoordinate: RxObservable<Coordinate>!
     var pivotModel: RxObservable<PivotModel>!
     var numberOfActiveFilters: RxObservable<String>!
@@ -203,17 +203,20 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             }
             .share()
         
-        self.centroid = coordinatesKeyedOnId
+        self.boundingBox = coordinatesKeyedOnId
             .map { $0.compactMap { $0.coordinate } }
             .map { coordinates in
-                let sumLatitude = coordinates.map { $0.latitude }.reduce(0, +)
-                let sumLongitude = coordinates.map { $0.longitude }.reduce(0, +)
+                let minLatitude = coordinates.map { $0.latitude }.min()
+                let maxLatitude = coordinates.map { $0.latitude }.max()
+                let minLongitude = coordinates.map { $0.longitude }.min()
+                let maxLongitude = coordinates.map { $0.longitude }.max()
                 
-                let averageLatitude = sumLatitude / Double(coordinates.count)
-                let averageLongitude = sumLongitude / Double(coordinates.count)
+                let maxYminX = Coordinate(lat: minLatitude, lon: maxLongitude)
+                let minYmaxX = Coordinate(lat: maxLatitude, lon: minLongitude)
                 
-                return Coordinate(latitude: averageLatitude, longitude: averageLongitude)
+                return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
             }
+            .compactMap { $0 }
         
         let airportsByCityPointAnnotations = coordinatesKeyedOnId
             .map { $0.compactMap { PointAnnotation(location: $0.coordinate,

@@ -28,6 +28,7 @@ protocol AirportsSceneViewType: UIView {
     func searchFieldCannotDismiss()
     func searchFieldCanDismiss() 
     func ease(to coordinate: CLLocationCoordinate2D)
+    func fitCameraInto(_ bounds: CoordinateBounds)
 }
 
 final class AirportsMainView: UIView {
@@ -162,5 +163,13 @@ extension AirportsMainView: AirportsSceneViewType {
     func ease(to coordinate: CLLocationCoordinate2D) {
         let options = CameraOptions(center: coordinate, zoom: 8)
         mapView.camera.ease(to: options, duration: 0.4)
+    }
+    
+    func fitCameraInto(_ bounds: CoordinateBounds) {
+        let camera = mapView.mapboxMap.camera(for: bounds,
+                                              padding: UIEdgeInsets.allSides(100),
+                                              bearing: 0,
+                                              pitch: 0)
+        mapView.mapboxMap.setCamera(to: camera)
     }
 }

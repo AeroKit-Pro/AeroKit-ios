@@ -67,7 +67,6 @@ final class SearchFieldView: UIView {
         setupClearAction()
         configureTextField()
         textField.setAttributedPlaceholder(placeholder, color: .flg_blue_gray)
-        textField.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -183,18 +182,4 @@ final class SearchFieldView: UIView {
         textField.sendActions(for: .editingChanged)
     }
     
-}
-
-
-// MARK: - UITextFieldDelegate
-extension SearchFieldView: UITextFieldDelegate {
-    /*
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.leftView = buttonStackView
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.leftView = imageStackView
-    }
-     */
 }

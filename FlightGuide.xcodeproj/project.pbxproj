@@ -67,6 +67,8 @@
 		4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78D2A162C12009A681A /* FilterViewModel.swift */; };
 		4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78F2A162FD3009A681A /* FilterAssembly.swift */; };
 		4E5910822A27C51600815D98 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5910812A27C51600815D98 /* UILabel.swift */; };
+		4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */; };
+		4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */; };
 		4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */; };
 		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
 		4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */; };
@@ -179,6 +181,8 @@
 		4E57C78D2A162C12009A681A /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4E57C78F2A162FD3009A681A /* FilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAssembly.swift; sourceTree = "<group>"; };
 		4E5910812A27C51600815D98 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateBounds.swift; sourceTree = "<group>"; };
+		4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportByCity.swift; sourceTree = "<group>"; };
 		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
 		4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 			children = (
 				4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */,
 				4E40A1722A14F48B00101D06 /* Coordinate.swift */,
+				4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				4ECEC07F29D998D40070195D /* UIButton.swift */,
 				4EB522E72A154BF60012BFDF /* UITextField.swift */,
 				4E5910812A27C51600815D98 /* UILabel.swift */,
+				4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -776,6 +782,7 @@
 				4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */,
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
 				4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */,
+				4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */,
 				4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */,
 				4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */,
 				4EEEECF429DE22AC00769E48 /* AirportCell.swift in Sources */,
@@ -809,6 +816,7 @@
 				11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */,
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
 				4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */,
+				4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */,
 				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
