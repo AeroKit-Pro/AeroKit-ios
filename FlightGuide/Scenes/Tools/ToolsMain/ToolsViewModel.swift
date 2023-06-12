@@ -31,4 +31,8 @@ extension ToolsViewModel: ToolsViewModelInterface {
     func onTapPdfReader() {
         output?.showPDFReader()
     }
+    
+    func onTapAIChat() {
+        output?.showAIChat()
+    }
 }

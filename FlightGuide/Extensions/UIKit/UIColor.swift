@@ -30,4 +30,8 @@ extension UIColor {
     static var flg_light_dark_white: UIColor {
         UIColor.hex(0xF8F8F8)
     }
+    
+    static var flg_light_blue: UIColor {
+        UIColor.hex(0xD9E8FF)
+    }
 }

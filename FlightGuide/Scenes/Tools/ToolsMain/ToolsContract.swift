@@ -14,9 +14,11 @@ protocol ToolsViewModelInterface: AnyObject {
     func viewDidLoad()
     func onTapChecklists()
     func onTapPdfReader()
+    func onTapAIChat()
 }
 
 protocol ToolsSceneOutput: AnyObject {
     func showPDFReader()
     func showChecklists()
+    func showAIChat()
 }

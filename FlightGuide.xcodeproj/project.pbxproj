@@ -14,7 +14,7 @@
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
 		113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */; };
-		118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */; };
+		118BEA362A2C9CD200B056C6 /* ToolsItemDetailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */; };
 		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
 		11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */; };
 		11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */; };
@@ -66,6 +66,12 @@
 		11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B502A140200001EB56D /* SignUpCoordinator.swift */; };
 		11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B522A140665001EB56D /* AirportsCoordinator.swift */; };
 		11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B542A142BC9001EB56D /* AirportAssembly.swift */; };
+		4E0044C42A35E6030098706A /* AIChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C32A35E6030098706A /* AIChatViewModel.swift */; };
+		4E0044C62A35E6120098706A /* AIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C52A35E6120098706A /* AIChatViewController.swift */; };
+		4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C72A35E62C0098706A /* AIChatAssembly.swift */; };
+		4E0044CA2A35EBCC0098706A /* AIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C92A35EBCC0098706A /* AIChatView.swift */; };
+		4E0044CD2A35EE150098706A /* MessageSendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CC2A35EE150098706A /* MessageSendingView.swift */; };
+		4E0044CF2A35F45F0098706A /* CustomRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
 		4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */; };
@@ -99,6 +105,7 @@
 		4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */; };
 		4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */; };
 		4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */; };
+		4E4340C52A35D19D00B80502 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4340C42A35D19D00B80502 /* ToolsItemView.swift */; };
 		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
 		4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */; };
 		4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6157282A1471AF008BAD4B /* Numeric.swift */; };
@@ -121,6 +128,9 @@
 		4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB392D62A19014E00392C3A /* RunwayCell.xib */; };
 		4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */; };
 		4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB522E72A154BF60012BFDF /* UITextField.swift */; };
+		4EB80B992A3651E500BDBBF9 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB80B982A3651E400BDBBF9 /* MessageCell.swift */; };
+		4EB80B9E2A365A2500BDBBF9 /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB80B9D2A365A2500BDBBF9 /* MessageCellViewModel.swift */; };
+		4EB80BA02A365B8600BDBBF9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB80B9F2A365B8600BDBBF9 /* Date.swift */; };
 		4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007329D85ABE00C64110 /* SearchFieldView.swift */; };
 		4EB9007629D8681900C64110 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007529D8681900C64110 /* UIView.swift */; };
 		4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F862A1FCE3A0043AD42 /* FavoritesAssembly.swift */; };
@@ -158,7 +168,7 @@
 		1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwaysLengthView.swift; sourceTree = "<group>"; };
 		1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwayLightView.swift; sourceTree = "<group>"; };
 		113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterSelectionView.swift; sourceTree = "<group>"; };
-		118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
+		118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemDetailingView.swift; sourceTree = "<group>"; };
 		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 		11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyWithPlanesModel.swift; sourceTree = "<group>"; };
 		11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +220,12 @@
 		11EC9B502A140200001EB56D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B522A140665001EB56D /* AirportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B542A142BC9001EB56D /* AirportAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAssembly.swift; sourceTree = "<group>"; };
+		4E0044C32A35E6030098706A /* AIChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewModel.swift; sourceTree = "<group>"; };
+		4E0044C52A35E6120098706A /* AIChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewController.swift; sourceTree = "<group>"; };
+		4E0044C72A35E62C0098706A /* AIChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatAssembly.swift; sourceTree = "<group>"; };
+		4E0044C92A35EBCC0098706A /* AIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatView.swift; sourceTree = "<group>"; };
+		4E0044CC2A35EE150098706A /* MessageSendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSendingView.swift; sourceTree = "<group>"; };
+		4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectTextField.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
@@ -240,6 +256,7 @@
 		4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateBounds.swift; sourceTree = "<group>"; };
 		4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportByCity.swift; sourceTree = "<group>"; };
+		4E4340C42A35D19D00B80502 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
 		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
 		4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
 		4E6157282A1471AF008BAD4B /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -263,6 +280,9 @@
 		4EB392D62A19014E00392C3A /* RunwayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RunwayCell.xib; sourceTree = "<group>"; };
 		4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCellViewModel.swift; sourceTree = "<group>"; };
 		4EB522E72A154BF60012BFDF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		4EB80B982A3651E400BDBBF9 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		4EB80B9D2A365A2500BDBBF9 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
+		4EB80B9F2A365B8600BDBBF9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		4EB9007329D85ABE00C64110 /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		4EB9007529D8681900C64110 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4EBA3F862A1FCE3A0043AD42 /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
@@ -322,7 +342,8 @@
 		118BEA342A2C9CC500B056C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */,
+				118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */,
+				4E4340C42A35D19D00B80502 /* ToolsItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,9 +368,10 @@
 		11B280E62A301B23008D18C9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				11D8D8442A294894001EE665 /* ToolsMain */,
 				11B280E72A301B30008D18C9 /* Checklists */,
 				11A366992A2F8EEE00D482EB /* PDFReader */,
-				11D8D8442A294894001EE665 /* ToolsMain */,
+				4E0044C22A35E5D40098706A /* AIChat */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -553,6 +575,27 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		4E0044C22A35E5D40098706A /* AIChat */ = {
+			isa = PBXGroup;
+			children = (
+				4E0044CB2A35EDB10098706A /* Components */,
+				4EB80B9C2A3659F600BDBBF9 /* View */,
+				4EB80B9A2A3659DD00BDBBF9 /* ViewModel */,
+				4EB80B9B2A3659EA00BDBBF9 /* ViewController */,
+				4E0044C72A35E62C0098706A /* AIChatAssembly.swift */,
+			);
+			path = AIChat;
+			sourceTree = "<group>";
+		};
+		4E0044CB2A35EDB10098706A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E0044CC2A35EE150098706A /* MessageSendingView.swift */,
+				4EB80B982A3651E400BDBBF9 /* MessageCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4E08E50C29E2FAB300B6F8E1 /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +696,7 @@
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
 				4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */,
 				11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */,
+				4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */,
 				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
 				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
@@ -758,6 +802,31 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
+		4EB80B9A2A3659DD00BDBBF9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E0044C32A35E6030098706A /* AIChatViewModel.swift */,
+				4EB80B9D2A365A2500BDBBF9 /* MessageCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4EB80B9B2A3659EA00BDBBF9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4E0044C52A35E6120098706A /* AIChatViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4EB80B9C2A3659F600BDBBF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E0044C92A35EBCC0098706A /* AIChatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4EBCA03F29EAB2A800363661 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +865,7 @@
 				4E63C9312A1122D300A86D15 /* Collection.swift */,
 				4E6157282A1471AF008BAD4B /* Numeric.swift */,
 				4E72F5B12A1A3FCC00051A25 /* URL.swift */,
+				4EB80B9F2A365B8600BDBBF9 /* Date.swift */,
 			);
 			path = Fundamentals;
 			sourceTree = "<group>";
@@ -907,6 +977,7 @@
 				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
 				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
+				4E0044C42A35E6030098706A /* AIChatViewModel.swift in Sources */,
 				11B281122A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift in Sources */,
 				4EA72A3229D6377400836CDF /* Network.swift in Sources */,
 				4EBA3F892A1FD12F0043AD42 /* FavoritesViewController.swift in Sources */,
@@ -926,6 +997,8 @@
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
 				4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */,
+				4EB80B992A3651E500BDBBF9 /* MessageCell.swift in Sources */,
+				4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
 				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,
@@ -996,17 +1069,25 @@
 				4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */,
 				4ED2DFCD2A17A7EE00479E4D /* CounterBadge.swift in Sources */,
 				11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */,
+				4EB80BA02A365B8600BDBBF9 /* Date.swift in Sources */,
+				4E0044C62A35E6120098706A /* AIChatViewController.swift in Sources */,
 				11B280FA2A310A4C008D18C9 /* ChecklistsTableHeaderView.swift in Sources */,
 				4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */,
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
+				4E0044CF2A35F45F0098706A /* CustomRectTextField.swift in Sources */,
+				4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */,
+				4E0044CD2A35EE150098706A /* MessageSendingView.swift in Sources */,
 				11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */,
 				11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */,
 				4E2648222A3DF02700B78379 /* Router.swift in Sources */,
 				11D8D8432A29485D001EE665 /* ToolsCoordinator.swift in Sources */,
 				4E3C047529F9355F00CB08EB /* Database.swift in Sources */,
+				4E0044CA2A35EBCC0098706A /* AIChatView.swift in Sources */,
+				4EB80B9E2A365A2500BDBBF9 /* MessageCellViewModel.swift in Sources */,
+				4E4340C52A35D19D00B80502 /* ToolsItemView.swift in Sources */,
 				11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */,
 				11B280F42A30EF3B008D18C9 /* SelectCompanyViewController.swift in Sources */,
 				11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */,
@@ -1019,7 +1100,7 @@
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
 				4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */,
-				118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */,
+				118BEA362A2C9CD200B056C6 /* ToolsItemDetailingView.swift in Sources */,
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
 				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,

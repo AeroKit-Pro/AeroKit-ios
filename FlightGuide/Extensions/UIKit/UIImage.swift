@@ -27,6 +27,14 @@ extension UIImage {
     static var airport_pin: UIImage? {
         UIImage(named: "airport_pin")
     }
+
+    static var chevron_right: UIImage? {
+        UIImage(systemName: "chevron.right")
+    }
+    
+    static var pin: UIImage? {
+        UIImage(named: "red_pin")
+    }
     
     static var airport: UIImage? {
         UIImage(named: "airport")
@@ -38,5 +46,20 @@ extension UIImage {
     
     static var bookmark_selected: UIImage? {
         UIImage(named: "bookmark_selected")
+    }
+    static var aichat: UIImage? {
+        UIImage(named: "tools_aichat")
+    }
+    
+    static var checklists: UIImage? {
+        UIImage(named: "tools_checklists")
+    }
+    
+    static var pdfReader: UIImage? {
+        UIImage(named: "tools_pdfReader")
+    }
+    
+    static var arrow_up: UIImage? {
+        UIImage(named: "arrow_up")
     }
 }
