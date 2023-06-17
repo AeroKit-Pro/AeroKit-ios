@@ -100,7 +100,7 @@ final class ToolsItemView: UIView {
 
         stackView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(6)
-            make.leading.equalToSuperview().offset(15)
+            make.leading.trailing.equalToSuperview().inset(15)
             make.bottom.equalToSuperview().inset(10)
         }
 
@@ -117,5 +117,10 @@ final class ToolsItemView: UIView {
         showButton.addAction(UIAction(handler: { [weak self] _ in
             self?.onTapAction?()
         }), for: .touchUpInside)
+    }
+
+    func updateSubitems(items: [ToolsSubitemView]) {
+        stackView.removeArrangedSubviews()
+        items.forEach { stackView.addArrangedSubview($0) }
     }
 }

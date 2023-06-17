@@ -89,9 +89,10 @@ final class Router {
         rootController?.setViewControllers(currentStack, animated: false)
     }
 
-    func pop(to viewController: AnyClass, animated: Bool) {
-        guard let index = root?.getIndex(of: viewController) else { return }
+    func pop(to viewController: AnyClass, animated: Bool) -> Bool {
+        guard let index = root?.getIndex(of: viewController) else { return false }
         popTo(controllerIndex: index, animated: animated)
+        return true
     }
 }
 

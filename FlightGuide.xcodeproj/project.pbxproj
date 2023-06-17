@@ -14,6 +14,8 @@
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
 		113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */; };
+		115DA72F2A3E58ED0011F754 /* PDFStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA72E2A3E58ED0011F754 /* PDFStorageService.swift */; };
+		115DA7312A3E75A40011F754 /* ToolsSubitemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7302A3E75A40011F754 /* ToolsSubitemView.swift */; };
 		118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */; };
 		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
 		11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */; };
@@ -158,6 +160,8 @@
 		1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwaysLengthView.swift; sourceTree = "<group>"; };
 		1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwayLightView.swift; sourceTree = "<group>"; };
 		113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterSelectionView.swift; sourceTree = "<group>"; };
+		115DA72E2A3E58ED0011F754 /* PDFStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFStorageService.swift; sourceTree = "<group>"; };
+		115DA7302A3E75A40011F754 /* ToolsSubitemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSubitemView.swift; sourceTree = "<group>"; };
 		118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
 		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 		11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyWithPlanesModel.swift; sourceTree = "<group>"; };
@@ -319,10 +323,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		115DA72D2A3E58390011F754 /* LocalFileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				115DA72E2A3E58ED0011F754 /* PDFStorageService.swift */,
+			);
+			path = LocalFileStorage;
+			sourceTree = "<group>";
+		};
 		118BEA342A2C9CC500B056C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */,
+				115DA7302A3E75A40011F754 /* ToolsSubitemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -761,6 +774,7 @@
 		4EBCA03F29EAB2A800363661 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				115DA72D2A3E58390011F754 /* LocalFileStorage */,
 				11B280EE2A30E881008D18C9 /* UserDefaultsStorage */,
 				4EBCA04129EAC2DC00363661 /* Database */,
 				4E8FD6C329D61D6500BAD4CE /* Network */,
@@ -1014,7 +1028,9 @@
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
 				4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */,
 				4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */,
+				115DA7312A3E75A40011F754 /* ToolsSubitemView.swift in Sources */,
 				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
+				115DA72F2A3E58ED0011F754 /* PDFStorageService.swift in Sources */,
 				11D8D8482A2948B0001EE665 /* ToolsViewModel.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
@@ -1164,15 +1180,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5ZYV4X786K;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1181,6 +1201,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1201,6 +1223,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

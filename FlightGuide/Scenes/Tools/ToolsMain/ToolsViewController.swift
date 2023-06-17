@@ -28,10 +28,32 @@ final class ToolsViewController: UIViewController {
         view.backgroundColor = .white
         title = "Tools"
         navigationController?.setNavigationBarHidden(false, animated: false)
-        viewModel?.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.viewWillAppear()
     }
 }
 
 // MARK: ToolsView Protocol
 extension ToolsViewController: ToolsViewInterface {
+
+    func showRecentPdfURLs(urls: [URL]) {
+
+        let items = urls.map { item in
+            ToolsSubitemView(itemType: .pdfFile(name: item.lastPathComponent,
+                                                onTap: { [weak self] in self?.viewModel?.onTapPdfURL(item) }))
+        }
+        toolsView.pdfView.updateSubitems(items: items)
+    }
+
+    func showRecentChecklists(checklists: [ChecklistGroupStorageModel]) {
+        let items = checklists.map { item in
+            ToolsSubitemView(itemType: .checklist(name: item.name,
+                                                  isFullModel: item.isFullChecklistModel,
+                                                  onTap: { [weak self] in self?.viewModel?.onTapRecentChecklist(model: item) }))
+        }
+        toolsView.checklistsView.updateSubitems(items: items)
+    }
 }

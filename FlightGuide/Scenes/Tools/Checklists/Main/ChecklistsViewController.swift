@@ -53,7 +53,11 @@ final class ChecklistsViewController: UIViewController {
 
         setupLayout()
         setupUI()
-        viewModel?.onViewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.onViewWillAppear()
     }
 
     private func setupLayout() {
