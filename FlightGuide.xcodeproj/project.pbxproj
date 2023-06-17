@@ -20,8 +20,6 @@
 		11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */; };
 		11D4F47B2A03E973001DDC46 /* BannerUnderlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4702A03E973001DDC46 /* BannerUnderlayView.swift */; };
 		11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4712A03E973001DDC46 /* AirportsMainView.swift */; };
-		11D4F47D2A03E973001DDC46 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4732A03E973001DDC46 /* AirportDetailView.swift */; };
-		11D4F47E2A03E973001DDC46 /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D4F4742A03E973001DDC46 /* AirportDetailView.xib */; };
 		11D4F47F2A03E973001DDC46 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4762A03E973001DDC46 /* BannerViewController.swift */; };
 		11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4772A03E973001DDC46 /* AirportsViewController.swift */; };
 		11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */; };
@@ -44,6 +42,12 @@
 		11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B542A142BC9001EB56D /* AirportAssembly.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
+		4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */; };
+		4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */; };
+		4E0A8F602A1867260087B2D4 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */; };
+		4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17314A2A1BD7600094A5E2 /* Weather.swift */; };
+		4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E257A7B2A25CED900AC5FF3 /* CityCell.swift */; };
+		4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E257A7C2A25CED900AC5FF3 /* CityCell.xib */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
 		4E3019BD29EAE38200852427 /* Runway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BC29EAE38200852427 /* Runway.swift */; };
 		4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BE29EAE38B00852427 /* Frequency.swift */; };
@@ -56,34 +60,64 @@
 		4E3B3ABE29D444E400971840 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3B3ABD29D444E400971840 /* RxSwift */; };
 		4E3B3AC129D4451D00971840 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3B3AC029D4451D00971840 /* Alamofire */; };
 		4E3B3AC429D4553000971840 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3B3AC329D4553000971840 /* MapboxMaps */; };
-		4E3C047329F91ED200CB08EB /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C047229F91ED200CB08EB /* aerokit_database.sqlite */; };
 		4E3C047529F9355F00CB08EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C047429F9355F00CB08EB /* Database.swift */; };
+		4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E40A1722A14F48B00101D06 /* Coordinate.swift */; };
+		4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */; };
+		4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54DBC62A13DC5900CE8635 /* PivotModel.swift */; };
+		4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78D2A162C12009A681A /* FilterViewModel.swift */; };
+		4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57C78F2A162FD3009A681A /* FilterAssembly.swift */; };
+		4E5910822A27C51600815D98 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5910812A27C51600815D98 /* UILabel.swift */; };
+		4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */; };
+		4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */; };
+		4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */; };
 		4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */; };
 		4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */; };
+		4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6157282A1471AF008BAD4B /* Numeric.swift */; };
+		4E6384052A1FF58300FE27C2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6384042A1FF58300FE27C2 /* FavoritesView.swift */; };
+		4E63C9322A1122D300A86D15 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E63C9312A1122D300A86D15 /* Collection.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
 		4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */; };
+		4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F5B12A1A3FCC00051A25 /* URL.swift */; };
+		4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */; };
 		4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */; };
 		4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */; };
+		4EA25E332A12C70600E561BE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA25E322A12C70600E561BE /* Cities.swift */; };
+		4EA60EAB2A2727E600539D83 /* SearchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60EAA2A2727E600539D83 /* SearchTableViewDataSource.swift */; };
+		4EA60EAD2A2728CB00539D83 /* CityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60EAC2A2728CB00539D83 /* CityCellViewModel.swift */; };
 		4EA72A2B29D6365200836CDF /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A2A29D6365200836CDF /* Airport.swift */; };
 		4EA72A2D29D636FA00836CDF /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A2C29D636FA00836CDF /* APIRequest.swift */; };
 		4EA72A3029D6373000836CDF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A2F29D6373000836CDF /* APIClient.swift */; };
 		4EA72A3229D6377400836CDF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A3129D6377400836CDF /* Network.swift */; };
 		4EAC54C529DF035700EDDA71 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC54C429DF035700EDDA71 /* BlankView.swift */; };
+		4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB392D52A19014E00392C3A /* RunwayCell.swift */; };
+		4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB392D62A19014E00392C3A /* RunwayCell.xib */; };
+		4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */; };
+		4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB522E72A154BF60012BFDF /* UITextField.swift */; };
 		4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007329D85ABE00C64110 /* SearchFieldView.swift */; };
 		4EB9007629D8681900C64110 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9007529D8681900C64110 /* UIView.swift */; };
+		4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F862A1FCE3A0043AD42 /* FavoritesAssembly.swift */; };
+		4EBA3F892A1FD12F0043AD42 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F882A1FD12F0043AD42 /* FavoritesViewController.swift */; };
+		4EBA3F8B2A1FD2310043AD42 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F8A2A1FD2310043AD42 /* FavoritesViewModel.swift */; };
 		4EBCA03E29EAA3E600363661 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 4EBCA03D29EAA3E600363661 /* SQLite */; };
 		4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */; };
+		4EC7FA5D2A20FA3A008A177C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7FA5C2A20FA3A008A177C /* DIContainer.swift */; };
 		4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111529FBEFAC009FA56C /* Airports.swift */; };
 		4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111729FBEFDB009FA56C /* Runways.swift */; };
 		4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111929FBF012009FA56C /* Frequencies.swift */; };
-		4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */; };
+		4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */; };
 		4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07B29D996EE0070195D /* UIColor.swift */; };
 		4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07D29D9979C0070195D /* UIImageView.swift */; };
 		4ECEC08029D998D40070195D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC07F29D998D40070195D /* UIButton.swift */; };
 		4ECEC08429D99E910070195D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEC08329D99E910070195D /* String.swift */; };
+		4ED2DFCD2A17A7EE00479E4D /* CounterBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */; };
+		4ED45FEF2A26B574007442EC /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 4ED45FEE2A26B574007442EC /* RxDataSources */; };
 		4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0848E29FC75D600898DB3 /* AirportPreview.swift */; };
 		4EE5EE3E29D574E7000AAE58 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EE5EE3D29D574E7000AAE58 /* SnapKit */; };
 		4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5EE4029D588B6000AAE58 /* UIImage.swift */; };
+		4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */; };
+		4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */; };
+		4EECAF622A20C14D00F51E52 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF612A20C14D00F51E52 /* NotificationToken.swift */; };
+		4EECAF642A20C31D00F51E52 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF632A20C31D00F51E52 /* NotificationName.swift */; };
 		4EEEECF429DE22AC00769E48 /* AirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEECF229DE22AC00769E48 /* AirportCell.swift */; };
 		4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEECF329DE22AC00769E48 /* AirportCell.xib */; };
 /* End PBXBuildFile section */
@@ -102,8 +136,6 @@
 		11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		11D4F4702A03E973001DDC46 /* BannerUnderlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerUnderlayView.swift; sourceTree = "<group>"; };
 		11D4F4712A03E973001DDC46 /* AirportsMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMainView.swift; sourceTree = "<group>"; };
-		11D4F4732A03E973001DDC46 /* AirportDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
-		11D4F4742A03E973001DDC46 /* AirportDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
 		11D4F4762A03E973001DDC46 /* BannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		11D4F4772A03E973001DDC46 /* AirportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
 		11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportFilterViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +158,12 @@
 		11EC9B542A142BC9001EB56D /* AirportAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAssembly.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
+		4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
+		4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportDetailView.xib; sourceTree = "<group>"; };
+		4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		4E17314A2A1BD7600094A5E2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		4E257A7B2A25CED900AC5FF3 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		4E257A7C2A25CED900AC5FF3 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E3019BC29EAE38200852427 /* Runway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runway.swift; sourceTree = "<group>"; };
 		4E3019BE29EAE38B00852427 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -136,32 +174,61 @@
 		4E3B3AA729D43B4800971840 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E3B3AAA29D43B4800971840 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3B3AAC29D43B4800971840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E3C047229F91ED200CB08EB /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
 		4E3C047429F9355F00CB08EB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		4E40A1722A14F48B00101D06 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSelectableButton.swift; sourceTree = "<group>"; };
+		4E54DBC62A13DC5900CE8635 /* PivotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivotModel.swift; sourceTree = "<group>"; };
+		4E57C78D2A162C12009A681A /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		4E57C78F2A162FD3009A681A /* FilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAssembly.swift; sourceTree = "<group>"; };
+		4E5910812A27C51600815D98 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateBounds.swift; sourceTree = "<group>"; };
+		4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportByCity.swift; sourceTree = "<group>"; };
 		4E5C2DDC29FC885B00B66A02 /* SearchPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPattern.swift; sourceTree = "<group>"; };
 		4E5C2DDE29FC9E9700B66A02 /* BackgroundMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
+		4E6157282A1471AF008BAD4B /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
+		4E6384042A1FF58300FE27C2 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		4E63C9312A1122D300A86D15 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipNil.swift; sourceTree = "<group>"; };
 		4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnEmpty.swift; sourceTree = "<group>"; };
+		4E72F5B12A1A3FCC00051A25 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
 		4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
 		4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPasteTextField.swift; sourceTree = "<group>"; };
+		4EA25E322A12C70600E561BE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		4EA60EAA2A2727E600539D83 /* SearchTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewDataSource.swift; sourceTree = "<group>"; };
+		4EA60EAC2A2728CB00539D83 /* CityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellViewModel.swift; sourceTree = "<group>"; };
 		4EA72A2A29D6365200836CDF /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		4EA72A2C29D636FA00836CDF /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4EA72A2F29D6373000836CDF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4EA72A3129D6377400836CDF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4EAC54C429DF035700EDDA71 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		4EB392D52A19014E00392C3A /* RunwayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCell.swift; sourceTree = "<group>"; };
+		4EB392D62A19014E00392C3A /* RunwayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RunwayCell.xib; sourceTree = "<group>"; };
+		4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCellViewModel.swift; sourceTree = "<group>"; };
+		4EB522E72A154BF60012BFDF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4EB9007329D85ABE00C64110 /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		4EB9007529D8681900C64110 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		4EBA3F862A1FCE3A0043AD42 /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
+		4EBA3F882A1FD12F0043AD42 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		4EBA3F8A2A1FD2310043AD42 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		4EC7FA5C2A20FA3A008A177C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		4ECD111529FBEFAC009FA56C /* Airports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		4ECD111729FBEFDB009FA56C /* Runways.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runways.swift; sourceTree = "<group>"; };
 		4ECD111929FBF012009FA56C /* Frequencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequencies.swift; sourceTree = "<group>"; };
-		4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFetcher.swift; sourceTree = "<group>"; };
+		4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInteractor.swift; sourceTree = "<group>"; };
 		4ECEC07B29D996EE0070195D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4ECEC07D29D9979C0070195D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		4ECEC07F29D998D40070195D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		4ECEC08329D99E910070195D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBadge.swift; sourceTree = "<group>"; };
 		4EE0848E29FC75D600898DB3 /* AirportPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPreview.swift; sourceTree = "<group>"; };
 		4EE5EE4029D588B6000AAE58 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterModuleInterface.swift; sourceTree = "<group>"; };
+		4EECAF612A20C14D00F51E52 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
+		4EECAF632A20C31D00F51E52 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		4EEEECF229DE22AC00769E48 /* AirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportCell.swift; sourceTree = "<group>"; };
 		4EEEECF329DE22AC00769E48 /* AirportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +242,7 @@
 				4E3B3AC129D4451D00971840 /* Alamofire in Frameworks */,
 				4E3B3ABE29D444E400971840 /* RxSwift in Frameworks */,
 				4E3B3AC429D4553000971840 /* MapboxMaps in Frameworks */,
+				4ED45FEF2A26B574007442EC /* RxDataSources in Frameworks */,
 				4E3B3ABC29D444E400971840 /* RxCocoa in Frameworks */,
 				4EE5EE3E29D574E7000AAE58 /* SnapKit in Frameworks */,
 			);
@@ -186,6 +254,7 @@
 		113795592A0865FC00597299 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */,
 				1137955A2A08660E00597299 /* AirportFilterSearchItemsView.swift */,
 				1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */,
 				1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */,
@@ -197,6 +266,7 @@
 		11D4F4632A03E8FC001DDC46 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA3F852A1FCE160043AD42 /* Favorites */,
 				11EC9B422A13FFAA001EB56D /* Splash */,
 				11D4F46A2A03E973001DDC46 /* AirportsScene */,
 				11D4F4642A03E8FC001DDC46 /* FilterScene */,
@@ -209,7 +279,8 @@
 			children = (
 				113795592A0865FC00597299 /* Views */,
 				11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */,
-				11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */,
+				4E57C78D2A162C12009A681A /* FilterViewModel.swift */,
+				4E57C78F2A162FD3009A681A /* FilterAssembly.swift */,
 			);
 			path = FilterScene;
 			sourceTree = "<group>";
@@ -221,6 +292,7 @@
 				11D4F46F2A03E973001DDC46 /* View */,
 				11D4F4752A03E973001DDC46 /* ViewController */,
 				11EC9B542A142BC9001EB56D /* AirportAssembly.swift */,
+				4EA60EAA2A2727E600539D83 /* SearchTableViewDataSource.swift */,
 			);
 			path = AirportsScene;
 			sourceTree = "<group>";
@@ -231,6 +303,8 @@
 				11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */,
 				11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */,
 				11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */,
+				4EB392D92A190C5500392C3A /* RunwayCellViewModel.swift */,
+				4EA60EAC2A2728CB00539D83 /* CityCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -248,8 +322,11 @@
 		11D4F4722A03E973001DDC46 /* AirportDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				11D4F4732A03E973001DDC46 /* AirportDetailView.swift */,
-				11D4F4742A03E973001DDC46 /* AirportDetailView.xib */,
+				4E0A8F5D2A184CF90087B2D4 /* AirportDetailView.xib */,
+				4E0A8F5F2A1867260087B2D4 /* AirportDetailView.swift */,
+				4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */,
+				4EB392D62A19014E00392C3A /* RunwayCell.xib */,
+				4EB392D52A19014E00392C3A /* RunwayCell.swift */,
 			);
 			path = AirportDetailView;
 			sourceTree = "<group>";
@@ -267,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				11EC9B322A13F1C7001EB56D /* Coordinatable */,
+				4EC7FA5C2A20FA3A008A177C /* DIContainer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -290,6 +368,7 @@
 				11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */,
 				11EC9B502A140200001EB56D /* SignUpCoordinator.swift */,
 				11EC9B522A140665001EB56D /* AirportsCoordinator.swift */,
+				4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -309,6 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */,
+				4E40A1722A14F48B00101D06 /* Coordinate.swift */,
+				4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -352,6 +433,8 @@
 				4E3B3AB629D43F0800971840 /* Application */,
 				11EC9B3D2A13F4C0001EB56D /* Coordinators */,
 				11EC9B312A13F1C3001EB56D /* Core */,
+				4EECAF612A20C14D00F51E52 /* NotificationToken.swift */,
+				4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */,
 				4E5C2DDB29FC884A00B66A02 /* Helpers */,
 				4E56B23129DB73E400D4BF12 /* ComponentsLibrary */,
 				4E2C26A629D71428005B6710 /* Reactive */,
@@ -378,7 +461,7 @@
 		4E3B3AB729D43F1D00971840 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
-				4E3C047229F91ED200CB08EB /* aerokit_database.sqlite */,
+				4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */,
 				4E3B3AA729D43B4800971840 /* Assets.xcassets */,
 			);
 			path = Ressources;
@@ -402,6 +485,8 @@
 				4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */,
 				11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */,
 				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
+				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
+				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -429,6 +514,8 @@
 			children = (
 				4EEEECF229DE22AC00769E48 /* AirportCell.swift */,
 				4EEEECF329DE22AC00769E48 /* AirportCell.xib */,
+				4E257A7B2A25CED900AC5FF3 /* CityCell.swift */,
+				4E257A7C2A25CED900AC5FF3 /* CityCell.xib */,
 			);
 			path = ResultCell;
 			sourceTree = "<group>";
@@ -454,6 +541,9 @@
 				113795532A07F67600597299 /* AirportType.swift */,
 				113795552A07F70A00597299 /* AirportFilterItem.swift */,
 				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
+				4E54DBC62A13DC5900CE8635 /* PivotModel.swift */,
+				4E17314A2A1BD7600094A5E2 /* Weather.swift */,
+				4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,6 +555,7 @@
 				4E6B37A929DBA1A5005B97F2 /* ReactiveUtilities */,
 				4ECEC08229D99E7F0070195D /* Fundamentals */,
 				4EB4CF2329D5895400830FB7 /* UIKit */,
+				4EECAF632A20C31D00F51E52 /* NotificationName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -478,8 +569,22 @@
 				4ECEC07B29D996EE0070195D /* UIColor.swift */,
 				4ECEC07D29D9979C0070195D /* UIImageView.swift */,
 				4ECEC07F29D998D40070195D /* UIButton.swift */,
+				4EB522E72A154BF60012BFDF /* UITextField.swift */,
+				4E5910812A27C51600815D98 /* UILabel.swift */,
+				4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		4EBA3F852A1FCE160043AD42 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA3F862A1FCE3A0043AD42 /* FavoritesAssembly.swift */,
+				4EBA3F882A1FD12F0043AD42 /* FavoritesViewController.swift */,
+				4EBA3F8A2A1FD2310043AD42 /* FavoritesViewModel.swift */,
+				4E6384042A1FF58300FE27C2 /* FavoritesView.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		4EBCA03F29EAB2A800363661 /* Services */ = {
@@ -496,7 +601,7 @@
 			children = (
 				4ECD111429FBEF99009FA56C /* Fields */,
 				4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */,
-				4ECD111B29FC03F1009FA56C /* DatabaseFetcher.swift */,
+				4ECD111B29FC03F1009FA56C /* DatabaseInteractor.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -507,6 +612,7 @@
 				4ECD111529FBEFAC009FA56C /* Airports.swift */,
 				4ECD111729FBEFDB009FA56C /* Runways.swift */,
 				4ECD111929FBF012009FA56C /* Frequencies.swift */,
+				4EA25E322A12C70600E561BE /* Cities.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -515,6 +621,9 @@
 			isa = PBXGroup;
 			children = (
 				4ECEC08329D99E910070195D /* String.swift */,
+				4E63C9312A1122D300A86D15 /* Collection.swift */,
+				4E6157282A1471AF008BAD4B /* Numeric.swift */,
+				4E72F5B12A1A3FCC00051A25 /* URL.swift */,
 			);
 			path = Fundamentals;
 			sourceTree = "<group>";
@@ -551,6 +660,7 @@
 				4E3B3AC329D4553000971840 /* MapboxMaps */,
 				4EE5EE3D29D574E7000AAE58 /* SnapKit */,
 				4EBCA03D29EAA3E600363661 /* SQLite */,
+				4ED45FEE2A26B574007442EC /* RxDataSources */,
 			);
 			productName = FlightGuide;
 			productReference = 4E3B3A9B29D43B4800971840 /* FlightGuide.app */;
@@ -586,6 +696,7 @@
 				4E3B3AC229D4553000971840 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				4EE5EE3C29D574E7000AAE58 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4EBCA03C29EAA3E600363661 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				4ED45FED2A26B574007442EC /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 4E3B3A9C29D43B4800971840 /* Products */;
 			projectDirPath = "";
@@ -601,11 +712,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E3C047329F91ED200CB08EB /* aerokit_database.sqlite in Resources */,
+				4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */,
+				4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */,
 				4E3B3AAB29D43B4800971840 /* LaunchScreen.storyboard in Resources */,
 				4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */,
 				4E3B3AA829D43B4800971840 /* Assets.xcassets in Resources */,
-				11D4F47E2A03E973001DDC46 /* AirportDetailView.xib in Resources */,
+				4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */,
+				4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,25 +729,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EBA3F8B2A1FD2310043AD42 /* FavoritesViewModel.swift in Sources */,
+				4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */,
 				4E3019BD29EAE38200852427 /* Runway.swift in Sources */,
+				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
+				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
 				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
 				4EA72A3229D6377400836CDF /* Network.swift in Sources */,
+				4EBA3F892A1FD12F0043AD42 /* FavoritesViewController.swift in Sources */,
+				4EA60EAB2A2727E600539D83 /* SearchTableViewDataSource.swift in Sources */,
 				4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */,
 				4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */,
 				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
+				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
 				11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */,
+				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
-				4ECD111C29FC03F1009FA56C /* DatabaseFetcher.swift in Sources */,
+				4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
+				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,
+				4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */,
+				4EC7FA5D2A20FA3A008A177C /* DIContainer.swift in Sources */,
 				4E3B3A9F29D43B4800971840 /* AppDelegate.swift in Sources */,
 				4ECEC08029D998D40070195D /* UIButton.swift in Sources */,
 				11D4F47F2A03E973001DDC46 /* BannerViewController.swift in Sources */,
 				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
+				4E63C9322A1122D300A86D15 /* Collection.swift in Sources */,
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
@@ -643,17 +768,25 @@
 				11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */,
 				11EC9B492A13FFAA001EB56D /* SplashViewModel.swift in Sources */,
 				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
+				4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */,
+				4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */,
 				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
+				4E5910822A27C51600815D98 /* UILabel.swift in Sources */,
+				4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */,
 				4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */,
 				11EC9B382A13F20C001EB56D /* Router.swift in Sources */,
+				4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */,
 				113795522A07F60000597299 /* RunwaySurface.swift in Sources */,
+				4E6384052A1FF58300FE27C2 /* FavoritesView.swift in Sources */,
 				4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */,
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
 				4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */,
+				4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */,
 				4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */,
 				4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */,
 				4EEEECF429DE22AC00769E48 /* AirportCell.swift in Sources */,
+				4EA60EAD2A2728CB00539D83 /* CityCellViewModel.swift in Sources */,
 				4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */,
 				4EAC54C529DF035700EDDA71 /* BlankView.swift in Sources */,
 				113795542A07F67600597299 /* AirportType.swift in Sources */,
@@ -661,19 +794,29 @@
 				4EA72A2D29D636FA00836CDF /* APIRequest.swift in Sources */,
 				4EB9007629D8681900C64110 /* UIView.swift in Sources */,
 				11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */,
+				4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */,
+				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
 				4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */,
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
+				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,
 				1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */,
+				4EECAF622A20C14D00F51E52 /* NotificationToken.swift in Sources */,
+				4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */,
+				4ED2DFCD2A17A7EE00479E4D /* CounterBadge.swift in Sources */,
 				11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */,
+				4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */,
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
+				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
 				4E3C047529F9355F00CB08EB /* Database.swift in Sources */,
 				11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */,
 				11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */,
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
+				4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */,
+				4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */,
 				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
@@ -681,9 +824,10 @@
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
 				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,
+				4EECAF642A20C31D00F51E52 /* NotificationName.swift in Sources */,
 				4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */,
 				11EC9B4F2A14005E001EB56D /* LoadingView.swift in Sources */,
-				11D4F47D2A03E973001DDC46 /* AirportDetailView.swift in Sources */,
+				4E0A8F602A1867260087B2D4 /* AirportDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,7 +895,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -805,7 +949,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -827,9 +971,9 @@
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -855,9 +999,9 @@
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -927,6 +1071,14 @@
 				minimumVersion = 0.9.2;
 			};
 		};
+		4ED45FED2A26B574007442EC /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		4EE5EE3C29D574E7000AAE58 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -962,6 +1114,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EBCA03C29EAA3E600363661 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;
+		};
+		4ED45FEE2A26B574007442EC /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ED45FED2A26B574007442EC /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		4EE5EE3D29D574E7000AAE58 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

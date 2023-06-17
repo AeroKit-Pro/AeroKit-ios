@@ -102,3 +102,10 @@ enum AnimationDuration: TimeInterval {
         return rawValue
     }
 }
+
+extension UIView {
+    ///  returns self's bounds height minus vertical safe area insets
+    var boundsSafeHeight: CGFloat {
+        bounds.height - safeAreaInsets.top - safeAreaInsets.bottom
+    }
+}

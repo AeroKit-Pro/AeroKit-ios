@@ -5,11 +5,13 @@
 //  Created by Eugene Kleban on 5.05.23.
 //
 
-enum AirportFilterItem: CaseIterable {
+enum AirportFilterItem: Int, CaseIterable {
     case all
     case cities
     case airports
+}
 
+extension AirportFilterItem: ModelTitlable {
     var title: String {
         switch self {
         case .all:
@@ -19,5 +21,11 @@ enum AirportFilterItem: CaseIterable {
         case .airports:
             return "Airports"
         }
+    }
+}
+
+extension AirportFilterItem: Indexable {
+    var index: Int {
+        self.rawValue
     }
 }

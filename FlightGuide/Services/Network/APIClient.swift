@@ -9,12 +9,7 @@ import Alamofire
 import RxSwift
 import Foundation
 
-protocol APIClientProtocol {
-    associatedtype RequestedType
-    func getAirports() -> Observable<RequestedType>
-}
-
-final class APIClient: APIClientProtocol {
+final class APIClient {
 
     func getAirports() -> Observable<Airports> {
         request(APIRequest.getAirports)
@@ -30,6 +25,10 @@ final class APIClient: APIClientProtocol {
     
     func getCities() -> Observable<Citites> {
         request(APIRequest.getCities)
+    }
+    
+    func getWeather(type: WeatherReportType, icao: String) -> Observable<Weather> {
+        request(APIRequest.getWeather(type: type, icao: icao))
     }
 
     private func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {

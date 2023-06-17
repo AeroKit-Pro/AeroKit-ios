@@ -7,13 +7,24 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class AirportsViewController: UIViewController {
     
     private let airportsMainView: AirportsSceneViewType = AirportsMainView()
-    var viewModel: AirportsViewModelType!
+    private let viewModel: AirportsViewModelType
     private let bannerViewController = BannerViewController()
+    private let dataSource = SearchTableViewDataSource()
     private let disposeBag = DisposeBag()
+    
+    init(viewModel: AirportsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    } 
     
     override func loadView() {
         view = airportsMainView
@@ -23,71 +34,108 @@ final class AirportsViewController: UIViewController {
         super.viewDidLoad()
         bindViewModelInputs()
         bindViewModelOutputs()
+        airportsMainView.rxTable.setDelegate(self).disposed(by: disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addChild(bannerViewController)
-        airportsMainView.addSubview(bannerViewController.view)
-    }
+            super.viewDidAppear(animated)
+            addChild(bannerViewController)
+            airportsMainView.addSubview(bannerViewController.view)
+        }
     
     private func bindViewModelInputs() {
         airportsMainView.didBeginSearching
-            .subscribe(onNext: { self.viewModel.inputs.didBeginSearching() })
+            .subscribe(onNext: viewModel.inputs.didBeginSearching)
             .disposed(by: disposeBag)
         
-        airportsMainView.didEndSearching
-            .subscribe(onNext: { self.viewModel.inputs.didEndSearching() })
+        airportsMainView.dismissSearchButton.tap
+            .subscribe(onNext: viewModel.inputs.didEndSearching)
             .disposed(by: disposeBag)
         
-        airportsMainView.searchTextDidChange
-            .subscribe(onNext: { self.viewModel.inputs.searchInputDidChange(text: $0) })
+        airportsMainView.rxTextFieldText
+            .subscribe(onNext: viewModel.inputs.searchInputDidChange(text:))
             .disposed(by: disposeBag)
         
         airportsMainView.rxTable.itemSelected
-            .subscribe(onNext: { self.viewModel.inputs.didSelectItem(at: $0) })
+            .subscribe(onNext: viewModel.inputs.didSelectItem(at:))
             .disposed(by: disposeBag)
 
         airportsMainView.didTapFilterButton
-            .subscribe(onNext: { self.viewModel.inputs.didTapFilter() })
+            .subscribe(onNext: viewModel.inputs.didTapFiltersButton)
+            .disposed(by: disposeBag)
+        
+        airportsMainView.tappedAnnotation
+            .subscribe(onNext: viewModel.inputs.didSelectPointAnnotation)
             .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
         viewModel.outputs.onSearchStart
             .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
-                                 self.bannerViewController.collapse() })
+                                 self.bannerViewController.hide() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.onSearchEnd
-            .subscribe(onNext: { self.airportsMainView.dismissSearchMode() })
+            .subscribe(onNext: airportsMainView.dismissSearchMode)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.searchFieldCanDismiss
+            .subscribe(onNext: airportsMainView.searchFieldCanDismiss)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.dismissDetailView
+            .subscribe(onNext: { self.bannerViewController.hide();
+                                 self.airportsMainView.searchFieldCannotDismiss() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.searchOutput
-            .bind(to: airportsMainView.rxTable.items(cellIdentifier: AirportCell.identifier,
-                                                     cellType: AirportCell.self)) { _, model, cell in
-                cell.viewModel = model
-            }
+            .bind(to: airportsMainView.rxTable.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        /*
-        viewModel.outputs.onItemSelection
+        
+        viewModel.outputs.pivotModel
+            .subscribe(onNext: bannerViewController.refreshData(withPivotModel:))
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onAirportSelection
             .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
-                self.bannerViewController.expand() })
+                                 self.bannerViewController.collapse() }) 
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onCitySelection
+            .subscribe(onNext: airportsMainView.dismissSearchMode)
             .disposed(by: disposeBag)
         
         viewModel.outputs.airportCoordinate
-            .subscribe(onNext: { self.airportsMainView.ease(to: $0) })
+            .subscribe(onNext: airportsMainView.ease(to:))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.airportAnnotation
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.boundingBox
+            .subscribe(onNext: airportsMainView.fitCameraInto)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.pointAnnotations.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.bindablePointAnnotations)
             .disposed(by: disposeBag)
-         
-        viewModel.outputs.selectedAirport
-            .subscribe(onNext: { self.bannerViewController.refreshData(with: $0) })
+        
+        viewModel.outputs.counterBadgeIsHidden.asDriver(onErrorDriveWith: .empty())
+            .drive(airportsMainView.counterBadge.isHidden)
             .disposed(by: disposeBag)
-          */
+        
+        viewModel.outputs.numberOfActiveFilters.asDriver(onErrorDriveWith: .empty())
+            .drive(airportsMainView.counterBadge.text)
+            .disposed(by: disposeBag)
     }
     
+}
+// traditional delegate methods are mainly used to manage table view appearance
+extension AirportsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        // MARK: textLabel of UITableViewHeaderFooterView will be deprecated in next iOS versions
+        headerView.textLabel?.textColor = .flg_primary_dark
+        headerView.contentView.backgroundColor = .white
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
 }

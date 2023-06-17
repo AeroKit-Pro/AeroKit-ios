@@ -9,15 +9,18 @@ import UIKit
 
 struct AirportAssembly: SceneAssembly {
     private let sceneOutput: AirportsSceneDelegate?
+    private let filterInputPassing: FilterInputPassing
 
-    init(sceneOutput: AirportsSceneDelegate?) {
+    init(sceneOutput: AirportsSceneDelegate?, filterInputPassing: FilterInputPassing) {
         self.sceneOutput = sceneOutput
+        self.filterInputPassing = filterInputPassing
     }
 
     func makeScene() -> UIViewController {
-        let viewController = AirportsViewController()
-        let viewModel = AirportsViewModel(delegate: sceneOutput)
-        viewController.viewModel = viewModel
+        let viewModel = AirportsViewModel(delegate: sceneOutput,
+                                          filterInputPassing: filterInputPassing,
+                                          notificationCenter: DIContainer.default.notificationService)
+        let viewController = AirportsViewController(viewModel: viewModel)
         return viewController
     }
 }

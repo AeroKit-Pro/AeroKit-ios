@@ -5,7 +5,7 @@
 //  Created by Eugene Kleban on 5.05.23.
 //
 
-enum AirportType: CaseIterable {
+enum AirportType: Int, CaseIterable {
     case small
     case large
     case medium
@@ -33,5 +33,32 @@ extension AirportType: ModelTitlable {
         case .baloonPlane:
             return "Baloon-plane"
         }
+    }
+}
+
+extension AirportType: DatabaseRowRepresentable {
+    var row: String {
+        switch self {
+        case .small:
+            return "small_airport"
+        case .large:
+            return "large_airport"
+        case .medium:
+            return "medium_airport"
+        case .closed:
+            return "closed"
+        case .heliport:
+            return "heliport"
+        case .seaPlane:
+            return "seaplane_base"
+        case .baloonPlane:
+            return "balloonport"
+        }
+    }
+}
+
+extension AirportType: Indexable {
+    var index: Int {
+        self.rawValue
     }
 }

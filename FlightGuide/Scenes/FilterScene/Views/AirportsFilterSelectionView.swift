@@ -11,14 +11,15 @@ protocol ModelTitlable {
     var title: String { get }
 }
 
-struct AirportsFilterSelectionItem<ItemType: CaseIterable & ModelTitlable> {
+struct AirportsFilterSelectionItem<ItemType: CaseIterable & ModelTitlable & Indexable> {
     let type: ItemType
     var isSelected: Bool
 }
 
-final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>: UIView {
+final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable & Indexable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
     }()
@@ -26,6 +27,11 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
     private let scrollView = UIScrollView()
     private let stackView = UIStackView(axis: .horizontal, spacing: 24)
     var items = [AirportsFilterSelectionItem<ItemType>]()
+    
+    var selectedItems: [ItemType] {
+        set { newValue.forEach { setSelectedState(at: $0.index) } }
+        get { getSelectedItems() }
+    }
 
     init(title: String) {
         super.init(frame: .zero)
@@ -36,6 +42,19 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setSelectedState(at index: Int) {
+        guard let item = stackView.arrangedSubviews[index] as? AirportsFilterSelectableControl<ItemType> else { return }
+        item.isItemSelected = true
+        
+    }
+    
+    private func getSelectedItems() -> [ItemType] {
+        stackView.arrangedSubviews
+            .compactMap { $0 as? AirportsFilterSelectableControl<ItemType> }
+            .filter { $0.isItemSelected }
+            .map { $0.item }
     }
 
     private func setupLayout() {
@@ -58,17 +77,19 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable>:
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
         scrollView.showsHorizontalScrollIndicator = false
 
-        ItemType.allCases.enumerated().forEach {
-            stackView.addArrangedSubview(AirportsFilterSelectableControl(title: $0.element.title))
+        self.items = ItemType.allCases.map { AirportsFilterSelectionItem(type: $0, isSelected: false) }
+        
+        ItemType.allCases.forEach {
+            stackView.addArrangedSubview(AirportsFilterSelectableControl<ItemType>(item: $0))
         }
     }
 }
 
-final class AirportsFilterSelectableControl: UIControl {
+final class AirportsFilterSelectableControl<ItemType: CaseIterable & ModelTitlable>: UIControl {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -76,20 +97,24 @@ final class AirportsFilterSelectableControl: UIControl {
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .regular) // TODO: fonts
         return label
     }()
+    
+    let item: ItemType
 
-    private var isItemSelected: Bool = false {
+    var isItemSelected: Bool = false {
         didSet {
             updateImageState()
             sendActions(for: .valueChanged)
         }
     }
 
-    init(title: String, isSelected: Bool = false) {
+    init(item: ItemType, isSelected: Bool = false) {
+        self.item = item
         super.init(frame: .zero)
-        titleLabel.text = title
+        titleLabel.text = item.title
         isItemSelected = isSelected
         setupLayout()
         updateImageState()

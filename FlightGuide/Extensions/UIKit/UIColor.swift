@@ -19,11 +19,15 @@ extension UIColor {
 }
 
 extension UIColor {
-    static var flg_secondary_gray: UIColor {
-        UIColor.hex(0x9E9E9E)
+    static var flg_blue_gray: UIColor {
+        UIColor.hex(0xACB3CB)
     }
     
-    static var flg_secondary_blue: UIColor {
-        UIColor.hex(0x4682C7)
+    static var flg_primary_dark: UIColor {
+        UIColor.hex(0x333333)
+    }
+    
+    static var flg_light_dark_white: UIColor {
+        UIColor.hex(0xF8F8F8)
     }
 }

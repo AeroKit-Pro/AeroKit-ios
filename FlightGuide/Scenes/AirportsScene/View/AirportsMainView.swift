@@ -10,26 +10,31 @@ import SnapKit
 import MapboxMaps
 import RxCocoa
 import RxSwift
-
+//TODO: Enum with states
 protocol AirportsSceneViewType: UIView {
     typealias PointAnnotations = [PointAnnotation]
     
-    var bindablePointAnnotations: RxSwift.Binder<PointAnnotations> { get }
+    var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var tappedAnnotation: ControlEvent<PointAnnotation> { get }
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }
     var didTapFilterButton: ControlEvent<()> { get }
-    var searchTextDidChange: ControlProperty<String?> { get }
+    var counterBadge: Reactive<CounterBadge> { get }
+    var dismissSearchButton: Reactive<UIButton> { get }
+    var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
     func enterSearchingMode()
     func dismissSearchMode()
+    func searchFieldCannotDismiss()
+    func searchFieldCanDismiss() 
     func ease(to coordinate: CLLocationCoordinate2D)
+    func fitCameraInto(_ bounds: CoordinateBounds)
 }
 
 final class AirportsMainView: UIView {
     
     private let mapView: MapView
-    private let searchField = SearchFieldView(placeholder: "Search places")
+    private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
     
@@ -38,13 +43,17 @@ final class AirportsMainView: UIView {
     }()
     
     override init(frame: CGRect = .zero) {
-        //let options = MapInitOptions(styleURI: StyleURI(url: try! "http://45.12.19.184/map_style".asURL()))
+       // let options = MapInitOptions(styleURI: StyleURI(url: try! "http://45.12.19.184/map_style".asURL()))
         mapView = MapView(frame: .zero)
         super.init(frame: frame)
         setupMapView()
         setupSearchField()
         setupBlankView()
         setupTableView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupMapView() {
@@ -56,10 +65,10 @@ final class AirportsMainView: UIView {
         addSubview(searchField)
         searchField.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(10)
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
-            $0.height.equalTo(40)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(45)
+            $0.height.equalTo(50)
         }
-        searchField.layer.cornerRadius = 20
+        searchField.layer.cornerRadius = 15
     }
     
     private func setupBlankView() {
@@ -82,12 +91,10 @@ final class AirportsMainView: UIView {
         airportsTableView.isHidden = true
         airportsTableView.register(UINib(nibName: String(describing: AirportCell.self), bundle: nil),
                                    forCellReuseIdentifier: AirportCell.identifier)
+        airportsTableView.register(UINib(nibName: String(describing: CityCell.self), bundle: nil),
+                                   forCellReuseIdentifier: CityCell.identifier)
         airportsTableView.dataSource = nil
         airportsTableView.separatorStyle = .none
-    }
-        
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }
@@ -109,8 +116,8 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.textFieldDidEndEditing
     }
     
-    var searchTextDidChange: ControlProperty<String?> {
-        searchField.textDidChange
+    var rxTextFieldText: ControlProperty<String?> {
+        searchField.rxTextFieldText
     }
     
     var rxTable: Reactive<UITableView> {
@@ -121,11 +128,24 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.didTapFilterButton
     }
     
+    var counterBadge: Reactive<CounterBadge> {
+        searchField.rxCounterBadge
+    }
+    
+    var dismissSearchButton: Reactive<UIButton> {
+        searchField.rxDismissSearchButton
+    }
+    
     func enterSearchingMode() {
         blankView.show(withDuration: 0.2)
         airportsTableView.isHidden = false
         searchField.addBorder(withDuration: 0.2)
         searchField.removeShadow(withDuration: 0.2)
+        searchField.showDismissButton()
+    }
+    
+    func searchFieldCanDismiss() {
+        searchField.showDismissButton()
     }
     
     func dismissSearchMode() {
@@ -136,8 +156,20 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.addShadow(withDuration: 0.2)
     }
     
+    func searchFieldCannotDismiss() {
+        searchField.showMagnifierImage()
+    }
+    
     func ease(to coordinate: CLLocationCoordinate2D) {
         let options = CameraOptions(center: coordinate, zoom: 8)
         mapView.camera.ease(to: options, duration: 0.4)
+    }
+    
+    func fitCameraInto(_ bounds: CoordinateBounds) {
+        let camera = mapView.mapboxMap.camera(for: bounds,
+                                              padding: UIEdgeInsets.allSides(100),
+                                              bearing: 0,
+                                              pitch: 0)
+        mapView.mapboxMap.setCamera(to: camera)
     }
 }

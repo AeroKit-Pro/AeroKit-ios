@@ -11,6 +11,7 @@ final class AirportsFilterRunwayLightView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Runway light"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()
@@ -20,6 +21,11 @@ final class AirportsFilterRunwayLightView: UIView {
         switchView.onTintColor = .black
         return switchView
     }()
+    
+    var selectedState: Bool {
+        set { switchView.isOn = newValue }
+        get { switchView.isOn }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +52,7 @@ final class AirportsFilterRunwayLightView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
     }
 }

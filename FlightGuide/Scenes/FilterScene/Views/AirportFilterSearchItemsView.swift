@@ -7,17 +7,18 @@
 
 import UIKit
 
-final class AirportFilterSearchItemsView: UIView {
+final class AirportFilterSearchItemsView<ItemType: CaseIterable & ModelTitlable & Indexable>: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Items of search"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()
 
     let segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
-        segmentedControl.selectedSegmentTintColor = UIColor.hex(0x333333)
+        segmentedControl.selectedSegmentTintColor = .flg_primary_dark
         let normalAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
                                 NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.setTitleTextAttributes(normalAttributes, for: .normal)
@@ -25,8 +26,20 @@ final class AirportFilterSearchItemsView: UIView {
         segmentedControl.setTitleTextAttributes(selectedAttributes, for:.selected)
         return segmentedControl
     }()
+    
+    let items: [ItemType]
+    
+    var selectedItem: ItemType {
+        set { segmentedControl.selectedSegmentIndex = newValue.index }
+        get { items[segmentedControl.selectedSegmentIndex] }
+    }
+    
+    var selectedSegmentIndex: Int {
+        segmentedControl.selectedSegmentIndex
+    }
 
     override init(frame: CGRect) {
+        items = Array(ItemType.allCases)
         super.init(frame: frame)
         setupLayout()
         setupUI()
@@ -52,10 +65,10 @@ final class AirportFilterSearchItemsView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
 
-        AirportFilterItem.allCases.enumerated().forEach { index, item in
+        items.enumerated().forEach { index, item in
             segmentedControl.insertSegment(withTitle: item.title, at: index, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0
