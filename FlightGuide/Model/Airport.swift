@@ -17,6 +17,7 @@ struct Airport: Codable {
     let regionCode, municipality, scheduledService, gpsCode: String?
     let iataCode, localCode, homeLink, wikipediaLink, surfaces: String?
     let keywords: String?
+    let isFavorite: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id, ident, type, name
@@ -33,5 +34,6 @@ struct Airport: Codable {
         case wikipediaLink = "wikipedia_link"
         case keywords
         case surfaces
+        case isFavorite = "is_favorite"
     }
 }

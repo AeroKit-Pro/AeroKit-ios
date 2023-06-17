@@ -36,13 +36,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gb-kx-AX7">
                                                 <rect key="frame" x="0.0" y="0.0" width="31.333333333333332" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAM-Z7-vPu">
                                                 <rect key="frame" x="36.333333333333329" y="0.0" width="226.66666666666669" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -53,13 +53,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Municipality:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J72-iC-Orf">
                                                 <rect key="frame" x="0.0" y="0.0" width="71.666666666666671" height="24.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ary-Lf-mVh">
                                                 <rect key="frame" x="76.666666666666671" y="0.0" width="186.33333333333331" height="24.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -70,36 +70,45 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Surface:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mo0-au-4nA">
                                                 <rect key="frame" x="0.0" y="0.0" width="47.666666666666664" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFg-dw-nVT">
                                                 <rect key="frame" x="52.666666666666671" y="0.0" width="210.33333333333331" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Vnukovo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7A-re-imz">
-                                <rect key="frame" x="47" y="9.9999999999999982" width="263" height="20.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Vnukovo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7A-re-imz">
+                                <rect key="frame" x="46.999999999999993" y="9.9999999999999982" width="65.333333333333314" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark_selected" translatesAutoresizingMaskIntoConstraints="NO" id="feq-tl-qRQ">
+                                <rect key="frame" x="117.33333333333333" y="10" width="15.999999999999986" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="4BA-Cg-eOd"/>
+                                    <constraint firstAttribute="width" constant="16" id="8lt-WZ-kvf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.83753188775510201" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pau-V8-eMV" firstAttribute="centerY" secondItem="uMY-ru-qG8" secondAttribute="centerY" id="8VP-f8-WMh"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="feq-tl-qRQ" secondAttribute="trailing" constant="12.5" id="Hae-Di-dK0"/>
                             <constraint firstItem="i7A-re-imz" firstAttribute="leading" secondItem="pau-V8-eMV" secondAttribute="trailing" constant="10" id="K1k-tc-o8L"/>
-                            <constraint firstAttribute="trailing" secondItem="i7A-re-imz" secondAttribute="trailing" constant="10" id="Ngp-Tj-Qns"/>
+                            <constraint firstItem="feq-tl-qRQ" firstAttribute="top" secondItem="i7A-re-imz" secondAttribute="top" id="MiT-48-Yl0"/>
                             <constraint firstItem="x1O-h6-OhV" firstAttribute="top" secondItem="i7A-re-imz" secondAttribute="bottom" constant="5" id="fhV-JL-0tk"/>
                             <constraint firstItem="x1O-h6-OhV" firstAttribute="leading" secondItem="pau-V8-eMV" secondAttribute="trailing" constant="10" id="gfd-Ew-Be2"/>
                             <constraint firstAttribute="trailing" secondItem="x1O-h6-OhV" secondAttribute="trailing" constant="10" id="jNS-JI-5Uj"/>
                             <constraint firstItem="i7A-re-imz" firstAttribute="top" secondItem="uMY-ru-qG8" secondAttribute="top" constant="10" id="pIq-9m-Zum"/>
                             <constraint firstAttribute="bottom" secondItem="x1O-h6-OhV" secondAttribute="bottom" constant="10" id="rUx-6h-fPO"/>
+                            <constraint firstItem="feq-tl-qRQ" firstAttribute="leading" secondItem="i7A-re-imz" secondAttribute="trailing" constant="5" id="riR-uk-0be"/>
                             <constraint firstItem="pau-V8-eMV" firstAttribute="leading" secondItem="uMY-ru-qG8" secondAttribute="leading" constant="12" id="uzt-8N-lpq"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -110,6 +119,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="uMY-ru-qG8" secondAttribute="bottom" constant="10" id="Lht-t1-D4k"/>
                     <constraint firstItem="uMY-ru-qG8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="RcW-6X-qYz"/>
@@ -118,7 +128,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="bookmarkImage" destination="feq-tl-qRQ" id="6rz-PY-0gu"/>
                 <outlet property="containerView" destination="uMY-ru-qG8" id="g2p-OO-9ue"/>
                 <outlet property="municipality" destination="ary-Lf-mVh" id="DbG-BP-Avs"/>
                 <outlet property="name" destination="i7A-re-imz" id="K0C-RR-RS8"/>
@@ -126,7 +138,10 @@
                 <outlet property="type" destination="AAM-Z7-vPu" id="ucD-PB-vjl"/>
                 <outlet property="typeImage" destination="pau-V8-eMV" id="8lq-Cc-2k8"/>
             </connections>
-            <point key="canvasLocation" x="15" y="49"/>
+            <point key="canvasLocation" x="13.740458015267174" y="48.591549295774648"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bookmark_selected" width="30" height="30"/>
+    </resources>
 </document>

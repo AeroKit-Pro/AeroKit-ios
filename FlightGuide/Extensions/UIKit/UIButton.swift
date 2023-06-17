@@ -11,7 +11,7 @@ import class UIKit.UIImageView
 import class UIKit.UIColor
 
 extension UIButton {
-    convenience init(image: UIImage?, contentMode: UIImageView.ContentMode, tintColor: UIColor) {
+    convenience init(image: UIImage?, contentMode: UIImageView.ContentMode, tintColor: UIColor? = nil) {
         self.init()
         setImage(image, for: .normal)
         imageView?.contentMode = contentMode

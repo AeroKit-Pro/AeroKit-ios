@@ -11,7 +11,7 @@ import RxSwift
 final class AirportFilterViewController: UIViewController {
 
     private let airportFilterView: AirportFilterViewType = AirportFilterView()
-    var viewModel: AirportsViewModelType!
+    private let viewModel: FilterViewModelType
     private let disposeBag = DisposeBag()
 
     let rightBarButton: UIButton = {
@@ -27,7 +27,16 @@ final class AirportFilterViewController: UIViewController {
         button.setAttributedTitle(attributedString, for: .normal)
         return button
     }()
-
+    
+    init(viewModel: FilterViewModelType) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }   
+    
     override func loadView() {
         view = airportFilterView
     }
@@ -39,6 +48,7 @@ final class AirportFilterViewController: UIViewController {
 
         bindViewModelInputs()
         bindViewModelOutputs()
+        viewModel.inputs.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,13 +63,9 @@ final class AirportFilterViewController: UIViewController {
 
     private func configureNavigationBar() {
         setupNavigationTitle()
-
-        let backImage = UIImage(named: "navigationBar_backArrow")
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil,
+                                                           action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         setIsEnabledResetButton(false)
     }
@@ -87,11 +93,25 @@ final class AirportFilterViewController: UIViewController {
     }
 
     private func bindViewModelInputs() {
-
+        airportFilterView.applyFiltersButtonTapped.subscribe(onNext: { [unowned self] in
+            viewModel.inputs.didTapApplyFiltersButton()
+        })
+        .disposed(by: disposeBag)
+        
+        airportFilterView.filterInput.subscribe(onNext: { [unowned self] in
+            viewModel.inputs.didCollectValues(filterInput: $0)
+        })
+        .disposed(by: disposeBag)
     }
-
+    
     private func bindViewModelOutputs() {
-
+        viewModel.outputs.filterState
+            .subscribe(onNext: airportFilterView.restoreState(with:))
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.collectFilters
+            .subscribe(onNext: airportFilterView.collectValues)
+            .disposed(by: disposeBag)
     }
-
+    
 }

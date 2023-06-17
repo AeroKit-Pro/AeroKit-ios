@@ -54,6 +54,8 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         }
     }
 
+    private let notificationCenter = DIContainer.default.notificationService
+    private var notificationTokens: [NotificationToken] = []
     private let navigationController: UINavigationController
     let tabBarController: UITabBarController
     private(set) var children: [Coordinatable]
@@ -72,12 +74,14 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
         self.tabBarController.view.backgroundColor = .white
+        self.tabBarController.tabBar.backgroundColor = .white
         self.tabBarController.tabBar.tintColor = .black
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
         tabBarAppearance.backgroundColor = .white
         tabBarController.tabBar.standardAppearance = tabBarAppearance
-//        tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
+        super.init()
+        subscribeOnNotifications()
     }
 
     func start() {
@@ -101,7 +105,7 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navigationController = BaseNavigationController()
         navigationController.tabBarItem = page.tabBarItem
-
+        
         let router = Router(rootController: navigationController)
 
         switch page {
@@ -111,7 +115,10 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             children.append(airportsCoordinator)
             airportsCoordinator.start()
         case .favourites:
-            break
+            let favoritesCoordinator = FavoritesCoordinator(router: router)
+            favoritesCoordinator.parent = self
+            children.append(favoritesCoordinator)
+            favoritesCoordinator.start()
         case .tools:
             let toolsCoordinator = ToolsCoordinator(router: router)
             toolsCoordinator.parent = self
@@ -121,6 +128,16 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             break
         }
         return navigationController
+    }
+    
+    private func subscribeOnNotifications() {
+        notificationTokens.append(
+            notificationCenter.observe(
+                name: .didSelectFavouriteAirport
+            ) { [weak self] notification in
+                self?.selectPage(.airports)
+            }
+        )
     }
 
     func currentPage() -> TabBarPage? {

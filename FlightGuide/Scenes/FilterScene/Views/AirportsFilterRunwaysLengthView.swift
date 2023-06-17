@@ -14,6 +14,7 @@ final class AirportsFilterRunwaysLengthView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Min. runway length"
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .semibold) // TODO: fonts
         return label
     }()
@@ -25,24 +26,33 @@ final class AirportsFilterRunwaysLengthView: UIView {
         textField.keyboardType = .numberPad
         return textField
     }()
+    
+    private let toolbar = UIToolbar()
 
     let textFieldUnderlineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.hex(0x333333)
+        view.backgroundColor = .flg_primary_dark
         return view
     }()
 
     let measureLabel: UILabel = {
         let label = UILabel()
         label.text = "ft."
+        label.textColor = .black
         label.font = .systemFont(ofSize: 16) // TODO: fonts
         return label
     }()
+    
+    var enteredLength: String? {
+        set { textField.text = newValue }
+        get { textField.text }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
         setupUI()
+        setupToolbar()
     }
 
     required init?(coder: NSCoder) {
@@ -77,10 +87,23 @@ final class AirportsFilterRunwaysLengthView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.hex(0xF8F8F8)
+        backgroundColor = .flg_light_dark_white
         layer.cornerRadius = 16
+        textField.textColor = .black
 
         textField.delegate = self
+    }
+    
+    private func setupToolbar() {
+        toolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc private func doneButtonTapped() {
+        textField.resignFirstResponder()
     }
 }
 

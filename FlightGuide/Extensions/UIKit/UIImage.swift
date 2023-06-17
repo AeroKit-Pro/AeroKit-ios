@@ -20,15 +20,23 @@ extension UIImage {
         UIImage(named: "cross")
     }
     
-    static var chevron_left: UIImage? {
-        UIImage(systemName: "chevron.left")
+    static var back_arrow: UIImage? {
+        UIImage(named: "back_arrow")
     }
     
-    static var pin: UIImage? {
-        UIImage(named: "red_pin")
+    static var airport_pin: UIImage? {
+        UIImage(named: "airport_pin")
     }
     
     static var airport: UIImage? {
         UIImage(named: "airport")
+    }
+    
+    static var bookmark_deselected: UIImage? {
+        UIImage(named: "bookmark_deselected")
+    }
+    
+    static var bookmark_selected: UIImage? {
+        UIImage(named: "bookmark_selected")
     }
 }

@@ -16,9 +16,10 @@ struct Frequency: Codable {
     let frequencyMhz: Double?
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case airportID = "airport_id"
-        case type, description
+        case id = "frequency_id" // change to "id" for making an API call. TODO: fix db rows naming
+        case airportID = "id_airport" // change to "airport_id" for making an API call. TODO: fix db rows naming
+        case type = "frequency_type" // change to "type" for making an API call. TODO: fix db rows
+        case description
         case frequencyMhz = "frequency_mhz"
     }
 }

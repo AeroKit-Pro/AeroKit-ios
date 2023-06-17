@@ -6,8 +6,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+protocol FilterInputPassing {
+    var filterInput: Observable<FilterInput> { get }
+    func updateFilterInput(_ input: FilterInput)
+}
 
 final class AirportsCoordinator: BaseCoordinator {
+    
+    private let filterInputRelay = ReplayRelay<FilterInput>.create(bufferSize: 1)
 
     //MARK: - Lifecycle
     override func start() {
@@ -15,7 +24,7 @@ final class AirportsCoordinator: BaseCoordinator {
     }
 
     func openAirports() {
-        let scene = AirportAssembly(sceneOutput: self).makeScene()
+        let scene = AirportAssembly(sceneOutput: self, filterInputPassing: self).makeScene()
         startingViewController = scene
         router.setRootModule(scene, hideBar: true)
     }
@@ -24,6 +33,23 @@ final class AirportsCoordinator: BaseCoordinator {
 // MARK: - ChannelListSceneDelegate
 extension AirportsCoordinator: AirportsSceneDelegate {
     func openFilters() {
-        router.push(AirportFilterViewController(), animated: true)
+        let scene = FilterAssembly(sceneOutput: self, filterInputPassing: self).makeScene()
+        router.push(scene, animated: true)
+    }
+}
+
+extension AirportsCoordinator: FilterSceneDelegate {
+    func closeFilters() {
+        router.popModule(animated: true)
+    }
+}
+
+extension AirportsCoordinator: FilterInputPassing {
+    var filterInput: Observable<FilterInput> {
+        filterInputRelay.asObservable()
+    }
+    
+    func updateFilterInput(_ input: FilterInput) {
+        filterInputRelay.accept(input)
     }
 }

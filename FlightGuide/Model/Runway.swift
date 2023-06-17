@@ -19,7 +19,7 @@ struct Runway: Codable {
     let heLatitudeDeg, heLongitudeDeg, heHeadingDegT: Double?
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "runway_id" // change to "id" for making an API call. TODO: fix db rows naming
         case airportID = "airport_id"
         case lengthFt = "length_ft"
         case widthFt = "width_ft"

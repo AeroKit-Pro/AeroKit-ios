@@ -11,6 +11,8 @@ import RxSwift
 /// 'DatabaseManager' is a static class that manages directory initialization, files copying, local database configuring and connection to it. Consider using wrappers to interact with this class.
 final class DatabaseManager {
     
+    static let shared = DatabaseManager()
+    
     static func prepare() {
         initDirectory()
         copyExistingDatabase()
@@ -49,17 +51,19 @@ final class DatabaseManager {
     let airports = Table("airports")
     let runways = Table("runways")
     let frequencies = Table("frequencies")
+    let cities = Table("cities")
     
     lazy var joinedTables: Table = {
-        airports.join(.leftOuter, runways, on: runwayFields.airport_id == airportFields.id)
-            .join(.leftOuter, frequencies, on: frequencyFields.usedByAirport_id == airportFields.id)
+        airports.join(.leftOuter, runways, on: runwayFields.airportID == airportFields.id)
+            .join(.leftOuter, frequencies, on: frequencyFields.airportID == airportFields.id)
     }()
     
-    let airportFields = AirportFields()
-    let runwayFields = RunwayFields()
-    let frequencyFields = FrequencyFields()
+    let airportFields = AirportColumns()
+    let runwayFields = RunwayColumns()
+    let frequencyFields = FrequencyColumns()
+    let cityFields = CityColumns()
     
-    init() {
+    private init() {
         connect()
         setupIndexes()
     }
@@ -79,9 +83,14 @@ final class DatabaseManager {
     
     private func setupIndexes() {
         let queryNameIndex = airports.createIndex(airportFields.name, ifNotExists: true)
+        let queryIsFavoriteIndex = airports.createIndex(airportFields.isFavorite, ifNotExists: true)
+        let queryLengthFtIndex = runways.createIndex(runwayFields.lengthFt, ifNotExists: true)
+        
         guard let database else { return }
         do {
             try database.run(queryNameIndex)
+            try database.run(queryLengthFtIndex)
+            try database.run(queryIsFavoriteIndex)
         }
         catch { print("error while creating index: \(error)") }
     }
