@@ -70,8 +70,8 @@
 		4E0044C62A35E6120098706A /* AIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C52A35E6120098706A /* AIChatViewController.swift */; };
 		4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C72A35E62C0098706A /* AIChatAssembly.swift */; };
 		4E0044CA2A35EBCC0098706A /* AIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C92A35EBCC0098706A /* AIChatView.swift */; };
-		4E0044CD2A35EE150098706A /* MessageSendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CC2A35EE150098706A /* MessageSendingView.swift */; };
-		4E0044CF2A35F45F0098706A /* CustomRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */; };
+		4E0044CD2A35EE150098706A /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CC2A35EE150098706A /* InputBar.swift */; };
+		4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
 		4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */; };
@@ -224,8 +224,8 @@
 		4E0044C52A35E6120098706A /* AIChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewController.swift; sourceTree = "<group>"; };
 		4E0044C72A35E62C0098706A /* AIChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatAssembly.swift; sourceTree = "<group>"; };
 		4E0044C92A35EBCC0098706A /* AIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatView.swift; sourceTree = "<group>"; };
-		4E0044CC2A35EE150098706A /* MessageSendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSendingView.swift; sourceTree = "<group>"; };
-		4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectTextField.swift; sourceTree = "<group>"; };
+		4E0044CC2A35EE150098706A /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
+		4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleTextView.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4E0A8F5B2A1849C70087B2D4 /* AutoSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTableView.swift; sourceTree = "<group>"; };
@@ -590,7 +590,7 @@
 		4E0044CB2A35EDB10098706A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4E0044CC2A35EE150098706A /* MessageSendingView.swift */,
+				4E0044CC2A35EE150098706A /* InputBar.swift */,
 				4EB80B982A3651E400BDBBF9 /* MessageCell.swift */,
 			);
 			path = Components;
@@ -696,7 +696,7 @@
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
 				4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */,
 				11EC9B4C2A140036001EB56D /* DisplayLoaderInterface.swift */,
-				4E0044CE2A35F45F0098706A /* CustomRectTextField.swift */,
+				4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */,
 				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
 				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
@@ -1077,9 +1077,9 @@
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
-				4E0044CF2A35F45F0098706A /* CustomRectTextField.swift in Sources */,
+				4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */,
 				4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */,
-				4E0044CD2A35EE150098706A /* MessageSendingView.swift in Sources */,
+				4E0044CD2A35EE150098706A /* InputBar.swift in Sources */,
 				11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */,
 				11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */,
 				4E2648222A3DF02700B78379 /* Router.swift in Sources */,

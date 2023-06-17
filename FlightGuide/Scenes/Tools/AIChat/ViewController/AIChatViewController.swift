@@ -22,10 +22,11 @@ final class AIChatViewController: UIViewController {
         super.viewDidLoad()
         bindViewModelInputs()
         bindViewModelOutputs()
+        navigationItem.title = "Chat"
     }
     
     private func bindViewModelInputs() {
-        aichatView.rxMessageSendingBlock.messageField.text
+        aichatView.rxMessageSendingBlock.messageInputView.text
             .subscribe(onNext: viewModel.inputs.messageInputDidChange(input:))
             .disposed(by: disposeBag)
         
