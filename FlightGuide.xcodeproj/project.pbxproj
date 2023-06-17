@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113795522A07F60000597299 /* RunwaySurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795512A07F60000597299 /* RunwaySurface.swift */; };
 		113795542A07F67600597299 /* AirportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795532A07F67600597299 /* AirportType.swift */; };
 		113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795552A07F70A00597299 /* AirportFilterItem.swift */; };
 		113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
@@ -15,6 +14,28 @@
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
 		113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */; };
+		118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */; };
+		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
+		11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */; };
+		11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */; };
+		11B280ED2A302327008D18C9 /* SelectPlaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280EC2A302327008D18C9 /* SelectPlaneViewController.swift */; };
+		11B280F02A30E89C008D18C9 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280EF2A30E89C008D18C9 /* UserDataService.swift */; };
+		11B280F22A30E901008D18C9 /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280F12A30E901008D18C9 /* UserDataStorage.swift */; };
+		11B280F42A30EF3B008D18C9 /* SelectCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280F32A30EF3B008D18C9 /* SelectCompanyViewController.swift */; };
+		11B280F62A30EF4F008D18C9 /* ChecklistsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280F52A30EF4F008D18C9 /* ChecklistsCoordinator.swift */; };
+		11B280F82A310947008D18C9 /* ChecklistsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280F72A310947008D18C9 /* ChecklistsTableCell.swift */; };
+		11B280FA2A310A4C008D18C9 /* ChecklistsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280F92A310A4C008D18C9 /* ChecklistsTableHeaderView.swift */; };
+		11B280FC2A310D54008D18C9 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280FB2A310D54008D18C9 /* UITableView+Extensions.swift */; };
+		11B280FE2A31140A008D18C9 /* ChecklistSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280FD2A31140A008D18C9 /* ChecklistSelectionTableCell.swift */; };
+		11B281002A31157D008D18C9 /* ChecklistsSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280FF2A31157D008D18C9 /* ChecklistsSelectionViewController.swift */; };
+		11B281022A312059008D18C9 /* ChecklistInspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281012A312059008D18C9 /* ChecklistInspectionViewController.swift */; };
+		11B281042A3123C5008D18C9 /* ChecklistInspectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281032A3123C5008D18C9 /* ChecklistInspectionTableCell.swift */; };
+		11B281072A3146E0008D18C9 /* ChecklistsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281062A3146E0008D18C9 /* ChecklistsEmptyView.swift */; };
+		11B281092A31478C008D18C9 /* ChecklistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281082A31478C008D18C9 /* ChecklistsViewModel.swift */; };
+		11B2810C2A315E20008D18C9 /* ChecklistGroupStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */; };
+		11B2810E2A316979008D18C9 /* ChecklistsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */; };
+		11B281102A317353008D18C9 /* ChecklistGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */; };
+		11B281122A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */; };
 		11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */; };
 		11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */; };
 		11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */; };
@@ -24,9 +45,14 @@
 		11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4772A03E973001DDC46 /* AirportsViewController.swift */; };
 		11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */; };
 		11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */; };
+		11D8D8432A29485D001EE665 /* ToolsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */; };
+		11D8D8462A2948A4001EE665 /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8452A2948A4001EE665 /* ToolsViewController.swift */; };
+		11D8D8482A2948B0001EE665 /* ToolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */; };
+		11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */; };
+		11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84B2A294934001EE665 /* ToolsContract.swift */; };
+		11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84D2A294E79001EE665 /* ToolsView.swift */; };
 		11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B332A13F1D3001EB56D /* Coordinatable.swift */; };
 		11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */; };
-		11EC9B382A13F20C001EB56D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B372A13F20C001EB56D /* Router.swift */; };
 		11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B392A13F266001EB56D /* BaseNavigationController.swift */; };
 		11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */; };
 		11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B3E2A13F642001EB56D /* AppCoordinator.swift */; };
@@ -48,6 +74,9 @@
 		4E17314B2A1BD7600094A5E2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17314A2A1BD7600094A5E2 /* Weather.swift */; };
 		4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E257A7B2A25CED900AC5FF3 /* CityCell.swift */; };
 		4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E257A7C2A25CED900AC5FF3 /* CityCell.xib */; };
+		4E2648202A3DEF9E00B78379 /* ReturnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */; };
+		4E2648222A3DF02700B78379 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2648212A3DF02700B78379 /* Router.swift */; };
+		4E2648242A3DF0A100B78379 /* RunwaySurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2648232A3DF0A100B78379 /* RunwaySurface.swift */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
 		4E3019BD29EAE38200852427 /* Runway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BC29EAE38200852427 /* Runway.swift */; };
 		4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3019BE29EAE38B00852427 /* Frequency.swift */; };
@@ -76,7 +105,6 @@
 		4E6384052A1FF58300FE27C2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6384042A1FF58300FE27C2 /* FavoritesView.swift */; };
 		4E63C9322A1122D300A86D15 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E63C9312A1122D300A86D15 /* Collection.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
-		4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */; };
 		4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F5B12A1A3FCC00051A25 /* URL.swift */; };
 		4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */; };
 		4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */; };
@@ -123,7 +151,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		113795512A07F60000597299 /* RunwaySurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwaySurface.swift; sourceTree = "<group>"; };
 		113795532A07F67600597299 /* AirportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportType.swift; sourceTree = "<group>"; };
 		113795552A07F70A00597299 /* AirportFilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFilterItem.swift; sourceTree = "<group>"; };
 		113795572A07F77D00597299 /* AirportFilterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFilterSettings.swift; sourceTree = "<group>"; };
@@ -131,6 +158,28 @@
 		1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwaysLengthView.swift; sourceTree = "<group>"; };
 		1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterRunwayLightView.swift; sourceTree = "<group>"; };
 		113795602A093ADC00597299 /* AirportsFilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsFilterSelectionView.swift; sourceTree = "<group>"; };
+		118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
+		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
+		11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyWithPlanesModel.swift; sourceTree = "<group>"; };
+		11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewController.swift; sourceTree = "<group>"; };
+		11B280EC2A302327008D18C9 /* SelectPlaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaneViewController.swift; sourceTree = "<group>"; };
+		11B280EF2A30E89C008D18C9 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		11B280F12A30E901008D18C9 /* UserDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorage.swift; sourceTree = "<group>"; };
+		11B280F32A30EF3B008D18C9 /* SelectCompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCompanyViewController.swift; sourceTree = "<group>"; };
+		11B280F52A30EF4F008D18C9 /* ChecklistsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsCoordinator.swift; sourceTree = "<group>"; };
+		11B280F72A310947008D18C9 /* ChecklistsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsTableCell.swift; sourceTree = "<group>"; };
+		11B280F92A310A4C008D18C9 /* ChecklistsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsTableHeaderView.swift; sourceTree = "<group>"; };
+		11B280FB2A310D54008D18C9 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		11B280FD2A31140A008D18C9 /* ChecklistSelectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSelectionTableCell.swift; sourceTree = "<group>"; };
+		11B280FF2A31157D008D18C9 /* ChecklistsSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsSelectionViewController.swift; sourceTree = "<group>"; };
+		11B281012A312059008D18C9 /* ChecklistInspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInspectionViewController.swift; sourceTree = "<group>"; };
+		11B281032A3123C5008D18C9 /* ChecklistInspectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInspectionTableCell.swift; sourceTree = "<group>"; };
+		11B281062A3146E0008D18C9 /* ChecklistsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsEmptyView.swift; sourceTree = "<group>"; };
+		11B281082A31478C008D18C9 /* ChecklistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewModel.swift; sourceTree = "<group>"; };
+		11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistGroupStorageModel.swift; sourceTree = "<group>"; };
+		11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsAssembly.swift; sourceTree = "<group>"; };
+		11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistGroupViewController.swift; sourceTree = "<group>"; };
+		11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsDeleteTableCell.swift; sourceTree = "<group>"; };
 		11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportCellViewModel.swift; sourceTree = "<group>"; };
 		11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -140,9 +189,14 @@
 		11D4F4772A03E973001DDC46 /* AirportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
 		11D4F4832A041F9F001DDC46 /* AirportFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportFilterViewController.swift; sourceTree = "<group>"; };
 		11D4F4852A041FC7001DDC46 /* AirportFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFilterView.swift; sourceTree = "<group>"; };
+		11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsCoordinator.swift; sourceTree = "<group>"; };
+		11D8D8452A2948A4001EE665 /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
+		11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewModel.swift; sourceTree = "<group>"; };
+		11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsAssembly.swift; sourceTree = "<group>"; };
+		11D8D84B2A294934001EE665 /* ToolsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsContract.swift; sourceTree = "<group>"; };
+		11D8D84D2A294E79001EE665 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		11EC9B332A13F1D3001EB56D /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		11EC9B372A13F20C001EB56D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		11EC9B392A13F266001EB56D /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeinitiableCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B3E2A13F642001EB56D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -164,6 +218,8 @@
 		4E17314A2A1BD7600094A5E2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4E257A7B2A25CED900AC5FF3 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		4E257A7C2A25CED900AC5FF3 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
+		4E2648212A3DF02700B78379 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4E2648232A3DF0A100B78379 /* RunwaySurface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunwaySurface.swift; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E3019BC29EAE38200852427 /* Runway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runway.swift; sourceTree = "<group>"; };
 		4E3019BE29EAE38B00852427 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -263,9 +319,107 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		118BEA342A2C9CC500B056C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11A366992A2F8EEE00D482EB /* PDFReader */ = {
+			isa = PBXGroup;
+			children = (
+				11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */,
+			);
+			path = PDFReader;
+			sourceTree = "<group>";
+		};
+		11A3669C2A2F979900D482EB /* Checklists */ = {
+			isa = PBXGroup;
+			children = (
+				11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */,
+				11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */,
+			);
+			path = Checklists;
+			sourceTree = "<group>";
+		};
+		11B280E62A301B23008D18C9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				11B280E72A301B30008D18C9 /* Checklists */,
+				11A366992A2F8EEE00D482EB /* PDFReader */,
+				11D8D8442A294894001EE665 /* ToolsMain */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		11B280E72A301B30008D18C9 /* Checklists */ = {
+			isa = PBXGroup;
+			children = (
+				11B281052A3146C3008D18C9 /* Main */,
+				11B280F32A30EF3B008D18C9 /* SelectCompanyViewController.swift */,
+				11B280FD2A31140A008D18C9 /* ChecklistSelectionTableCell.swift */,
+				11B280FF2A31157D008D18C9 /* ChecklistsSelectionViewController.swift */,
+				11B280F92A310A4C008D18C9 /* ChecklistsTableHeaderView.swift */,
+				11B281012A312059008D18C9 /* ChecklistInspectionViewController.swift */,
+				11B281032A3123C5008D18C9 /* ChecklistInspectionTableCell.swift */,
+				11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */,
+				11B280EB2A302313008D18C9 /* SelectPlane */,
+				11B280EA2A3022F6008D18C9 /* Checklists */,
+			);
+			path = Checklists;
+			sourceTree = "<group>";
+		};
+		11B280EA2A3022F6008D18C9 /* Checklists */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Checklists;
+			sourceTree = "<group>";
+		};
+		11B280EB2A302313008D18C9 /* SelectPlane */ = {
+			isa = PBXGroup;
+			children = (
+				11B280EC2A302327008D18C9 /* SelectPlaneViewController.swift */,
+			);
+			path = SelectPlane;
+			sourceTree = "<group>";
+		};
+		11B280EE2A30E881008D18C9 /* UserDefaultsStorage */ = {
+			isa = PBXGroup;
+			children = (
+				11B280EF2A30E89C008D18C9 /* UserDataService.swift */,
+				11B280F12A30E901008D18C9 /* UserDataStorage.swift */,
+			);
+			path = UserDefaultsStorage;
+			sourceTree = "<group>";
+		};
+		11B281052A3146C3008D18C9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				11B2810A2A3156BD008D18C9 /* Views */,
+				11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */,
+				11B281082A31478C008D18C9 /* ChecklistsViewModel.swift */,
+				11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		11B2810A2A3156BD008D18C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11B280F72A310947008D18C9 /* ChecklistsTableCell.swift */,
+				11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */,
+				11B281062A3146E0008D18C9 /* ChecklistsEmptyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		11D4F4632A03E8FC001DDC46 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				11B280E62A301B23008D18C9 /* Tools */,
 				4EBA3F852A1FCE160043AD42 /* Favorites */,
 				11EC9B422A13FFAA001EB56D /* Splash */,
 				11D4F46A2A03E973001DDC46 /* AirportsScene */,
@@ -340,6 +494,19 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		11D8D8442A294894001EE665 /* ToolsMain */ = {
+			isa = PBXGroup;
+			children = (
+				118BEA342A2C9CC500B056C6 /* Views */,
+				11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */,
+				11D8D8452A2948A4001EE665 /* ToolsViewController.swift */,
+				11D8D84B2A294934001EE665 /* ToolsContract.swift */,
+				11D8D8472A2948B0001EE665 /* ToolsViewModel.swift */,
+				11D8D84D2A294E79001EE665 /* ToolsView.swift */,
+			);
+			path = ToolsMain;
+			sourceTree = "<group>";
+		};
 		11EC9B312A13F1C3001EB56D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,9 +519,9 @@
 		11EC9B322A13F1C7001EB56D /* Coordinatable */ = {
 			isa = PBXGroup;
 			children = (
+				4E2648212A3DF02700B78379 /* Router.swift */,
 				11EC9B332A13F1D3001EB56D /* Coordinatable.swift */,
 				11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */,
-				11EC9B372A13F20C001EB56D /* Router.swift */,
 				11EC9B392A13F266001EB56D /* BaseNavigationController.swift */,
 				11EC9B3B2A13F31C001EB56D /* DeinitiableCoordinator.swift */,
 			);
@@ -368,6 +535,8 @@
 				11EC9B402A13FAA3001EB56D /* TabCoordinator.swift */,
 				11EC9B502A140200001EB56D /* SignUpCoordinator.swift */,
 				11EC9B522A140665001EB56D /* AirportsCoordinator.swift */,
+				11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */,
+				11B280F52A30EF4F008D18C9 /* ChecklistsCoordinator.swift */,
 				4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -532,18 +701,19 @@
 		4EA72A2929D6363400836CDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11A3669C2A2F979900D482EB /* Checklists */,
 				4EA72A2A29D6365200836CDF /* Airport.swift */,
 				4E3019BC29EAE38200852427 /* Runway.swift */,
 				4E3019BE29EAE38B00852427 /* Frequency.swift */,
 				4E3019C029EAE39100852427 /* City.swift */,
 				4EE0848E29FC75D600898DB3 /* AirportPreview.swift */,
-				113795512A07F60000597299 /* RunwaySurface.swift */,
 				113795532A07F67600597299 /* AirportType.swift */,
 				113795552A07F70A00597299 /* AirportFilterItem.swift */,
 				113795572A07F77D00597299 /* AirportFilterSettings.swift */,
 				4E54DBC62A13DC5900CE8635 /* PivotModel.swift */,
 				4E17314A2A1BD7600094A5E2 /* Weather.swift */,
 				4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */,
+				4E2648232A3DF0A100B78379 /* RunwaySurface.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -569,6 +739,7 @@
 				4ECEC07B29D996EE0070195D /* UIColor.swift */,
 				4ECEC07D29D9979C0070195D /* UIImageView.swift */,
 				4ECEC07F29D998D40070195D /* UIButton.swift */,
+				11B280FB2A310D54008D18C9 /* UITableView+Extensions.swift */,
 				4EB522E72A154BF60012BFDF /* UITextField.swift */,
 				4E5910812A27C51600815D98 /* UILabel.swift */,
 				4E59F89B2A2CDCD2005E84B1 /* UIEdgeInsets.swift */,
@@ -590,6 +761,7 @@
 		4EBCA03F29EAB2A800363661 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				11B280EE2A30E881008D18C9 /* UserDefaultsStorage */,
 				4EBCA04129EAC2DC00363661 /* Database */,
 				4E8FD6C329D61D6500BAD4CE /* Network */,
 			);
@@ -735,18 +907,22 @@
 				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
 				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
+				11B281122A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift in Sources */,
 				4EA72A3229D6377400836CDF /* Network.swift in Sources */,
 				4EBA3F892A1FD12F0043AD42 /* FavoritesViewController.swift in Sources */,
 				4EA60EAB2A2727E600539D83 /* SearchTableViewDataSource.swift in Sources */,
 				4ECD111A29FBF012009FA56C /* Frequencies.swift in Sources */,
 				4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */,
 				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
+				11D8D8462A2948A4001EE665 /* ToolsViewController.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
 				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
+				11B2810C2A315E20008D18C9 /* ChecklistGroupStorageModel.swift in Sources */,
 				11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */,
+				11B281002A31157D008D18C9 /* ChecklistsSelectionViewController.swift in Sources */,
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
 				4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */,
@@ -756,30 +932,40 @@
 				4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */,
 				4EC7FA5D2A20FA3A008A177C /* DIContainer.swift in Sources */,
 				4E3B3A9F29D43B4800971840 /* AppDelegate.swift in Sources */,
+				11B281022A312059008D18C9 /* ChecklistInspectionViewController.swift in Sources */,
 				4ECEC08029D998D40070195D /* UIButton.swift in Sources */,
+				11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */,
 				11D4F47F2A03E973001DDC46 /* BannerViewController.swift in Sources */,
 				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
 				4E63C9322A1122D300A86D15 /* Collection.swift in Sources */,
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
+				11B280FE2A31140A008D18C9 /* ChecklistSelectionTableCell.swift in Sources */,
+				11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
+				11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */,
+				11B280F02A30E89C008D18C9 /* UserDataService.swift in Sources */,
 				11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */,
 				11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */,
 				11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */,
+				11B281042A3123C5008D18C9 /* ChecklistInspectionTableCell.swift in Sources */,
 				11EC9B492A13FFAA001EB56D /* SplashViewModel.swift in Sources */,
 				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
 				4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */,
 				4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */,
 				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
+				11B280F82A310947008D18C9 /* ChecklistsTableCell.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
+				11B280FC2A310D54008D18C9 /* UITableView+Extensions.swift in Sources */,
+				11B280ED2A302327008D18C9 /* SelectPlaneViewController.swift in Sources */,
+				11B280F62A30EF4F008D18C9 /* ChecklistsCoordinator.swift in Sources */,
+				11B281092A31478C008D18C9 /* ChecklistsViewModel.swift in Sources */,
 				4E5910822A27C51600815D98 /* UILabel.swift in Sources */,
 				4E257A7D2A25CED900AC5FF3 /* CityCell.swift in Sources */,
-				4E6B37AD29DBA44E005B97F2 /* ReturnEmpty.swift in Sources */,
-				11EC9B382A13F20C001EB56D /* Router.swift in Sources */,
 				4E54DBC72A13DC5900CE8635 /* PivotModel.swift in Sources */,
-				113795522A07F60000597299 /* RunwaySurface.swift in Sources */,
 				4E6384052A1FF58300FE27C2 /* FavoritesView.swift in Sources */,
 				4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */,
+				11B281072A3146E0008D18C9 /* ChecklistsEmptyView.swift in Sources */,
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
 				4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */,
 				4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */,
@@ -796,34 +982,48 @@
 				11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */,
 				4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */,
 				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
+				4E2648242A3DF0A100B78379 /* RunwaySurface.swift in Sources */,
 				4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */,
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
+				11B280F22A30E901008D18C9 /* UserDataStorage.swift in Sources */,
 				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,
+				11B2810E2A316979008D18C9 /* ChecklistsAssembly.swift in Sources */,
+				11B281102A317353008D18C9 /* ChecklistGroupViewController.swift in Sources */,
 				1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */,
 				4EECAF622A20C14D00F51E52 /* NotificationToken.swift in Sources */,
 				4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */,
 				4ED2DFCD2A17A7EE00479E4D /* CounterBadge.swift in Sources */,
 				11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */,
+				11B280FA2A310A4C008D18C9 /* ChecklistsTableHeaderView.swift in Sources */,
 				4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */,
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
+				11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */,
+				11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */,
+				4E2648222A3DF02700B78379 /* Router.swift in Sources */,
+				11D8D8432A29485D001EE665 /* ToolsCoordinator.swift in Sources */,
 				4E3C047529F9355F00CB08EB /* Database.swift in Sources */,
+				11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */,
+				11B280F42A30EF3B008D18C9 /* SelectCompanyViewController.swift in Sources */,
 				11EC9B4D2A140036001EB56D /* DisplayLoaderInterface.swift in Sources */,
 				11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */,
 				1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */,
 				4EB522E82A154BF60012BFDF /* UITextField.swift in Sources */,
 				4E59F89A2A2CD98E005E84B1 /* CoordinateBounds.swift in Sources */,
 				11EC9B472A13FFAA001EB56D /* SplashContract.swift in Sources */,
+				11D8D8482A2948B0001EE665 /* ToolsViewModel.swift in Sources */,
 				113795612A093ADC00597299 /* AirportsFilterSelectionView.swift in Sources */,
 				113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */,
 				4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */,
+				118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */,
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
 				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,
+				4E2648202A3DEF9E00B78379 /* ReturnEmpty.swift in Sources */,
 				4EECAF642A20C31D00F51E52 /* NotificationName.swift in Sources */,
 				4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */,
 				11EC9B4F2A14005E001EB56D /* LoadingView.swift in Sources */,
@@ -973,7 +1173,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1001,7 +1201,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

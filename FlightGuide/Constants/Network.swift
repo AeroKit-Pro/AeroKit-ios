@@ -35,4 +35,6 @@ enum URLS {
     static let airportRunwaysEndpoint = "http://45.12.19.184/airport_runways?page=1&page_size=5000"
     static let airportFrequencyEndpoint = "http://45.12.19.184/airport_frequency?page=1&page_size=5000"
     static let citiesInfoEndpoint = "http://45.12.19.184/cities_info?page=1&page_size=50"
+    static let checklistsUrl = "http://45.12.19.184/checklists"
 }
+

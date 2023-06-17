@@ -31,6 +31,10 @@ final class APIClient {
         request(APIRequest.getWeather(type: type, icao: icao))
     }
 
+    func getChecklists() -> Observable<[CompanyWithPlanesModel]> {
+        request(APIRequest.getChecklists)
+    }
+
     private func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = AF.request(apiRequest).responseDecodable { (response: DataResponse<T, AFError>) in

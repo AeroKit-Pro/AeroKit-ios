@@ -120,7 +120,10 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             children.append(favoritesCoordinator)
             favoritesCoordinator.start()
         case .tools:
-            break
+            let toolsCoordinator = ToolsCoordinator(router: router)
+            toolsCoordinator.parent = self
+            children.append(toolsCoordinator)
+            toolsCoordinator.start()
         case .settings:
             break
         }
