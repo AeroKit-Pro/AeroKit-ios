@@ -13,7 +13,7 @@ protocol ChecklistsSceneDelegate: AnyObject {
 }
 
 protocol ChecklistsViewModelInterface {
-    func onViewDidLoad()
+    func onViewWillAppear()
     func onTapFindButton()
     func onTapEdit()
     func onSelect(item: ChecklistGroupStorageModel)
@@ -32,7 +32,7 @@ final class ChecklistsViewModel {
 
 // MARK: - ChecklistsViewModelInterface
 extension ChecklistsViewModel: ChecklistsViewModelInterface {
-    func onViewDidLoad() {
+    func onViewWillAppear() {
         if let savedChecklists = savedChecklists,
            !savedChecklists.isEmpty {
             self.checklistsItems = savedChecklists.sorted(by: { $0.date > $1.date })

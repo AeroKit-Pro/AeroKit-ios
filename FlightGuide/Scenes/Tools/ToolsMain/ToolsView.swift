@@ -13,10 +13,14 @@ final class ToolsView: UIView {
     var onTapPDFReader: (() -> Void)?
     var onTapChecklist: (() -> Void)?
 
+    let checklistsView: ToolsItemView
+    let pdfView: ToolsItemView
+
     init(onTapPDFReader: (() -> Void)?,
          onTapChecklist: (() -> Void)?) {
-        self.onTapPDFReader = onTapPDFReader
-        self.onTapChecklist = onTapChecklist
+        self.checklistsView = ToolsItemView(itemType: .checklists, onTapAction: onTapChecklist)
+        self.pdfView = ToolsItemView(itemType: .pdfReader, onTapAction: onTapPDFReader)
+
         super.init(frame: .zero)
         setupLayout()
         setupUI()
@@ -35,8 +39,8 @@ final class ToolsView: UIView {
             make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide)
         }
 
-        stackView.addArrangedSubview(ToolsItemView(itemType: .checklists, onTapAction: onTapChecklist))
-        stackView.addArrangedSubview(ToolsItemView(itemType: .pdfReader, onTapAction: onTapPDFReader))
+        stackView.addArrangedSubview(checklistsView)
+        stackView.addArrangedSubview(pdfView)
     }
 
     private func setupUI() {

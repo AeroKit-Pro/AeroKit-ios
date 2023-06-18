@@ -12,6 +12,7 @@ final class ChecklistsTableHeaderView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black
+        label.numberOfLines = 2
         return label
     }()
 

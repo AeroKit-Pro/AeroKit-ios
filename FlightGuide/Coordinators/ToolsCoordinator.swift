@@ -10,13 +10,13 @@ import CoreServices
 import PDFKit
 
 final class ToolsCoordinator: BaseCoordinator {
-
+    private let pdfStorageService = PDFStorageService()
     //MARK: - Lifecycle
     override func start() {
-        openAirports()
+        openTools()
     }
 
-    func openAirports() {
+    func openTools() {
         let scene = ToolsAssembly(sceneOutput: self).makeScene()
         startingViewController = scene
         router.setRootModule(scene, hideBar: true)
@@ -32,10 +32,19 @@ extension ToolsCoordinator: ToolsSceneOutput, UIDocumentPickerDelegate {
         router.present(documentPicker, animated: true)
     }
 
+    func showPDFReader(url: URL) {
+        let reader = PDFReaderViewController(fileURL: url)
+        router.push(reader, animated: true)
+    }
+
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let fileURL = urls.first else { return }
-        let reader = PDFReaderViewController(fileURL: fileURL)
-        router.push(reader, animated: true)
+        pdfStorageService.storeData(with: fileURL) { [weak self] newURL in
+            guard let newURL = newURL else { return }
+            DispatchQueue.main.async {
+                self?.showPDFReader(url: newURL)
+            }
+        }
     }
 
     func showChecklists() {
@@ -88,7 +97,10 @@ extension ToolsCoordinator: ChecklistsSelectionSceneDelegate {
         let scene = ChecklistInspectionViewController(nibName: nil, bundle: nil)
         scene.items = items
         scene.onFinish = { [weak self] in
-            self?.router.pop(to: ChecklistsViewController.self, animated: true)
+            guard let self = self else { return }
+            if !self.router.pop(to: ChecklistsViewController.self, animated: true) {
+                self.router.popToRootModule(animated: true)
+            }
         }
         router.push(scene, animated: true)
 
