@@ -56,6 +56,13 @@ extension AppCoordinator: TabCoordinatorDelegate {
 extension AppCoordinator: SplashSceneOutput {
     func startSignUpFlow() {
         let signUpCoordinator = SignUpCoordinator(router: router)
+        signUpCoordinator.onFinish = { [weak self, weak signUpCoordinator] in
+            guard let self = self, let signUpCoordinator = signUpCoordinator else { return }
+            DispatchQueue.main.async {
+                self.startAuthorizedFlow()
+                self.remove(signUpCoordinator)
+            }
+        }
         add(signUpCoordinator)
         signUpCoordinator.start()
     }

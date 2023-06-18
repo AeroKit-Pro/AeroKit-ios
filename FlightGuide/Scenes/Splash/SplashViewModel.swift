@@ -10,7 +10,7 @@ import Foundation
 
 final class SplashViewModel {
 
-    private var shouldShowAuthorizationFlow = false
+    private var shouldShowAuthorizationFlow = true
     // MARK: Properties
     weak var view: SplashViewInterface!
     weak var output: SplashSceneOutput?
