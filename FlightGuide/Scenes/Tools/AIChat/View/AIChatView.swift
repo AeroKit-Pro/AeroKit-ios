@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol AIChatViewType: UIView {
-    var rxMessageSendingBlock: MessageSendingViewReactiveType { get }
+    var rxInputBar: MessageSendingViewReactiveType { get }
     var tableView: UITableView { get }
 }
 
@@ -46,12 +46,15 @@ final class AIChatView: UIView {
         let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
         let animationCurveRaw = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
         let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+        let keyboardHeight = endFrame.size.height - safeAreaInsets.bottom
         
         if endFrameY >= UIScreen.main.bounds.size.height {
             keyboardHeightLayoutConstraint?.constant = 0.0
+            tableView.contentOffset.y -= keyboardHeight
         } else {
             let keyboardHeight = endFrame.size.height - safeAreaInsets.bottom
             keyboardHeightLayoutConstraint?.constant = -keyboardHeight
+            tableView.contentOffset.y += keyboardHeight
         }
         
         UIView.animate(
@@ -125,7 +128,7 @@ final class AIChatView: UIView {
 }
 
 extension AIChatView: AIChatViewType {
-    var rxMessageSendingBlock: MessageSendingViewReactiveType {
+    var rxInputBar: MessageSendingViewReactiveType {
         inputBar
     }
     

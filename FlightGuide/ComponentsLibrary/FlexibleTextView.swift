@@ -31,8 +31,8 @@ final class FlexibleTextView: UITextView {
         }
     }
     
-    override var contentInset: UIEdgeInsets {
-        didSet { placeholderTextView.contentInset = contentInset }
+    override var textContainerInset: UIEdgeInsets {
+        didSet { placeholderTextView.textContainerInset = textContainerInset }
     }
     
     override var intrinsicContentSize: CGSize {

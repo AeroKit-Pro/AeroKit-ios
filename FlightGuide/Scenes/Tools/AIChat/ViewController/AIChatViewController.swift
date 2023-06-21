@@ -20,24 +20,36 @@ final class AIChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationTitle()
         bindViewModelInputs()
         bindViewModelOutputs()
-        navigationItem.title = "Chat"
+        aichatView.tableView.delegate = self
+        
+    }
+    
+    private func setupNavigationTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "AIChat"
+        titleLabel.font = .systemFont(ofSize: 22, weight: .bold)
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        
+        navigationItem.titleView = titleLabel
     }
     
     private func bindViewModelInputs() {
-        aichatView.rxMessageSendingBlock.messageInputView.text
+        aichatView.rxInputBar.messageInputView.text
             .subscribe(onNext: viewModel.inputs.messageInputDidChange(input:))
             .disposed(by: disposeBag)
         
-        aichatView.rxMessageSendingBlock.sendButton.tap
+        aichatView.rxInputBar.sendButton.tap
             .subscribe(onNext: viewModel.inputs.didTapSendMessageButton)
             .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
         viewModel.outputs.sendMessageButtonIsEnabled
-            .bind(to: aichatView.rxMessageSendingBlock.sendButton.isEnabled)
+            .bind(to: aichatView.rxInputBar.sendButton.isEnabled)
             .disposed(by: disposeBag)
         
         viewModel.outputs.messageCellViewModels
@@ -48,7 +60,11 @@ final class AIChatViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.invalidateMessageInput
-            .subscribe(onNext: aichatView.rxMessageSendingBlock.invalidateMessageInput)
+            .subscribe(onNext: aichatView.rxInputBar.invalidateMessageInput)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.shouldShowActivityOnAssistantTurn
+            .subscribe(onNext: aichatView.rxInputBar.shouldStartLoadingAnimation)
             .disposed(by: disposeBag)
         
         viewModel.outputs.scrollToIndexPath
@@ -59,4 +75,10 @@ final class AIChatViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+}
+
+extension AIChatViewController: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        viewModel.inputs.scrollViewDidScroll(scrollView: scrollView)
+    }
 }

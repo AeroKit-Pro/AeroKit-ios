@@ -12,18 +12,21 @@ protocol MessageSendingViewReactiveType: UIView {
     var messageInputView: Reactive<FlexibleTextView> { get }
     var sendButton: Reactive<UIButton> { get }
     func invalidateMessageInput()
+    func shouldStartLoadingAnimation(_ animate: Bool)
 }
 
 final class InputBar: UIView {
+    
+    var maximumTextInputHeight: CGFloat {
+        get { messageTextView.maxHeight }
+        set { messageTextView.maxHeight = newValue }
+    }
     
     private let messageTextView = FlexibleTextView(frame: .zero, textContainer: nil)
     private let sendMessageButton = UIButton(image: .arrow_up,
                                              contentMode: .scaleAspectFit,
                                              tintColor: .hex(0x333333))
-    var maximumTextInputHeight: CGFloat {
-        get { messageTextView.maxHeight }
-        set { messageTextView.maxHeight = newValue }
-    }
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -40,7 +43,7 @@ final class InputBar: UIView {
     }
     
     private func setupLayout() {
-        addSubviews(messageTextView, sendMessageButton)
+        addSubviews(messageTextView, sendMessageButton, activityIndicator)
         
         messageTextView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(10)
@@ -54,20 +57,29 @@ final class InputBar: UIView {
             $0.bottom.equalTo(messageTextView)
         }
         
+        activityIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(sendMessageButton)
+        }
+        
         messageTextView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         messageTextView.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private func setupAppearance() {
-        messageTextView.layer.cornerRadius = 10
+        messageTextView.layer.cornerRadius = 20
         messageTextView.backgroundColor = UIColor.hex(0xF1F1F1)
         
         messageTextView.textColor = .black
         messageTextView.font = .systemFont(ofSize: 16)
         messageTextView.placeholder = "Type in your question"
+        messageTextView.textContainerInset.left = 10
+        messageTextView.textContainerInset.right = 10
         
-        sendMessageButton.layer.cornerRadius = 10
+        sendMessageButton.layer.cornerRadius = 20
         sendMessageButton.backgroundColor = UIColor.hex(0xF1F1F1)
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .black
     }
     
 }
@@ -84,4 +96,10 @@ extension InputBar: MessageSendingViewReactiveType {
     func invalidateMessageInput() {
         messageTextView.text?.removeAll()
     }
+    
+    func shouldStartLoadingAnimation(_ animate: Bool) {
+        sendMessageButton.isHidden = animate
+        animate ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
 }
+

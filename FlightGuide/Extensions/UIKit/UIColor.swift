@@ -34,4 +34,12 @@ extension UIColor {
     static var flg_light_blue: UIColor {
         UIColor.hex(0xD9E8FF)
     }
+    
+    static var flg_secondary_gray: UIColor {
+        UIColor.hex(0x959595)
+    }
+    
+    static var flg_light_gray: UIColor {
+        UIColor.hex(0xD9D9D9)
+    }
 }

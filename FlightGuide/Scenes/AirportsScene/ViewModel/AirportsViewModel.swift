@@ -52,13 +52,6 @@ protocol AirportsViewModelType {
 }
 
 final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
-    //MARK: - Services
-    private let databaseInteractor = DatabaseInteractor()
-    private let errorRouter = ErrorRouter()
-    private let delegate: AirportsSceneDelegate?
-    private let filterInputPassing: FilterInputPassing
-    private let notificationCenter: NotificationCenterModuleInterface
-    private var notificationTokens: [NotificationToken] = []
     // MARK: - AirportsViewModelOutputs
     var onSearchStart: RxObservable<Empty>!
     var onSearchEnd: RxObservable<Empty>!
@@ -84,6 +77,13 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let favoriteAirportId = PublishRelay<Int>()
     // TODO: TEMPORARY
     private var onCityPresentation = false
+    //MARK: - Services
+    private let databaseInteractor = DatabaseInteractor()
+    private let errorRouter = ErrorRouter()
+    private let delegate: AirportsSceneDelegate?
+    private let filterInputPassing: FilterInputPassing
+    private let notificationCenter: NotificationCenterModuleInterface
+    private var notificationTokens: [NotificationToken] = []
     
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }

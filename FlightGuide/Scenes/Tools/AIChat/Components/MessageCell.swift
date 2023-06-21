@@ -6,25 +6,27 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MessageCell: UITableViewCell {
     
     static let identifier = String(describing: MessageCell.self)
-
+    
     private let containerView = UIView()
     private let messageLabel = UILabel()
     private let timeLabel = UILabel()
     
     var viewModel: MessageCellViewModel? {
         didSet {
+            containerView.backgroundColor = viewModel?.backgroundColor
             messageLabel.text = viewModel?.message
-            timeLabel.text = viewModel?.time
+            timeLabel.text = viewModel?.createdAt
+            setupRoledLayout(role: viewModel?.role)
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
         setupAppearance()
     }
     
@@ -32,12 +34,20 @@ final class MessageCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
+    private func setupRoledLayout(role: Role?) {
         contentView.addSubview(containerView)
         containerView.addSubviews(messageLabel, timeLabel)
         
-        containerView.snp.makeConstraints {
-            $0.right.bottom.top.equalToSuperview().inset(5)
+        containerView.snp.remakeConstraints {
+            switch role {
+            case .user:
+                $0.right.equalToSuperview().inset(5)
+            case .assistant:
+                $0.left.equalToSuperview().inset(5)
+            default: break
+            }
+            
+            $0.bottom.top.equalToSuperview().inset(5)
             $0.width.lessThanOrEqualTo(contentView.snp.width).multipliedBy(0.85)
         }
         
@@ -47,8 +57,9 @@ final class MessageCell: UITableViewCell {
         
         timeLabel.snp.makeConstraints {
             $0.top.equalTo(messageLabel.snp.bottom).offset(3)
-            $0.bottom.right.equalToSuperview().inset(3)
-            $0.left.greaterThanOrEqualToSuperview().inset(3)
+            $0.bottom.equalToSuperview().inset(3)
+            $0.right.equalToSuperview().inset(5)
+            $0.left.greaterThanOrEqualToSuperview().inset(5)
         }
     }
     
@@ -56,8 +67,7 @@ final class MessageCell: UITableViewCell {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         
-        containerView.backgroundColor = .flg_light_blue
-        containerView.layer.cornerRadius = 5
+        containerView.layer.cornerRadius = 10
         
         messageLabel.textColor = .black
         messageLabel.font = .systemFont(ofSize: 16)

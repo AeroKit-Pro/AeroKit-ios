@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func getLocalisedTime() -> String {
+    var localisedTime: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = .none
         dateFormatter.timeStyle = .short
