@@ -16,7 +16,8 @@ final class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
         makeNotTranslucent()
         updateNavigationBarAppearance()
-        removeNavigationBarShadow()
+        //removeNavigationBarShadow()
+        addNavigationBarShadow()
         delegate = self
         interactivePopGestureRecognizer?.delegate = self
     }
@@ -57,7 +58,9 @@ final class BaseNavigationController: UINavigationController {
         navigationBar.scrollEdgeAppearance?.shadowColor = .clear
     }
     
-    func addNavigationBarPermanentShadow() {
+    func addNavigationBarShadow() {
+        let path = UIBezierPath(rect: navigationBar.bounds).cgPath
+        navigationBar.layer.shadowPath = path
         navigationBar.layer.shadowColor = UIColor.black.cgColor
         navigationBar.layer.shadowOpacity = 0.2
         navigationBar.layer.shadowOffset = .zero

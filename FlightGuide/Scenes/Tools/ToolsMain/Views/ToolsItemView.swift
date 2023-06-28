@@ -2,62 +2,57 @@
 //  ToolsItemView.swift
 //  FlightGuide
 //
-//  Created by Eugene Kleban on 01.06.23.
+//  Created by Vanya Bogdantsev on 11.06.2023.
 //
 
 import UIKit
 
 final class ToolsItemView: UIView {
+    
     enum ItemType {
-        case checklists
-        case pdfReader
+        case AIChat
 
         var titleText: String {
             switch self {
-            case .checklists: return "Checklists"
-            case .pdfReader: return "PDF Reader"
+            case .AIChat: return "AIChat"
             }
         }
-
-        var subtitleText: String {
+        
+        var typeImage: UIImage? {
             switch self {
-            case .checklists: return "Last checked:"
-            case .pdfReader: return "Last readed:"
+            case .AIChat: return .aichat
             }
         }
-
-        var buttonImage: UIImage? {
+        
+        var onTapActionImage: UIImage? {
             switch self {
-            case .checklists: return UIImage(named: "tools_checklists")
-            case .pdfReader: return UIImage(named: "tools_pdfReader")
+            case .AIChat: return .chevron_right
             }
         }
-
     }
+    
+    private let tapGestureRecognizer = UITapGestureRecognizer()
+    
+    private let typeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let onTapActionImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.numberOfLines = 0
+        label.textColor = .black
         return label
     }()
-
-    private let showButton = UIButton()
-
-    private let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.hex(0x333333).withAlphaComponent(0.5)
-        return view
-    }()
-
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .thin)
-        label.textColor = UIColor.hex(0x959595)
-        return label
-    }()
-
-    private let stackView = UIStackView(axis: .vertical, spacing: 4)
-
+    
     private let itemType: ItemType
     private let onTapAction: (() -> Void)?
 
@@ -67,24 +62,34 @@ final class ToolsItemView: UIView {
         super.init(frame: .zero)
         setupLayout()
         setupUI()
+        setupAction()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        onTapAction?()
+    }
 
     private func setupLayout() {
-        addSubviews(titleLabel, showButton, separatorView, subtitleLabel, stackView)
-
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(12)
+        addSubviews(typeImageView, titleLabel, onTapActionImageView)
+        
+        typeImageView.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(11)
+            make.centerY.equalToSuperview()
         }
-
-        showButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(10)
-            make.leading.equalTo(titleLabel.snp.trailing).offset(10)
-            make.centerY.equalTo(titleLabel)
-            make.size.equalTo(24)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalTo(typeImageView.snp.right).offset(6)
+            make.top.bottom.equalToSuperview().inset(12)
+        }
+        
+        onTapActionImageView.snp.makeConstraints { make in
+            make.left.greaterThanOrEqualTo(titleLabel.snp.right).offset(10)
+            make.right.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
         }
 
         separatorView.snp.makeConstraints { make in
@@ -104,6 +109,9 @@ final class ToolsItemView: UIView {
             make.bottom.equalToSuperview().inset(10)
         }
 
+        
+        titleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     private func setupUI() {
@@ -111,16 +119,19 @@ final class ToolsItemView: UIView {
         layer.cornerRadius = 10
         
         titleLabel.text = itemType.titleText
-        subtitleLabel.text = itemType.subtitleText
-        showButton.setImage(itemType.buttonImage, for: .normal)
-        
-        showButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.onTapAction?()
-        }), for: .touchUpInside)
+        typeImageView.image = itemType.typeImage
+        onTapActionImageView.image = itemType.onTapActionImage
+        onTapActionImageView.tintColor = .flg_secondary_gray
     }
 
     func updateSubitems(items: [ToolsSubitemView]) {
         stackView.removeArrangedSubviews()
         items.forEach { stackView.addArrangedSubview($0) }
     }
+    
+    private func setupAction() {
+        tapGestureRecognizer.addTarget(self, action: #selector(handleTap))
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+    
 }

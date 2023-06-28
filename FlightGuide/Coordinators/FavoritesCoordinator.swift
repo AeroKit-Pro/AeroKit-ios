@@ -21,7 +21,7 @@ final class FavoritesCoordinator: BaseCoordinator {
     }
     
     private func addNavigationBarPermanentShadow() {
-        router.root?.addNavigationBarPermanentShadow()
+        router.root?.addNavigationBarShadow()
     }
 
 }

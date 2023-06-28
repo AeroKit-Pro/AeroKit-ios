@@ -12,6 +12,7 @@ final class ToolsView: UIView {
 
     var onTapPDFReader: (() -> Void)?
     var onTapChecklist: (() -> Void)?
+    var onTapAIChat: (() -> Void)?
 
     let checklistsView: ToolsItemView
     let pdfView: ToolsItemView
@@ -21,9 +22,15 @@ final class ToolsView: UIView {
         self.checklistsView = ToolsItemView(itemType: .checklists, onTapAction: onTapChecklist)
         self.pdfView = ToolsItemView(itemType: .pdfReader, onTapAction: onTapPDFReader)
 
+         onTapChecklist: (() -> Void)?,
+         onTapAIChat: (() -> Void)? {
+        self.onTapPDFReader = onTapPDFReader
+        self.onTapChecklist = onTapChecklist
+        self.onTapAIChat = onTapAIChat
         super.init(frame: .zero)
         setupLayout()
         setupUI()
+         }
     }
 
     required init?(coder: NSCoder) {
@@ -34,13 +41,16 @@ final class ToolsView: UIView {
         addSubview(stackView)
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).inset(10)
             make.leading.trailing.equalToSuperview().inset(15)
             make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide)
         }
 
         stackView.addArrangedSubview(checklistsView)
         stackView.addArrangedSubview(pdfView)
+        stackView.addArrangedSubview(ToolsItemDetailingView(itemType: .checklists, onTapAction: onTapChecklist))
+        stackView.addArrangedSubview(ToolsItemDetailingView(itemType: .pdfReader, onTapAction: onTapPDFReader))
+        stackView.addArrangedSubview(ToolsItemView(itemType: .AIChat, onTapAction: onTapAIChat))
     }
 
     private func setupUI() {

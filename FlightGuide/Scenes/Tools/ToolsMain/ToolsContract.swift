@@ -18,6 +18,7 @@ protocol ToolsViewModelInterface: AnyObject {
     func onTapPdfReader()
     func onTapPdfURL(_ url: URL)
     func onTapRecentChecklist(model: ChecklistGroupStorageModel)
+    func onTapAIChat()
 }
 
 protocol ToolsSceneOutput: AnyObject {
@@ -25,4 +26,5 @@ protocol ToolsSceneOutput: AnyObject {
     func showChecklists()
     func showPDFReader(url: URL)
     func showChecklistsInspection(items: [ChecklistWithItemsModel])
+    func showAIChat()
 }

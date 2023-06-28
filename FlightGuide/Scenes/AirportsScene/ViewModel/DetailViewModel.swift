@@ -124,14 +124,14 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         let icao = pivotInfo.map { $0.airport.ident ?? ""}.share() // TODO: there is almost no nils, but making api call with empty values is not good
         self.invalidateWeatherTexts = icao.map { _ in "" }
         
-        let metarReponse = icao
+        let metarResponse = icao
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .metar, icao: $0)
                     .map { $0.data.first }
                     .catchAndReturn("Could not load the data")
             }
             .share()
-        let tafReponse = icao
+        let tafResponse = icao
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .taf, icao: $0)
                     .map { $0.data.first }
@@ -139,14 +139,14 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
             }
             .share()
         let metarIsLoading = Observable
-            .merge(icao.map { _ in true }, metarReponse.map { _ in false })
+            .merge(icao.map { _ in true }, metarResponse.map { _ in false })
         let tafIsLoading = Observable
-            .merge(icao.map { _ in true }, tafReponse.map { _ in false })
+            .merge(icao.map { _ in true }, tafResponse.map { _ in false })
             
         self.metarShouldShowActivity = metarIsLoading
         self.tafShouldShowActivity = tafIsLoading
-        self.metar = metarReponse.map { $0 ?? "no data" }
-        self.taf = tafReponse.map { $0 ?? "no data" }
+        self.metar = metarResponse.map { $0 ?? "no data" }
+        self.taf = tafResponse.map { $0 ?? "no data" }
     }
     
     func refresh(withPivotModel model: PivotModel) {

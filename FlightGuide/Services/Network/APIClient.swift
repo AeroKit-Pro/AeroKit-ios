@@ -34,6 +34,10 @@ final class APIClient {
     func getChecklists() -> Observable<[CompanyWithPlanesModel]> {
         request(APIRequest.getChecklists)
     }
+    
+    func createStreamChatCompletion(parameters: Data?) -> DataStreamRequest {
+        AF.streamRequest(APIRequest.createChatCompletions(parameters: parameters))
+    }
 
     private func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
         return Observable<T>.create { observer in

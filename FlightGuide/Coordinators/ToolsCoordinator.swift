@@ -51,6 +51,11 @@ extension ToolsCoordinator: ToolsSceneOutput, UIDocumentPickerDelegate {
         let scene = ChecklistsAssembly(sceneOutput: self).makeScene()
         router.push(scene, animated: true)
     }
+    
+    func showAIChat() {
+        let scene = AIChatAssembly().makeScene()
+        router.push(scene, animated: true)
+    }
 }
 
 // MARK: - ChecklistsSceneDelegate

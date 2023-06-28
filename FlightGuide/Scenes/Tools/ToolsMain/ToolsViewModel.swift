@@ -52,4 +52,7 @@ extension ToolsViewModel: ToolsViewModelInterface {
     func onTapRecentChecklist(model: ChecklistGroupStorageModel) {
         output?.showChecklistsInspection(items: model.checklists)
     }
+    func onTapAIChat() {
+        output?.showAIChat()
+    }
 }

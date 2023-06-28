@@ -12,7 +12,8 @@ final class ToolsViewController: UIViewController {
     // MARK: Properties
     private lazy var toolsView: ToolsView = {
         let view = ToolsView(onTapPDFReader: { [weak self] in self?.viewModel?.onTapPdfReader() },
-                             onTapChecklist: { [weak self] in self?.viewModel?.onTapChecklists() })
+                             onTapChecklist: { [weak self] in self?.viewModel?.onTapChecklists() },
+                             onTapAIChat: { [weak self] in self?.viewModel?.onTapAIChat() })
         return view
     }()
 

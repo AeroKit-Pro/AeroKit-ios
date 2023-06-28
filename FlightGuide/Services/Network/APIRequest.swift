@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+typealias Path = [String]
 typealias Headers = [String : String]
 
 enum APIRequest: URLRequestConvertible {
@@ -17,6 +18,7 @@ enum APIRequest: URLRequestConvertible {
     case getCities
     case getChecklists
     case getWeather(type: WeatherReportType, icao: String)
+    case createChatCompletions(parameters: Data?)
 }
 
 extension APIRequest {
@@ -27,6 +29,7 @@ extension APIRequest {
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.httpMethod = method.rawValue
+        urlRequest.httpBody = body
         
         return urlRequest
     }
@@ -39,10 +42,11 @@ extension APIRequest {
         case .getCities: return URLS.citiesInfoEndpoint
         case .getWeather: return URLS.weatherBaseUrl
         case .getChecklists: return URLS.checklistsUrl
+        case .createChatCompletions: return URLS.openaiBaseUrl
         }
     }
     
-    private var path: [String]? {
+    private var path: Path? {
         switch self {
         case .getWeather(let type, let icao): return [type.path, icao]
         default: return nil
@@ -52,6 +56,14 @@ extension APIRequest {
     private var headers: Headers? {
         switch self {
         case .getWeather: return HTTPHeaders.weatherApiKey
+        case .createChatCompletions: return HTTPHeaders.openaiRequiredHeaders
+        default: return nil
+        }
+    }
+    
+    private var body: Data? {
+        switch self {
+        case .createChatCompletions(let parameters): return parameters
         default: return nil
         }
     }
@@ -60,6 +72,8 @@ extension APIRequest {
         switch self {
         case .getAirports, .getRunways, .getFrequencies, .getCities, .getWeather, .getChecklists:
             return .get
+        case .createChatCompletions:
+            return .post
         }
     }
 
