@@ -52,6 +52,10 @@ final class AIChatViewController: UIViewController {
             .bind(to: aichatView.rxInputBar.sendButton.isEnabled)
             .disposed(by: disposeBag)
         
+        viewModel.outputs.hidePromptView
+            .subscribe(onNext: aichatView.hidePromptView)
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.messageCellViewModels
             .bind(to: aichatView.tableView.rx.items(cellIdentifier: MessageCell.identifier,
                                                      cellType: MessageCell.self)) { _, model, cell in

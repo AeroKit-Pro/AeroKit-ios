@@ -11,6 +11,7 @@ import RxSwift
 protocol AIChatViewType: UIView {
     var rxInputBar: MessageSendingViewReactiveType { get }
     var tableView: UITableView { get }
+    func hidePromptView()
 }
 
 final class AIChatView: UIView {
@@ -20,6 +21,7 @@ final class AIChatView: UIView {
         static let messageSendingViewIdleHeight: CGFloat = 58
     }
     
+    private let promptView = PromptView(image: .ai_assistant, message: "Here you can chat with our AI, that will help you solve any question about airplanes and laws", style: .small)
     private let chatTableView = UITableView()
     private let inputBar = InputBar()
     private let gestureRecognizer = UITapGestureRecognizer()
@@ -82,7 +84,13 @@ final class AIChatView: UIView {
 
     
     private func setupLayout() {
-        addSubviews(chatTableView, inputBar)
+        addSubviews(chatTableView, inputBar, promptView)
+        
+        promptView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).inset(35)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(70)
+        }
         
         chatTableView.snp.makeConstraints {
             $0.left.right.top.equalTo(safeAreaLayoutGuide)
@@ -134,5 +142,9 @@ extension AIChatView: AIChatViewType {
     
     var tableView: UITableView {
         chatTableView
+    }
+    
+    func hidePromptView() {
+        promptView.fadeOut(withDuration: AnimationDuration.microFast)
     }
 }

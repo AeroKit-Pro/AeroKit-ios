@@ -62,4 +62,8 @@ extension UIImage {
     static var arrow_up: UIImage? {
         UIImage(named: "arrow_up")
     }
+    
+    static var ai_assistant: UIImage? {
+        UIImage(named: "tools_ai_assistant")
+    }
 }

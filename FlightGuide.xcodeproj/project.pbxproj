@@ -143,6 +143,8 @@
 		4EBA3F8B2A1FD2310043AD42 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F8A2A1FD2310043AD42 /* FavoritesViewModel.swift */; };
 		4EBCA03E29EAA3E600363661 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 4EBCA03D29EAA3E600363661 /* SQLite */; };
 		4EBCA04329EAC2EC00363661 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */; };
+		4EC44EC92A471E710038D347 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC44EC82A471E710038D347 /* PromptView.swift */; };
+		4EC44ECC2A472D1C0038D347 /* UIView+Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC44ECB2A472D1C0038D347 /* UIView+Fadeable.swift */; };
 		4EC7FA5D2A20FA3A008A177C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7FA5C2A20FA3A008A177C /* DIContainer.swift */; };
 		4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111529FBEFAC009FA56C /* Airports.swift */; };
 		4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD111729FBEFDB009FA56C /* Runways.swift */; };
@@ -298,6 +300,8 @@
 		4EBA3F882A1FD12F0043AD42 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		4EBA3F8A2A1FD2310043AD42 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		4EBCA04229EAC2EC00363661 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		4EC44EC82A471E710038D347 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		4EC44ECB2A472D1C0038D347 /* UIView+Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fadeable.swift"; sourceTree = "<group>"; };
 		4EC7FA5C2A20FA3A008A177C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		4ECD111529FBEFAC009FA56C /* Airports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		4ECD111729FBEFDB009FA56C /* Runways.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runways.swift; sourceTree = "<group>"; };
@@ -718,6 +722,7 @@
 				11EC9B4E2A14005E001EB56D /* LoadingView.swift */,
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
 				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
+				4EC44EC82A471E710038D347 /* PromptView.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 		4EB4CF2229D5893C00830FB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4EC44ECA2A472B270038D347 /* Behaviours */,
 				4E08E50C29E2FAB300B6F8E1 /* Mapbox */,
 				4E6B37A929DBA1A5005B97F2 /* ReactiveUtilities */,
 				4ECEC08229D99E7F0070195D /* Fundamentals */,
@@ -865,6 +871,14 @@
 				4E274C482A3E176B001E1D73 /* DatabaseInteractor.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		4EC44ECA2A472B270038D347 /* Behaviours */ = {
+			isa = PBXGroup;
+			children = (
+				4EC44ECB2A472D1C0038D347 /* UIView+Fadeable.swift */,
+			);
+			path = Behaviours;
 			sourceTree = "<group>";
 		};
 		4ECD111429FBEF99009FA56C /* Fields */ = {
@@ -1007,6 +1021,7 @@
 				11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */,
 				11D8D8462A2948A4001EE665 /* ToolsViewController.swift in Sources */,
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
+				4EC44EC92A471E710038D347 /* PromptView.swift in Sources */,
 				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
@@ -1037,6 +1052,7 @@
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */,
 				11B280F02A30E89C008D18C9 /* UserDataService.swift in Sources */,
+				4EC44ECC2A472D1C0038D347 /* UIView+Fadeable.swift in Sources */,
 				11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */,
 				11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */,
 				11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */,

@@ -49,14 +49,12 @@ final class InputBar: UIView {
             $0.left.equalToSuperview().offset(10)
             $0.top.bottom.equalToSuperview().inset(9)
         }
-        
         sendMessageButton.snp.makeConstraints {
             $0.left.equalTo(messageTextView.snp.right).offset(8)
             $0.right.equalToSuperview().inset(10)
             $0.width.height.equalTo(40)
             $0.bottom.equalTo(messageTextView)
         }
-        
         activityIndicator.snp.makeConstraints {
             $0.centerX.centerY.equalTo(sendMessageButton)
         }

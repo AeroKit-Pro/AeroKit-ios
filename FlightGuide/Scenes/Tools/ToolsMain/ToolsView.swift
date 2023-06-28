@@ -33,7 +33,7 @@ final class ToolsView: UIView {
         addSubview(stackView)
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).inset(10)
             make.leading.trailing.equalToSuperview().inset(15)
             make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide)
         }

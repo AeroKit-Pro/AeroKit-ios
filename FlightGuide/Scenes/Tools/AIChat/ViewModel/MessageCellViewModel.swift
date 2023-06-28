@@ -12,6 +12,7 @@ struct MessageCellViewModel {
     let message: String
     let createdAt: String
     let backgroundColor: UIColor?
+    let maskedCorners: CACornerMask
     
     init(with message: Message) {
         self.role = message.role
@@ -19,9 +20,15 @@ struct MessageCellViewModel {
         self.createdAt = message.createdAt
         
         switch message.role {
-        case .user: backgroundColor = .flg_light_blue
-        case .assistant: backgroundColor = .flg_light_gray
-        default: backgroundColor = nil
+        case .user:
+            backgroundColor = .flg_light_blue
+            maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMinXMaxYCorner]
+        case .assistant:
+            backgroundColor = .flg_light_gray
+            maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        default:
+            backgroundColor = nil
+            maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
         }
     }
 }

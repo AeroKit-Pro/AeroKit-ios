@@ -73,14 +73,9 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         self.delegate = delegate
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
-        self.tabBarController.view.backgroundColor = .white
-        self.tabBarController.tabBar.backgroundColor = .white
-        self.tabBarController.tabBar.tintColor = .black
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .white
-        tabBarController.tabBar.standardAppearance = tabBarAppearance
         super.init()
+        setupAppearance()
+        
         subscribeOnNotifications()
     }
 
@@ -100,6 +95,23 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
         tabBarController.tabBar.isTranslucent = false
         navigationController.isNavigationBarHidden = true
         navigationController.viewControllers = [tabBarController]
+    }
+    
+    private func setupAppearance() {
+        self.tabBarController.view.backgroundColor = .white
+        self.tabBarController.tabBar.backgroundColor = .white
+        self.tabBarController.tabBar.tintColor = .black
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .white
+        tabBarController.tabBar.standardAppearance = tabBarAppearance
+        
+        let path = UIBezierPath(rect:  tabBarController.tabBar.bounds).cgPath
+        tabBarController.tabBar.layer.shadowPath = path
+        tabBarController.tabBar.layer.shadowColor = UIColor.black.cgColor
+        tabBarController.tabBar.layer.shadowOpacity = 0.2
+        tabBarController.tabBar.layer.shadowOffset = .zero
+        tabBarController.tabBar.layer.shadowRadius = 2
     }
 
     private func getTabController(_ page: TabBarPage) -> UINavigationController {

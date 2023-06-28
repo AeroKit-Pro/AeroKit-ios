@@ -22,6 +22,7 @@ final class MessageCell: UITableViewCell {
             messageLabel.text = viewModel?.message
             timeLabel.text = viewModel?.createdAt
             setupRoledLayout(role: viewModel?.role)
+            containerView.layer.maskedCorners = viewModel?.maskedCorners ?? []
         }
     }
     

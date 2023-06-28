@@ -25,6 +25,7 @@ protocol AIChatViewModelOutputs {
     var invalidateMessageInput: Observable<Empty>! { get }
     var scrollToIndexPath: Observable<IndexPath>! { get }
     var shouldShowActivityOnAssistantTurn: Observable<Bool>! { get }
+    var hidePromptView: Observable<Empty>! { get }
 }
 
 protocol AIChatViewModelType {
@@ -39,6 +40,7 @@ final class AIChatViewModel: AIChatViewModelType, AIChatViewModelOutputs {
     var invalidateMessageInput: Observable<Empty>!
     var scrollToIndexPath: Observable<IndexPath>!
     var shouldShowActivityOnAssistantTurn: Observable<Bool>!
+    var hidePromptView: Observable<Empty>!
     
     private let messageInput = PublishRelay<String?>()
     private let messageButtonTapped = PublishRelay<Empty>()
@@ -72,6 +74,9 @@ final class AIChatViewModel: AIChatViewModelType, AIChatViewModelOutputs {
             .map { $0.0 && $0.1 }
             .distinctUntilChanged()
         
+        self.hidePromptView = messageButtonTapped.asObservable()
+            .take(1)
+        // TODO: REMOVE SUBSCRIPTION FROM HERE
         messageButtonTapped.withLatestFrom(unwrappedMessageInput)
             .do(onNext: { self.openAIChat.postUserMessage($0) })
             .subscribe()
