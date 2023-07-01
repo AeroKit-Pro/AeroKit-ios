@@ -34,7 +34,6 @@
 		115DA7602A3F5BDA0011F754 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA75B2A3F5BDA0011F754 /* SignUpViewModel.swift */; };
 		115DA7612A3F5BDA0011F754 /* SignUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA75C2A3F5BDA0011F754 /* SignUpContract.swift */; };
 		115DA7622A3F5BDA0011F754 /* SignUpAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA75D2A3F5BDA0011F754 /* SignUpAssembly.swift */; };
-		118BEA362A2C9CD200B056C6 /* ToolsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */; };
 		118BEA362A2C9CD200B056C6 /* ToolsItemDetailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */; };
 		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
 		11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */; };
@@ -213,7 +212,6 @@
 		115DA75B2A3F5BDA0011F754 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		115DA75C2A3F5BDA0011F754 /* SignUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpContract.swift; sourceTree = "<group>"; };
 		115DA75D2A3F5BDA0011F754 /* SignUpAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpAssembly.swift; sourceTree = "<group>"; };
-		118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemView.swift; sourceTree = "<group>"; };
 		118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemDetailingView.swift; sourceTree = "<group>"; };
 		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 		11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyWithPlanesModel.swift; sourceTree = "<group>"; };
@@ -458,7 +456,6 @@
 		118BEA342A2C9CC500B056C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				118BEA352A2C9CD200B056C6 /* ToolsItemView.swift */,
 				115DA7302A3E75A40011F754 /* ToolsSubitemView.swift */,
 				118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */,
 				4E4340C42A35D19D00B80502 /* ToolsItemView.swift */,
@@ -1147,7 +1144,6 @@
 				11B281002A31157D008D18C9 /* ChecklistsSelectionViewController.swift in Sources */,
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
-				4ECD111C29FC03F1009FA56C /* DatabaseInteractor.swift in Sources */,
 				115DA7402A3F0F690011F754 /* GetStartedView.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
@@ -1438,7 +1434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

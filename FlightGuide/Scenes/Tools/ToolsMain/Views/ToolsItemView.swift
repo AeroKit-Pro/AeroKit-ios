@@ -11,7 +11,7 @@ final class ToolsItemView: UIView {
     
     enum ItemType {
         case AIChat
-
+        
         var titleText: String {
             switch self {
             case .AIChat: return "AIChat"
@@ -44,7 +44,7 @@ final class ToolsItemView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
@@ -55,7 +55,7 @@ final class ToolsItemView: UIView {
     
     private let itemType: ItemType
     private let onTapAction: (() -> Void)?
-
+    
     init(itemType: ItemType, onTapAction: (() -> Void)?) {
         self.itemType = itemType
         self.onTapAction = onTapAction
@@ -64,7 +64,7 @@ final class ToolsItemView: UIView {
         setupUI()
         setupAction()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,7 +72,7 @@ final class ToolsItemView: UIView {
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         onTapAction?()
     }
-
+    
     private func setupLayout() {
         addSubviews(typeImageView, titleLabel, onTapActionImageView)
         
@@ -91,29 +91,11 @@ final class ToolsItemView: UIView {
             make.right.equalToSuperview().inset(20)
             make.centerY.equalToSuperview()
         }
-
-        separatorView.snp.makeConstraints { make in
-            make.top.equalTo(showButton.snp.bottom).offset(5)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(separatorView.snp.bottom).offset(6)
-            make.leading.equalToSuperview().offset(12)
-        }
-
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(subtitleLabel.snp.bottom).offset(6)
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.bottom.equalToSuperview().inset(10)
-        }
-
         
         titleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
         titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
-
+    
     private func setupUI() {
         backgroundColor = UIColor.hex(0xF1F1F1)
         layer.cornerRadius = 10
@@ -122,11 +104,6 @@ final class ToolsItemView: UIView {
         typeImageView.image = itemType.typeImage
         onTapActionImageView.image = itemType.onTapActionImage
         onTapActionImageView.tintColor = .flg_secondary_gray
-    }
-
-    func updateSubitems(items: [ToolsSubitemView]) {
-        stackView.removeArrangedSubviews()
-        items.forEach { stackView.addArrangedSubview($0) }
     }
     
     private func setupAction() {
