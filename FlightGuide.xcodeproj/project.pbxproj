@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110715002A540E4C0017AC78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 110714FF2A540E4C0017AC78 /* GoogleSignInSwift */; };
 		113795542A07F67600597299 /* AirportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795532A07F67600597299 /* AirportType.swift */; };
 		113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795552A07F70A00597299 /* AirportFilterItem.swift */; };
 		113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
@@ -37,6 +38,16 @@
 		118BEA362A2C9CD200B056C6 /* ToolsItemDetailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */; };
 		11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */; };
 		11A3669E2A2F97BE00D482EB /* CompanyWithPlanesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */; };
+		11A7E32C2A56EA8800D46451 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E32B2A56EA8800D46451 /* SettingsView.swift */; };
+		11A7E32F2A56EBAF00D46451 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E32E2A56EBAF00D46451 /* SettingsTableCell.swift */; };
+		11A7E3332A57014F00D46451 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E3322A57014F00D46451 /* AboutViewController.swift */; };
+		11A7E3352A57018200D46451 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E3342A57018200D46451 /* AboutView.swift */; };
+		11A7E33B2A570DA800D46451 /* AccountContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E3372A570DA800D46451 /* AccountContract.swift */; };
+		11A7E33C2A570DA800D46451 /* AccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E3382A570DA800D46451 /* AccountAssembly.swift */; };
+		11A7E33D2A570DA800D46451 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E3392A570DA800D46451 /* AccountViewModel.swift */; };
+		11A7E33E2A570DA800D46451 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E33A2A570DA800D46451 /* AccountViewController.swift */; };
+		11A7E3402A570E2A00D46451 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7E33F2A570E2A00D46451 /* AccountView.swift */; };
+		11ABA2F12A56B9DC00D819D0 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ABA2F02A56B9DC00D819D0 /* AuthorizationService.swift */; };
 		11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */; };
 		11B280ED2A302327008D18C9 /* SelectPlaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280EC2A302327008D18C9 /* SelectPlaneViewController.swift */; };
 		11B280F02A30E89C008D18C9 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B280EF2A30E89C008D18C9 /* UserDataService.swift */; };
@@ -71,6 +82,11 @@
 		11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */; };
 		11D8D84C2A294934001EE665 /* ToolsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84B2A294934001EE665 /* ToolsContract.swift */; };
 		11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D84D2A294E79001EE665 /* ToolsView.swift */; };
+		11DECD0F2A51B89500463CD5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DECD0E2A51B89500463CD5 /* SettingsViewController.swift */; };
+		11DECD112A51B9F500463CD5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DECD102A51B9F500463CD5 /* SettingsViewModel.swift */; };
+		11DECD132A51BA0A00463CD5 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DECD122A51BA0A00463CD5 /* SettingsAssembly.swift */; };
+		11DECD152A51BA3400463CD5 /* SettingsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DECD142A51BA3400463CD5 /* SettingsContract.swift */; };
+		11DECD172A51BC8D00463CD5 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DECD162A51BC8D00463CD5 /* SettingsCoordinator.swift */; };
 		11EC9B342A13F1D3001EB56D /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B332A13F1D3001EB56D /* Coordinatable.swift */; };
 		11EC9B362A13F1F1001EB56D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */; };
 		11EC9B3A2A13F266001EB56D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B392A13F266001EB56D /* BaseNavigationController.swift */; };
@@ -215,6 +231,17 @@
 		118BEA352A2C9CD200B056C6 /* ToolsItemDetailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItemDetailingView.swift; sourceTree = "<group>"; };
 		11A3669A2A2F8EFC00D482EB /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 		11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyWithPlanesModel.swift; sourceTree = "<group>"; };
+		11A7E32B2A56EA8800D46451 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		11A7E32E2A56EBAF00D46451 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		11A7E3322A57014F00D46451 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		11A7E3342A57018200D46451 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		11A7E3372A570DA800D46451 /* AccountContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountContract.swift; sourceTree = "<group>"; };
+		11A7E3382A570DA800D46451 /* AccountAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAssembly.swift; sourceTree = "<group>"; };
+		11A7E3392A570DA800D46451 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		11A7E33A2A570DA800D46451 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		11A7E33F2A570E2A00D46451 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		11ABA2F02A56B9DC00D819D0 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		11ABA2F22A56BFEB00D819D0 /* FlightGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlightGuide.entitlements; sourceTree = "<group>"; };
 		11B280E82A301B57008D18C9 /* ChecklistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewController.swift; sourceTree = "<group>"; };
 		11B280EC2A302327008D18C9 /* SelectPlaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaneViewController.swift; sourceTree = "<group>"; };
 		11B280EF2A30E89C008D18C9 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
@@ -249,6 +276,11 @@
 		11D8D8492A2948B8001EE665 /* ToolsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsAssembly.swift; sourceTree = "<group>"; };
 		11D8D84B2A294934001EE665 /* ToolsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsContract.swift; sourceTree = "<group>"; };
 		11D8D84D2A294E79001EE665 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
+		11DECD0E2A51B89500463CD5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		11DECD102A51B9F500463CD5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		11DECD122A51BA0A00463CD5 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		11DECD142A51BA3400463CD5 /* SettingsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContract.swift; sourceTree = "<group>"; };
+		11DECD162A51BC8D00463CD5 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B332A13F1D3001EB56D /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		11EC9B352A13F1F1001EB56D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B392A13F266001EB56D /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -369,6 +401,7 @@
 				4E3B3AC129D4451D00971840 /* Alamofire in Frameworks */,
 				4E3B3ABE29D444E400971840 /* RxSwift in Frameworks */,
 				4E3B3AC429D4553000971840 /* MapboxMaps in Frameworks */,
+				110715002A540E4C0017AC78 /* GoogleSignInSwift in Frameworks */,
 				4ED45FEF2A26B574007442EC /* RxDataSources in Frameworks */,
 				4E3B3ABC29D444E400971840 /* RxCocoa in Frameworks */,
 				4EE5EE3E29D574E7000AAE58 /* SnapKit in Frameworks */,
@@ -434,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				115DA74F2A3F3A310011F754 /* LoginView.swift */,
+				11ABA2F02A56B9DC00D819D0 /* AuthorizationService.swift */,
 				115DA7542A3F3FCB0011F754 /* CustomizablePaddingTextField.swift */,
 				115DA7522A3F3B3C0011F754 /* AuthorizationTextField.swift */,
 				115DA7562A3F562D0011F754 /* SocialAuthorizationBlockView.swift */,
@@ -478,6 +512,45 @@
 				11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */,
 			);
 			path = Checklists;
+			sourceTree = "<group>";
+		};
+		11A7E32D2A56EBA400D46451 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11A7E32E2A56EBAF00D46451 /* SettingsTableCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11A7E3302A57013600D46451 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				11A7E3362A57085700D46451 /* Account */,
+				11A7E3312A57014300D46451 /* About */,
+				11DECD0D2A51B88400463CD5 /* Settings */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		11A7E3312A57014300D46451 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				11A7E3322A57014F00D46451 /* AboutViewController.swift */,
+				11A7E3342A57018200D46451 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		11A7E3362A57085700D46451 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				11A7E3382A570DA800D46451 /* AccountAssembly.swift */,
+				11A7E3372A570DA800D46451 /* AccountContract.swift */,
+				11A7E33A2A570DA800D46451 /* AccountViewController.swift */,
+				11A7E3392A570DA800D46451 /* AccountViewModel.swift */,
+				11A7E33F2A570E2A00D46451 /* AccountView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		11B280E62A301B23008D18C9 /* Tools */ = {
@@ -556,6 +629,7 @@
 		11D4F4632A03E8FC001DDC46 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				11A7E3302A57013600D46451 /* Settings */,
 				115DA73B2A3F0F380011F754 /* Authorization */,
 				11B280E62A301B23008D18C9 /* Tools */,
 				4EBA3F852A1FCE160043AD42 /* Favorites */,
@@ -645,6 +719,19 @@
 			path = ToolsMain;
 			sourceTree = "<group>";
 		};
+		11DECD0D2A51B88400463CD5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				11A7E32D2A56EBA400D46451 /* Views */,
+				11DECD122A51BA0A00463CD5 /* SettingsAssembly.swift */,
+				11DECD142A51BA3400463CD5 /* SettingsContract.swift */,
+				11DECD0E2A51B89500463CD5 /* SettingsViewController.swift */,
+				11DECD102A51B9F500463CD5 /* SettingsViewModel.swift */,
+				11A7E32B2A56EA8800D46451 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		11EC9B312A13F1C3001EB56D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +763,7 @@
 				11D8D8422A29485D001EE665 /* ToolsCoordinator.swift */,
 				11B280F52A30EF4F008D18C9 /* ChecklistsCoordinator.swift */,
 				4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */,
+				11DECD162A51BC8D00463CD5 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -768,6 +856,7 @@
 		4E3B3A9D29D43B4800971840 /* FlightGuide */ = {
 			isa = PBXGroup;
 			children = (
+				11ABA2F22A56BFEB00D819D0 /* FlightGuide.entitlements */,
 				4E3B3AB629D43F0800971840 /* Application */,
 				11EC9B3D2A13F4C0001EB56D /* Coordinators */,
 				11EC9B312A13F1C3001EB56D /* Core */,
@@ -1045,6 +1134,7 @@
 				4ED45FEE2A26B574007442EC /* RxDataSources */,
 				115DA7352A3F0E160011F754 /* FirebaseAuth */,
 				115DA7372A3F0E160011F754 /* FirebaseAuthCombine-Community */,
+				110714FF2A540E4C0017AC78 /* GoogleSignInSwift */,
 			);
 			productName = FlightGuide;
 			productReference = 4E3B3A9B29D43B4800971840 /* FlightGuide.app */;
@@ -1082,6 +1172,7 @@
 				4EBCA03C29EAA3E600363661 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				4ED45FED2A26B574007442EC /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				115DA7342A3F0E160011F754 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				110714FE2A540E4C0017AC78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 4E3B3A9C29D43B4800971840 /* Products */;
 			projectDirPath = "";
@@ -1120,8 +1211,11 @@
 				115DA7612A3F5BDA0011F754 /* SignUpContract.swift in Sources */,
 				115DA74C2A3F39780011F754 /* LoginContract.swift in Sources */,
 				4E3019BD29EAE38200852427 /* Runway.swift in Sources */,
+				11A7E32C2A56EA8800D46451 /* SettingsView.swift in Sources */,
+				11A7E33E2A570DA800D46451 /* AccountViewController.swift in Sources */,
 				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
+				11A7E33C2A570DA800D46451 /* AccountAssembly.swift in Sources */,
 				115DA7622A3F5BDA0011F754 /* SignUpAssembly.swift in Sources */,
 				11EC9B4A2A13FFAA001EB56D /* SplashAssembly.swift in Sources */,
 				4E0044C42A35E6030098706A /* AIChatViewModel.swift in Sources */,
@@ -1136,10 +1230,12 @@
 				11D4F4842A041F9F001DDC46 /* AirportFilterViewController.swift in Sources */,
 				4EC44EC92A471E710038D347 /* PromptView.swift in Sources */,
 				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
+				11A7E3402A570E2A00D46451 /* AccountView.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
 				11B2810C2A315E20008D18C9 /* ChecklistGroupStorageModel.swift in Sources */,
+				11DECD0F2A51B89500463CD5 /* SettingsViewController.swift in Sources */,
 				11EC9B3F2A13F642001EB56D /* AppCoordinator.swift in Sources */,
 				11B281002A31157D008D18C9 /* ChecklistsSelectionViewController.swift in Sources */,
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
@@ -1150,7 +1246,12 @@
 				4EB80B992A3651E500BDBBF9 /* MessageCell.swift in Sources */,
 				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4E274C4E2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift in Sources */,
+				11DECD152A51BA3400463CD5 /* SettingsContract.swift in Sources */,
+				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
+				11DECD132A51BA0A00463CD5 /* SettingsAssembly.swift in Sources */,
+				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
+				11A7E3352A57018200D46451 /* AboutView.swift in Sources */,
 				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,
 				4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */,
 				4EC7FA5D2A20FA3A008A177C /* DIContainer.swift in Sources */,
@@ -1196,6 +1297,7 @@
 				4EA72A2B29D6365200836CDF /* Airport.swift in Sources */,
 				4E5C2DDD29FC885B00B66A02 /* SearchPattern.swift in Sources */,
 				4E59F89C2A2CDCD2005E84B1 /* UIEdgeInsets.swift in Sources */,
+				11A7E33B2A570DA800D46451 /* AccountContract.swift in Sources */,
 				4E6697412A40712200AA9F3F /* ChatCompletionChunk.swift in Sources */,
 				4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */,
 				4ECEC07E29D9979C0070195D /* UIImageView.swift in Sources */,
@@ -1209,6 +1311,7 @@
 				113795542A07F67600597299 /* AirportType.swift in Sources */,
 				11D4F47B2A03E973001DDC46 /* BannerUnderlayView.swift in Sources */,
 				4EA72A2D29D636FA00836CDF /* APIRequest.swift in Sources */,
+				11A7E33D2A570DA800D46451 /* AccountViewModel.swift in Sources */,
 				115DA7532A3F3B3C0011F754 /* AuthorizationTextField.swift in Sources */,
 				4EB9007629D8681900C64110 /* UIView.swift in Sources */,
 				115DA75F2A3F5BDA0011F754 /* SignUpViewController.swift in Sources */,
@@ -1217,6 +1320,7 @@
 				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
 				4E2648242A3DF0A100B78379 /* RunwaySurface.swift in Sources */,
 				4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */,
+				11ABA2F12A56B9DC00D819D0 /* AuthorizationService.swift in Sources */,
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
 				11B280F22A30E901008D18C9 /* UserDataStorage.swift in Sources */,
 				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
@@ -1229,6 +1333,7 @@
 				4E57C78E2A162C12009A681A /* FilterViewModel.swift in Sources */,
 				4ED2DFCD2A17A7EE00479E4D /* CounterBadge.swift in Sources */,
 				115DA7602A3F5BDA0011F754 /* SignUpViewModel.swift in Sources */,
+				11DECD172A51BC8D00463CD5 /* SettingsCoordinator.swift in Sources */,
 				11D4F4862A041FC7001DDC46 /* AirportFilterView.swift in Sources */,
 				4E274C502A3E6D91001E1D73 /* Message.swift in Sources */,
 				4EB80BA02A365B8600BDBBF9 /* Date.swift in Sources */,
@@ -1239,11 +1344,13 @@
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
 				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
+				11DECD112A51B9F500463CD5 /* SettingsViewModel.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
 				4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */,
 				4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */,
 				4E0044CD2A35EE150098706A /* InputBar.swift in Sources */,
 				4E274C4C2A3E43BA001E1D73 /* OpenAIChat.swift in Sources */,
+				11A7E32F2A56EBAF00D46451 /* SettingsTableCell.swift in Sources */,
 				11A3669B2A2F8EFC00D482EB /* PDFReaderViewController.swift in Sources */,
 				11D8D84A2A2948B8001EE665 /* ToolsAssembly.swift in Sources */,
 				4E2648222A3DF02700B78379 /* Router.swift in Sources */,
@@ -1271,6 +1378,7 @@
 				4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */,
 				4E3B3AA129D43B4800971840 /* SceneDelegate.swift in Sources */,
 				11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */,
+				11A7E3332A57014F00D46451 /* AboutViewController.swift in Sources */,
 				4E2648202A3DEF9E00B78379 /* ReturnEmpty.swift in Sources */,
 				4EECAF642A20C31D00F51E52 /* NotificationName.swift in Sources */,
 				4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */,
@@ -1412,6 +1520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlightGuide/FlightGuide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1434,7 +1543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1446,6 +1555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlightGuide/FlightGuide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
@@ -1494,6 +1604,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		110714FE2A540E4C0017AC78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		115DA7342A3F0E160011F754 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1553,6 +1671,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		110714FF2A540E4C0017AC78 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 110714FE2A540E4C0017AC78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		115DA7352A3F0E160011F754 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 115DA7342A3F0E160011F754 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

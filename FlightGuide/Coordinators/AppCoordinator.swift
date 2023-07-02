@@ -73,6 +73,7 @@ extension AppCoordinator: SplashSceneOutput {
             navigationController: navigationController,
             delegate: self
         )
+        tabCoordinator.delegate = self
         add(tabCoordinator)
         tabCoordinator.start()
     }

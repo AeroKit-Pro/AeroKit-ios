@@ -17,8 +17,8 @@ final class SignUpCoordinator: BaseCoordinator {
     func openGetStarted() {
         let scene = GetStartedViewController(nibName: nil, bundle: nil)
         scene.delegate = self
-        router.root?.removeNavigationBarShadow()
         router.setRootModule(scene)
+        router.root?.removeNavigationBarShadow()
     }
 }
 

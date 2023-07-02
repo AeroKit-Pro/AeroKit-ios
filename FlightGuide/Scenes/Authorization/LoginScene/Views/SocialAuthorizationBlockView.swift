@@ -8,25 +8,17 @@
 import UIKit
 
 final class SocialAuthorizationBlockView: UIView {
-    private let appleButton: UIButton = {
+    let appleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "signUp_appleLogo"), for: .normal)
         return button
     }()
 
-    private let gooogleButton: UIButton = {
+    let gooogleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "signUp_googleLogo"), for: .normal)
         return button
     }()
-
-
-    private let facebookButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "signUp_facebookLogo"), for: .normal)
-        return button
-    }()
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,26 +57,23 @@ final class SocialAuthorizationBlockView: UIView {
             make.centerY.equalTo(trailingSeparatorView)
         }
 
-        addSubview(appleButton)
-        appleButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.size.equalTo(55)
+        let buttonsContainer = UIView()
+        addSubviews(buttonsContainer)
+        buttonsContainer.snp.makeConstraints { make in
+            make.height.equalTo(55)
             make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.top.equalTo(orTitleLabel.snp.bottom).offset(30)
         }
-
-        addSubview(facebookButton)
-        facebookButton.snp.makeConstraints { make in
+        buttonsContainer.addSubviews(appleButton, gooogleButton)
+        appleButton.snp.makeConstraints { make in
+            make.leading.bottom.top.equalToSuperview()
             make.size.equalTo(55)
-            make.centerY.equalTo(appleButton)
-            make.leading.equalTo(appleButton.snp.trailing).offset(30)
         }
-
-        addSubview(gooogleButton)
         gooogleButton.snp.makeConstraints { make in
             make.size.equalTo(55)
-            make.centerY.equalTo(appleButton)
-            make.trailing.equalTo(appleButton.snp.leading).offset(-30)
+            make.trailing.bottom.top.equalToSuperview()
+            make.leading.equalTo(appleButton.snp.trailing).offset(30)
         }
     }
 

@@ -137,7 +137,14 @@ final class TabCoordinator: NSObject, TabCoordinatorInterface {
             children.append(toolsCoordinator)
             toolsCoordinator.start()
         case .settings:
-            break
+            let settingsCoordinator = SettingsCoordinator(router: router)
+            settingsCoordinator.parent = self
+            settingsCoordinator.onTapLogout = { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.didLogoutUser(self)
+            }
+            children.append(settingsCoordinator)
+            settingsCoordinator.start()
         }
         return navigationController
     }
