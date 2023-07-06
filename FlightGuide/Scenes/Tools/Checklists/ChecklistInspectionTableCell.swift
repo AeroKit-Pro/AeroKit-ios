@@ -20,8 +20,7 @@ final class ChecklistInspectionTableCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.hex(0x333333)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 0
         return label
     }()
 
@@ -29,6 +28,7 @@ final class ChecklistInspectionTableCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.textAlignment = .right
+        label.numberOfLines = 0
         return label
     }()
 
@@ -50,20 +50,25 @@ final class ChecklistInspectionTableCell: UITableViewCell {
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(10)
-            make.height.equalTo(64)
+            make.height.greaterThanOrEqualTo(64)
         }
 
         containerView.addSubviews(titleLabel, valueLabel)
 
         titleLabel.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualToSuperview().offset(20)
+            make.bottom.lessThanOrEqualToSuperview().offset(-20)
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(16)
         }
 
         valueLabel.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualToSuperview().offset(20)
+            make.bottom.lessThanOrEqualToSuperview().offset(-20)
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(16)
             make.leading.equalTo(titleLabel.snp.trailing).offset(10)
+            make.width.equalToSuperview().multipliedBy(0.4)
         }
     }
 

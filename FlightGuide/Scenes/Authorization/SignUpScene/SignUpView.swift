@@ -58,7 +58,7 @@ final class SignUpView: UIView {
         return imageView
     }()
 
-    private let socialAuthorizationBlockView = SocialAuthorizationBlockView()
+    let socialAuthorizationBlockView = SocialAuthorizationBlockView()
 
     init() {
         super.init(frame: .zero)

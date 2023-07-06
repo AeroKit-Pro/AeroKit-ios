@@ -27,7 +27,7 @@ final class ChecklistsViewModel {
     @UserDataStorage(key: UserDefaultsKey.savedChecklists) private var savedChecklists: [ChecklistGroupStorageModel]?
 
     private var checklistsItems = [ChecklistGroupStorageModel]()
-    private var isEditMode = false
+    private(set) var isEditMode = false
 }
 
 // MARK: - ChecklistsViewModelInterface
@@ -52,7 +52,9 @@ extension ChecklistsViewModel: ChecklistsViewModelInterface {
     }
 
     func onSelect(item: ChecklistGroupStorageModel) {
-        output?.showMyGroupChecklist(items: item.checklists)
+        if !isEditMode {
+            output?.showMyGroupChecklist(items: item.checklists)
+        }
     }
 
     func onDelete(item: ChecklistGroupStorageModel) {

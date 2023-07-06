@@ -37,7 +37,7 @@ final class LoginView: UIView {
         return containerView
     }()
 
-    let signUpButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.layer.cornerRadius = 10
@@ -47,13 +47,21 @@ final class LoginView: UIView {
         return button
     }()
 
+    let resetPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Reset Password", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    private let socialAuthorizationBlockView = SocialAuthorizationBlockView()
+    let socialAuthorizationBlockView = SocialAuthorizationBlockView()
 
     init() {
         super.init(frame: .zero)
@@ -77,7 +85,7 @@ final class LoginView: UIView {
             make.leading.equalToSuperview().offset(20)
         }
 
-        addSubviews(userNameContainerView, passwordContainerView, signUpButton, socialAuthorizationBlockView)
+        addSubviews(userNameContainerView, passwordContainerView, loginButton, socialAuthorizationBlockView, resetPasswordButton)
 
         userNameContainerView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(100 * UIScreen.main.bounds.height / 822)
@@ -89,8 +97,14 @@ final class LoginView: UIView {
             make.leading.trailing.equalTo(userNameContainerView)
         }
 
-        signUpButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordContainerView.snp.bottom).offset(40)
+        resetPasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordContainerView.snp.bottom).offset(26)
+            make.trailing.equalTo(userNameContainerView)
+
+        }
+
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(resetPasswordButton.snp.bottom).offset(40)
             make.leading.trailing.equalTo(userNameContainerView)
             make.height.equalTo(50)
         }
@@ -99,6 +113,7 @@ final class LoginView: UIView {
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
             make.leading.trailing.equalToSuperview()
         }
+
     }
 
     private func setupUI() {

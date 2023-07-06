@@ -7,10 +7,9 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class SplashViewModel {
-
-    private var shouldShowAuthorizationFlow = true
     // MARK: Properties
     weak var view: SplashViewInterface!
     weak var output: SplashSceneOutput?
@@ -28,7 +27,7 @@ extension SplashViewModel: SplashViewModelInterface {
     }
 
     private func displayDesiredFlow() {
-        if shouldShowAuthorizationFlow {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
             output?.startSignUpFlow()
         } else {
             output?.startAuthorizedFlow()

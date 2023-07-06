@@ -26,7 +26,6 @@ final class GetStartedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
 
         getStartedView.onTapLogin = { [weak self] in
             self?.delegate?.showLoginScene()
@@ -34,6 +33,11 @@ final class GetStartedViewController: UIViewController {
         getStartedView.onTapSignUp = { [weak self] in
             self?.delegate?.showSignUpScene()
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 

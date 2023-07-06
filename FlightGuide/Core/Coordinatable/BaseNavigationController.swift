@@ -55,6 +55,7 @@ final class BaseNavigationController: UINavigationController {
     }
 
     func removeNavigationBarShadow() {
+        navigationBar.layer.shadowColor = UIColor.clear.cgColor
         navigationBar.scrollEdgeAppearance?.shadowColor = .clear
     }
     
