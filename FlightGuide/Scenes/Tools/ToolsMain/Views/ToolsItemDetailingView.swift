@@ -11,11 +11,13 @@ final class ToolsItemDetailingView: UIView {
     enum ItemType {
         case checklists
         case pdfReader
+        case calculators
         
         var titleText: String {
             switch self {
             case .checklists: return "Checklists"
             case .pdfReader: return "PDF Reader"
+            case .calculators: return "Calculators"
             }
         }
         
@@ -23,6 +25,7 @@ final class ToolsItemDetailingView: UIView {
             switch self {
             case .checklists: return "Last checked:"
             case .pdfReader: return "Last readed:"
+            case .calculators: return "Last used:"
             }
         }
         
@@ -30,6 +33,7 @@ final class ToolsItemDetailingView: UIView {
             switch self {
             case .checklists: return UIImage(named: "tools_checklists")
             case .pdfReader: return UIImage(named: "tools_pdfReader")
+            case .calculators: return UIImage(named: "tools_calculators")
             }
         }
         

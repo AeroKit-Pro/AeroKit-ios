@@ -44,6 +44,10 @@ extension ToolsViewModel: ToolsViewModelInterface {
     func onTapPdfReader() {
         output?.showPDFReader()
     }
+    
+    func onTapCalculators() {
+        output?.showCalculatorList()
+    }
 
     func onTapPdfURL(_ url: URL) {
         output?.showPDFReader(url: url)
@@ -52,6 +56,7 @@ extension ToolsViewModel: ToolsViewModelInterface {
     func onTapRecentChecklist(model: ChecklistGroupStorageModel) {
         output?.showChecklistsInspection(items: model.checklists)
     }
+    
     func onTapAIChat() {
         output?.showAIChat()
     }

@@ -36,6 +36,12 @@ extension ToolsCoordinator: ToolsSceneOutput, UIDocumentPickerDelegate {
         let reader = PDFReaderViewController(fileURL: url)
         router.push(reader, animated: true)
     }
+    
+    func showCalculatorList() {
+        let calculatorList = CalculatorListViewController()
+        calculatorList.output = self
+        router.push(calculatorList, animated: true)
+    }
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let fileURL = urls.first else { return }
@@ -115,4 +121,13 @@ extension ToolsCoordinator: ChecklistsSelectionSceneDelegate {
 // MARK: - ChecklistGroupSceneDelegate
 extension ToolsCoordinator: ChecklistGroupSceneDelegate {
 
+}
+
+// MARK: - CalculatorListOutput
+extension ToolsCoordinator: CalculatorListOutput {
+    func showCalculator(model: Calculator) {
+        let calculator = CalculatorViewController()
+        calculator.model = model
+        router.present(calculator, animated: true)
+    }
 }
