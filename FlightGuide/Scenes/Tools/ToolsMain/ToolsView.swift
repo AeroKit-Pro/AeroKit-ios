@@ -16,13 +16,16 @@ final class ToolsView: UIView {
     
     let checklistsView: ToolsItemDetailingView
     let pdfView: ToolsItemDetailingView
+    let calculatorsView: ToolsItemDetailingView
     let aiChatView: ToolsItemView
     
     init(onTapPDFReader: (() -> Void)?,
          onTapChecklist: (() -> Void)?,
+         onTapCalculators: (() -> Void)?,
          onTapAIChat: (() -> Void)?) {
         self.checklistsView = ToolsItemDetailingView(itemType: .checklists, onTapAction: onTapChecklist)
         self.pdfView = ToolsItemDetailingView(itemType: .pdfReader, onTapAction: onTapPDFReader)
+        self.calculatorsView = ToolsItemDetailingView(itemType: .calculators, onTapAction: onTapCalculators)
         self.aiChatView = ToolsItemView(itemType: .AIChat, onTapAction: onTapAIChat)
         super.init(frame: .zero)
         setupLayout()
@@ -44,6 +47,7 @@ final class ToolsView: UIView {
         
         stackView.addArrangedSubview(checklistsView)
         stackView.addArrangedSubview(pdfView)
+        stackView.addArrangedSubview(calculatorsView)
         stackView.addArrangedSubview(aiChatView)
     }
     

@@ -15,6 +15,7 @@ protocol ToolsViewInterface: AnyObject {
 protocol ToolsViewModelInterface: AnyObject {
     func viewWillAppear()
     func onTapChecklists()
+    func onTapCalculators()
     func onTapPdfReader()
     func onTapPdfURL(_ url: URL)
     func onTapRecentChecklist(model: ChecklistGroupStorageModel)
@@ -24,6 +25,7 @@ protocol ToolsViewModelInterface: AnyObject {
 protocol ToolsSceneOutput: AnyObject {
     func showPDFReader()
     func showChecklists()
+    func showCalculatorList()
     func showPDFReader(url: URL)
     func showChecklistsInspection(items: [ChecklistWithItemsModel])
     func showAIChat()
