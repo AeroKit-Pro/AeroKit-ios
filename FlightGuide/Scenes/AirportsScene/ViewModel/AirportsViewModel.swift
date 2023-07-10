@@ -75,8 +75,6 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let selectedPointAnnotation = PublishRelay<PointAnnotation>()
     private let selectedItemPath = PublishRelay<IndexPath>()
     private let favoriteAirportId = PublishRelay<Int>()
-    // TODO: TEMPORARY
-    private var onCityPresentation = false
     //MARK: - Services
     private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
@@ -84,6 +82,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let filterInputPassing: FilterInputPassing
     private let notificationCenter: NotificationCenterModuleInterface
     private var notificationTokens: [NotificationToken] = []
+    // MARK: - States
+    private var onCityPresentation = false
     
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }
@@ -102,9 +102,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .skipNil()
             .filter { $0.count > 1 }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .share()
         // TODO: replayed multiple times
         let filterSettings = filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
+            .share()
             .startWith(AirportFilterSettings.empty)
 
         let airportsByCity = RxObservable
@@ -116,14 +118,16 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .map { Dictionary(grouping: $0, by: { $0.municipality }) }
             .map { $0.sorted { $0.value.count > $1.value.count } }
             .startWith([])
+            .share()
         
-        let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
-                                                          filterSettings) { ($0, $1) }
+        let filteredAirports = RxObservable
+            .combineLatest(unwrappedSearchInput, filterSettings) { ($0, $1) }
             .filter { $0.1.airportFilterItem != .cities  }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
                 databaseInteractor.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
             .startWith([])
+            .share()
 
         let numberOfActiveCriteria = filterSettings
             .map { $0.numberOfActiveCriteria }
@@ -134,12 +138,12 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         
         self.counterBadgeIsHidden = numberOfActiveCriteria
             .map { $0 <= 0 }
-            .startWith(true)
         
         let unwrappedFilteredAirports = filteredAirports
             .backgroundCompactMap(qos: .userInitiated) { $0 }
             .share()
             .startWith([])
+            .share()
 
         let cityCellViewModels = airportsByCity
             .backgroundMap(qos: .userInitiated) { $0.map { CityCellViewModel(with: $0) } }
@@ -158,8 +162,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .map { $0.map { SectionItem.airportItem(viewModel: $0) } }
             .map { SectionedTableModel.airportsSection(title: $0.isEmpty ? "" : "Airports - \($0.count)",
                                                        items: $0) }
-        // TODO: emits extra values. The search flow should be reviewed
-        // I am really sorry for this code. I promise this will be refactored
+        
         self.searchOutput = RxObservable.combineLatest(citiesSection, airportsSection, filterSettings)
             .map { citiesSection, airportsSection, filterSettings in
                 switch filterSettings.airportFilterItem {
@@ -172,19 +175,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                 }
             }
         
-        let models = RxObservable.combineLatest(airportsByCity, unwrappedFilteredAirports)
+        let models = RxObservable
+            .combineLatest(airportsByCity, unwrappedFilteredAirports)
             .map { [$0.0, $0.1] as [[Any]] }
+            .share()
         
-        let selectedModel = selectedItemPath.withLatestFrom(models) { ($0, $1) }
+        let selectedModel = selectedItemPath
+            .withLatestFrom(models) { ($0, $1) }
             .map { indexPath, models in
                 let section = models[indexPath.section]
                 return section[indexPath.row]
             }
             .do(onNext: { self.onCityPresentation = $0 is (key: Optional<String>, value: Array<AirportByCity>) })
+            .share()
         
-        let selectedItemDatabaseId = RxObservable.merge(
-            selectedModel
-                .compactMap { return $0 as? AirportPreview }
+        let selectedItemDatabaseId = RxObservable
+                .merge(selectedModel
+                .compactMap { $0 as? AirportPreview }
                 .map { $0.id },
             selectedPointAnnotation
                 .compactMap { $0.airportId })
@@ -193,8 +200,10 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         let selectedCityAirports = selectedModel
             .compactMap { return $0 as? (key: Optional<String>, value: Array<AirportByCity>) }
             .map { $0.value }
-        
-        self.onCitySelection = selectedCityAirports.asEmpty()
+            .share()
+
+        self.onCitySelection = selectedCityAirports
+            .asEmpty()
         
         let coordinatesKeyedOnId = selectedCityAirports
             .map { [unowned self] in
@@ -217,7 +226,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                 return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
             }
             .compactMap { $0 }
-        
+
         let airportsByCityPointAnnotations = coordinatesKeyedOnId
             .map { $0.compactMap { PointAnnotation(location: $0.coordinate,
                                                    airportId: $0.id.toString()) } }

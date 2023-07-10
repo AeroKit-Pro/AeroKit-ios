@@ -10,7 +10,6 @@
 		110715002A540E4C0017AC78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 110714FF2A540E4C0017AC78 /* GoogleSignInSwift */; };
 		113795542A07F67600597299 /* AirportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795532A07F67600597299 /* AirportType.swift */; };
 		113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795552A07F70A00597299 /* AirportFilterItem.swift */; };
-		113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
 		1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955A2A08660E00597299 /* AirportFilterSearchItemsView.swift */; };
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
@@ -24,7 +23,6 @@
 		115DA7422A3F133F0011F754 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 115DA7412A3F133F0011F754 /* GoogleService-Info.plist */; };
 		115DA74B2A3F39780011F754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7472A3F39780011F754 /* LoginViewController.swift */; };
 		115DA74C2A3F39780011F754 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7482A3F39780011F754 /* LoginContract.swift */; };
-		115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7492A3F39780011F754 /* LoginAssembly.swift */; };
 		115DA74E2A3F39780011F754 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA74A2A3F39780011F754 /* LoginViewModel.swift */; };
 		115DA7502A3F3A310011F754 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA74F2A3F3A310011F754 /* LoginView.swift */; };
 		115DA7532A3F3B3C0011F754 /* AuthorizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7522A3F3B3C0011F754 /* AuthorizationTextField.swift */; };
@@ -218,6 +216,8 @@
 		4EF7B1DB2A571EB70056BC1A /* CalculatorsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DA2A571EB70056BC1A /* CalculatorsDataSource.swift */; };
 		4EF7B1DD2A57218D0056BC1A /* CalculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DC2A57218D0056BC1A /* CalculatorCell.swift */; };
 		4EF7B1DF2A5730BF0056BC1A /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DE2A5730BF0056BC1A /* TimeConverter.swift */; };
+		4EFE2F112A58B4FB00A957B6 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
+		4EFE2F132A58B56300A957B6 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,7 +235,6 @@
 		115DA7412A3F133F0011F754 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "FlightGuide/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		115DA7472A3F39780011F754 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		115DA7482A3F39780011F754 /* LoginContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
-		115DA7492A3F39780011F754 /* LoginAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 		115DA74A2A3F39780011F754 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		115DA74F2A3F3A310011F754 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		115DA7522A3F3B3C0011F754 /* AuthorizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTextField.swift; sourceTree = "<group>"; };
@@ -425,6 +424,7 @@
 		4EF7B1DA2A571EB70056BC1A /* CalculatorsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsDataSource.swift; sourceTree = "<group>"; };
 		4EF7B1DC2A57218D0056BC1A /* CalculatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorCell.swift; sourceTree = "<group>"; };
 		4EF7B1DE2A5730BF0056BC1A /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
+		4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,7 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				115DA7512A3F3B2D0011F754 /* Views */,
-				115DA7492A3F39780011F754 /* LoginAssembly.swift */,
+				4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */,
 				115DA7482A3F39780011F754 /* LoginContract.swift */,
 				115DA7472A3F39780011F754 /* LoginViewController.swift */,
 				115DA74A2A3F39780011F754 /* LoginViewModel.swift */,
@@ -1325,15 +1325,10 @@
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
 				115DA7402A3F0F690011F754 /* GetStartedView.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
-				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
 				4EB80B992A3651E500BDBBF9 /* MessageCell.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4E274C4E2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift in Sources */,
 				11DECD152A51BA3400463CD5 /* SettingsContract.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				11DECD132A51BA0A00463CD5 /* SettingsAssembly.swift in Sources */,
-				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
 				11A7E3352A57018200D46451 /* AboutView.swift in Sources */,
 				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,
@@ -1352,6 +1347,7 @@
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
 				11B280FE2A31140A008D18C9 /* ChecklistSelectionTableCell.swift in Sources */,
+				4EFE2F132A58B56300A957B6 /* LoginAssembly.swift in Sources */,
 				11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */,
@@ -1371,6 +1367,7 @@
 				11B280F82A310947008D18C9 /* ChecklistsTableCell.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
 				11B280FC2A310D54008D18C9 /* UITableView+Extensions.swift in Sources */,
+				4EFE2F112A58B4FB00A957B6 /* AirportFilterSettings.swift in Sources */,
 				11B280ED2A302327008D18C9 /* SelectPlaneViewController.swift in Sources */,
 				11B280F62A30EF4F008D18C9 /* ChecklistsCoordinator.swift in Sources */,
 				11B281092A31478C008D18C9 /* ChecklistsViewModel.swift in Sources */,
@@ -1639,7 +1636,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

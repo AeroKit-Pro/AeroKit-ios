@@ -17,7 +17,7 @@ struct AirportCellViewModel {
     
     init(with previewInfo: AirportPreview) {
         self.title = previewInfo.name ?? "no data"
-        self.type = previewInfo.type ?? "no data"
+        self.type = previewInfo.type?.replacingOccurrences(of: "_", with: " ") ?? "no data"
         self.municipality = previewInfo.municipality ?? "no data"
         self.surface = previewInfo.surfaces ?? "no data"
         self.image = UIImage.airport ?? UIImage() // there will be different icons for different types later

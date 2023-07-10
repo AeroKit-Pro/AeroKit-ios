@@ -79,7 +79,7 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     init() {
         self.name = pivotInfo.map { $0.airport.name ?? "no data" }
         self.identifier = pivotInfo.map { $0.airport.ident ?? "no data" }
-        self.type = pivotInfo.map { $0.airport.type ?? "no data" }
+        self.type = pivotInfo.map { $0.airport.type?.replacingOccurrences(of: "_", with: " ") ?? "no data" }
         self.elevation = pivotInfo.map { $0.airport.elevationFt?.toString() ?? "no data" }
         self.municipality = pivotInfo.map { $0.airport.municipality ?? "no data" }
         self.frequency = pivotInfo.map { $0.frequencies?.first?.frequencyMhz?.toString() ?? "no data" }
@@ -121,10 +121,14 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
                    wikipediaLinkLabelTapped.withLatestFrom(wikipediaLinkURL.skipNil()))
         self.websiteURL = linkTapEvent
         
-        let icao = pivotInfo.map { $0.airport.ident ?? ""}.share() // TODO: there is almost no nils, but making api call with empty values is not good
+        let icao = pivotInfo
+            .map { $0.airport.ident}
+            .share()
+        
         self.invalidateWeatherTexts = icao.map { _ in "" }
         
         let metarResponse = icao
+            .compactMap { $0 }
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .metar, icao: $0)
                     .map { $0.data.first }
@@ -132,6 +136,7 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
             }
             .share()
         let tafResponse = icao
+            .compactMap { $0 }
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .taf, icao: $0)
                     .map { $0.data.first }
