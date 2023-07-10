@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import MapboxMaps
 
 final class AirportsViewController: UIViewController {
     
@@ -67,12 +68,17 @@ final class AirportsViewController: UIViewController {
         airportsMainView.tappedAnnotation
             .subscribe(onNext: viewModel.inputs.didSelectPointAnnotation)
             .disposed(by: disposeBag)
+        
+        airportsMainView.didTapShowLocationButton
+            .subscribe(onNext: viewModel.inputs.didTapShowLocationButton)
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
         viewModel.outputs.onSearchStart
-            .subscribe(onNext: { self.airportsMainView.enterSearchingMode();
-                                 self.bannerViewController.hide() })
+            .subscribe(onNext: { [weak self] in
+                self?.airportsMainView.enterSearchingMode();
+                self?.bannerViewController.hide() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.onSearchEnd
@@ -84,8 +90,9 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.dismissDetailView
-            .subscribe(onNext: { self.bannerViewController.hide();
-                                 self.airportsMainView.searchFieldCannotDismiss() })
+            .subscribe(onNext: { [weak self] in
+                self?.bannerViewController.hide();
+                self?.airportsMainView.searchFieldCannotDismiss() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.searchOutput
@@ -97,8 +104,9 @@ final class AirportsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.onAirportSelection
-            .subscribe(onNext: { self.airportsMainView.dismissSearchMode();
-                                 self.bannerViewController.collapse() }) 
+            .subscribe(onNext: { [weak self] in
+                self?.airportsMainView.dismissSearchMode();
+                self?.bannerViewController.collapse() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.onCitySelection
@@ -123,6 +131,16 @@ final class AirportsViewController: UIViewController {
         
         viewModel.outputs.numberOfActiveFilters.asDriver(onErrorDriveWith: .empty())
             .drive(airportsMainView.counterBadge.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onLocationRequest
+            .subscribe(onNext: { [weak self] in
+                guard let self else { return }
+                let authotizationStatus = airportsMainView.locationAuthorizationStatus
+                let authorized = authotizationStatus == .authorizedAlways || authotizationStatus == .authorizedWhenInUse
+                if authorized { self.airportsMainView.easeToLatestLocation() }
+                else { self.present(UIAlertController.promptToEnableLocation(), animated: true) }
+            })
             .disposed(by: disposeBag)
     }
     

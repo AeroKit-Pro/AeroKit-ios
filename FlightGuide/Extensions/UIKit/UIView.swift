@@ -109,3 +109,9 @@ extension UIView {
         bounds.height - safeAreaInsets.top - safeAreaInsets.bottom
     }
 }
+
+extension UIView {
+    func scalexyBy(_ scale: CGFloat) {
+        transform = CGAffineTransform(scaleX: scale, y: scale)
+    }
+}

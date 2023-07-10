@@ -10,6 +10,7 @@ import SnapKit
 import MapboxMaps
 import RxCocoa
 import RxSwift
+import CoreLocation
 //TODO: Enum with states
 protocol AirportsSceneViewType: UIView {
     typealias PointAnnotations = [PointAnnotation]
@@ -19,21 +20,25 @@ protocol AirportsSceneViewType: UIView {
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }
     var didTapFilterButton: ControlEvent<()> { get }
+    var didTapShowLocationButton: ControlEvent<()> { get }
     var counterBadge: Reactive<CounterBadge> { get }
     var dismissSearchButton: Reactive<UIButton> { get }
     var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
+    var locationAuthorizationStatus: CLAuthorizationStatus { get }
     func enterSearchingMode()
     func dismissSearchMode()
     func searchFieldCannotDismiss()
     func searchFieldCanDismiss() 
     func ease(to coordinate: CLLocationCoordinate2D)
+    func easeToLatestLocation()
     func fitCameraInto(_ bounds: CoordinateBounds)
 }
 
 final class AirportsMainView: UIView {
     
     private let mapView: MapView
+    private let showLocationButton = ShowLocationButton()
     private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
@@ -50,6 +55,8 @@ final class AirportsMainView: UIView {
         setupSearchField()
         setupBlankView()
         setupTableView()
+        let puckConfiguration = Puck2DConfiguration.makeDefault()
+        mapView.location.options.puckType = .puck2D(puckConfiguration)
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +65,13 @@ final class AirportsMainView: UIView {
     
     private func setupMapView() {
         addSubview(mapView)
+        addSubview(showLocationButton)
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        showLocationButton.snp.makeConstraints {
+          //  $0.width.height.equalTo(50)
+            $0.right.equalToSuperview().inset(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(100)
+        }
     }
     
     private func setupSearchField() {
@@ -100,7 +113,7 @@ final class AirportsMainView: UIView {
 }
 
 extension AirportsMainView: AirportsSceneViewType {
-    var bindablePointAnnotations: RxSwift.Binder<PointAnnotations> { // ??? элиас ???
+    var bindablePointAnnotations: Binder<PointAnnotations> { // ??? элиас ???
         annotationsManager.rx.annotations
     }
     
@@ -128,12 +141,24 @@ extension AirportsMainView: AirportsSceneViewType {
         searchField.didTapFilterButton
     }
     
+    var didTapShowLocationButton: ControlEvent<()> {
+        showLocationButton.rx.tap
+    }
+    
     var counterBadge: Reactive<CounterBadge> {
         searchField.rxCounterBadge
     }
     
     var dismissSearchButton: Reactive<UIButton> {
         searchField.rxDismissSearchButton
+    }
+    
+    var locationAuthorizationStatus: CLAuthorizationStatus {
+        mapView.location.locationProvider.authorizationStatus
+    }
+    
+    var locationAuthorizationDelegate: LocationPermissionsDelegate? {
+        mapView.location.delegate
     }
     
     func enterSearchingMode() {
@@ -163,6 +188,11 @@ extension AirportsMainView: AirportsSceneViewType {
     func ease(to coordinate: CLLocationCoordinate2D) {
         let options = CameraOptions(center: coordinate, zoom: 8)
         mapView.camera.ease(to: options, duration: 0.4)
+    }
+    
+    func easeToLatestLocation() {
+        guard let location = mapView.location.latestLocation else { return }
+        ease(to: location.coordinate)
     }
     
     func fitCameraInto(_ bounds: CoordinateBounds) {

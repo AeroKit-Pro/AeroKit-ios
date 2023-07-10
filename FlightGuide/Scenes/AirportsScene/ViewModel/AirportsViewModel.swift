@@ -21,6 +21,7 @@ protocol AirportsViewModelInputs {
     func didSelectItem(at indexPath: IndexPath)
     func didSelectPointAnnotation(_ annotation: PointAnnotation)
     func didTapFiltersButton()
+    func didTapShowLocationButton()
 }
 
 protocol AirportsViewModelOutputs {
@@ -35,6 +36,7 @@ protocol AirportsViewModelOutputs {
     var onSearchEnd: RxObservable<Empty>! { get }
     var searchOutput: RxObservable<SectionModels>! { get }
     var onCitySelection: RxObservable<Empty>! { get }
+    var onLocationRequest: RxObservable<Empty>! { get }
     var onAirportSelection: RxObservable<Empty>! { get }
     var pointAnnotations: RxObservable<PointAnnotations>! { get }
     var boundingBox: RxObservable<CoordinateBounds>! { get }
@@ -61,6 +63,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var selectedAirport: RxObservable<Airport>!
     var pointAnnotations: RxObservable<PointAnnotations>!
     var boundingBox: RxObservable<CoordinateBounds>!
+    var onLocationRequest: RxObservable<Empty>!
     var airportCoordinate: RxObservable<Coordinate>!
     var pivotModel: RxObservable<PivotModel>!
     var numberOfActiveFilters: RxObservable<String>!
@@ -75,6 +78,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let selectedPointAnnotation = PublishRelay<PointAnnotation>()
     private let selectedItemPath = PublishRelay<IndexPath>()
     private let favoriteAirportId = PublishRelay<Int>()
+    private let locationButtonTapped = PublishRelay<Empty>()
     //MARK: - Services
     private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
@@ -268,6 +272,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
         self.searchFieldCanDismiss = favoriteAirportId.asEmpty()
+        self.onLocationRequest = locationButtonTapped.asObservable()
         
         subscribeOnNotifications()
     }
@@ -311,5 +316,9 @@ extension AirportsViewModel: AirportsViewModelInputs {
     
     func didTapFiltersButton() {
         delegate?.openFilters()
+    }
+    
+    func didTapShowLocationButton() {
+        locationButtonTapped.accept(Empty())
     }
 }

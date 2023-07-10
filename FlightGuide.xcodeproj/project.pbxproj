@@ -206,6 +206,8 @@
 		4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0848E29FC75D600898DB3 /* AirportPreview.swift */; };
 		4EE5EE3E29D574E7000AAE58 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EE5EE3D29D574E7000AAE58 /* SnapKit */; };
 		4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5EE4029D588B6000AAE58 /* UIImage.swift */; };
+		4EE6C5482A5CAB6E00858931 /* ShowLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */; };
+		4EE6C54A2A5CADCD00858931 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6C5492A5CADCD00858931 /* UIAlertController.swift */; };
 		4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */; };
 		4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */; };
 		4EECAF622A20C14D00F51E52 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF612A20C14D00F51E52 /* NotificationToken.swift */; };
@@ -414,6 +416,8 @@
 		4ED9B7BA2A5344AD00063982 /* TitledCalculatorInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorInputFieldView.swift; sourceTree = "<group>"; };
 		4EE0848E29FC75D600898DB3 /* AirportPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPreview.swift; sourceTree = "<group>"; };
 		4EE5EE4029D588B6000AAE58 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLocationButton.swift; sourceTree = "<group>"; };
+		4EE6C5492A5CADCD00858931 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterModuleInterface.swift; sourceTree = "<group>"; };
 		4EECAF612A20C14D00F51E52 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
@@ -956,6 +960,7 @@
 		4E56B23129DB73E400D4BF12 /* ComponentsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */,
 				4E8C3B2129DDC036003FB8B0 /* ResultCell */,
 				4EB9007329D85ABE00C64110 /* SearchFieldView.swift */,
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
@@ -1062,6 +1067,7 @@
 		4EB4CF2329D5895400830FB7 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4EE6C5492A5CADCD00858931 /* UIAlertController.swift */,
 				4EE5EE4029D588B6000AAE58 /* UIImage.swift */,
 				4EB9007529D8681900C64110 /* UIView.swift */,
 				4E05C57329D98D4C00E228CD /* UIStackView.swift */,
@@ -1348,6 +1354,7 @@
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
 				11B280FE2A31140A008D18C9 /* ChecklistSelectionTableCell.swift in Sources */,
 				4EFE2F132A58B56300A957B6 /* LoginAssembly.swift in Sources */,
+				4EE6C54A2A5CADCD00858931 /* UIAlertController.swift in Sources */,
 				11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */,
@@ -1393,6 +1400,7 @@
 				4EA60EAD2A2728CB00539D83 /* CityCellViewModel.swift in Sources */,
 				115DA75E2A3F5BDA0011F754 /* SignUpView.swift in Sources */,
 				4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */,
+				4EE6C5482A5CAB6E00858931 /* ShowLocationButton.swift in Sources */,
 				115DA74E2A3F39780011F754 /* LoginViewModel.swift in Sources */,
 				4E8590832A562F76008D1A4B /* CalculatorView.swift in Sources */,
 				4EAC54C529DF035700EDDA71 /* BlankView.swift in Sources */,
@@ -1622,6 +1630,8 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1654,6 +1664,8 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
