@@ -18,7 +18,6 @@ final class ToolsSubitemView: UIView {
                  .pdfFile(let name, _):
                 return name
             }
-
         }
 
         var buttonImage: UIImage? {
