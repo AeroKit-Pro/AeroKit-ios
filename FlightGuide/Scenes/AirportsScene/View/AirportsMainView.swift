@@ -55,8 +55,6 @@ final class AirportsMainView: UIView {
         setupSearchField()
         setupBlankView()
         setupTableView()
-        let puckConfiguration = Puck2DConfiguration.makeDefault()
-        mapView.location.options.puckType = .puck2D(puckConfiguration)
     }
     
     required init?(coder: NSCoder) {
@@ -68,10 +66,11 @@ final class AirportsMainView: UIView {
         addSubview(showLocationButton)
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
         showLocationButton.snp.makeConstraints {
-          //  $0.width.height.equalTo(50)
             $0.right.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(100)
         }
+        let puckConfiguration = Puck2DConfiguration.makeDefault()
+        mapView.location.options.puckType = .puck2D(puckConfiguration)
     }
     
     private func setupSearchField() {

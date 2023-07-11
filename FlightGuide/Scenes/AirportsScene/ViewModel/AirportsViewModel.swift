@@ -286,6 +286,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                       let id = notification.object as? Int else {
                     return
                 }
+                self.onCityPresentation = false
                 self.favoriteAirportId.accept(id)
             }
         )
