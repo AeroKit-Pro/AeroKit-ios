@@ -165,6 +165,9 @@
 		4E6697432A409B6100AA9F3F /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6697422A409B6100AA9F3F /* MessageCellViewModel.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
 		4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F5B12A1A3FCC00051A25 /* URL.swift */; };
+		4E78E37B2A5CD57A00798EF4 /* map_style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E78E37A2A5CD57A00798EF4 /* map_style.json */; };
+		4E78E37D2A5CD60E00798EF4 /* BundleURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */; };
+		4E78E37F2A5CD6A200798EF4 /* StyleURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */; };
 		4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */; };
 		4E8590832A562F76008D1A4B /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8590822A562F76008D1A4B /* CalculatorView.swift */; };
 		4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */; };
@@ -378,6 +381,9 @@
 		4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipNil.swift; sourceTree = "<group>"; };
 		4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnEmpty.swift; sourceTree = "<group>"; };
 		4E72F5B12A1A3FCC00051A25 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4E78E37A2A5CD57A00798EF4 /* map_style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_style.json; sourceTree = "<group>"; };
+		4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleURLs.swift; sourceTree = "<group>"; };
+		4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleURI.swift; sourceTree = "<group>"; };
 		4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
 		4E8590822A562F76008D1A4B /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
@@ -859,6 +865,7 @@
 				4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */,
 				4E40A1722A14F48B00101D06 /* Coordinate.swift */,
 				4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */,
+				4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -941,6 +948,7 @@
 		4E3B3AB729D43F1D00971840 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				4E78E37A2A5CD57A00798EF4 /* map_style.json */,
 				4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */,
 				4E3B3AA729D43B4800971840 /* Assets.xcassets */,
 			);
@@ -1188,6 +1196,7 @@
 			children = (
 				4EA72A3129D6377400836CDF /* Network.swift */,
 				4E3C047429F9355F00CB08EB /* Database.swift */,
+				4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1279,6 +1288,7 @@
 				4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */,
 				4E3B3AA829D43B4800971840 /* Assets.xcassets in Resources */,
 				4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */,
+				4E78E37B2A5CD57A00798EF4 /* map_style.json in Resources */,
 				4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1322,6 +1332,7 @@
 				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				11A7E3402A570E2A00D46451 /* AccountView.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
+				4E78E37F2A5CD6A200798EF4 /* StyleURI.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
 				11B2810C2A315E20008D18C9 /* ChecklistGroupStorageModel.swift in Sources */,
@@ -1349,6 +1360,7 @@
 				4EF7B1D92A571B740056BC1A /* CalculatorListViewController.swift in Sources */,
 				11D4F47F2A03E973001DDC46 /* BannerViewController.swift in Sources */,
 				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
+				4E78E37D2A5CD60E00798EF4 /* BundleURLs.swift in Sources */,
 				4E63C9322A1122D300A86D15 /* Collection.swift in Sources */,
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
