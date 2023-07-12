@@ -9,22 +9,35 @@ import UIKit
 // TODO: define a good naming - transition to forst position from Airports VC is seen as "collapse"
 final class BannerUnderlayView: UIView {
     
-    enum State {
-        case expanded
-        case collapsed
+    enum Position: Int {
         case hidden
+        case peeking
+        case halfVisible
+        case fullScreen
+
+        func switchToHigher() -> Position {
+            guard let higherPosition = Position(rawValue: self.rawValue + 1) else { return self }
+            return higherPosition
+        }
+        
+        func switchToLower() -> Position {
+            guard let lowerPosition = Position(rawValue: self.rawValue - 1) else { return self }
+            return lowerPosition
+        }
     }
     
-    var expandedOffset: CGFloat = 0
-    var collapsedOffset: CGFloat = 0
     var hiddenOffset: CGFloat = 0
+    var peekingOffset: CGFloat = 0
+    var halfVisibleOffset: CGFloat = 0
+    var fullScreenOffset: CGFloat = 0
     
-    private(set) var state: State = .collapsed {
+    private(set) var state: Position = .halfVisible {
         didSet {
             switch state {
-            case .expanded: expansionConstraint.constant = -expandedOffset
-            case .collapsed: expansionConstraint.constant = -collapsedOffset
             case .hidden: expansionConstraint.constant = hiddenOffset
+            case .peeking: expansionConstraint.constant = -peekingOffset
+            case .halfVisible: expansionConstraint.constant = -halfVisibleOffset
+            case .fullScreen: expansionConstraint.constant = -fullScreenOffset
             }
         }
     }
@@ -38,12 +51,12 @@ final class BannerUnderlayView: UIView {
         setupRecognizer()
     }
     
-    func expand() {
-        state = .expanded
+    func setToUppermostPosition() {
+        state = .fullScreen
     }
     
-    func collapse() {
-        state = .collapsed
+    func setToHalfScreenPosition() {
+        state = .halfVisible
     }
     
     func hide() {
@@ -62,9 +75,10 @@ final class BannerUnderlayView: UIView {
     }
     
     private func defineOffsets(_ superview: UIView) {
-        expandedOffset = superview.boundsSafeHeight
-        collapsedOffset = superview.boundsSafeHeight * 0.3
         hiddenOffset = superview.bounds.height
+        peekingOffset = superview.boundsSafeHeight * 0.12
+        halfVisibleOffset = superview.boundsSafeHeight * 0.3
+        fullScreenOffset = superview.boundsSafeHeight
     }
     
     private func setupRecognizer() {
@@ -86,25 +100,19 @@ final class BannerUnderlayView: UIView {
         let translation = recognizer.translation(in: view)
         
         if recognizer.state == .changed {
-            // rubber band effect
-            if expansionConstraint.constant >= -collapsedOffset {
-                let dampingFactor: CGFloat = 0.2
-                let absYPos = abs(expansionConstraint.constant - translation.y)
-                let adjustedYPos = collapsedOffset * (1 - (log10(absYPos / collapsedOffset) * dampingFactor))
-                expansionConstraint.constant = -adjustedYPos
-                return
-            }
-            let expansion = max(expansionConstraint.constant + translation.y, -expandedOffset)
-            expansionConstraint.constant = expansion
+            let expansion = max(expansionConstraint.constant + translation.y, -fullScreenOffset)
+            expansionConstraint.constant = min(expansion, -peekingOffset)
             recognizer.setTranslation(.zero, in: view)
         }
         
         if recognizer.state == .ended {
-            let velocity = recognizer.velocity(in: view)
-            if velocity.y >= 0.0 {
-                state = .collapsed
+            let verticalVelocity = recognizer.velocity(in: view).y
+            if verticalVelocity >= 0.0 {
+                let lowerState = state.switchToLower()
+                guard lowerState != .hidden else { return }
+                state = lowerState
             } else {
-                state = .expanded
+                state = state.switchToHigher()
             }
             animate()
         }

@@ -106,7 +106,7 @@ final class AirportsViewController: UIViewController {
         viewModel.outputs.onAirportSelection
             .subscribe(onNext: { [weak self] in
                 self?.airportsMainView.dismissSearchMode();
-                self?.bannerViewController.collapse() })
+                self?.bannerViewController.expand() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.onCitySelection
