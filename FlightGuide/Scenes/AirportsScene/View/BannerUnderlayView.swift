@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// TODO: define a good naming - transition to forst position from Airports VC is seen as "collapse"
+
 final class BannerUnderlayView: UIView {
     
     enum Position: Int {

@@ -88,4 +88,9 @@ final class ChecklistGroupViewController: UIViewController, UITableViewDataSourc
         cell.configure(title: item.type, subtitle: nil, isDeleteMode: false)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        delegate?.showChecklistsInspection(items: [item])
+    }
 }
