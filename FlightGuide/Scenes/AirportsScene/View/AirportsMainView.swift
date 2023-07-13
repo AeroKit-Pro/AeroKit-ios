@@ -63,7 +63,7 @@ final class AirportsMainView: UIView {
     
     private func setupMapView() {
         addSubview(mapView)
-        addSubview(showLocationButton)
+        mapView.addSubview(showLocationButton)
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
         showLocationButton.snp.makeConstraints {
             $0.right.equalToSuperview().inset(20)
