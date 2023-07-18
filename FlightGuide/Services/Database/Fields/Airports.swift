@@ -25,5 +25,4 @@ struct AirportColumns {
     let wikipediaLink = Expression<String?>("wikipedia_link")
     let surfaces = Expression<String?>("surfaces")
     let keywords = Expression<String?>("keywords")
-    let isFavorite = Expression<Bool>("is_favorite")
 }

@@ -29,7 +29,7 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable &
     var items = [AirportsFilterSelectionItem<ItemType>]()
     
     var selectedItems: [ItemType] {
-        set { newValue.forEach { setSelectedState(at: $0.index) } }
+        set { setSelectedState(for: newValue) }
         get { getSelectedItems() }
     }
 
@@ -44,10 +44,13 @@ final class AirportsFilterSelectionView<ItemType: CaseIterable & ModelTitlable &
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setSelectedState(at index: Int) {
-        guard let item = stackView.arrangedSubviews[index] as? AirportsFilterSelectableControl<ItemType> else { return }
-        item.isItemSelected = true
+    private func setSelectedState(for items: [ItemType]) {
+        let selectedIndexes = Set(items.map { $0.index })
         
+        stackView.arrangedSubviews.forEach {
+            guard let item = $0 as? AirportsFilterSelectableControl<ItemType> else { return }
+            item.isItemSelected = selectedIndexes.contains(item.item.index)
+        }
     }
     
     private func getSelectedItems() -> [ItemType] {

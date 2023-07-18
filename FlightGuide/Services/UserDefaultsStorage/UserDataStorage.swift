@@ -9,6 +9,7 @@ import Foundation
 
 enum UserDefaultsKey {
     static let savedChecklists = "com.aerokit.savedChecklists"
+    static let savedIdObjectWithDate = "com.aerokit.idObjectWithDate"
 }
 
 @propertyWrapper

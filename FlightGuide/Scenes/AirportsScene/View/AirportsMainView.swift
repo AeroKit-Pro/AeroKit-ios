@@ -185,7 +185,7 @@ extension AirportsMainView: AirportsSceneViewType {
     }
     
     func ease(to coordinate: CLLocationCoordinate2D) {
-        let options = CameraOptions(center: coordinate, zoom: 8)
+        let options = CameraOptions(center: coordinate, zoom: 12)
         mapView.camera.ease(to: options, duration: 0.4)
     }
     

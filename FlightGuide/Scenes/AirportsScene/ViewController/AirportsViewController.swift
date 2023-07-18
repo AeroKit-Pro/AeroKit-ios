@@ -39,10 +39,10 @@ final class AirportsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            addChild(bannerViewController)
-            airportsMainView.addSubview(bannerViewController.view)
-        }
+        super.viewDidAppear(animated)
+        addChild(bannerViewController)
+        airportsMainView.addSubview(bannerViewController.view)
+    }
     
     private func bindViewModelInputs() {
         airportsMainView.didBeginSearching

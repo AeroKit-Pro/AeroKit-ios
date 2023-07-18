@@ -86,6 +86,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let filterInputPassing: FilterInputPassing
     private let notificationCenter: NotificationCenterModuleInterface
     private var notificationTokens: [NotificationToken] = []
+    @UserDataStorage(key: UserDefaultsKey.savedIdObjectWithDate)
+    private var savedFavorites: [IdObjectWithDate]?
     // MARK: - States
     private var onCityPresentation = false
     
@@ -107,7 +109,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .filter { $0.count > 1 }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .share()
-        // TODO: replayed multiple times
+       
         let filterSettings = filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
             .share()
@@ -154,7 +156,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .share()
                 
         let airportCellViewModels = unwrappedFilteredAirports
-            .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
+            .backgroundMap(qos: .userInitiated) { [unowned self] airports in
+                let favoritesId = savedFavorites?.map { $0.id } ?? []
+                return airports
+                    .map { AirportCellViewModel(with: $0, isFavorite: Set(favoritesId).contains($0.id)) }
+            }
             .share()
                 
         let citiesSection = cityCellViewModels

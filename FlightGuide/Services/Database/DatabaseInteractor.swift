@@ -47,10 +47,9 @@ final class DatabaseInteractor {
                     databaseManager.airportFields.type,
                     databaseManager.airportFields.municipality,
                     databaseManager.airportFields.surfaces,
-                    databaseManager.airportFields.id,
-                    databaseManager.airportFields.isFavorite)
+                    databaseManager.airportFields.id)
             .group(databaseManager.airportFields.id)
-        
+                
         return try? database?.prepare(query).map { return try $0.decode() }
     }
     
@@ -101,26 +100,7 @@ final class DatabaseInteractor {
         
         return try? database?.prepare(query).map { return try $0.decode() }
     }
-    
-    func fetchFavorites() -> [AirportPreview]? {
-        let query = databaseManager.airports
-            .filter(databaseManager.airportFields.isFavorite)
         
-        return try? database?.prepare(query).map { return try $0.decode() }
-    }
-    // MARK: in case if there are more updatable rows, a more generic function will be implemented
-    /// Updates "isFavorite" column in "Airports table".
-    /// - Parameters: value: Bool - new value, id: Int - row id
-    /// - Returns: true if succes, false if updating failed
-    func markAirportAsFavorite(_ value: Bool, id rowId: Int) -> Bool {
-        let query = databaseManager.airports
-            .filter(databaseManager.airportFields.id == rowId)
-            .update(databaseManager.airportFields.isFavorite <- value)
-        do { try database?.run(query) }
-        catch { print("row by id \(rowId) value update failed"); return false }
-        return true
-    }
-    
     private func applyFilterSettingsToQuery(query: inout Table, filters: AirportFilterSettings) {
         if let length = filters.minRunwayLength {
             query = query

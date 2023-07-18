@@ -23,10 +23,6 @@ final class APIClient {
         request(APIRequest.getFrequencies)
     }
     
-    func getCities() -> Observable<Citites> {
-        request(APIRequest.getCities)
-    }
-    
     func getWeather(type: WeatherReportType, icao: String) -> Observable<Weather> {
         request(APIRequest.getWeather(type: type, icao: icao))
     }

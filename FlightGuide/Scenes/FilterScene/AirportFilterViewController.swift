@@ -67,7 +67,7 @@ final class AirportFilterViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil,
                                                            action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
-        setIsEnabledResetButton(false)
+        setIsEnabledResetButton(true)
     }
 
     func setIsEnabledResetButton(_ isEnabled: Bool) {
@@ -100,6 +100,11 @@ final class AirportFilterViewController: UIViewController {
         
         airportFilterView.filterInput.subscribe(onNext: { [unowned self] in
             viewModel.inputs.didCollectValues(filterInput: $0)
+        })
+        .disposed(by: disposeBag)
+        
+        rightBarButton.rx.tap.subscribe(onNext: { [unowned self] in
+            viewModel.inputs.didTapResetButton()
         })
         .disposed(by: disposeBag)
     }

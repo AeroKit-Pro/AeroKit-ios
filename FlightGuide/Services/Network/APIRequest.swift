@@ -15,7 +15,6 @@ enum APIRequest: URLRequestConvertible {
     case getAirports
     case getRunways
     case getFrequencies
-    case getCities
     case getChecklists
     case getWeather(type: WeatherReportType, icao: String)
     case createChatCompletions(parameters: Data?)
@@ -39,7 +38,6 @@ extension APIRequest {
         case .getAirports: return URLS.airportsEndpoint
         case .getRunways: return URLS.airportRunwaysEndpoint
         case .getFrequencies: return URLS.airportFrequencyEndpoint
-        case .getCities: return URLS.citiesInfoEndpoint
         case .getWeather: return URLS.weatherBaseUrl
         case .getChecklists: return URLS.checklistsUrl
         case .createChatCompletions: return URLS.openaiBaseUrl
@@ -70,7 +68,7 @@ extension APIRequest {
     
     private var method: HTTPMethod {
         switch self {
-        case .getAirports, .getRunways, .getFrequencies, .getCities, .getWeather, .getChecklists:
+        case .getAirports, .getRunways, .getFrequencies, .getWeather, .getChecklists:
             return .get
         case .createChatCompletions:
             return .post

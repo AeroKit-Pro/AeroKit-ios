@@ -13,45 +13,11 @@ final class DatabaseManager {
     
     static let shared = DatabaseManager()
     
-    static func prepare() {
-        initDirectory()
-        copyExistingDatabase()
-    }
-    // Creates directory. Should be called outside the class
-    private static func initDirectory() {
-        if let dirPath = DatabaseConstants.documentsDirectoryPath {
-            do {
-                try FileManager.default.createDirectory(atPath: dirPath.path,
-                                                        withIntermediateDirectories: true)
-            } catch { print("failed to init directory: \(error)") }
-        }
-    }
-    // Copies existing base from bundle. Should be called outside the class. Will fail assertion if previuous method was not called or base was not found in bundle
-    private static func copyExistingDatabase() {
-        let fileManager = FileManager.default
-        if let dirPath = DatabaseConstants.documentsDirectoryPath {
-            assert(fileManager.fileExists(atPath: dirPath.path), "directory should be created beforehand")
-        }
-        
-        if let dbPath = DatabaseConstants.databasePath {
-            if !fileManager.fileExists(atPath: dbPath) {
-                if let dbResourcePath = DatabaseConstants.dbResourcePath {
-                    do {
-                        try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
-                    } catch {
-                        print("error while copying sqlite file: \(error)")
-                    }
-                }
-            }
-        }
-    }
-    
     private(set) var database: Connection? = nil
     
     let airports = Table("airports")
     let runways = Table("runways")
     let frequencies = Table("frequencies")
-    let cities = Table("cities")
     
     lazy var joinedTables: Table = {
         airports.join(.leftOuter, runways, on: runwayFields.airportID == airportFields.id)
@@ -61,7 +27,6 @@ final class DatabaseManager {
     let airportFields = AirportColumns()
     let runwayFields = RunwayColumns()
     let frequencyFields = FrequencyColumns()
-    let cityFields = CityColumns()
     
     private init() {
         connect()
@@ -83,14 +48,10 @@ final class DatabaseManager {
     
     private func setupIndexes() {
         let queryNameIndex = airports.createIndex(airportFields.name, ifNotExists: true)
-        let queryIsFavoriteIndex = airports.createIndex(airportFields.isFavorite, ifNotExists: true)
-        let queryLengthFtIndex = runways.createIndex(runwayFields.lengthFt, ifNotExists: true)
         
         guard let database else { return }
         do {
             try database.run(queryNameIndex)
-            try database.run(queryLengthFtIndex)
-            try database.run(queryIsFavoriteIndex)
         }
         catch { print("error while creating index: \(error)") }
     }
