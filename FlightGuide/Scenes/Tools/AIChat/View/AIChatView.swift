@@ -21,7 +21,9 @@ final class AIChatView: UIView {
         static let messageSendingViewIdleHeight: CGFloat = 58
     }
     
-    private let promptView = PromptView(image: .ai_assistant, message: "Here you can chat with our AI, that will help you solve any question about airplanes and laws", style: .small)
+    private let promptView = PromptView(image: .ai_assistant,
+                                        message: "Here you can chat with our AI, that will help you solve any question about airplanes and laws",
+                                        style: .small)
     private let chatTableView = UITableView()
     private let inputBar = InputBar()
     private let gestureRecognizer = UITapGestureRecognizer()

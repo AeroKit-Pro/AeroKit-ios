@@ -10,15 +10,20 @@ import RxSwift
 
 protocol FavoritesViewType: UIView {
     var rxTableView: Reactive<UITableView> { get }
+    var rxPromptView: Reactive<PromptView> { get }
 }
 
 final class FavoritesView: UIView {
     
     private let tableView = UITableView()
+    private let promptView = PromptView(image: .bookmark,
+                                        message: "Here will be your \n favorite airports",
+                                        style: .medium)
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupTableView()
+        setupPromptView()
     }
     
     required init?(coder: NSCoder) {
@@ -38,10 +43,23 @@ final class FavoritesView: UIView {
         tableView.dataSource = nil
     }
     
+    private func setupPromptView() {
+        addSubviews(promptView)
+        promptView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).inset(150)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(70)
+        }
+    }
+    
 }
 
 extension FavoritesView: FavoritesViewType {
-    var rxTableView: RxSwift.Reactive<UITableView> {
+    var rxTableView: Reactive<UITableView> {
         tableView.rx
+    }
+    
+    var rxPromptView: Reactive<PromptView> {
+        promptView.rx
     }
 }

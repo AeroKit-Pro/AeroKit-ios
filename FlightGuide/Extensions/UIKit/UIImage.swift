@@ -74,4 +74,8 @@ extension UIImage {
     static var location_not_permitted: UIImage? {
         UIImage(named: "location_not_permitted")
     }
+    
+    static var bookmark: UIImage? {
+        UIImage(named: "bookmark")
+    }
 }

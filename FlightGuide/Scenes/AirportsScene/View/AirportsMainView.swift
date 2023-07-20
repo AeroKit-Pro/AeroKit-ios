@@ -42,6 +42,9 @@ final class AirportsMainView: UIView {
     private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
+    private let promptView = PromptView(image: .bookmark,
+                                        message: "Here will be your \n favorite airports",
+                                        style: .medium)
     
     private lazy var annotationsManager: PointAnnotationManager = {
         mapView.annotations.makePointAnnotationManager()
@@ -107,6 +110,15 @@ final class AirportsMainView: UIView {
                                    forCellReuseIdentifier: CityCell.identifier)
         airportsTableView.dataSource = nil
         airportsTableView.separatorStyle = .none
+    }
+    
+    private func setupPromptView() {
+        addSubviews(promptView)
+        promptView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).inset(150)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(70)
+        }
     }
     
 }

@@ -23,6 +23,7 @@ protocol FavoritesViewModelOutputs {
     typealias AirportCellViewModels = [AirportCellViewModel]
 
     var favoriteAirportsModels: Observable<AirportCellViewModels>! { get }
+    var promptViewIsHidden: Observable<Bool>! { get }
 }
 
 protocol FavoritesViewModelType {
@@ -38,6 +39,7 @@ final class FavoritesViewModel: FavoritesViewModelType, FavoritesViewModelOutput
     private let disposeBag = DisposeBag()
 
     var favoriteAirportsModels: Observable<AirportCellViewModels>!
+    var promptViewIsHidden: Observable<Bool>!
     
     private let onViewWillAppear = PublishRelay<Empty>()
     private let selectedItem = PublishRelay<IndexPath>()
@@ -57,6 +59,9 @@ final class FavoritesViewModel: FavoritesViewModelType, FavoritesViewModelOutput
                     .compactMap { databaseInteractor.fetchAirport(by: $0.id)?.first }
             }
             .skipNil()
+        
+        self.promptViewIsHidden = models
+            .map { $0.notEmpty }
                 
         self.favoriteAirportsModels = models
             .map { $0.map { AirportPreview(id: $0.id, name: $0.name, type: $0.type, municipality: $0.municipality, surfaces: $0.surfaces) } }
