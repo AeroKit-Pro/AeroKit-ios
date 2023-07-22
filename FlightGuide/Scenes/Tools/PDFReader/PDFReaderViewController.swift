@@ -21,9 +21,6 @@ final class PDFReaderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        previewController.dataSource = self
-
-        // Add PDFView to view controller.
         let pdfView = PDFView()
         view.addSubview(pdfView)
         pdfView.snp.makeConstraints { make in
@@ -35,23 +32,3 @@ final class PDFReaderViewController: UIViewController {
     }
 
 }
-//extension PDFReaderViewController: QLPreviewControllerDataSource {
-////    var selectedFileURL: URL?
-////
-////    init(selectedFileURL: URL? = nil) {
-////        self.selectedFileURL = selectedFileURL
-////        super.init(nibName: nil, bundle: nil)
-////    }
-////
-////    override func viewDidLoad() {
-////        super.viewDidLoad()
-////    }
-//
-//    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-//        fileURL != nil ? 1 : 0
-//    }
-//
-//    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-//        fileURL! as QLPreviewItem
-//    }
-//}

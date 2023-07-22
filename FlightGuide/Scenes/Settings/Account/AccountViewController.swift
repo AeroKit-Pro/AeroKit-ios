@@ -27,6 +27,8 @@ final class AccountViewController: UIViewController {
 
         accountView.deleteAccountButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapDeleteAccount()}),
                                                   for: .touchUpInside)
+        accountView.changePasswordButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapChangePassword()}),
+                                                  for: .touchUpInside)
     }
 }
 

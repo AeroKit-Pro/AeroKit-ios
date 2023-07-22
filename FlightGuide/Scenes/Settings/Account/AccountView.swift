@@ -25,6 +25,15 @@ final class AccountView: UIView {
         return label
     }()
 
+    let changePasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Change password", for: .normal)
+        button.setTitleColor(UIColor.hex(0x333333), for: .normal)
+        button.backgroundColor = UIColor.hex(0xF1F1F1)
+        button.layer.cornerRadius = 10
+        return button
+    }()
+
     let deleteAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Delete account", for: .normal)
@@ -58,9 +67,15 @@ final class AccountView: UIView {
             make.centerY.equalTo(emailDescriptionLabel)
         }
 
+        addSubview(changePasswordButton)
+        changePasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(emailDescriptionLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+
         addSubview(deleteAccountButton)
         deleteAccountButton.snp.makeConstraints { make in
-            make.top.equalTo(emailDescriptionLabel.snp.bottom).offset(20)
+            make.top.equalTo(changePasswordButton.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(20)
         }
     }
