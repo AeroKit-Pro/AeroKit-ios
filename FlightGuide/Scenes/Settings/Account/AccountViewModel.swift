@@ -38,4 +38,7 @@ extension AccountViewModel: AccountViewModelInterface {
           }
         }
     }
+
+    func onTapChangePassword() {
+    }
 }

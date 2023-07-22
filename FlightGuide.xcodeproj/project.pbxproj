@@ -65,6 +65,7 @@
 		11B2810E2A316979008D18C9 /* ChecklistsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */; };
 		11B281102A317353008D18C9 /* ChecklistGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */; };
 		11B281122A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */; };
+		11C86BB82A6876790049D9CE /* InfoURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C86BB72A6876790049D9CE /* InfoURLs.swift */; };
 		11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */; };
 		11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */; };
 		11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */; };
@@ -284,6 +285,7 @@
 		11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsAssembly.swift; sourceTree = "<group>"; };
 		11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistGroupViewController.swift; sourceTree = "<group>"; };
 		11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsDeleteTableCell.swift; sourceTree = "<group>"; };
+		11C86BB72A6876790049D9CE /* InfoURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoURLs.swift; sourceTree = "<group>"; };
 		11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportCellViewModel.swift; sourceTree = "<group>"; };
 		11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -1192,6 +1194,7 @@
 				4EA72A3129D6377400836CDF /* Network.swift */,
 				4E3C047429F9355F00CB08EB /* Database.swift */,
 				4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */,
+				11C86BB72A6876790049D9CE /* InfoURLs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1377,6 +1380,7 @@
 				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
 				4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */,
 				4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */,
+				11C86BB82A6876790049D9CE /* InfoURLs.swift in Sources */,
 				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
 				4E0FF60F2A54C43000B93271 /* HeadingWindCorrectionAngleCalculator.swift in Sources */,
 				11B280F82A310947008D18C9 /* ChecklistsTableCell.swift in Sources */,
@@ -1654,7 +1658,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
