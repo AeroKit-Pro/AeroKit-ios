@@ -38,6 +38,7 @@ protocol AirportsViewModelOutputs {
     var onCitySelection: RxObservable<Empty>! { get }
     var onLocationRequest: RxObservable<Empty>! { get }
     var onAirportSelection: RxObservable<Empty>! { get }
+    var promptViewIsHidden: RxObservable<Bool>! { get }
     var pointAnnotations: RxObservable<PointAnnotations>! { get }
     var boundingBox: RxObservable<CoordinateBounds>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
@@ -60,6 +61,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var searchOutput: RxObservable<SectionModels>!
     var onCitySelection: RxObservable<Empty>!
     var onAirportSelection: RxObservable<Empty>!
+    var promptViewIsHidden: RxObservable<Bool>!
     var selectedAirport: RxObservable<Airport>!
     var pointAnnotations: RxObservable<PointAnnotations>!
     var boundingBox: RxObservable<CoordinateBounds>!
@@ -184,6 +186,10 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                     return [citiesSection, airportsSection]
                 }
             }
+        
+        self.promptViewIsHidden = RxObservable.combineLatest(citiesSection, airportsSection)
+            .map { return $0.0.items.notEmpty || $0.1.items.notEmpty }
+            .startWith(true)
         
         let models = RxObservable
             .combineLatest(airportsByCity, unwrappedFilteredAirports)

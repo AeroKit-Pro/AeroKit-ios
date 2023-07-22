@@ -113,6 +113,10 @@ final class AirportsViewController: UIViewController {
             .subscribe(onNext: airportsMainView.dismissSearchMode)
             .disposed(by: disposeBag)
         
+        viewModel.outputs.promptViewIsHidden.asDriver(onErrorDriveWith: .empty())
+            .drive(airportsMainView.rxPromptView.isHidden)
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.airportCoordinate
             .subscribe(onNext: airportsMainView.ease(to:))
             .disposed(by: disposeBag)

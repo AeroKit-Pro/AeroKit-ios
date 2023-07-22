@@ -78,4 +78,8 @@ extension UIImage {
     static var bookmark: UIImage? {
         UIImage(named: "bookmark")
     }
+    
+    static var airports_not_found: UIImage? {
+        UIImage(named: "airports_not_found")
+    }
 }

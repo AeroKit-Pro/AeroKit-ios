@@ -107,6 +107,7 @@
 		4E0044CD2A35EE150098706A /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CC2A35EE150098706A /* InputBar.swift */; };
 		4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */; };
 		4E01532E2A519773009362DE /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01532D2A519773009362DE /* CalculatorViewController.swift */; };
+		4E018B012A69C6B100C674C8 /* HyperLinkText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E018B002A69C6B100C674C8 /* HyperLinkText.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
 		4E0955FD2A52A04600227542 /* TitledCalculatorInputFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0955FC2A52A04600227542 /* TitledCalculatorInputFieldModel.swift */; };
@@ -325,6 +326,7 @@
 		4E0044CC2A35EE150098706A /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
 		4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleTextView.swift; sourceTree = "<group>"; };
 		4E01532D2A519773009362DE /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		4E018B002A69C6B100C674C8 /* HyperLinkText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperLinkText.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4E0955FC2A52A04600227542 /* TitledCalculatorInputFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorInputFieldModel.swift; sourceTree = "<group>"; };
@@ -623,14 +625,6 @@
 				11B281032A3123C5008D18C9 /* ChecklistInspectionTableCell.swift */,
 				11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */,
 				11B280EB2A302313008D18C9 /* SelectPlane */,
-				11B280EA2A3022F6008D18C9 /* Checklists */,
-			);
-			path = Checklists;
-			sourceTree = "<group>";
-		};
-		11B280EA2A3022F6008D18C9 /* Checklists */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -979,6 +973,7 @@
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
 				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
 				4EC44EC82A471E710038D347 /* PromptView.swift */,
+				4E018B002A69C6B100C674C8 /* HyperLinkText.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -1436,6 +1431,7 @@
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
 				11B280F22A30E901008D18C9 /* UserDataStorage.swift in Sources */,
 				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
+				4E018B012A69C6B100C674C8 /* HyperLinkText.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4E01532E2A519773009362DE /* CalculatorViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,

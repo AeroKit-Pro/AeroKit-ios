@@ -41,6 +41,10 @@ final class PromptView: UIView, Fadeable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addElement(_ element: UIView) {
+        stackView.addArrangedSubview(element)
+    }
+    
     private func setupLayout() {
         addSubview(stackView)
         stackView.addArrangedSubviews(imageView, label)

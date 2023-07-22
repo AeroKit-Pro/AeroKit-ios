@@ -25,6 +25,7 @@ protocol AirportsSceneViewType: UIView {
     var dismissSearchButton: Reactive<UIButton> { get }
     var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
+    var rxPromptView: Reactive<PromptView> { get }
     var locationAuthorizationStatus: CLAuthorizationStatus { get }
     func enterSearchingMode()
     func dismissSearchMode()
@@ -42,9 +43,14 @@ final class AirportsMainView: UIView {
     private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
-    private let promptView = PromptView(image: .bookmark,
-                                        message: "Here will be your \n favorite airports",
-                                        style: .medium)
+    private let promptView = PromptView(image: .airports_not_found,
+                                        message: "Unfortunately, we were unable to find relevant airports",
+                                        style: .small)
+    private let hyperLink = HyperLinkText(text: "If you know such airport, please \n leave a request",
+                                          tapPart: "leave a request",
+                                          link: "mailto:services@aerokit.pro",
+                                          font: .systemFont(ofSize: 13),
+                                          textColor: .flg_secondary_gray)
     
     private lazy var annotationsManager: PointAnnotationManager = {
         mapView.annotations.makePointAnnotationManager()
@@ -58,6 +64,7 @@ final class AirportsMainView: UIView {
         setupSearchField()
         setupBlankView()
         setupTableView()
+        setupPromptView()
     }
     
     required init?(coder: NSCoder) {
@@ -113,9 +120,12 @@ final class AirportsMainView: UIView {
     }
     
     private func setupPromptView() {
+        hyperLink.textAlignment = .center
+        hyperLink.layer.masksToBounds = false
+        promptView.addElement(hyperLink)
         addSubviews(promptView)
         promptView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(150)
+            $0.top.equalTo(searchField.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
             $0.left.right.equalToSuperview().inset(70)
         }
@@ -146,6 +156,10 @@ extension AirportsMainView: AirportsSceneViewType {
     
     var rxTable: Reactive<UITableView> {
         airportsTableView.rx
+    }
+    
+    var rxPromptView: Reactive<PromptView> {
+        promptView.rx
     }
 
     var didTapFilterButton: ControlEvent<()> {
