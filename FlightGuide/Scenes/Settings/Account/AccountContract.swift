@@ -18,6 +18,7 @@ protocol AccountViewModelInterface: AnyObject {
     func viewDidLoad()
     func onTapDeleteAccount()
     func onConfirmDeleteAccount()
+    func onTapChangePassword()
 }
 
 protocol AccountSceneOutput: AnyObject {

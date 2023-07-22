@@ -24,7 +24,7 @@ final class AccountViewController: UIViewController {
         view.backgroundColor = .white
         title = "Account"
         viewModel?.viewDidLoad()
-
+        
         accountView.deleteAccountButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapDeleteAccount()}),
                                                   for: .touchUpInside)
         accountView.changePasswordButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapChangePassword()}),
