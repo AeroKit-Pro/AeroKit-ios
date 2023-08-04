@@ -18,6 +18,9 @@ enum APIRequest: URLRequestConvertible {
     case getChecklists
     case getWeather(type: WeatherReportType, icao: String)
     case createChatCompletions(parameters: Data?)
+
+
+    case deleteAllUserDate(id: String)
 }
 
 extension APIRequest {
@@ -41,12 +44,15 @@ extension APIRequest {
         case .getWeather: return URLS.weatherBaseUrl
         case .getChecklists: return URLS.checklistsUrl
         case .createChatCompletions: return URLS.openaiBaseUrl
+        case .deleteAllUserDate: return "http://45.12.19.184"
         }
     }
     
     private var path: Path? {
         switch self {
         case .getWeather(let type, let icao): return [type.path, icao]
+        case .deleteAllUserDate(let id):
+            return [id]
         default: return nil
         }
     }
@@ -72,6 +78,8 @@ extension APIRequest {
             return .get
         case .createChatCompletions:
             return .post
+        case .deleteAllUserDate:
+            return .delete
         }
     }
 

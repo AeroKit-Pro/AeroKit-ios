@@ -30,6 +30,24 @@ final class APIClient {
     func getChecklists() -> Observable<[CompanyWithPlanesModel]> {
         request(APIRequest.getChecklists)
     }
+
+    func deleteAllUserData(id: String) -> Observable<Bool> {
+        Observable<Bool>.create { observer in
+            let request = AF.request(APIRequest.deleteAllUserDate(id: id))
+                .responseString(completionHandler: { response in
+                    switch response.result {
+                    case .success:
+                        observer.onNext(true)
+                        observer.onCompleted()
+                    case .failure(let error):
+                        observer.onError(error)
+                    }
+                })
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
     
     func createStreamChatCompletion(parameters: Data?) -> DataStreamRequest {
         AF.streamRequest(APIRequest.createChatCompletions(parameters: parameters))

@@ -13,6 +13,7 @@ final class SettingsViewModel {
     // MARK: Properties
     weak var view: SettingsViewInterface!
     weak var output: SettingsSceneOutput?
+    private let userDataService = UserDataService()
 
     // MARK: Methods
     init(view: SettingsViewInterface) {
@@ -28,6 +29,7 @@ extension SettingsViewModel: SettingsViewModelInterface {
     func onTapLogout() {
         do {
             try Auth.auth().signOut()
+            userDataService.clearUserData()
             output?.didTapLogout()
         } catch {
         }
