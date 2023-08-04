@@ -8,11 +8,15 @@
 
 import Foundation
 import FirebaseAuth
+import RxSwift
 
 final class AccountViewModel {
     // MARK: Properties
     weak var view: AccountViewInterface!
     weak var output: AccountSceneOutput?
+    private let userDataService = UserDataService()
+    private let apiClient = APIClient()
+    private let disposeBag = DisposeBag()
 
     // MARK: Methods
     init(view: AccountViewInterface) {
@@ -30,15 +34,34 @@ extension AccountViewModel: AccountViewModelInterface {
     }
 
     func onConfirmDeleteAccount() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
         Auth.auth().currentUser?.delete { [weak self] error in
-          if let error = error {
-              self?.view.displayAccountDeletionErrorAlert(error: error)
-          } else {
-              self?.output?.didTapLogout()
-          }
+            guard let self = self else { return }
+            if let error = error {
+                self.view.displayAccountDeletionErrorAlert(error: error)
+            } else {
+                self.apiClient.deleteAllUserData(userId: userId)
+                    .subscribe { [weak self] event in
+                        switch event {
+                        case .next:
+                            self?.userDataService.clearUserData()
+                            self?.output?.didTapLogout()
+                        default:
+                            break
+                        }
+                    }.disposed(by: self.disposeBag)
+            }
         }
     }
 
     func onTapChangePassword() {
+        guard let email = FirebaseAuth.Auth.auth().currentUser?.email else { return }
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+            if let error = error {
+                self?.view?.displayChangePasswordErrorAlert(error: error)
+                return
+            }
+            self?.view?.displayChangePasswordSentSuccessfullyAlert()
+        }
     }
 }

@@ -11,6 +11,8 @@ import Foundation
 protocol AccountViewInterface: AnyObject,
                                DisplayLoaderInterface {
     func displayDeleteConfirmationAlert()
+    func displayChangePasswordErrorAlert(error: Error)
+    func displayChangePasswordSentSuccessfullyAlert()
     func displayAccountDeletionErrorAlert(error: Error)
 }
 

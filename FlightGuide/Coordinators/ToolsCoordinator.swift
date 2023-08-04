@@ -96,6 +96,7 @@ extension ToolsCoordinator: SelectPlaneSceneDelegate {
     func showChecklistSelection(model: PlaneWithChecklistsModel, companyNameWithModel: String) {
         let scene = ChecklistsSelectionViewController(nibName: nil, bundle: nil)
         scene.companyNameWithModel = companyNameWithModel
+        scene.planeWithChecklistsModelId = model.id
         scene.items = model.checklists
         scene.delegate = self
         router.push(scene, animated: true)
