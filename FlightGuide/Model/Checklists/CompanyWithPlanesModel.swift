@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct CompanyWithPlanesModel: Codable {
+struct CompanyWithPlanesModel: Codable, Equatable {
     let id: Int
     let name: String
     let planes: [PlaneWithChecklistsModel]
 }
 
-struct PlaneWithChecklistsModel: Codable {
+struct PlaneWithChecklistsModel: Codable, Equatable {
     let id: Int
     let model: String
     let checklists: [ChecklistWithItemsModel]

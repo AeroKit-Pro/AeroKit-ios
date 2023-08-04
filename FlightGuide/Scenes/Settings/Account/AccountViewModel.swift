@@ -34,13 +34,13 @@ extension AccountViewModel: AccountViewModelInterface {
     }
 
     func onConfirmDeleteAccount() {
-        guard let id = Auth.auth().currentUser?.uid else { return }
+        guard let userId = Auth.auth().currentUser?.uid else { return }
         Auth.auth().currentUser?.delete { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.view.displayAccountDeletionErrorAlert(error: error)
             } else {
-                self.apiClient.deleteAllUserData(id: id)
+                self.apiClient.deleteAllUserData(userId: userId)
                     .subscribe { [weak self] event in
                         switch event {
                         case .next:

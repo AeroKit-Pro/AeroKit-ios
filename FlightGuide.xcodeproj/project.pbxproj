@@ -101,6 +101,7 @@
 		11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B502A140200001EB56D /* SignUpCoordinator.swift */; };
 		11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B522A140665001EB56D /* AirportsCoordinator.swift */; };
 		11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B542A142BC9001EB56D /* AirportAssembly.swift */; };
+		11F5DA622A7D0CE4008255DA /* UserChecklistsGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */; };
 		4E0044C42A35E6030098706A /* AIChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C32A35E6030098706A /* AIChatViewModel.swift */; };
 		4E0044C62A35E6120098706A /* AIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C52A35E6120098706A /* AIChatViewController.swift */; };
 		4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C72A35E62C0098706A /* AIChatAssembly.swift */; };
@@ -321,6 +322,7 @@
 		11EC9B502A140200001EB56D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B522A140665001EB56D /* AirportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B542A142BC9001EB56D /* AirportAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAssembly.swift; sourceTree = "<group>"; };
+		11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChecklistsGroups.swift; sourceTree = "<group>"; };
 		4E0044C32A35E6030098706A /* AIChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewModel.swift; sourceTree = "<group>"; };
 		4E0044C52A35E6120098706A /* AIChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewController.swift; sourceTree = "<group>"; };
 		4E0044C72A35E62C0098706A /* AIChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatAssembly.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			children = (
 				11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */,
 				11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */,
+				11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -1427,6 +1430,7 @@
 				115DA75F2A3F5BDA0011F754 /* SignUpViewController.swift in Sources */,
 				11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */,
 				4EF7B1DB2A571EB70056BC1A /* CalculatorsDataSource.swift in Sources */,
+				11F5DA622A7D0CE4008255DA /* UserChecklistsGroups.swift in Sources */,
 				4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */,
 				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
 				4E2648242A3DF0A100B78379 /* RunwaySurface.swift in Sources */,

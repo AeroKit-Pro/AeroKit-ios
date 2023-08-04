@@ -19,8 +19,11 @@ enum APIRequest: URLRequestConvertible {
     case getWeather(type: WeatherReportType, icao: String)
     case createChatCompletions(parameters: Data?)
 
+    case getUserChecklistsGroups(userId: String)
+    case addUserChecklistsGroups(userId: String, checklists: UserChecklistsGroupBase)
+    case deleteUserChecklistsGroups(userId: String, groupId: String)
 
-    case deleteAllUserDate(id: String)
+    case deleteAllUserDate(userId: String)
 }
 
 extension APIRequest {
@@ -42,17 +45,19 @@ extension APIRequest {
         case .getRunways: return URLS.airportRunwaysEndpoint
         case .getFrequencies: return URLS.airportFrequencyEndpoint
         case .getWeather: return URLS.weatherBaseUrl
-        case .getChecklists: return URLS.checklistsUrl
+        case .getChecklists: return URLS.baseMainAPIUrl + "/checklists"
         case .createChatCompletions: return URLS.openaiBaseUrl
-        case .deleteAllUserDate: return "http://45.12.19.184"
+        case .deleteAllUserDate(let id): return URLS.baseMainAPIUrl + "/user/\(id)"
+
+        case .getUserChecklistsGroups(let userId): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups"
+        case .addUserChecklistsGroups(let userId, _): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups"
+        case .deleteUserChecklistsGroups(let userId, let groupId): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups/\(groupId)"
         }
     }
     
     private var path: Path? {
         switch self {
         case .getWeather(let type, let icao): return [type.path, icao]
-        case .deleteAllUserDate(let id):
-            return [id]
         default: return nil
         }
     }
@@ -68,17 +73,18 @@ extension APIRequest {
     private var body: Data? {
         switch self {
         case .createChatCompletions(let parameters): return parameters
+        case .addUserChecklistsGroups(_, let checklists): return try? JSONEncoder().encode(checklists)
         default: return nil
         }
     }
     
     private var method: HTTPMethod {
         switch self {
-        case .getAirports, .getRunways, .getFrequencies, .getWeather, .getChecklists:
+        case .getAirports, .getRunways, .getFrequencies, .getWeather, .getChecklists, .getUserChecklistsGroups:
             return .get
-        case .createChatCompletions:
+        case .createChatCompletions, .addUserChecklistsGroups:
             return .post
-        case .deleteAllUserDate:
+        case .deleteAllUserDate, .deleteUserChecklistsGroups:
             return .delete
         }
     }

@@ -13,7 +13,8 @@ protocol SelectCompanySceneDelegate: AnyObject {
 }
 
 final class SelectCompanyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let disposeBag = DisposeBag()
+    @UserDataStorage(key: UserDefaultsKey.allCompaniesWithPlanes) private var allCompaniesWithPlanes: [CompanyWithPlanesModel]?
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -43,27 +44,18 @@ final class SelectCompanyViewController: UIViewController, UITableViewDataSource
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
-        APIClient().getChecklists().subscribe { event in
-            switch event {
-            case .next(let items):
-                self.items = items
-            default:
-                break
-            }
-        }.disposed(by: disposeBag)
     }
 
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        allCompaniesWithPlanes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChecklistsTableCell.self), for: indexPath) as! ChecklistsTableCell
         cell.selectionStyle = .none
 
-        let item = items[indexPath.row]
+        let item = allCompaniesWithPlanes![indexPath.row]
         cell.configure(title: item.name, subtitle: nil, isDeleteMode: false)
 
         return cell
@@ -71,7 +63,7 @@ final class SelectCompanyViewController: UIViewController, UITableViewDataSource
 
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.showPlaneSelection(model: items[indexPath.row])
+        delegate?.showPlaneSelection(model: allCompaniesWithPlanes![indexPath.row])
 
     }
 }
