@@ -22,6 +22,7 @@ protocol AirportsViewModelInputs {
     func didSelectPointAnnotation(_ annotation: PointAnnotation)
     func didTapFiltersButton()
     func didTapShowLocationButton()
+    func didTapOnRequestMail()
 }
 
 protocol AirportsViewModelOutputs {
@@ -47,6 +48,7 @@ protocol AirportsViewModelOutputs {
     var counterBadgeIsHidden: RxObservable<Bool>! { get }
     var dismissDetailView: RxObservable<Empty>! { get }
     var searchFieldCanDismiss: RxObservable<Empty>! { get }
+    var url: RxObservable<URL>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -72,6 +74,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var counterBadgeIsHidden: RxObservable<Bool>!
     var dismissDetailView: RxObservable<Empty>!
     var searchFieldCanDismiss: RxObservable<Empty>!
+    var url: RxObservable<URL>!
     //MARK: - Values
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
@@ -81,6 +84,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let selectedItemPath = PublishRelay<IndexPath>()
     private let favoriteAirportId = PublishRelay<Int>()
     private let locationButtonTapped = PublishRelay<Empty>()
+    private let requestMailTapped = PublishRelay<Empty>()
     //MARK: - Services
     private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
@@ -210,43 +214,35 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                 .compactMap { $0 as? AirportPreview }
                 .map { $0.id },
             selectedPointAnnotation
-                .compactMap { $0.airportId })
-            .share()
+                    .compactMap { $0.airportId })
+                .share()
+                
+                let selectedCityAirports = selectedModel
+                .compactMap { return $0 as? (key: Optional<String>, value: Array<AirportByCity>) }
+                .map { $0.value }
+                .share()
         
-        let selectedCityAirports = selectedModel
-            .compactMap { return $0 as? (key: Optional<String>, value: Array<AirportByCity>) }
-            .map { $0.value }
-            .share()
-
         self.onCitySelection = selectedCityAirports
             .asEmpty()
         
         let coordinatesKeyedOnId = selectedCityAirports
             .map { [unowned self] in
                 $0.map { (id: $0.id, coordinate: databaseInteractor.fetchAirportCoordinate(CLLocationCoordinate2D.self,
-                                                                   by: $0.id)) }
+                                                                                           by: $0.id)) }
             }
             .share()
         
         self.boundingBox = coordinatesKeyedOnId
             .map { $0.compactMap { $0.coordinate } }
-            .map { coordinates in
-                let minLatitude = coordinates.map { $0.latitude }.min()
-                let maxLatitude = coordinates.map { $0.latitude }.max()
-                let minLongitude = coordinates.map { $0.longitude }.min()
-                let maxLongitude = coordinates.map { $0.longitude }.max()
-                
-                let maxYminX = Coordinate(lat: minLatitude, lon: maxLongitude)
-                let minYmaxX = Coordinate(lat: maxLatitude, lon: minLongitude)
-                
-                return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
+            .map { [unowned self] coordinates in
+                makeCoordinateBounds(of: coordinates)
             }
             .compactMap { $0 }
-
+        
         let airportsByCityPointAnnotations = coordinatesKeyedOnId
             .map { $0.compactMap { PointAnnotation(location: $0.coordinate,
                                                    airportId: $0.id.toString()) } }
-
+        
         let selectedAirport = RxObservable
             .merge(selectedItemDatabaseId, favoriteAirportId.asObservable())
             .compactMap { self.databaseInteractor.fetchAirport(by: $0)?.first }
@@ -281,6 +277,12 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             airportAnnotation,
             searchingEnded.map { [] })
         
+        self.url = requestMailTapped.withLatestFrom(unwrappedSearchInput)
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .map { (subject: "New airport request".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    body: "Hello, \n I would like to leave a request for adding airport \($0.uppercased()) to your database as it did not appear in the search results".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) }
+            .compactMap { URL(string: "mailto:services@aerokit.pro?subject=\($0.subject ?? "")&body=\($0.body ?? "")") }
+        
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
         self.searchFieldCanDismiss = favoriteAirportId.asEmpty()
@@ -288,7 +290,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         
         subscribeOnNotifications()
     }
-        
+    
     private func subscribeOnNotifications() {
         notificationTokens.append(
             notificationCenter.observe(
@@ -303,6 +305,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             }
         )
     }
+    
+    private func makeCoordinateBounds(of coordinates: [CLLocationCoordinate2D]) -> CoordinateBounds? {
+        var coordinates = coordinates
+        // чтобы показывать единственную координату на отдалении, добавляем две искусственные координаты в массив. Welcome to kostyl paradise
+        if coordinates.count == 1 { coordinates.append(coordinates[0].coordinate(at: 15000, facing: LocationDirection.pi)); coordinates.append(coordinates[0].coordinate(at: -15000, facing: LocationDirection.pi))  }
+        
+        let minLatitude = coordinates.map { $0.latitude }.min()
+        let maxLatitude = coordinates.map { $0.latitude }.max()
+        let minLongitude = coordinates.map { $0.longitude }.min()
+        let maxLongitude = coordinates.map { $0.longitude }.max()
+        
+        let maxYminX = Coordinate(lat: minLatitude, lon: maxLongitude)
+        let minYmaxX = Coordinate(lat: maxLatitude, lon: minLongitude)
+                
+        return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
+    }
+    
 }
 
 // MARK: - AirportsViewModelInputs
@@ -333,5 +352,9 @@ extension AirportsViewModel: AirportsViewModelInputs {
     
     func didTapShowLocationButton() {
         locationButtonTapped.accept(Empty())
+    }
+    
+    func didTapOnRequestMail() {
+        requestMailTapped.accept(Empty())
     }
 }

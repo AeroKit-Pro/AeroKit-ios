@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class HyperLinkText: UITextView {
+    
+    let tappedOnLinkPart = PublishRelay<()>()
     
     init(text: String, tapPart: String, link: String, font: UIFont, textColor: UIColor) {
         super.init(frame: .zero, textContainer: nil)
@@ -26,6 +29,7 @@ final class HyperLinkText: UITextView {
         let range = attributedString.mutableString.range(of: tapPart)
         attributedString.addAttribute(.link, value: link, range: range)
         linkTextAttributes = [.foregroundColor : textColor, .underlineStyle : NSUnderlineStyle.single.rawValue]
+        backgroundColor = .clear
         
         attributedText = attributedString
     }
@@ -35,6 +39,7 @@ final class HyperLinkText: UITextView {
 extension HyperLinkText: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         UIApplication.shared.open(URL)
+        tappedOnLinkPart.accept(())
         
         return false
     }

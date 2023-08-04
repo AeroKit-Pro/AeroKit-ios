@@ -26,6 +26,7 @@ protocol AirportsSceneViewType: UIView {
     var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
     var rxPromptView: Reactive<PromptView> { get }
+    var tappedOnRequestMail: RxSwift.Observable<()> { get }
     var locationAuthorizationStatus: CLAuthorizationStatus { get }
     func enterSearchingMode()
     func dismissSearchMode()
@@ -48,7 +49,7 @@ final class AirportsMainView: UIView {
                                         style: .small)
     private let hyperLink = HyperLinkText(text: "If you know such airport, please \n leave a request",
                                           tapPart: "leave a request",
-                                          link: "mailto:services@aerokit.pro",
+                                          link: "",
                                           font: .systemFont(ofSize: 13),
                                           textColor: .flg_secondary_gray)
     
@@ -123,7 +124,7 @@ final class AirportsMainView: UIView {
         hyperLink.textAlignment = .center
         hyperLink.layer.masksToBounds = false
         promptView.addElement(hyperLink)
-        addSubviews(promptView)
+        airportsTableView.addSubview(promptView)
         promptView.snp.makeConstraints {
             $0.top.equalTo(searchField.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
@@ -186,6 +187,10 @@ extension AirportsMainView: AirportsSceneViewType {
         mapView.location.delegate
     }
     
+    var tappedOnRequestMail: RxSwift.Observable<()> {
+        hyperLink.tappedOnLinkPart.asObservable()
+    }
+    
     func enterSearchingMode() {
         blankView.show(withDuration: 0.2)
         airportsTableView.isHidden = false
@@ -212,7 +217,8 @@ extension AirportsMainView: AirportsSceneViewType {
     
     func ease(to coordinate: CLLocationCoordinate2D) {
         let options = CameraOptions(center: coordinate, zoom: 12)
-        mapView.camera.ease(to: options, duration: 0.4)
+        mapView.camera.fly(to: options, duration: 0.4)
+        print("FFFF")
     }
     
     func easeToLatestLocation() {
@@ -221,8 +227,10 @@ extension AirportsMainView: AirportsSceneViewType {
     }
     
     func fitCameraInto(_ bounds: CoordinateBounds) {
+        var insets = UIEdgeInsets.allSides(100)
+        insets.top = 200
         let camera = mapView.mapboxMap.camera(for: bounds,
-                                              padding: UIEdgeInsets.allSides(100),
+                                              padding: insets,
                                               bearing: 0,
                                               pitch: 0)
         mapView.mapboxMap.setCamera(to: camera)

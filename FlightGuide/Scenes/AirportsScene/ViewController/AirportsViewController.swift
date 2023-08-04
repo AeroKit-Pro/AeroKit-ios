@@ -72,6 +72,10 @@ final class AirportsViewController: UIViewController {
         airportsMainView.didTapShowLocationButton
             .subscribe(onNext: viewModel.inputs.didTapShowLocationButton)
             .disposed(by: disposeBag)
+        
+        airportsMainView.tappedOnRequestMail
+            .subscribe(onNext: viewModel.inputs.didTapOnRequestMail)
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
@@ -145,6 +149,10 @@ final class AirportsViewController: UIViewController {
                 if authorized { self.airportsMainView.easeToLatestLocation() }
                 else { self.present(UIAlertController.promptToEnableLocation(), animated: true) }
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.url
+            .subscribe(onNext: { UIApplication.shared.open($0); print($0, "FFFF") } )
             .disposed(by: disposeBag)
     }
     
