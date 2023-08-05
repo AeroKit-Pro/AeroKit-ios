@@ -66,6 +66,7 @@ extension APIRequest {
         switch self {
         case .getWeather: return HTTPHeaders.weatherApiKey
         case .createChatCompletions: return HTTPHeaders.openaiRequiredHeaders
+        case .addUserChecklistsGroups: return ["Content-Type": "application/json"]
         default: return nil
         }
     }

@@ -73,8 +73,9 @@ extension ChecklistsViewModel: ChecklistsViewModelInterface {
                     let allCompaniesWithPlanes: [CompanyWithPlanesModel] = self?.allCompaniesWithPlanes ?? []
                     let allPlanes = allCompaniesWithPlanes.flatMap { $0.planes }
                     let allChecklistGroups = allPlanes.flatMap { $0.checklists }
-                    self?.savedChecklists = item.checklists_groups.compactMap { checklistGroup in
-                        if let plane = allPlanes.first(where: { $0.id == checklistGroup.id }) {
+                    self?.savedChecklists = item.checklists_groups.compactMap { item in
+                        if let checklistGroup = allChecklistGroups.first(where: { $0.id == item.id }),
+                           let plane = allPlanes.first(where: { $0.checklists.contains(checklistGroup)}) {
                             let company = allCompaniesWithPlanes.first(where: { $0.planes.contains(plane) })
                             let fullname: String = {
                                 var fullname = ""
@@ -85,13 +86,14 @@ extension ChecklistsViewModel: ChecklistsViewModelInterface {
                                 fullname += plane.model
                                 return fullname
                             }()
+
                             return ChecklistGroupStorageModel(
                                 id: plane.id,
                                 date: Date(),
-                                name: checklistGroup.name,
+                                name: item.name,
                                 fullPlaneName: fullname,
-                                isFullChecklistModel: plane.checklists.count == checklistGroup.checklists_ids.count,
-                                checklists: checklistGroup.checklists_ids.compactMap { id in return plane.checklists.first(where: { $0.id == id }) })
+                                isFullChecklistModel: plane.checklists.count == item.checklists_ids.count,
+                                checklists: item.checklists_ids.compactMap { id in return plane.checklists.first(where: { $0.id == id }) })
                         }
                         return nil
                     }

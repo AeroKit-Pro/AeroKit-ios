@@ -35,58 +35,16 @@ final class APIClient {
         request(APIRequest.getUserChecklistsGroups(userId: userId))
     }
 
-    func addUserChecklistsGroups(userId: String, checklists: UserChecklistsGroupBase) -> Observable<Bool> {
-        Observable<Bool>.create { observer in
-            let request = AF.request(APIRequest.addUserChecklistsGroups(userId: userId, checklists: checklists))
-                .responseString(completionHandler: { response in
-                    switch response.result {
-                    case .success:
-                        observer.onNext(true)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        observer.onError(error)
-                    }
-                })
-            return Disposables.create {
-                request.cancel()
-            }
-        }
+    func addUserChecklistsGroups(userId: String, checklists: UserChecklistsGroupBase) -> Observable<Empty> {
+        request(APIRequest.addUserChecklistsGroups(userId: userId, checklists: checklists))
     }
 
-    func deleteUserChecklistsGroups(userId: String, groupId: String) -> Observable<Bool> {
-        Observable<Bool>.create { observer in
-            let request = AF.request(APIRequest.deleteUserChecklistsGroups(userId: userId, groupId: groupId))
-                .responseString(completionHandler: { response in
-                    switch response.result {
-                    case .success:
-                        observer.onNext(true)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        observer.onError(error)
-                    }
-                })
-            return Disposables.create {
-                request.cancel()
-            }
-        }
+    func deleteUserChecklistsGroups(userId: String, groupId: String) -> Observable<Empty> {
+        request(APIRequest.deleteUserChecklistsGroups(userId: userId, groupId: groupId))
     }
 
-    func deleteAllUserData(userId: String) -> Observable<Bool> {
-        Observable<Bool>.create { observer in
-            let request = AF.request(APIRequest.deleteAllUserDate(userId: userId))
-                .responseString(completionHandler: { response in
-                    switch response.result {
-                    case .success:
-                        observer.onNext(true)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        observer.onError(error)
-                    }
-                })
-            return Disposables.create {
-                request.cancel()
-            }
-        }
+    func deleteAllUserData(userId: String) -> Observable<Empty> {
+        request(APIRequest.deleteAllUserDate(userId: userId))
     }
     
     func createStreamChatCompletion(parameters: Data?) -> DataStreamRequest {
