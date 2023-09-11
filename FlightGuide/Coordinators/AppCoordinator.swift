@@ -39,8 +39,7 @@ final class AppCoordinator: BaseCoordinator {
 }
 
 // MARK: - ApplicationCoordinatorProtocol
-extension AppCoordinator: ApplicationCoordinatorInterface {
-}
+extension AppCoordinator: ApplicationCoordinatorInterface {}
 
 // MARK: - TabCoordinatorDelegate
 extension AppCoordinator: TabCoordinatorDelegate {
@@ -54,6 +53,7 @@ extension AppCoordinator: TabCoordinatorDelegate {
 
 // MARK: - SplashSceneOutput
 extension AppCoordinator: SplashSceneOutput {
+    
     func startSignUpFlow() {
         let signUpCoordinator = SignUpCoordinator(router: router)
         signUpCoordinator.onFinish = { [weak self, weak signUpCoordinator] in
