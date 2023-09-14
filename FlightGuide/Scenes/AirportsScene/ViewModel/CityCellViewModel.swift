@@ -21,7 +21,8 @@ struct CityCellViewModel {
             .sorted { $0.value > $1.value }
         countByTypes.forEach { type, count in
             if let type {
-                typeCountStrings.append("\(type) : \(count)")
+                let formattedType = type.replacingOccurrences(of: "_", with: " ")
+                typeCountStrings.append("\(formattedType): \(count)")
             }
         }
     }

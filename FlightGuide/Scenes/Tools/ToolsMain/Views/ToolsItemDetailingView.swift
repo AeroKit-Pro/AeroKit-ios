@@ -24,12 +24,12 @@ final class ToolsItemDetailingView: UIView {
         var subtitleText: String {
             switch self {
             case .checklists: return "Last checked:"
-            case .pdfReader: return "Last readed:"
+            case .pdfReader: return "Last read:"
             case .calculators: return "Last used:"
             }
         }
         
-        var buttonImage: UIImage? {
+        var image: UIImage? {
             switch self {
             case .checklists: return UIImage(named: "tools_checklists")
             case .pdfReader: return UIImage(named: "tools_pdfReader")
@@ -39,13 +39,15 @@ final class ToolsItemDetailingView: UIView {
         
     }
     
+    private let gestureRecognizer = UITapGestureRecognizer()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
-    private let showButton = UIButton()
+    private let imageView = UIImageView()
     
     private let separatorView: UIView = {
         let view = UIView()
@@ -77,14 +79,24 @@ final class ToolsItemDetailingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateSubitems(items: [ToolsSubitemView]) {
+        stackView.removeArrangedSubviews()
+        items.forEach { stackView.addArrangedSubview($0) }
+    }
+    
+    @objc private func handleTap() {
+        guard let onTapAction else { return }
+        onTapAction()
+    }
+    
     private func setupLayout() {
-        addSubviews(titleLabel, showButton, separatorView, subtitleLabel, stackView)
+        addSubviews(titleLabel, imageView, separatorView, subtitleLabel, stackView)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(12)
         }
         
-        showButton.snp.makeConstraints { make in
+        imageView.snp.makeConstraints { make in
             make.top.trailing.equalToSuperview().inset(10)
             make.leading.equalTo(titleLabel.snp.trailing).offset(10)
             make.centerY.equalTo(titleLabel)
@@ -92,7 +104,7 @@ final class ToolsItemDetailingView: UIView {
         }
         
         separatorView.snp.makeConstraints { make in
-            make.top.equalTo(showButton.snp.bottom).offset(5)
+            make.top.equalTo(imageView.snp.bottom).offset(5)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
@@ -116,15 +128,10 @@ final class ToolsItemDetailingView: UIView {
         
         titleLabel.text = itemType.titleText
         subtitleLabel.text = itemType.subtitleText
-        showButton.setImage(itemType.buttonImage, for: .normal)
+        imageView.image = itemType.image
         
-        showButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.onTapAction?()
-        }), for: .touchUpInside)
+        gestureRecognizer.addTarget(self, action: #selector(handleTap))
+        addGestureRecognizer(gestureRecognizer)
     }
-    
-    func updateSubitems(items: [ToolsSubitemView]) {
-        stackView.removeArrangedSubviews()
-        items.forEach { stackView.addArrangedSubview($0) }
-    }
+
 }

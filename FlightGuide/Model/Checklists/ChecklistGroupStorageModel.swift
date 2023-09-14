@@ -8,6 +8,7 @@
 import Foundation
 
 struct ChecklistGroupStorageModel: Codable, Equatable {
+    let id: Int
     let date: Date
     let name: String
     let fullPlaneName: String

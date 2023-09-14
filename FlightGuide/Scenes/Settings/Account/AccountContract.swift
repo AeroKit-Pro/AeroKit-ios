@@ -11,6 +11,8 @@ import Foundation
 protocol AccountViewInterface: AnyObject,
                                DisplayLoaderInterface {
     func displayDeleteConfirmationAlert()
+    func displayChangePasswordErrorAlert(error: Error)
+    func displayChangePasswordSentSuccessfullyAlert()
     func displayAccountDeletionErrorAlert(error: Error)
 }
 
@@ -18,6 +20,7 @@ protocol AccountViewModelInterface: AnyObject {
     func viewDidLoad()
     func onTapDeleteAccount()
     func onConfirmDeleteAccount()
+    func onTapChangePassword()
 }
 
 protocol AccountSceneOutput: AnyObject {

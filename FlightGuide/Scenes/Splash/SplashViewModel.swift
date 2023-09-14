@@ -25,12 +25,10 @@ extension SplashViewModel: SplashViewModelInterface {
     func viewDidLoad() {
         displayDesiredFlow()
     }
-
+    
     private func displayDesiredFlow() {
-        if FirebaseAuth.Auth.auth().currentUser == nil {
-            output?.startSignUpFlow()
-        } else {
-            output?.startAuthorizedFlow()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.output?.startAuthorizedFlow()
         }
     }
 }

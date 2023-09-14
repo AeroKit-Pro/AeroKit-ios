@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-protocol ChecklistsViewInterface: AnyObject {
+protocol ChecklistsViewInterface: AnyObject, DisplayLoaderInterface {
     func updateState(_ state: ChecklistsViewController.State)
 }
 
@@ -53,6 +53,7 @@ final class ChecklistsViewController: UIViewController {
 
         setupLayout()
         setupUI()
+        viewModel?.onViewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {

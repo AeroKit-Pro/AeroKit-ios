@@ -51,6 +51,10 @@ final class FavoritesViewController: UIViewController {
                 cell.viewModel = model
             }
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.promptViewIsHidden.asDriver(onErrorJustReturn: true)
+            .drive(favoritesView.rxPromptView.isHidden)
+            .disposed(by: disposeBag)
     }
     
     private func setupNavigationTitle() {

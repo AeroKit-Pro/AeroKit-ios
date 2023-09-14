@@ -23,16 +23,28 @@ final class APIClient {
         request(APIRequest.getFrequencies)
     }
     
-    func getCities() -> Observable<Citites> {
-        request(APIRequest.getCities)
-    }
-    
     func getWeather(type: WeatherReportType, icao: String) -> Observable<Weather> {
         request(APIRequest.getWeather(type: type, icao: icao))
     }
 
     func getChecklists() -> Observable<[CompanyWithPlanesModel]> {
         request(APIRequest.getChecklists)
+    }
+
+    func getUserChecklistsGroups(userId: String) -> Observable<UserChecklistsGroups> {
+        request(APIRequest.getUserChecklistsGroups(userId: userId))
+    }
+
+    func addUserChecklistsGroups(userId: String, checklists: UserChecklistsGroupBase) -> Observable<Empty> {
+        request(APIRequest.addUserChecklistsGroups(userId: userId, checklists: checklists))
+    }
+
+    func deleteUserChecklistsGroups(userId: String, groupId: String) -> Observable<Empty> {
+        request(APIRequest.deleteUserChecklistsGroups(userId: userId, groupId: groupId))
+    }
+
+    func deleteAllUserData(userId: String) -> Observable<Empty> {
+        request(APIRequest.deleteAllUserDate(userId: userId))
     }
     
     func createStreamChatCompletion(parameters: Data?) -> DataStreamRequest {

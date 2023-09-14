@@ -16,6 +16,7 @@ protocol FilterViewModelInputs {
     func viewDidLoad()
     func didTapApplyFiltersButton()
     func didCollectValues(filterInput: FilterInput)
+    func didTapResetButton()
 }
 
 protocol FilterViewModelOutputs {
@@ -40,7 +41,13 @@ final class FilterViewModel: FilterViewModelType, FilterViewModelOutputs {
     
     private let viewLoaded = PublishRelay<Empty>()
     private let applyFiltersButtonTapped = PublishRelay<Empty>()
-
+    private let resetButtonTapped = PublishRelay<Empty>()
+    private let emptyFilterState: FilterInput = (searchItem: AirportFilterItem.all,
+                                                 runwayLength: "",
+                                                 runwaySurfaces: [],
+                                                 airportTypes: [],
+                                                 lightAvailability: false)
+    
     var inputs: FilterViewModelInputs { self }
     var outputs: FilterViewModelOutputs { self }
 
@@ -48,7 +55,9 @@ final class FilterViewModel: FilterViewModelType, FilterViewModelOutputs {
         self.delegate = delegate
         self.filterInputPassing = filterInputPassing
         
-        self.filterState = viewLoaded.withLatestFrom(filterInputPassing.filterInput)
+        self.filterState = Observable.merge(
+            viewLoaded.withLatestFrom(filterInputPassing.filterInput),
+            resetButtonTapped.map { self.emptyFilterState })
         
         self.collectFilters = applyFiltersButtonTapped.asObservable()
     }
@@ -68,5 +77,9 @@ extension FilterViewModel: FilterViewModelInputs {
     func didCollectValues(filterInput: FilterInput) {
         filterInputPassing.updateFilterInput(filterInput)
         delegate?.closeFilters()
+    }
+    
+    func didTapResetButton() {
+        resetButtonTapped.accept(Empty())
     }
 }

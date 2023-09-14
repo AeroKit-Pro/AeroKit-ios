@@ -10,6 +10,7 @@ import SnapKit
 import MapboxMaps
 import RxCocoa
 import RxSwift
+import CoreLocation
 //TODO: Enum with states
 protocol AirportsSceneViewType: UIView {
     typealias PointAnnotations = [PointAnnotation]
@@ -19,37 +20,54 @@ protocol AirportsSceneViewType: UIView {
     var didBeginSearching: ControlEvent<()> { get }
     var didEndSearching: ControlEvent<()> { get }
     var didTapFilterButton: ControlEvent<()> { get }
+    var didTapShowLocationButton: ControlEvent<()> { get }
     var counterBadge: Reactive<CounterBadge> { get }
     var dismissSearchButton: Reactive<UIButton> { get }
     var rxTextFieldText: ControlProperty<String?> { get }
     var rxTable: Reactive<UITableView> { get }
+    var rxPromptView: Reactive<PromptView> { get }
+    var tappedOnRequestMail: RxSwift.Observable<()> { get }
+    var locationAuthorizationStatus: CLAuthorizationStatus { get }
     func enterSearchingMode()
     func dismissSearchMode()
     func searchFieldCannotDismiss()
     func searchFieldCanDismiss() 
     func ease(to coordinate: CLLocationCoordinate2D)
+    func easeToLatestLocation()
     func fitCameraInto(_ bounds: CoordinateBounds)
 }
 
 final class AirportsMainView: UIView {
     
     private let mapView: MapView
+    private let showLocationButton = ShowLocationButton()
     private let searchField = SearchFieldView(placeholder: "Search for airport or city")
     private let blankView = BlankView()
     private let airportsTableView = UITableView()
+    private let promptView = PromptView(image: .airports_not_found,
+                                        message: "Unfortunately, we were unable to find relevant airports",
+                                        style: .small)
+    private let hyperLink = HyperLinkText(text: "If you know such airport, please \n leave a request",
+                                          tapPart: "leave a request",
+                                          link: "",
+                                          font: .systemFont(ofSize: 13),
+                                          textColor: .flg_secondary_gray)
     
     private lazy var annotationsManager: PointAnnotationManager = {
         mapView.annotations.makePointAnnotationManager()
     }()
     
     override init(frame: CGRect = .zero) {
-       // let options = MapInitOptions(styleURI: StyleURI(url: try! "http://45.12.19.184/map_style".asURL()))
-        mapView = MapView(frame: .zero)
+        // US center
+        let camOptions = CameraOptions(center: CLLocationCoordinate2D(latitude: 39.8097343, longitude: -98.5556199), zoom: 2.2)
+        let initOptions = MapInitOptions(cameraOptions: camOptions, styleURI: StyleURI(url: BundleURLs.mapStyle))
+        mapView = MapView(frame: .zero, mapInitOptions: initOptions)
         super.init(frame: frame)
         setupMapView()
         setupSearchField()
         setupBlankView()
         setupTableView()
+        setupPromptView()
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +76,14 @@ final class AirportsMainView: UIView {
     
     private func setupMapView() {
         addSubview(mapView)
+        mapView.addSubview(showLocationButton)
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        showLocationButton.snp.makeConstraints {
+            $0.right.equalToSuperview().inset(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(100)
+        }
+        let puckConfiguration = Puck2DConfiguration.makeDefault()
+        mapView.location.options.puckType = .puck2D(puckConfiguration)
     }
     
     private func setupSearchField() {
@@ -97,10 +122,22 @@ final class AirportsMainView: UIView {
         airportsTableView.separatorStyle = .none
     }
     
+    private func setupPromptView() {
+        hyperLink.textAlignment = .center
+        hyperLink.layer.masksToBounds = false
+        promptView.addElement(hyperLink)
+        airportsTableView.addSubview(promptView)
+        promptView.snp.makeConstraints {
+            $0.top.equalTo(searchField.snp.bottom).offset(50)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(70)
+        }
+    }
+    
 }
 
 extension AirportsMainView: AirportsSceneViewType {
-    var bindablePointAnnotations: RxSwift.Binder<PointAnnotations> { // ??? элиас ???
+    var bindablePointAnnotations: Binder<PointAnnotations> { // ??? элиас ???
         annotationsManager.rx.annotations
     }
     
@@ -123,9 +160,17 @@ extension AirportsMainView: AirportsSceneViewType {
     var rxTable: Reactive<UITableView> {
         airportsTableView.rx
     }
+    
+    var rxPromptView: Reactive<PromptView> {
+        promptView.rx
+    }
 
     var didTapFilterButton: ControlEvent<()> {
         searchField.didTapFilterButton
+    }
+    
+    var didTapShowLocationButton: ControlEvent<()> {
+        showLocationButton.rx.tap
     }
     
     var counterBadge: Reactive<CounterBadge> {
@@ -134,6 +179,18 @@ extension AirportsMainView: AirportsSceneViewType {
     
     var dismissSearchButton: Reactive<UIButton> {
         searchField.rxDismissSearchButton
+    }
+    
+    var locationAuthorizationStatus: CLAuthorizationStatus {
+        mapView.location.locationProvider.authorizationStatus
+    }
+    
+    var locationAuthorizationDelegate: LocationPermissionsDelegate? {
+        mapView.location.delegate
+    }
+    
+    var tappedOnRequestMail: RxSwift.Observable<()> {
+        hyperLink.tappedOnLinkPart.asObservable()
     }
     
     func enterSearchingMode() {
@@ -161,13 +218,20 @@ extension AirportsMainView: AirportsSceneViewType {
     }
     
     func ease(to coordinate: CLLocationCoordinate2D) {
-        let options = CameraOptions(center: coordinate, zoom: 8)
-        mapView.camera.ease(to: options, duration: 0.4)
+        let options = CameraOptions(center: coordinate, zoom: 12)
+        mapView.camera.fly(to: options, duration: 0.4)
+    }
+    
+    func easeToLatestLocation() {
+        guard let location = mapView.location.latestLocation else { return }
+        ease(to: location.coordinate)
     }
     
     func fitCameraInto(_ bounds: CoordinateBounds) {
+        var insets = UIEdgeInsets.allSides(100)
+        insets.top = 200
         let camera = mapView.mapboxMap.camera(for: bounds,
-                                              padding: UIEdgeInsets.allSides(100),
+                                              padding: insets,
                                               bearing: 0,
                                               pitch: 0)
         mapView.mapboxMap.setCamera(to: camera)

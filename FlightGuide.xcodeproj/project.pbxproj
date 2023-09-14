@@ -10,7 +10,6 @@
 		110715002A540E4C0017AC78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 110714FF2A540E4C0017AC78 /* GoogleSignInSwift */; };
 		113795542A07F67600597299 /* AirportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795532A07F67600597299 /* AirportType.swift */; };
 		113795562A07F70A00597299 /* AirportFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795552A07F70A00597299 /* AirportFilterItem.swift */; };
-		113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
 		1137955B2A08660E00597299 /* AirportFilterSearchItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955A2A08660E00597299 /* AirportFilterSearchItemsView.swift */; };
 		1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955C2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift */; };
 		1137955F2A09372800597299 /* AirportsFilterRunwayLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137955E2A09372800597299 /* AirportsFilterRunwayLightView.swift */; };
@@ -24,7 +23,6 @@
 		115DA7422A3F133F0011F754 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 115DA7412A3F133F0011F754 /* GoogleService-Info.plist */; };
 		115DA74B2A3F39780011F754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7472A3F39780011F754 /* LoginViewController.swift */; };
 		115DA74C2A3F39780011F754 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7482A3F39780011F754 /* LoginContract.swift */; };
-		115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7492A3F39780011F754 /* LoginAssembly.swift */; };
 		115DA74E2A3F39780011F754 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA74A2A3F39780011F754 /* LoginViewModel.swift */; };
 		115DA7502A3F3A310011F754 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA74F2A3F3A310011F754 /* LoginView.swift */; };
 		115DA7532A3F3B3C0011F754 /* AuthorizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DA7522A3F3B3C0011F754 /* AuthorizationTextField.swift */; };
@@ -67,6 +65,7 @@
 		11B2810E2A316979008D18C9 /* ChecklistsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */; };
 		11B281102A317353008D18C9 /* ChecklistGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */; };
 		11B281122A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */; };
+		11C86BB82A6876790049D9CE /* InfoURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C86BB72A6876790049D9CE /* InfoURLs.swift */; };
 		11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */; };
 		11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */; };
 		11D4F47A2A03E973001DDC46 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */; };
@@ -102,6 +101,7 @@
 		11EC9B512A140200001EB56D /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B502A140200001EB56D /* SignUpCoordinator.swift */; };
 		11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B522A140665001EB56D /* AirportsCoordinator.swift */; };
 		11EC9B552A142BC9001EB56D /* AirportAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9B542A142BC9001EB56D /* AirportAssembly.swift */; };
+		11F5DA622A7D0CE4008255DA /* UserChecklistsGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */; };
 		4E0044C42A35E6030098706A /* AIChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C32A35E6030098706A /* AIChatViewModel.swift */; };
 		4E0044C62A35E6120098706A /* AIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C52A35E6120098706A /* AIChatViewController.swift */; };
 		4E0044C82A35E62C0098706A /* AIChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044C72A35E62C0098706A /* AIChatAssembly.swift */; };
@@ -109,6 +109,7 @@
 		4E0044CD2A35EE150098706A /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CC2A35EE150098706A /* InputBar.swift */; };
 		4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */; };
 		4E01532E2A519773009362DE /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01532D2A519773009362DE /* CalculatorViewController.swift */; };
+		4E018B012A69C6B100C674C8 /* HyperLinkText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E018B002A69C6B100C674C8 /* HyperLinkText.swift */; };
 		4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E05C57329D98D4C00E228CD /* UIStackView.swift */; };
 		4E08E50F29E2FAD800B6F8E1 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */; };
 		4E0955FD2A52A04600227542 /* TitledCalculatorInputFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0955FC2A52A04600227542 /* TitledCalculatorInputFieldModel.swift */; };
@@ -126,6 +127,8 @@
 		4E274C4C2A3E43BA001E1D73 /* OpenAIChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E274C4B2A3E43BA001E1D73 /* OpenAIChat.swift */; };
 		4E274C4E2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E274C4D2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift */; };
 		4E274C502A3E6D91001E1D73 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E274C4F2A3E6D91001E1D73 /* Message.swift */; };
+		4E282B302A618B1100B46299 /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E282B2F2A618B1100B46299 /* aerokit_database.sqlite */; };
+		4E282B322A61A32600B46299 /* SavedIdObjectWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282B312A61A32600B46299 /* SavedIdObjectWithDate.swift */; };
 		4E2C26AD29D73ECE005B6710 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */; };
 		4E2D6EE52A56B5E600A88DF8 /* TitledCalculatorOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D6EE42A56B5E600A88DF8 /* TitledCalculatorOutputView.swift */; };
 		4E2D6EE72A56B8B700A88DF8 /* TitledCalculatorOutputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D6EE62A56B8B700A88DF8 /* TitledCalculatorOutputModel.swift */; };
@@ -167,11 +170,12 @@
 		4E6697432A409B6100AA9F3F /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6697422A409B6100AA9F3F /* MessageCellViewModel.swift */; };
 		4E6B37AB29DBA1BB005B97F2 /* SkipNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */; };
 		4E72F5B22A1A3FCC00051A25 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F5B12A1A3FCC00051A25 /* URL.swift */; };
-		4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */; };
+		4E78E37B2A5CD57A00798EF4 /* map_style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E78E37A2A5CD57A00798EF4 /* map_style.json */; };
+		4E78E37D2A5CD60E00798EF4 /* BundleURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */; };
+		4E78E37F2A5CD6A200798EF4 /* StyleURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */; };
 		4E8590832A562F76008D1A4B /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8590822A562F76008D1A4B /* CalculatorView.swift */; };
 		4E87DA1929E1EA18000C5426 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */; };
 		4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */; };
-		4EA25E332A12C70600E561BE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA25E322A12C70600E561BE /* Cities.swift */; };
 		4EA60EAB2A2727E600539D83 /* SearchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60EAA2A2727E600539D83 /* SearchTableViewDataSource.swift */; };
 		4EA60EAD2A2728CB00539D83 /* CityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60EAC2A2728CB00539D83 /* CityCellViewModel.swift */; };
 		4EA72A2B29D6365200836CDF /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72A2A29D6365200836CDF /* Airport.swift */; };
@@ -208,6 +212,8 @@
 		4EE0848F29FC75D600898DB3 /* AirportPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0848E29FC75D600898DB3 /* AirportPreview.swift */; };
 		4EE5EE3E29D574E7000AAE58 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EE5EE3D29D574E7000AAE58 /* SnapKit */; };
 		4EE5EE4129D588B6000AAE58 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5EE4029D588B6000AAE58 /* UIImage.swift */; };
+		4EE6C5482A5CAB6E00858931 /* ShowLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */; };
+		4EE6C54A2A5CADCD00858931 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6C5492A5CADCD00858931 /* UIAlertController.swift */; };
 		4EEB2EEC2A1F835200945157 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */; };
 		4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */; };
 		4EECAF622A20C14D00F51E52 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECAF612A20C14D00F51E52 /* NotificationToken.swift */; };
@@ -218,6 +224,8 @@
 		4EF7B1DB2A571EB70056BC1A /* CalculatorsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DA2A571EB70056BC1A /* CalculatorsDataSource.swift */; };
 		4EF7B1DD2A57218D0056BC1A /* CalculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DC2A57218D0056BC1A /* CalculatorCell.swift */; };
 		4EF7B1DF2A5730BF0056BC1A /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B1DE2A5730BF0056BC1A /* TimeConverter.swift */; };
+		4EFE2F112A58B4FB00A957B6 /* AirportFilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113795572A07F77D00597299 /* AirportFilterSettings.swift */; };
+		4EFE2F132A58B56300A957B6 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,7 +243,6 @@
 		115DA7412A3F133F0011F754 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "FlightGuide/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		115DA7472A3F39780011F754 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		115DA7482A3F39780011F754 /* LoginContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
-		115DA7492A3F39780011F754 /* LoginAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 		115DA74A2A3F39780011F754 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		115DA74F2A3F3A310011F754 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		115DA7522A3F3B3C0011F754 /* AuthorizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTextField.swift; sourceTree = "<group>"; };
@@ -279,6 +286,7 @@
 		11B2810D2A316979008D18C9 /* ChecklistsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsAssembly.swift; sourceTree = "<group>"; };
 		11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistGroupViewController.swift; sourceTree = "<group>"; };
 		11B281112A317A9B008D18C9 /* ChecklistsDeleteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsDeleteTableCell.swift; sourceTree = "<group>"; };
+		11C86BB72A6876790049D9CE /* InfoURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoURLs.swift; sourceTree = "<group>"; };
 		11D4F46C2A03E973001DDC46 /* AirportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		11D4F46D2A03E973001DDC46 /* AirportCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportCellViewModel.swift; sourceTree = "<group>"; };
 		11D4F46E2A03E973001DDC46 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +322,7 @@
 		11EC9B502A140200001EB56D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B522A140665001EB56D /* AirportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsCoordinator.swift; sourceTree = "<group>"; };
 		11EC9B542A142BC9001EB56D /* AirportAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAssembly.swift; sourceTree = "<group>"; };
+		11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChecklistsGroups.swift; sourceTree = "<group>"; };
 		4E0044C32A35E6030098706A /* AIChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewModel.swift; sourceTree = "<group>"; };
 		4E0044C52A35E6120098706A /* AIChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatViewController.swift; sourceTree = "<group>"; };
 		4E0044C72A35E62C0098706A /* AIChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatAssembly.swift; sourceTree = "<group>"; };
@@ -321,6 +330,7 @@
 		4E0044CC2A35EE150098706A /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
 		4E0044CE2A35F45F0098706A /* FlexibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleTextView.swift; sourceTree = "<group>"; };
 		4E01532D2A519773009362DE /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		4E018B002A69C6B100C674C8 /* HyperLinkText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperLinkText.swift; sourceTree = "<group>"; };
 		4E05C57329D98D4C00E228CD /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4E0955FC2A52A04600227542 /* TitledCalculatorInputFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorInputFieldModel.swift; sourceTree = "<group>"; };
@@ -337,6 +347,8 @@
 		4E274C4B2A3E43BA001E1D73 /* OpenAIChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChat.swift; sourceTree = "<group>"; };
 		4E274C4D2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatStreamedParameters.swift; sourceTree = "<group>"; };
 		4E274C4F2A3E6D91001E1D73 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		4E282B2F2A618B1100B46299 /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
+		4E282B312A61A32600B46299 /* SavedIdObjectWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedIdObjectWithDate.swift; sourceTree = "<group>"; };
 		4E2C26AC29D73ECE005B6710 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E2D6EE42A56B5E600A88DF8 /* TitledCalculatorOutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorOutputView.swift; sourceTree = "<group>"; };
 		4E2D6EE62A56B8B700A88DF8 /* TitledCalculatorOutputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorOutputModel.swift; sourceTree = "<group>"; };
@@ -377,11 +389,12 @@
 		4E6B37AA29DBA1BB005B97F2 /* SkipNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipNil.swift; sourceTree = "<group>"; };
 		4E6B37AC29DBA44E005B97F2 /* ReturnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnEmpty.swift; sourceTree = "<group>"; };
 		4E72F5B12A1A3FCC00051A25 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aerokit_database.sqlite; sourceTree = "<group>"; };
+		4E78E37A2A5CD57A00798EF4 /* map_style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = map_style.json; sourceTree = "<group>"; };
+		4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleURLs.swift; sourceTree = "<group>"; };
+		4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleURI.swift; sourceTree = "<group>"; };
 		4E8590822A562F76008D1A4B /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		4E87DA1829E1EA18000C5426 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
 		4E8D18872A0E6C960087DCCD /* NoPasteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPasteTextField.swift; sourceTree = "<group>"; };
-		4EA25E322A12C70600E561BE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		4EA60EAA2A2727E600539D83 /* SearchTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewDataSource.swift; sourceTree = "<group>"; };
 		4EA60EAC2A2728CB00539D83 /* CityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellViewModel.swift; sourceTree = "<group>"; };
 		4EA72A2A29D6365200836CDF /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
@@ -415,6 +428,8 @@
 		4ED9B7BA2A5344AD00063982 /* TitledCalculatorInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledCalculatorInputFieldView.swift; sourceTree = "<group>"; };
 		4EE0848E29FC75D600898DB3 /* AirportPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPreview.swift; sourceTree = "<group>"; };
 		4EE5EE4029D588B6000AAE58 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLocationButton.swift; sourceTree = "<group>"; };
+		4EE6C5492A5CADCD00858931 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		4EEB2EEB2A1F835200945157 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		4EECAF5F2A20BFD400F51E52 /* NotificationCenterModuleInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterModuleInterface.swift; sourceTree = "<group>"; };
 		4EECAF612A20C14D00F51E52 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
@@ -425,6 +440,7 @@
 		4EF7B1DA2A571EB70056BC1A /* CalculatorsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsDataSource.swift; sourceTree = "<group>"; };
 		4EF7B1DC2A57218D0056BC1A /* CalculatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorCell.swift; sourceTree = "<group>"; };
 		4EF7B1DE2A5730BF0056BC1A /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
+		4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,7 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				115DA7512A3F3B2D0011F754 /* Views */,
-				115DA7492A3F39780011F754 /* LoginAssembly.swift */,
+				4EFE2F122A58B56300A957B6 /* LoginAssembly.swift */,
 				115DA7482A3F39780011F754 /* LoginContract.swift */,
 				115DA7472A3F39780011F754 /* LoginViewController.swift */,
 				115DA74A2A3F39780011F754 /* LoginViewModel.swift */,
@@ -546,6 +562,7 @@
 			children = (
 				11A3669D2A2F97BE00D482EB /* CompanyWithPlanesModel.swift */,
 				11B2810B2A315E20008D18C9 /* ChecklistGroupStorageModel.swift */,
+				11F5DA612A7D0CE4008255DA /* UserChecklistsGroups.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -613,14 +630,6 @@
 				11B281032A3123C5008D18C9 /* ChecklistInspectionTableCell.swift */,
 				11B2810F2A317353008D18C9 /* ChecklistGroupViewController.swift */,
 				11B280EB2A302313008D18C9 /* SelectPlane */,
-				11B280EA2A3022F6008D18C9 /* Checklists */,
-			);
-			path = Checklists;
-			sourceTree = "<group>";
-		};
-		11B280EA2A3022F6008D18C9 /* Checklists */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -855,6 +864,7 @@
 				4E08E50E29E2FAD800B6F8E1 /* PointAnnotation.swift */,
 				4E40A1722A14F48B00101D06 /* Coordinate.swift */,
 				4E59F8992A2CD98E005E84B1 /* CoordinateBounds.swift */,
+				4E78E37E2A5CD6A200798EF4 /* StyleURI.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -937,7 +947,8 @@
 		4E3B3AB729D43F1D00971840 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
-				4E78FBF22A137B27005DF136 /* aerokit_database.sqlite */,
+				4E282B2F2A618B1100B46299 /* aerokit_database.sqlite */,
+				4E78E37A2A5CD57A00798EF4 /* map_style.json */,
 				4E3B3AA729D43B4800971840 /* Assets.xcassets */,
 			);
 			path = Ressources;
@@ -956,6 +967,7 @@
 		4E56B23129DB73E400D4BF12 /* ComponentsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4EE6C5472A5CAB6E00858931 /* ShowLocationButton.swift */,
 				4E8C3B2129DDC036003FB8B0 /* ResultCell */,
 				4EB9007329D85ABE00C64110 /* SearchFieldView.swift */,
 				4EAC54C429DF035700EDDA71 /* BlankView.swift */,
@@ -966,6 +978,7 @@
 				4ED2DFCC2A17A7ED00479E4D /* CounterBadge.swift */,
 				4E42FE242A1E4A0D00AAE5B5 /* StateSelectableButton.swift */,
 				4EC44EC82A471E710038D347 /* PromptView.swift */,
+				4E018B002A69C6B100C674C8 /* HyperLinkText.swift */,
 			);
 			path = ComponentsLibrary;
 			sourceTree = "<group>";
@@ -1042,6 +1055,7 @@
 				4E5ABFA72A265F9E005CB80D /* AirportByCity.swift */,
 				4E2648232A3DF0A100B78379 /* RunwaySurface.swift */,
 				4E6697402A40712200AA9F3F /* ChatCompletionChunk.swift */,
+				4E282B312A61A32600B46299 /* SavedIdObjectWithDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1062,6 +1076,7 @@
 		4EB4CF2329D5895400830FB7 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4EE6C5492A5CADCD00858931 /* UIAlertController.swift */,
 				4EE5EE4029D588B6000AAE58 /* UIImage.swift */,
 				4EB9007529D8681900C64110 /* UIView.swift */,
 				4E05C57329D98D4C00E228CD /* UIStackView.swift */,
@@ -1148,7 +1163,6 @@
 				4ECD111529FBEFAC009FA56C /* Airports.swift */,
 				4ECD111729FBEFDB009FA56C /* Runways.swift */,
 				4ECD111929FBF012009FA56C /* Frequencies.swift */,
-				4EA25E322A12C70600E561BE /* Cities.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -1182,6 +1196,8 @@
 			children = (
 				4EA72A3129D6377400836CDF /* Network.swift */,
 				4E3C047429F9355F00CB08EB /* Database.swift */,
+				4E78E37C2A5CD60E00798EF4 /* BundleURLs.swift */,
+				11C86BB72A6876790049D9CE /* InfoURLs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1266,13 +1282,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E78FBF32A137B27005DF136 /* aerokit_database.sqlite in Resources */,
 				115DA7422A3F133F0011F754 /* GoogleService-Info.plist in Resources */,
 				4E257A7E2A25CED900AC5FF3 /* CityCell.xib in Resources */,
 				4E3B3AAB29D43B4800971840 /* LaunchScreen.storyboard in Resources */,
 				4EEEECF529DE22AC00769E48 /* AirportCell.xib in Resources */,
 				4E3B3AA829D43B4800971840 /* Assets.xcassets in Resources */,
 				4E0A8F5E2A184CF90087B2D4 /* AirportDetailView.xib in Resources */,
+				4E78E37B2A5CD57A00798EF4 /* map_style.json in Resources */,
+				4E282B302A618B1100B46299 /* aerokit_database.sqlite in Resources */,
 				4EB392D82A19014E00392C3A /* RunwayCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,6 +1313,7 @@
 				11A7E33E2A570DA800D46451 /* AccountViewController.swift in Sources */,
 				4EB392D72A19014E00392C3A /* RunwayCell.swift in Sources */,
 				4E57C7902A162FD3009A681A /* FilterAssembly.swift in Sources */,
+				4E282B322A61A32600B46299 /* SavedIdObjectWithDate.swift in Sources */,
 				11A7E33C2A570DA800D46451 /* AccountAssembly.swift in Sources */,
 				115DA7622A3F5BDA0011F754 /* SignUpAssembly.swift in Sources */,
 				4EF7B1DD2A57218D0056BC1A /* CalculatorCell.swift in Sources */,
@@ -1316,6 +1334,7 @@
 				4E42FE252A1E4A0D00AAE5B5 /* StateSelectableButton.swift in Sources */,
 				11A7E3402A570E2A00D46451 /* AccountView.swift in Sources */,
 				1137955D2A0866D500597299 /* AirportsFilterRunwaysLengthView.swift in Sources */,
+				4E78E37F2A5CD6A200798EF4 /* StyleURI.swift in Sources */,
 				4ECEC08429D99E910070195D /* String.swift in Sources */,
 				11EC9B3C2A13F31C001EB56D /* DeinitiableCoordinator.swift in Sources */,
 				11B2810C2A315E20008D18C9 /* ChecklistGroupStorageModel.swift in Sources */,
@@ -1325,15 +1344,10 @@
 				4E40A1732A14F48B00101D06 /* Coordinate.swift in Sources */,
 				4E05C57429D98D4C00E228CD /* UIStackView.swift in Sources */,
 				115DA7402A3F0F690011F754 /* GetStartedView.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
-				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
 				4EB80B992A3651E500BDBBF9 /* MessageCell.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				4E274C4E2A3E46C1001E1D73 /* OpenAIChatStreamedParameters.swift in Sources */,
 				11DECD152A51BA3400463CD5 /* SettingsContract.swift in Sources */,
-				113795582A07F77D00597299 /* AirportFilterSettings.swift in Sources */,
 				11DECD132A51BA0A00463CD5 /* SettingsAssembly.swift in Sources */,
-				115DA74D2A3F39780011F754 /* LoginAssembly.swift in Sources */,
 				4ECD111629FBEFAC009FA56C /* Airports.swift in Sources */,
 				11A7E3352A57018200D46451 /* AboutView.swift in Sources */,
 				4E6157292A1471AF008BAD4B /* Numeric.swift in Sources */,
@@ -1348,10 +1362,13 @@
 				4EF7B1D92A571B740056BC1A /* CalculatorListViewController.swift in Sources */,
 				11D4F47F2A03E973001DDC46 /* BannerViewController.swift in Sources */,
 				4E5C2DDF29FC9E9700B66A02 /* BackgroundMap.swift in Sources */,
+				4E78E37D2A5CD60E00798EF4 /* BundleURLs.swift in Sources */,
 				4E63C9322A1122D300A86D15 /* Collection.swift in Sources */,
 				11D4F47C2A03E973001DDC46 /* AirportsMainView.swift in Sources */,
 				4E8D18882A0E6C960087DCCD /* NoPasteTextField.swift in Sources */,
 				11B280FE2A31140A008D18C9 /* ChecklistSelectionTableCell.swift in Sources */,
+				4EFE2F132A58B56300A957B6 /* LoginAssembly.swift in Sources */,
+				4EE6C54A2A5CADCD00858931 /* UIAlertController.swift in Sources */,
 				11D8D84E2A294E79001EE665 /* ToolsView.swift in Sources */,
 				4ECEC07C29D996EE0070195D /* UIColor.swift in Sources */,
 				11B280E92A301B57008D18C9 /* ChecklistsViewController.swift in Sources */,
@@ -1366,11 +1383,13 @@
 				11EC9B482A13FFAA001EB56D /* SplashViewController.swift in Sources */,
 				4EBA3F872A1FCE3A0043AD42 /* FavoritesAssembly.swift in Sources */,
 				4E5ABFA82A265F9E005CB80D /* AirportByCity.swift in Sources */,
+				11C86BB82A6876790049D9CE /* InfoURLs.swift in Sources */,
 				11EC9B412A13FAA3001EB56D /* TabCoordinator.swift in Sources */,
 				4E0FF60F2A54C43000B93271 /* HeadingWindCorrectionAngleCalculator.swift in Sources */,
 				11B280F82A310947008D18C9 /* ChecklistsTableCell.swift in Sources */,
 				11D4F4782A03E973001DDC46 /* AirportsViewModel.swift in Sources */,
 				11B280FC2A310D54008D18C9 /* UITableView+Extensions.swift in Sources */,
+				4EFE2F112A58B4FB00A957B6 /* AirportFilterSettings.swift in Sources */,
 				11B280ED2A302327008D18C9 /* SelectPlaneViewController.swift in Sources */,
 				11B280F62A30EF4F008D18C9 /* ChecklistsCoordinator.swift in Sources */,
 				11B281092A31478C008D18C9 /* ChecklistsViewModel.swift in Sources */,
@@ -1396,6 +1415,7 @@
 				4EA60EAD2A2728CB00539D83 /* CityCellViewModel.swift in Sources */,
 				115DA75E2A3F5BDA0011F754 /* SignUpView.swift in Sources */,
 				4ECD111829FBEFDB009FA56C /* Runways.swift in Sources */,
+				4EE6C5482A5CAB6E00858931 /* ShowLocationButton.swift in Sources */,
 				115DA74E2A3F39780011F754 /* LoginViewModel.swift in Sources */,
 				4E8590832A562F76008D1A4B /* CalculatorView.swift in Sources */,
 				4EAC54C529DF035700EDDA71 /* BlankView.swift in Sources */,
@@ -1410,6 +1430,7 @@
 				115DA75F2A3F5BDA0011F754 /* SignUpViewController.swift in Sources */,
 				11D4F4792A03E973001DDC46 /* AirportCellViewModel.swift in Sources */,
 				4EF7B1DB2A571EB70056BC1A /* CalculatorsDataSource.swift in Sources */,
+				11F5DA622A7D0CE4008255DA /* UserChecklistsGroups.swift in Sources */,
 				4EECAF602A20BFD400F51E52 /* NotificationCenterModuleInterface.swift in Sources */,
 				4E0A8F5C2A1849C70087B2D4 /* AutoSizingTableView.swift in Sources */,
 				4E2648242A3DF0A100B78379 /* RunwaySurface.swift in Sources */,
@@ -1418,6 +1439,7 @@
 				11EC9B532A140665001EB56D /* AirportsCoordinator.swift in Sources */,
 				11B280F22A30E901008D18C9 /* UserDataStorage.swift in Sources */,
 				4EB392DA2A190C5500392C3A /* RunwayCellViewModel.swift in Sources */,
+				4E018B012A69C6B100C674C8 /* HyperLinkText.swift in Sources */,
 				11D4F4802A03E973001DDC46 /* AirportsViewController.swift in Sources */,
 				4E01532E2A519773009362DE /* CalculatorViewController.swift in Sources */,
 				4EA72A3029D6373000836CDF /* APIClient.swift in Sources */,
@@ -1438,7 +1460,6 @@
 				115DA7572A3F562D0011F754 /* SocialAuthorizationBlockView.swift in Sources */,
 				4EB9007429D85ABE00C64110 /* SearchFieldView.swift in Sources */,
 				4E3019BF29EAE38B00852427 /* Frequency.swift in Sources */,
-				4EA25E332A12C70600E561BE /* Cities.swift in Sources */,
 				11DECD112A51B9F500463CD5 /* SettingsViewModel.swift in Sources */,
 				4E3019C129EAE39100852427 /* City.swift in Sources */,
 				4E0044CF2A35F45F0098706A /* FlexibleTextView.swift in Sources */,
@@ -1547,7 +1568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1601,7 +1622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1618,13 +1639,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FlightGuide/FlightGuide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5ZYV4X786K;
+				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aero Kit";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1639,10 +1661,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Development (2)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1657,6 +1681,9 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aero Kit";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1670,9 +1697,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -25,14 +25,10 @@ final class SettingsViewController: UIViewController {
         setupLayout()
         navigationController?.setNavigationBarHidden(false, animated: false)
         title = "Settings"
-        settingsView.logoutButton.addAction(UIAction { [weak self] _ in self?.viewModel?.onTapLogout() },
-                               for: .touchUpInside)
         settingsView.onTapItem = { [weak self] item in
             switch item {
             case .aboutUs:
                 self?.viewModel?.onTapAboutUs()
-            case .account:
-                self?.viewModel?.onTapAccount()
             }
         }
     }

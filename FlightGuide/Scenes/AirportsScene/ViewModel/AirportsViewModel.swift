@@ -21,6 +21,8 @@ protocol AirportsViewModelInputs {
     func didSelectItem(at indexPath: IndexPath)
     func didSelectPointAnnotation(_ annotation: PointAnnotation)
     func didTapFiltersButton()
+    func didTapShowLocationButton()
+    func didTapOnRequestMail()
 }
 
 protocol AirportsViewModelOutputs {
@@ -35,7 +37,9 @@ protocol AirportsViewModelOutputs {
     var onSearchEnd: RxObservable<Empty>! { get }
     var searchOutput: RxObservable<SectionModels>! { get }
     var onCitySelection: RxObservable<Empty>! { get }
+    var onLocationRequest: RxObservable<Empty>! { get }
     var onAirportSelection: RxObservable<Empty>! { get }
+    var promptViewIsHidden: RxObservable<Bool>! { get }
     var pointAnnotations: RxObservable<PointAnnotations>! { get }
     var boundingBox: RxObservable<CoordinateBounds>! { get }
     var airportCoordinate: RxObservable<Coordinate>! { get }
@@ -44,6 +48,7 @@ protocol AirportsViewModelOutputs {
     var counterBadgeIsHidden: RxObservable<Bool>! { get }
     var dismissDetailView: RxObservable<Empty>! { get }
     var searchFieldCanDismiss: RxObservable<Empty>! { get }
+    var url: RxObservable<URL>! { get }
 }
 
 protocol AirportsViewModelType {
@@ -58,15 +63,18 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     var searchOutput: RxObservable<SectionModels>!
     var onCitySelection: RxObservable<Empty>!
     var onAirportSelection: RxObservable<Empty>!
+    var promptViewIsHidden: RxObservable<Bool>!
     var selectedAirport: RxObservable<Airport>!
     var pointAnnotations: RxObservable<PointAnnotations>!
     var boundingBox: RxObservable<CoordinateBounds>!
+    var onLocationRequest: RxObservable<Empty>!
     var airportCoordinate: RxObservable<Coordinate>!
     var pivotModel: RxObservable<PivotModel>!
     var numberOfActiveFilters: RxObservable<String>!
     var counterBadgeIsHidden: RxObservable<Bool>!
     var dismissDetailView: RxObservable<Empty>!
     var searchFieldCanDismiss: RxObservable<Empty>!
+    var url: RxObservable<URL>!
     //MARK: - Values
     private let searchInput = PublishRelay<String?>()
     private let searchingBegan = PublishRelay<Empty>()
@@ -75,8 +83,8 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let selectedPointAnnotation = PublishRelay<PointAnnotation>()
     private let selectedItemPath = PublishRelay<IndexPath>()
     private let favoriteAirportId = PublishRelay<Int>()
-    // TODO: TEMPORARY
-    private var onCityPresentation = false
+    private let locationButtonTapped = PublishRelay<Empty>()
+    private let requestMailTapped = PublishRelay<Empty>()
     //MARK: - Services
     private let databaseInteractor = DatabaseInteractor()
     private let errorRouter = ErrorRouter()
@@ -84,6 +92,10 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
     private let filterInputPassing: FilterInputPassing
     private let notificationCenter: NotificationCenterModuleInterface
     private var notificationTokens: [NotificationToken] = []
+    @UserDataStorage(key: UserDefaultsKey.savedIdObjectWithDate)
+    private var savedFavorites: [IdObjectWithDate]?
+    // MARK: - States
+    private var onCityPresentation = false
     
     var inputs: AirportsViewModelInputs { self }
     var outputs: AirportsViewModelOutputs { self }
@@ -102,9 +114,11 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .skipNil()
             .filter { $0.count > 1 }
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-        // TODO: replayed multiple times
+            .share()
+       
         let filterSettings = filterInput
             .map { AirportFilterSettings(withFilterInput: $0) }
+            .share()
             .startWith(AirportFilterSettings.empty)
 
         let airportsByCity = RxObservable
@@ -116,14 +130,16 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .map { Dictionary(grouping: $0, by: { $0.municipality }) }
             .map { $0.sorted { $0.value.count > $1.value.count } }
             .startWith([])
+            .share()
         
-        let filteredAirports = RxObservable.combineLatest(unwrappedSearchInput,
-                                                          filterSettings) { ($0, $1) }
+        let filteredAirports = RxObservable
+            .combineLatest(unwrappedSearchInput, filterSettings) { ($0, $1) }
             .filter { $0.1.airportFilterItem != .cities  }
             .backgroundMap(qos: .userInitiated) { [unowned self] in
                 databaseInteractor.fetchPreviewData(AirportPreview.self, input: $0.0, filters: $0.1)
             }
             .startWith([])
+            .share()
 
         let numberOfActiveCriteria = filterSettings
             .map { $0.numberOfActiveCriteria }
@@ -134,19 +150,23 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
         
         self.counterBadgeIsHidden = numberOfActiveCriteria
             .map { $0 <= 0 }
-            .startWith(true)
         
         let unwrappedFilteredAirports = filteredAirports
             .backgroundCompactMap(qos: .userInitiated) { $0 }
             .share()
             .startWith([])
+            .share()
 
         let cityCellViewModels = airportsByCity
             .backgroundMap(qos: .userInitiated) { $0.map { CityCellViewModel(with: $0) } }
             .share()
                 
         let airportCellViewModels = unwrappedFilteredAirports
-            .backgroundMap(qos: .userInitiated) { $0.map { AirportCellViewModel(with: $0) } }
+            .backgroundMap(qos: .userInitiated) { [unowned self] airports in
+                let favoritesId = savedFavorites?.map { $0.id } ?? []
+                return airports
+                    .map { AirportCellViewModel(with: $0, isFavorite: Set(favoritesId).contains($0.id)) }
+            }
             .share()
                 
         let citiesSection = cityCellViewModels
@@ -158,8 +178,7 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             .map { $0.map { SectionItem.airportItem(viewModel: $0) } }
             .map { SectionedTableModel.airportsSection(title: $0.isEmpty ? "" : "Airports - \($0.count)",
                                                        items: $0) }
-        // TODO: emits extra values. The search flow should be reviewed
-        // I am really sorry for this code. I promise this will be refactored
+        
         self.searchOutput = RxObservable.combineLatest(citiesSection, airportsSection, filterSettings)
             .map { citiesSection, airportsSection, filterSettings in
                 switch filterSettings.airportFilterItem {
@@ -172,56 +191,58 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                 }
             }
         
-        let models = RxObservable.combineLatest(airportsByCity, unwrappedFilteredAirports)
-            .map { [$0.0, $0.1] as [[Any]] }
+        self.promptViewIsHidden = RxObservable.combineLatest(citiesSection, airportsSection)
+            .map { return $0.0.items.notEmpty || $0.1.items.notEmpty }
+            .startWith(true)
         
-        let selectedModel = selectedItemPath.withLatestFrom(models) { ($0, $1) }
+        let models = RxObservable
+            .combineLatest(airportsByCity, unwrappedFilteredAirports)
+            .map { [$0.0, $0.1] as [[Any]] }
+            .share()
+        
+        let selectedModel = selectedItemPath
+            .withLatestFrom(models) { ($0, $1) }
             .map { indexPath, models in
                 let section = models[indexPath.section]
                 return section[indexPath.row]
             }
             .do(onNext: { self.onCityPresentation = $0 is (key: Optional<String>, value: Array<AirportByCity>) })
-        
-        let selectedItemDatabaseId = RxObservable.merge(
-            selectedModel
-                .compactMap { return $0 as? AirportPreview }
-                .map { $0.id },
-            selectedPointAnnotation
-                .compactMap { $0.airportId })
             .share()
         
-        let selectedCityAirports = selectedModel
-            .compactMap { return $0 as? (key: Optional<String>, value: Array<AirportByCity>) }
-            .map { $0.value }
+        let selectedItemDatabaseId = RxObservable
+                .merge(selectedModel
+                .compactMap { $0 as? AirportPreview }
+                .map { $0.id },
+            selectedPointAnnotation
+                    .compactMap { $0.airportId })
+                .share()
+                
+                let selectedCityAirports = selectedModel
+                .compactMap { return $0 as? (key: Optional<String>, value: Array<AirportByCity>) }
+                .map { $0.value }
+                .share()
         
-        self.onCitySelection = selectedCityAirports.asEmpty()
+        self.onCitySelection = selectedCityAirports
+            .asEmpty()
         
         let coordinatesKeyedOnId = selectedCityAirports
             .map { [unowned self] in
                 $0.map { (id: $0.id, coordinate: databaseInteractor.fetchAirportCoordinate(CLLocationCoordinate2D.self,
-                                                                   by: $0.id)) }
+                                                                                           by: $0.id)) }
             }
             .share()
         
         self.boundingBox = coordinatesKeyedOnId
             .map { $0.compactMap { $0.coordinate } }
-            .map { coordinates in
-                let minLatitude = coordinates.map { $0.latitude }.min()
-                let maxLatitude = coordinates.map { $0.latitude }.max()
-                let minLongitude = coordinates.map { $0.longitude }.min()
-                let maxLongitude = coordinates.map { $0.longitude }.max()
-                
-                let maxYminX = Coordinate(lat: minLatitude, lon: maxLongitude)
-                let minYmaxX = Coordinate(lat: maxLatitude, lon: minLongitude)
-                
-                return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
+            .map { [unowned self] coordinates in
+                makeCoordinateBounds(of: coordinates)
             }
             .compactMap { $0 }
         
         let airportsByCityPointAnnotations = coordinatesKeyedOnId
             .map { $0.compactMap { PointAnnotation(location: $0.coordinate,
                                                    airportId: $0.id.toString()) } }
-
+        
         let selectedAirport = RxObservable
             .merge(selectedItemDatabaseId, favoriteAirportId.asObservable())
             .compactMap { self.databaseInteractor.fetchAirport(by: $0)?.first }
@@ -256,13 +277,20 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
             airportAnnotation,
             searchingEnded.map { [] })
         
+        self.url = requestMailTapped.withLatestFrom(unwrappedSearchInput)
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .map { (subject: "New airport request".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    body: "Hello, \n I would like to leave a request for adding airport \($0.uppercased()) to your database as it did not appear in the search results".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) }
+            .compactMap { URL(string: "mailto:services@aerokit.pro?subject=\($0.subject ?? "")&body=\($0.body ?? "")") }
+        
         self.onSearchStart = searchingBegan.asObservable() // to separate & rename
         self.onSearchEnd = searchingEnded.asObservable() // to separate & rename
         self.searchFieldCanDismiss = favoriteAirportId.asEmpty()
+        self.onLocationRequest = locationButtonTapped.asObservable()
         
         subscribeOnNotifications()
     }
-        
+    
     private func subscribeOnNotifications() {
         notificationTokens.append(
             notificationCenter.observe(
@@ -272,10 +300,28 @@ final class AirportsViewModel: AirportsViewModelType, AirportsViewModelOutputs {
                       let id = notification.object as? Int else {
                     return
                 }
+                self.onCityPresentation = false
                 self.favoriteAirportId.accept(id)
             }
         )
     }
+    
+    private func makeCoordinateBounds(of coordinates: [CLLocationCoordinate2D]) -> CoordinateBounds? {
+        var coordinates = coordinates
+        // чтобы показывать единственную координату на отдалении, добавляем две искусственные координаты в массив. Welcome to kostyl paradise
+        if coordinates.count == 1 { coordinates.append(coordinates[0].coordinate(at: 15000, facing: LocationDirection.pi)); coordinates.append(coordinates[0].coordinate(at: -15000, facing: LocationDirection.pi))  }
+        
+        let minLatitude = coordinates.map { $0.latitude }.min()
+        let maxLatitude = coordinates.map { $0.latitude }.max()
+        let minLongitude = coordinates.map { $0.longitude }.min()
+        let maxLongitude = coordinates.map { $0.longitude }.max()
+        
+        let maxYminX = Coordinate(lat: minLatitude, lon: maxLongitude)
+        let minYmaxX = Coordinate(lat: maxLatitude, lon: minLongitude)
+                
+        return CoordinateBounds(maxYminX: maxYminX, minYmaxX: minYmaxX)
+    }
+    
 }
 
 // MARK: - AirportsViewModelInputs
@@ -302,5 +348,13 @@ extension AirportsViewModel: AirportsViewModelInputs {
     
     func didTapFiltersButton() {
         delegate?.openFilters()
+    }
+    
+    func didTapShowLocationButton() {
+        locationButtonTapped.accept(Empty())
+    }
+    
+    func didTapOnRequestMail() {
+        requestMailTapped.accept(Empty())
     }
 }

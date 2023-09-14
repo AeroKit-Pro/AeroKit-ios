@@ -66,4 +66,20 @@ extension UIImage {
     static var ai_assistant: UIImage? {
         UIImage(named: "tools_ai_assistant")
     }
+    
+    static var location_arrow_hollow: UIImage? {
+        UIImage(named: "location_arrow_hollow")
+    }
+    
+    static var location_not_permitted: UIImage? {
+        UIImage(named: "location_not_permitted")
+    }
+    
+    static var bookmark: UIImage? {
+        UIImage(named: "bookmark")
+    }
+    
+    static var airports_not_found: UIImage? {
+        UIImage(named: "airports_not_found")
+    }
 }

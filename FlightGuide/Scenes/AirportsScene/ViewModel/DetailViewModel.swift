@@ -46,10 +46,12 @@ protocol DetailViewModelType {
     var outputs: DetailViewModelOutputs { get }
 }
 
-final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, DetailViewModelType {
+final class DetailViewModel: DetailViewModelOutputs, DetailViewModelType {
     
     private let databaseInteractor = DatabaseInteractor()
     private let apiClient = APIClient()
+    @UserDataStorage(key: UserDefaultsKey.savedIdObjectWithDate)
+    private var savedFavorites: [IdObjectWithDate]?
     
     var image: Observable<UIImage>!
     var name: Observable<String>!
@@ -79,22 +81,11 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     init() {
         self.name = pivotInfo.map { $0.airport.name ?? "no data" }
         self.identifier = pivotInfo.map { $0.airport.ident ?? "no data" }
-        self.type = pivotInfo.map { $0.airport.type ?? "no data" }
+        self.type = pivotInfo.map { $0.airport.type?.replacingOccurrences(of: "_", with: " ") ?? "no data" }
         self.elevation = pivotInfo.map { $0.airport.elevationFt?.toString() ?? "no data" }
         self.municipality = pivotInfo.map { $0.airport.municipality ?? "no data" }
         self.frequency = pivotInfo.map { $0.frequencies?.first?.frequencyMhz?.toString() ?? "no data" }
         self.phoneNumber = Observable.just("no data") // dummy string for now
-        
-        let databaseResponse = markAsFavorite
-            .withLatestFrom(pivotInfo) { ($0, $1.airport.id) }
-            .map { [unowned self] in databaseInteractor.markAirportAsFavorite($0.0, id: $0.1) }
-        let rowUpdateFailed = databaseResponse.filter { !$0 }
-        let fallbackValue = rowUpdateFailed
-            .withLatestFrom(pivotInfo.map { $0.airport.isFavorite }) { ($1) }
-            .compactMap { $0 }
-        
-        self.isFavorite = Observable.merge(fallbackValue,
-                                           pivotInfo.compactMap { $0.airport.isFavorite })
         
         let runways = pivotInfo
             .map { $0.runways ?? [] }
@@ -119,19 +110,40 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         let linkTapEvent = Observable
             .merge(homeLinkLabelTapped.withLatestFrom(homeLinkURL.skipNil()),
                    wikipediaLinkLabelTapped.withLatestFrom(wikipediaLinkURL.skipNil()))
+        
         self.websiteURL = linkTapEvent
         
-        let icao = pivotInfo.map { $0.airport.ident ?? ""}.share() // TODO: there is almost no nils, but making api call with empty values is not good
+        let icao = pivotInfo
+            .map { $0.airport.ident}
+            .share()
+        
+        let addToFavorite = markAsFavorite.withLatestFrom(pivotInfo) { ($0, $1) }
+            .map { [unowned self] in
+                manageFavoriteStatus(for: $0.1.airport.id, newStatus: $0.0)
+            }
+        
+        self.isFavorite = Observable.merge(
+            pivotInfo
+                .map { [unowned self] model in
+                    guard let savedFavorites else { return false }
+                    return savedFavorites.contains(where: { $0.id == model.airport.id })
+                },
+            addToFavorite
+        )
+        
         self.invalidateWeatherTexts = icao.map { _ in "" }
         
         let metarResponse = icao
+            .compactMap { $0 }
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .metar, icao: $0)
                     .map { $0.data.first }
                     .catchAndReturn("Could not load the data")
             }
             .share()
+        
         let tafResponse = icao
+            .compactMap { $0 }
             .flatMap { [unowned self] in
                 apiClient.getWeather(type: .taf, icao: $0)
                     .map { $0.data.first }
@@ -149,6 +161,26 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
         self.taf = tafResponse.map { $0 ?? "no data" }
     }
     
+    var inputs: DetailViewModelInputs { self }
+    var outputs: DetailViewModelOutputs { self }
+    
+    private func manageFavoriteStatus(for id: Int, newStatus: Bool) -> Bool {
+        if var savedFavorites = savedFavorites {
+            newStatus ? savedFavorites.append(IdObjectWithDate(id: id, date: Date())) : savedFavorites.removeAll { $0.id == id }
+            self.savedFavorites = savedFavorites
+            return savedFavorites.contains { $0.id == id }
+        }
+        if newStatus {
+            savedFavorites = [IdObjectWithDate(id: id, date: Date())]
+            return true
+        }
+        
+        return false
+    }
+    
+}
+
+extension DetailViewModel: DetailViewModelInputs {
     func refresh(withPivotModel model: PivotModel) {
         pivotInfo.accept(model)
     }
@@ -164,9 +196,4 @@ final class DetailViewModel: DetailViewModelInputs, DetailViewModelOutputs, Deta
     func didTapAddToFavoritesButton(_ newValue: Bool) {
         markAsFavorite.accept(newValue)
     }
-
-    
-    var inputs: DetailViewModelInputs { self }
-    var outputs: DetailViewModelOutputs { self }
-    
 }

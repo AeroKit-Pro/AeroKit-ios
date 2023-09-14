@@ -20,22 +20,15 @@ final class BannerViewController: UIViewController {
     }
     
     func expand() {
-        UIView.animate(withDuration: 0.3) {
-            self.underlayView.expand()
-            self.view.superview?.layoutIfNeeded()
-        }
-    }
-    
-    func collapse() {
-        UIView.animate(withDuration: 0) {
-            self.underlayView.collapse()
+        self.underlayView.setToHalfScreenPosition()
+        UIView.animate(withDuration: AnimationDuration.microFast.timeInterval) {
             self.view.superview?.layoutIfNeeded()
         }
     }
     
     func hide() {
-        UIView.animate(withDuration: 0.3) {
-            self.underlayView.hide()
+        self.underlayView.hide()
+        UIView.animate(withDuration: AnimationDuration.microRegular.timeInterval) {
             self.view.superview?.layoutIfNeeded()
         }
     }

@@ -15,10 +15,15 @@ enum APIRequest: URLRequestConvertible {
     case getAirports
     case getRunways
     case getFrequencies
-    case getCities
     case getChecklists
     case getWeather(type: WeatherReportType, icao: String)
     case createChatCompletions(parameters: Data?)
+
+    case getUserChecklistsGroups(userId: String)
+    case addUserChecklistsGroups(userId: String, checklists: UserChecklistsGroupBase)
+    case deleteUserChecklistsGroups(userId: String, groupId: String)
+
+    case deleteAllUserDate(userId: String)
 }
 
 extension APIRequest {
@@ -39,10 +44,14 @@ extension APIRequest {
         case .getAirports: return URLS.airportsEndpoint
         case .getRunways: return URLS.airportRunwaysEndpoint
         case .getFrequencies: return URLS.airportFrequencyEndpoint
-        case .getCities: return URLS.citiesInfoEndpoint
         case .getWeather: return URLS.weatherBaseUrl
-        case .getChecklists: return URLS.checklistsUrl
+        case .getChecklists: return URLS.baseMainAPIUrl + "/checklists"
         case .createChatCompletions: return URLS.openaiBaseUrl
+        case .deleteAllUserDate(let id): return URLS.baseMainAPIUrl + "/user/\(id)"
+
+        case .getUserChecklistsGroups(let userId): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups"
+        case .addUserChecklistsGroups(let userId, _): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups"
+        case .deleteUserChecklistsGroups(let userId, let groupId): return URLS.baseMainAPIUrl + "/user/\(userId)/checklists_groups/\(groupId)"
         }
     }
     
@@ -57,6 +66,7 @@ extension APIRequest {
         switch self {
         case .getWeather: return HTTPHeaders.weatherApiKey
         case .createChatCompletions: return HTTPHeaders.openaiRequiredHeaders
+        case .addUserChecklistsGroups: return ["Content-Type": "application/json"]
         default: return nil
         }
     }
@@ -64,16 +74,19 @@ extension APIRequest {
     private var body: Data? {
         switch self {
         case .createChatCompletions(let parameters): return parameters
+        case .addUserChecklistsGroups(_, let checklists): return try? JSONEncoder().encode(checklists)
         default: return nil
         }
     }
     
     private var method: HTTPMethod {
         switch self {
-        case .getAirports, .getRunways, .getFrequencies, .getCities, .getWeather, .getChecklists:
+        case .getAirports, .getRunways, .getFrequencies, .getWeather, .getChecklists, .getUserChecklistsGroups:
             return .get
-        case .createChatCompletions:
+        case .createChatCompletions, .addUserChecklistsGroups:
             return .post
+        case .deleteAllUserDate, .deleteUserChecklistsGroups:
+            return .delete
         }
     }
 

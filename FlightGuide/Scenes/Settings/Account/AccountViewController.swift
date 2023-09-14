@@ -24,8 +24,10 @@ final class AccountViewController: UIViewController {
         view.backgroundColor = .white
         title = "Account"
         viewModel?.viewDidLoad()
-
+        
         accountView.deleteAccountButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapDeleteAccount()}),
+                                                  for: .touchUpInside)
+        accountView.changePasswordButton.addAction(UIAction(handler: { [weak self] _ in self?.viewModel?.onTapChangePassword()}),
                                                   for: .touchUpInside)
     }
 }
@@ -51,6 +53,22 @@ extension AccountViewController: AccountViewInterface {
 
     func displayAccountDeletionErrorAlert(error: Error) {
         let alert = UIAlertController(title: "Account deletion error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay",
+                                      style: .cancel,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func displayChangePasswordErrorAlert(error: Error) {
+        let alert = UIAlertController(title: "Reset password error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay",
+                                      style: .cancel,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func displayChangePasswordSentSuccessfullyAlert() {
+        let alert = UIAlertController(title: "Change password", message: "We have successfully sent a password reset email", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay",
                                       style: .cancel,
                                       handler: nil))

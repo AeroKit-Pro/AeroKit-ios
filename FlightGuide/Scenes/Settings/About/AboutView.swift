@@ -40,15 +40,18 @@ final class AboutView: UIView {
         return label
     }()
 
-    private let emailToContactLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .black
-        label.text = "support@aerokit.pro"
-        return label
+    let emailToContactButton: UIButton = {
+        let button = UIButton()
+        let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14, weight: .semibold),
+                                                             .foregroundColor: UIColor.black,
+                                                             .underlineStyle: NSUnderlineStyle.single.rawValue]
+        let attributeString = NSMutableAttributedString(string: InfoURLs.supportEmail,
+                                                        attributes: yourAttributes)
+        button.setAttributedTitle(attributeString, for: .normal)
+        return button
     }()
 
-    private let privacyPolicyButton: UIButton = {
+    let privacyPolicyButton: UIButton = {
         let button = UIButton()
         let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold),
                                                              .foregroundColor: UIColor.black,
@@ -59,7 +62,7 @@ final class AboutView: UIView {
         return button
     }()
 
-    private let ourWebsiteButton: UIButton = {
+    let ourWebsiteButton: UIButton = {
         let button = UIButton()
         let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold),
                                                              .foregroundColor: UIColor.black,
@@ -69,19 +72,6 @@ final class AboutView: UIView {
         button.setAttributedTitle(attributeString, for: .normal)
         return button
     }()
-
-    private let appstoreButton: UIButton = {
-        let button = UIButton()
-        let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold),
-                                                             .foregroundColor: UIColor.black,
-                                                             .underlineStyle: NSUnderlineStyle.single.rawValue]
-        let attributeString = NSMutableAttributedString(string: "Appstore",
-                                                        attributes: yourAttributes)
-        button.setAttributedTitle(attributeString, for: .normal)
-        return button
-    }()
-
-
 
     private var items = SettingItem.allCases
     var onTapItem: ((SettingItem) -> Void)?
@@ -116,7 +106,7 @@ final class AboutView: UIView {
         }
 
         let labelsStackView = UIStackView(axis: .horizontal, spacing: 30)
-        labelsStackView.addArrangedSubviews(emailToContactDescriptionLabel, emailToContactLabel)
+        labelsStackView.addArrangedSubviews(emailToContactDescriptionLabel, emailToContactButton)
         addSubview(labelsStackView)
         labelsStackView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(30)
@@ -132,13 +122,7 @@ final class AboutView: UIView {
         addSubview(ourWebsiteButton)
         ourWebsiteButton.snp.makeConstraints { make in
             make.top.equalTo(privacyPolicyButton)
-            make.leading.equalTo(emailToContactLabel)
-        }
-
-        addSubview(appstoreButton)
-        appstoreButton.snp.makeConstraints { make in
-            make.top.equalTo(privacyPolicyButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
+            make.leading.equalTo(emailToContactButton)
         }
     }
 

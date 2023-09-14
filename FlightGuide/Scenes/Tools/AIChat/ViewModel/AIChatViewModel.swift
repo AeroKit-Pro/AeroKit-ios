@@ -47,6 +47,7 @@ final class AIChatViewModel: AIChatViewModelType, AIChatViewModelOutputs {
     private let scrollViewScrolled = PublishRelay<UIScrollView>()
     
     private let openAIChat: OpenAIChatType = OpenAIChat(parameters: .default)
+    private let disposeBag = DisposeBag()
     
     var inputs: AIChatViewModelInputs { self }
     var outputs: AIChatViewModelOutputs { self }
@@ -76,11 +77,12 @@ final class AIChatViewModel: AIChatViewModelType, AIChatViewModelOutputs {
         
         self.hidePromptView = messageButtonTapped.asObservable()
             .take(1)
-        // TODO: REMOVE SUBSCRIPTION FROM HERE
+        
         messageButtonTapped.withLatestFrom(unwrappedMessageInput)
             .do(onNext: { self.openAIChat.postUserMessage($0) })
             .subscribe()
-                
+            .disposed(by: disposeBag)
+            
         let messages = openAIChat.messages
             .map { $0.filter { $0.role != .system } }
             .share()

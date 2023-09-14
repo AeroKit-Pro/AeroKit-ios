@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import RxSwift
 
 protocol ChecklistsSelectionSceneDelegate: AnyObject {
     func showChecklistsInspection(items:  [ChecklistWithItemsModel])
 }
 
 final class ChecklistsSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private let disposeBag = DisposeBag()
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -55,6 +58,7 @@ final class ChecklistsSelectionViewController: UIViewController, UITableViewData
     weak var delegate: ChecklistsSelectionSceneDelegate?
     var items = [ChecklistWithItemsModel]()
     var companyNameWithModel: String?
+    var planeWithChecklistsModelId: Int?
 
     private var selectedCells: [Int] = [] {
         didSet {
@@ -129,19 +133,41 @@ final class ChecklistsSelectionViewController: UIViewController, UITableViewData
             return items
         }()
 
-        let model = ChecklistGroupStorageModel(date: Date(),
+        let model = ChecklistGroupStorageModel(id: planeWithChecklistsModelId!,
+                                               date: Date(),
                                                name: name,
                                                fullPlaneName: companyNameWithModel ?? "",
                                                isFullChecklistModel: selectedCells.isEmpty,
                                                checklists: checklists)
 
-        if var savedChecklists = savedChecklists {
-            savedChecklists.append(model)
-            self.savedChecklists = savedChecklists
-        } else {
-            self.savedChecklists = [model]
-        }
+        guard let userId = Auth.auth().currentUser?.uid else { return }
 
+        APIClient().addUserChecklistsGroups(userId: userId,
+                                            checklists: UserChecklistsGroupBase(name: name,
+                                                                                checklists_ids: checklists.map { $0.id }))
+        .subscribe { [weak self] event in
+            switch event {
+            case .next:
+                if var savedChecklists = self?.savedChecklists {
+                    savedChecklists.append(model)
+                    self?.savedChecklists = savedChecklists
+                } else {
+                    self?.savedChecklists = [model]
+                }
+            case .error(let error):
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Saving error", message: error.localizedDescription, preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "Ok",
+                                                  style: .default,
+                                                  handler: nil))
+
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            default:
+                break
+            }
+        }.disposed(by: self.disposeBag)
     }
 
     private func showSavingAlert(completionHandler: ((String?) -> Void)?) {

@@ -67,6 +67,7 @@ final class SearchFieldView: UIView {
         setupClearAction()
         configureTextField()
         textField.setAttributedPlaceholder(placeholder, color: .flg_blue_gray)
+        textField.autocorrectionType = .no
     }
 
     required init?(coder: NSCoder) {
