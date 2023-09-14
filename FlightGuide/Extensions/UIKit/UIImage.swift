@@ -20,8 +20,16 @@ extension UIImage {
         UIImage(named: "cross")
     }
     
-    static var chevron_left: UIImage? {
-        UIImage(systemName: "chevron.left")
+    static var back_arrow: UIImage? {
+        UIImage(named: "back_arrow")
+    }
+    
+    static var airport_pin: UIImage? {
+        UIImage(named: "airport_pin")
+    }
+
+    static var chevron_right: UIImage? {
+        UIImage(systemName: "chevron.right")
     }
     
     static var pin: UIImage? {
@@ -30,5 +38,48 @@ extension UIImage {
     
     static var airport: UIImage? {
         UIImage(named: "airport")
+    }
+    
+    static var bookmark_deselected: UIImage? {
+        UIImage(named: "bookmark_deselected")
+    }
+    
+    static var bookmark_selected: UIImage? {
+        UIImage(named: "bookmark_selected")
+    }
+    static var aichat: UIImage? {
+        UIImage(named: "tools_aichat")
+    }
+    
+    static var checklists: UIImage? {
+        UIImage(named: "tools_checklists")
+    }
+    
+    static var pdfReader: UIImage? {
+        UIImage(named: "tools_pdfReader")
+    }
+    
+    static var arrow_up: UIImage? {
+        UIImage(named: "arrow_up")
+    }
+    
+    static var ai_assistant: UIImage? {
+        UIImage(named: "tools_ai_assistant")
+    }
+    
+    static var location_arrow_hollow: UIImage? {
+        UIImage(named: "location_arrow_hollow")
+    }
+    
+    static var location_not_permitted: UIImage? {
+        UIImage(named: "location_not_permitted")
+    }
+    
+    static var bookmark: UIImage? {
+        UIImage(named: "bookmark")
+    }
+    
+    static var airports_not_found: UIImage? {
+        UIImage(named: "airports_not_found")
     }
 }

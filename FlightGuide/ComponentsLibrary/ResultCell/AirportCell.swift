@@ -17,18 +17,22 @@ final class AirportCell: UITableViewCell {
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var municipality: UILabel!
     @IBOutlet weak var surface: UILabel!
+    @IBOutlet weak var bookmarkImage: UIImageView!
     
     var viewModel: AirportCellViewModel? {
         didSet {
-            self.typeImage.image = viewModel?.image
-            self.name.text = viewModel?.title
-            self.type.text = viewModel?.type
-            self.municipality.text = viewModel?.municipality
-            self.surface.text = viewModel?.surface
+            guard let viewModel else { return }
+            self.typeImage.image = viewModel.image
+            self.name.text = viewModel.title
+            self.type.text = viewModel.type
+            self.municipality.text = viewModel.municipality
+            self.surface.text = viewModel.surface
+            self.bookmarkImage.isHidden = viewModel.isBookmarkHidden
         }
     }
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         selectionStyle = .none
     }
     

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "openmoji_small-airplane.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

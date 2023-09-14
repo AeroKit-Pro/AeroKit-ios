@@ -8,7 +8,7 @@
 struct Airports: Codable {
     let items: [Airport]
 }
-
+//TODO: to parse type without "_"
 struct Airport: Codable {
     let id: Int
     let ident, type, name: String?

@@ -5,20 +5,22 @@
 //  Created by Vanya Bogdantsev on 02.04.2023.
 //
 
-import class UIKit.UIStackView
-import class UIKit.UIView
-import class UIKit.NSLayoutConstraint
-
+import UIKit
 
 extension UIStackView {
     func addArrangedSubviews(_ subviews: UIView...) {
         subviews.forEach { addArrangedSubview($0) }
     }
+    
+    func removeArrangedSubviews() {
+        self.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
 }
 
 extension UIStackView {
-    convenience init(axis: NSLayoutConstraint.Axis) {
+    convenience init(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0) {
         self.init()
         self.axis = axis
+        self.spacing = spacing
     }
 }
