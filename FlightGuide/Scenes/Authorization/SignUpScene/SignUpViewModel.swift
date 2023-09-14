@@ -71,7 +71,7 @@ extension SignUpViewModel: SignUpViewModelInterface {
             if let error = error {
                 self?.view.displayLoginErrorAlert(error: error)
                 return
-            } else if let result = result {
+            } else if let _ = result {
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.displayName = name
                 changeRequest?.commitChanges { _ in }

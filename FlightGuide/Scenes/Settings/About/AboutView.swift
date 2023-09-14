@@ -73,17 +73,6 @@ final class AboutView: UIView {
         return button
     }()
 
-    private let appstoreButton: UIButton = {
-        let button = UIButton()
-        let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold),
-                                                             .foregroundColor: UIColor.black,
-                                                             .underlineStyle: NSUnderlineStyle.single.rawValue]
-        let attributeString = NSMutableAttributedString(string: "Appstore",
-                                                        attributes: yourAttributes)
-        button.setAttributedTitle(attributeString, for: .normal)
-        return button
-    }()
-
     private var items = SettingItem.allCases
     var onTapItem: ((SettingItem) -> Void)?
     init() {
@@ -134,12 +123,6 @@ final class AboutView: UIView {
         ourWebsiteButton.snp.makeConstraints { make in
             make.top.equalTo(privacyPolicyButton)
             make.leading.equalTo(emailToContactButton)
-        }
-
-        addSubview(appstoreButton)
-        appstoreButton.snp.makeConstraints { make in
-            make.top.equalTo(privacyPolicyButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
         }
     }
 

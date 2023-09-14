@@ -1644,6 +1644,7 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aero Kit";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1660,9 +1661,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1677,6 +1681,7 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightGuide/Supporting/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aero Kit";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1692,9 +1697,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.FlightGuide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

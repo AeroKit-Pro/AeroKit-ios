@@ -58,8 +58,10 @@ final class AirportsMainView: UIView {
     }()
     
     override init(frame: CGRect = .zero) {
-        let options = MapInitOptions(styleURI: StyleURI(url: BundleURLs.mapStyle))
-        mapView = MapView(frame: .zero, mapInitOptions: options)
+        // US center
+        let camOptions = CameraOptions(center: CLLocationCoordinate2D(latitude: 39.8097343, longitude: -98.5556199), zoom: 2.2)
+        let initOptions = MapInitOptions(cameraOptions: camOptions, styleURI: StyleURI(url: BundleURLs.mapStyle))
+        mapView = MapView(frame: .zero, mapInitOptions: initOptions)
         super.init(frame: frame)
         setupMapView()
         setupSearchField()
@@ -218,7 +220,6 @@ extension AirportsMainView: AirportsSceneViewType {
     func ease(to coordinate: CLLocationCoordinate2D) {
         let options = CameraOptions(center: coordinate, zoom: 12)
         mapView.camera.fly(to: options, duration: 0.4)
-        print("FFFF")
     }
     
     func easeToLatestLocation() {

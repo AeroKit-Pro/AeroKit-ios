@@ -24,7 +24,7 @@ final class ToolsItemDetailingView: UIView {
         var subtitleText: String {
             switch self {
             case .checklists: return "Last checked:"
-            case .pdfReader: return "Last readed:"
+            case .pdfReader: return "Last read:"
             case .calculators: return "Last used:"
             }
         }
